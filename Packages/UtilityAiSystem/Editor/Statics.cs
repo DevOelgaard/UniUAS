@@ -45,4 +45,5 @@ public static class Statics
     public const string Description_DefaultDSE = "Selects the highest scored object";
 
     public const string Name_TemplateManager = "Template Manager";
+    public const string Name_AiInspector = "Ai Inspector";
 }

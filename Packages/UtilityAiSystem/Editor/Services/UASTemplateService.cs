@@ -19,7 +19,6 @@ public class UASTemplateService: RestoreAble
 
     private static UASTemplateService instance;
 
-    
     public UASTemplateService()
     {
         Init();
@@ -115,32 +114,12 @@ public class UASTemplateService: RestoreAble
         if(state != null)
         {
             RestoreInternal(state);
-            //Restore<UASModel>(state);
         }
     }
 
     private void OnEnable()
     {
         subscriptions.Clear();
-        //AIs
-        //    .OnValueChanged
-        //   .Subscribe(_ => MarkDirty())
-        //   .AddTo(subscriptions);
-
-        //Buckets
-        //    .OnValueChanged
-        //   .Subscribe(_ => MarkDirty())
-        //   .AddTo(subscriptions);
-
-        //Decisions
-        //    .OnValueChanged
-        //   .Subscribe(_ => MarkDirty())
-        //   .AddTo(subscriptions);
-
-        //Considerations
-        //    .OnValueChanged
-        //   .Subscribe(_ => MarkDirty())
-        //   .AddTo(subscriptions);
     }
 
     private void OnDisable()

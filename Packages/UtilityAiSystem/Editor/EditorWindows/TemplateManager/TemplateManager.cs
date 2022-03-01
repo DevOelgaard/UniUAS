@@ -4,8 +4,6 @@ using UnityEngine.UIElements;
 using System;
 using System.Collections.Generic;
 using UniRx;
-using System.Linq;
-using UniRxExtension;
 
 
 public class TemplateManager : EditorWindow
