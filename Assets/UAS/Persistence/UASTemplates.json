@@ -1,0 +1,177 @@
+{
+  "AIs": [
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "UAIModel"
+    },
+    {
+      "Name": "Another AI",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "UAIModel"
+    }
+  ],
+  "Buckets": [],
+  "Decisions": [],
+  "Considerations": [
+    {
+      "Parameters": [],
+      "ResponseCurveState": {
+        "Name": "Exponential",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "Power",
+            "Value": 2.0,
+            "FileName": "Parameter"
+          },
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCExponential"
+      },
+      "Name": "Default (Consideration3Test)",
+      "Description": null,
+      "Min": {
+        "Name": "Min",
+        "Value": 10.0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 100.0,
+        "FileName": "Parameter"
+      },
+      "FileName": "Consideration3Test"
+    },
+    {
+      "Parameters": [],
+      "ResponseCurveState": {
+        "Name": "Exponential",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "Power",
+            "Value": 2.0,
+            "FileName": "Parameter"
+          },
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCExponential"
+      },
+      "Name": "Default (ConsiderationTester2)",
+      "Description": null,
+      "Min": {
+        "Name": "Min",
+        "Value": 10.0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 100.0,
+        "FileName": "Parameter"
+      },
+      "FileName": "ConsiderationTester2"
+    },
+    {
+      "Parameters": [
+        {
+          "Name": "T-Float",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-String",
+          "Value": "string value",
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-Int",
+          "Value": 11,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseCurveState": {
+        "Name": "Exponential",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "Power",
+            "Value": 2.0,
+            "FileName": "Parameter"
+          },
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCExponential"
+      },
+      "Name": "Default (TestConsideration)",
+      "Description": null,
+      "Min": {
+        "Name": "Min",
+        "Value": 10.0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 100.0,
+        "FileName": "Parameter"
+      },
+      "FileName": "TestConsideration"
+    }
+  ],
+  "AgentActions": [
+    {
+      "Parameters": [
+        {
+          "Name": "T-Float",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-String",
+          "Value": "string value",
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-Int",
+          "Value": 11,
+          "FileName": "Parameter"
+        }
+      ],
+      "Name": "Default (AgentActionTester1)",
+      "Description": null,
+      "FileName": "AgentActionTester1"
+    },
+    {
+      "Parameters": [],
+      "Name": "Default (AgentActionTester2)",
+      "Description": null,
+      "FileName": "AgentActionTester2"
+    }
+  ],
+  "TestStrign": "",
+  "InternalTestString": "",
+  "FileName": "UASTemplateService"
+}

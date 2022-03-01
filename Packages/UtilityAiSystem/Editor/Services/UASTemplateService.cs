@@ -3,7 +3,6 @@ using UniRx;
 using UniRxExtension;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 public class UASTemplateService: RestoreAble
@@ -82,6 +81,11 @@ public class UASTemplateService: RestoreAble
         }
     }
 
+    public UAIModel GetAiByName(string name)
+    {
+        var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
+        return aiTemplate.Clone() as UAIModel;
+    }
     public ReactiveList<MainWindowModel> GetCollection(string label)
     {
         if (collectionsByLabel.ContainsKey(label))
