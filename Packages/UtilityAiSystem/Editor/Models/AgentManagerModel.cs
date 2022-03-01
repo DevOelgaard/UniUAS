@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AgentManagerModel
 {
-    public Dictionary<string, ReactiveList<IAgent>> AgentsByType = new Dictionary<string, ReactiveList<IAgent>>();
+    public Dictionary<string, ReactiveList<IAgent>> AgentsByIdentifier = new Dictionary<string, ReactiveList<IAgent>>();
     public List<string> AgentTypes = new List<string>();
 
 }

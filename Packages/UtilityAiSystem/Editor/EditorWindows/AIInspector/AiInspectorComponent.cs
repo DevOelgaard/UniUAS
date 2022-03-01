@@ -8,17 +8,18 @@ using UniRx;
 
 public class AiInspectorComponent : EditorWindow
 {
-    private CompositeDisposable agentsChangedSubscription = new CompositeDisposable();
+    private CompositeDisposable agentNameUpdatedSubscriptions = new CompositeDisposable();
 
     private VisualElement root;
     private VisualElement leftContainer;
     private VisualElement rightContainer;
     private VisualElement buttonContainer;
     
-    private DropdownField agentTypeDropdown;
+    private DropdownField identifierDropdown;
 
     private IDisposable agentsChangedSub;
     private IDisposable agentTypesChangedSub;
+    private IDisposable agentCollectionUpdatedSub;
     private IAgent selectedAgent;
 
     private AgentManager agentManager => AgentManager.Instance;
@@ -44,7 +45,7 @@ public class AiInspectorComponent : EditorWindow
         rightContainer = root.Q<VisualElement>("RightContainer");
         buttonContainer = root.Q<VisualElement>("ButtonContainer");
 
-        agentTypeDropdown = root.Q<DropdownField>("AgentType-Dropdown");
+        identifierDropdown = root.Q<DropdownField>("AgentType-Dropdown");
 
         agentTypesChangedSub = agentManager
             .AgentTypesUpdated
@@ -52,30 +53,45 @@ public class AiInspectorComponent : EditorWindow
 
         InitDropDown();
 
+        UpdateLeftPanel();
 
+        agentCollectionUpdatedSub = agentManager
+            .AgentsUpdated
+            .Subscribe(agent =>
+            {
+                if (agent.Identifier == identifierDropdown.value)
+                {
+                    UpdateLeftPanel();
+                }
+            });
     }
 
     private void InitDropDown()
     {
-        agentTypeDropdown.choices = agentManager.AgentTypes;
-        agentTypeDropdown.label = "Agent Types";
-        if (agentManager.AgentTypes.Count > 0)
+        identifierDropdown.choices = agentManager.AgentIdentifiers;
+        identifierDropdown.choices.Add("Demo");
+        identifierDropdown.label = "Agent Types";
+        if (agentManager.AgentIdentifiers.Count > 0)
         {
-            agentTypeDropdown.value = agentTypeDropdown.choices.First();
+            identifierDropdown.value = identifierDropdown.choices.First();
         } else
         {
-            agentTypeDropdown.value = "No agents found";
+            identifierDropdown.value = "No agents found";
         }
 
-        agentTypeDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
+        identifierDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
         {
             UpdateLeftPanel(evt.newValue);
         });
     }
 
-    private void UpdateLeftPanel(string newValue)
+    private void UpdateLeftPanel(string identifier = null)
     {
-        var agents = agentManager.GetAgentsByType(newValue);
+        if (identifier == null)
+        {
+            identifier = identifierDropdown.value;
+        }
+        var agents = agentManager.GetAgentsByIdentifier(identifier);
 
         agentsChangedSub?.Dispose();
         agentsChangedSub = agents
@@ -92,7 +108,7 @@ public class AiInspectorComponent : EditorWindow
     {
         SelectedAgent = null;
         buttonContainer.Clear();
-        agentsChangedSubscription?.Clear();
+        agentNameUpdatedSubscriptions?.Clear();
 
         foreach(var agent in agents)
         {
@@ -110,14 +126,13 @@ public class AiInspectorComponent : EditorWindow
                 {
                     button.text = name;
                 })
-                .AddTo(agentsChangedSubscription);
+                .AddTo(agentNameUpdatedSubscriptions);
         }
     }
 
-
     private void SelectedAgentChanged()
     {
-        throw new NotImplementedException();
+        Debug.Log("Selecting: " + SelectedAgent);
     }
 
     private IAgent SelectedAgent
@@ -134,7 +149,8 @@ public class AiInspectorComponent : EditorWindow
     {
         agentsChangedSub?.Dispose();
         agentTypesChangedSub?.Dispose();
-        agentsChangedSubscription.Clear();
+        agentCollectionUpdatedSub?.Dispose(); 
+        agentNameUpdatedSubscriptions.Clear();
     }
 
     ~AiInspectorComponent()

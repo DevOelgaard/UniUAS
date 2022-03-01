@@ -10,6 +10,8 @@ public class AgentMono : MonoBehaviour, IAgent
     private AgentModel model = new AgentModel();
     public AgentModel Model => model;
 
+    public string Identifier => GetType().FullName;
+
     void Start()
     {
         model.Name = SetAgentName();
@@ -28,6 +30,6 @@ public class AgentMono : MonoBehaviour, IAgent
     /// <returns></returns>
     protected virtual string SetAgentName()
     {
-        return name;
+        return gameObject.name;
     }
 }

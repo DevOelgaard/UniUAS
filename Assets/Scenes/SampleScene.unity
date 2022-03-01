@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 596149551}
   - component: {fileID: 596149550}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: Cube-Agent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

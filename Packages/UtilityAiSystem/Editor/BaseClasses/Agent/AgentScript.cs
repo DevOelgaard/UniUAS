@@ -9,6 +9,8 @@ public abstract class AgentScript : IAgent
     private AgentModel model = new AgentModel();
     public AgentModel Model => model;
 
+    public string Identifier => GetType().FullName;
+
     public AgentScript()
     {
         AgentManager.Instance.Register(this);
@@ -26,6 +28,6 @@ public abstract class AgentScript : IAgent
     /// <returns></returns>
     protected virtual string SetAgentName()
     {
-        return GetType().FullName;
+        return Identifier;
     }
 }

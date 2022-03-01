@@ -8,10 +8,13 @@ public class AgentManager
 {
     private static AgentManager instance;
     private AgentManagerModel model = new AgentManagerModel();
-    public List<string> AgentTypes => model.AgentTypes;
+    public List<string> AgentIdentifiers => model.AgentTypes;
 
-    public IObservable<bool> AgentTypesUpdated => agentTypesUpdated;
-    private Subject<bool> agentTypesUpdated = new Subject<bool>();
+    public IObservable<bool> AgentTypesUpdated => agentIdentifiersUpdated;
+    private Subject<bool> agentIdentifiersUpdated = new Subject<bool>();
+
+    public IObservable<IAgent> AgentsUpdated => agentsUpdated;
+    private Subject<IAgent> agentsUpdated = new Subject<IAgent>();
     public AgentManager()
     {
     }
@@ -29,38 +32,40 @@ public class AgentManager
 
     public void Register(IAgent agent)
     {
-        var type = agent.GetType().ToString();
-        if (!model.AgentsByType.ContainsKey(type))
+        var identifier = agent.Identifier;
+        if (!model.AgentsByIdentifier.ContainsKey(identifier))
         {
-            model.AgentsByType.Add(type, new ReactiveList<IAgent>());
-            AgentTypes.Add(type);
+            model.AgentsByIdentifier.Add(identifier, new ReactiveList<IAgent>());
+            AgentIdentifiers.Add(identifier);
+            agentIdentifiersUpdated.OnNext(true);
+
         }
 
-        agent.Model.Name = " " + model.AgentsByType[type].Count;
+        agent.Model.Name += " " + model.AgentsByIdentifier[identifier].Count;
 
-        model.AgentsByType[type].Add(agent);
+        model.AgentsByIdentifier[identifier].Add(agent);
+        agentsUpdated.OnNext(agent);
         Debug.Log("Registering : " + agent.Model);
-        agentTypesUpdated.OnNext(true);
     }
 
     public void Unregister(IAgent agent)
     {
-        var type = agent.GetType().ToString();
-        if (model.AgentsByType.ContainsKey(type))
+        var identifier = agent.Identifier;
+        if (model.AgentsByIdentifier.ContainsKey(identifier))
         {
-            model.AgentsByType.Remove(type);
+            model.AgentsByIdentifier.Remove(identifier);
         }
-        agentTypesUpdated.OnNext(true);
+        agentsUpdated.OnNext(agent);
     }
 
-    public ReactiveList<IAgent> GetAgentsByType(string type)
+    public ReactiveList<IAgent> GetAgentsByIdentifier(string identifier)
     {
-        if (!model.AgentsByType.ContainsKey(type))
+        if (!model.AgentsByIdentifier.ContainsKey(identifier))
         {
             return new ReactiveList<IAgent>();
         } else
         {
-            return model.AgentsByType[type];
+            return model.AgentsByIdentifier[identifier];
         }
     }
 }
