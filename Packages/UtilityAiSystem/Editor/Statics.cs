@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public static class Statics
 {
-    internal const string MenuName = "Utility Ai System";
+    internal const string MenuName = "Utility Ai System/";
     internal const string Path_MainFolder= "Assets/UAS/";
     internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
     internal const string Path_Templates = Path_ScriptableObjects + "Templates/Templates.asset";
@@ -43,4 +43,6 @@ public static class Statics
 
     public const string Name_DefaultDSE = "Default DSE";
     public const string Description_DefaultDSE = "Selects the highest scored object";
+
+    public const string Name_TemplateManager = "Template Manager";
 }

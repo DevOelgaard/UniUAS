@@ -42,11 +42,11 @@ public class UASManagerEditor : EditorWindow
     private List<string> dropDownChoices;
     private DropdownField dropDown;
 
-    [MenuItem(Statics.MenuName + "/UAS Manager V2")]
+    [MenuItem(Statics.MenuName + Statics.Name_TemplateManager)]
     public static void ShowExample()
     {
         UASManagerEditor wnd = GetWindow<UASManagerEditor>();
-        wnd.titleContent = new GUIContent("UASManagerEditor");
+        wnd.titleContent = new GUIContent(Statics.Name_TemplateManager);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920/3, 1080/2);
     }
