@@ -8,7 +8,7 @@ using System.Linq;
 using UniRxExtension;
 
 
-public class UASManagerEditor : EditorWindow
+public class TemplateManager : EditorWindow
 {
     private IDisposable componentChangedSub;
     private IDisposable activeCollectionChangedSub;
@@ -45,7 +45,7 @@ public class UASManagerEditor : EditorWindow
     [MenuItem(Statics.MenuName + Statics.Name_TemplateManager)]
     public static void ShowExample()
     {
-        UASManagerEditor wnd = GetWindow<UASManagerEditor>();
+        TemplateManager wnd = GetWindow<TemplateManager>();
         wnd.titleContent = new GUIContent(Statics.Name_TemplateManager);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920/3, 1080/2);
@@ -215,7 +215,7 @@ public class UASManagerEditor : EditorWindow
         rightPanel.Add(mainWindowComponent);
     }
 
-    ~UASManagerEditor()
+    ~TemplateManager()
     {
         ClearSubscriptions();
     }
