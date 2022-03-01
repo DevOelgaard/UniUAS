@@ -14,14 +14,16 @@ public class AgentComponent: VisualElement
 
     public AgentComponent(IAgent agent)
     {
+        this.agent = agent;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
+        Add(root);
         body = root.Q<VisualElement>("Body");
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
 
         agentName.text = agent.Model.Name;
 
-        aiDropdown.value = agent.Model.AI.Name;
+        aiDropdown.value = agent.Model.AI?.Name;
         aiDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
         {
             throw new NotImplementedException();
@@ -32,8 +34,10 @@ public class AgentComponent: VisualElement
 
     private void UpdateAiComponent()
     {
-        aiComponent = new UAIComponent(agent.Model.AI);
         body.Clear();
+
+        if (agent.Model.AI == null) return;
+        aiComponent = new UAIComponent(agent.Model.AI);
         body.Add(aiComponent);
     }
 }

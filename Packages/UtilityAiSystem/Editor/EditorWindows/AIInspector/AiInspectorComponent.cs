@@ -14,6 +14,7 @@ public class AiInspectorComponent : EditorWindow
     private VisualElement leftContainer;
     private VisualElement rightContainer;
     private VisualElement buttonContainer;
+    private AgentComponent agentComponent;
     
     private DropdownField identifierDropdown;
 
@@ -132,6 +133,11 @@ public class AiInspectorComponent : EditorWindow
 
     private void SelectedAgentChanged()
     {
+        rightContainer.Clear();
+        if (SelectedAgent == null) return;
+
+        agentComponent = new AgentComponent(SelectedAgent);
+        rightContainer.Add(agentComponent);
         Debug.Log("Selecting: " + SelectedAgent);
     }
 

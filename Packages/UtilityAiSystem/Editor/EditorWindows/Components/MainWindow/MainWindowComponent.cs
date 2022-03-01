@@ -24,9 +24,6 @@ public abstract class MainWindowComponent: VisualElement
 
     protected MainWindowComponent(MainWindowModel mainWindowModel)
     {
-        //var path = AssetDatabaseService.GetAssetPath(typeof(MainWindowComponent).FullName, "uxml");
-        //template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
-        //var root = template.CloneTree();
         var root = AssetDatabaseService.GetTemplateContainer(typeof(MainWindowComponent).FullName);
         Add(root);
         nameTextField = this.Q<TextField>("Name-TextField");
