@@ -18,16 +18,17 @@ public class AiInspectorComponent : EditorWindow
     private DropdownField agentTypeDropdown;
 
     private IDisposable agentsChangedSub;
+    private IDisposable agentTypesChangedSub;
     private IAgent selectedAgent;
 
     private AgentManager agentManager => AgentManager.Instance;
 
 
     [MenuItem(Statics.MenuName + Statics.Name_AiInspector)]
-    public static void Show()
+    public static void Open()
     {
-        TemplateManager wnd = GetWindow<TemplateManager>();
-        wnd.titleContent = new GUIContent(Statics.Name_TemplateManager);
+        AiInspectorComponent wnd = GetWindow<AiInspectorComponent>();
+        wnd.titleContent = new GUIContent(Statics.Name_AiInspector);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
@@ -44,7 +45,13 @@ public class AiInspectorComponent : EditorWindow
         buttonContainer = root.Q<VisualElement>("ButtonContainer");
 
         agentTypeDropdown = root.Q<DropdownField>("AgentType-Dropdown");
+
+        agentTypesChangedSub = agentManager
+            .AgentTypesUpdated
+            .Subscribe(_ => InitDropDown());
+
         InitDropDown();
+
 
     }
 
@@ -121,6 +128,18 @@ public class AiInspectorComponent : EditorWindow
             selectedAgent = value;
             SelectedAgentChanged();
         }
+    }
+
+    void ClearSubscriptions()
+    {
+        agentsChangedSub?.Dispose();
+        agentTypesChangedSub?.Dispose();
+        agentsChangedSubscription.Clear();
+    }
+
+    ~AiInspectorComponent()
+    {
+        ClearSubscriptions();
     }
 
 }

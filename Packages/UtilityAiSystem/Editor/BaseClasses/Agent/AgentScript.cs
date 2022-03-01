@@ -18,4 +18,14 @@ public abstract class AgentScript : IAgent
     {
         AgentManager.Instance?.Unregister(this);
     }
+
+    /// <summary>
+    /// Returns the desired AiAgent name, which is displayd in the UAS Tools.
+    /// By default set as class name
+    /// </summary>
+    /// <returns></returns>
+    protected virtual string SetAgentName()
+    {
+        return GetType().FullName;
+    }
 }

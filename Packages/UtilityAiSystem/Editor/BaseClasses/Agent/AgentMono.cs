@@ -5,19 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class AgentMono : MonoBehaviour, IAgent
+public class AgentMono : MonoBehaviour, IAgent
 {
     private AgentModel model = new AgentModel();
     public AgentModel Model => model;
 
     void Start()
     {
+        model.Name = SetAgentName();
         AgentManager.Instance.Register(this);
     }
-
 
     void OnDestroy()
     {
         AgentManager.Instance?.Unregister(this);
+    }
+
+    /// <summary>
+    /// Returns the desired AiAgent name, which is displayd in the UAS Tools
+    /// By default set as the name of the attached MonoBehaviour
+    /// </summary>
+    /// <returns></returns>
+    protected virtual string SetAgentName()
+    {
+        return name;
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using UniRxExtension;
+using UnityEngine;
+using UniRx;
+using System;
 
 public class AgentManager
 {
@@ -7,7 +10,8 @@ public class AgentManager
     private AgentManagerModel model = new AgentManagerModel();
     public List<string> AgentTypes => model.AgentTypes;
 
-
+    public IObservable<bool> AgentTypesUpdated => agentTypesUpdated;
+    private Subject<bool> agentTypesUpdated = new Subject<bool>();
     public AgentManager()
     {
     }
@@ -32,9 +36,11 @@ public class AgentManager
             AgentTypes.Add(type);
         }
 
-        agent.Model.Name = agent.Model.Name + " " + model.AgentsByType[type].Count;
+        agent.Model.Name = " " + model.AgentsByType[type].Count;
 
         model.AgentsByType[type].Add(agent);
+        Debug.Log("Registering : " + agent.Model);
+        agentTypesUpdated.OnNext(true);
     }
 
     public void Unregister(IAgent agent)
@@ -44,6 +50,7 @@ public class AgentManager
         {
             model.AgentsByType.Remove(type);
         }
+        agentTypesUpdated.OnNext(true);
     }
 
     public ReactiveList<IAgent> GetAgentsByType(string type)
