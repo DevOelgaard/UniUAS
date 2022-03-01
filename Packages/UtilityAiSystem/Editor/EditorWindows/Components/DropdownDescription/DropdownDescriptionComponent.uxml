@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-direction: column; flex-grow: 1; max-height: none; min-height: 56px; align-items: stretch;">
+        <ui:VisualElement name="DropdownContainer" style="flex-direction: row; flex-grow: 0;">
+            <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="Elements-DropdownField" style="flex-direction: row;" />
+            <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DescriptionContainer" style="flex-direction: row; flex-grow: 1; flex-wrap: wrap;">
+            <ui:Label text="Description:" display-tooltip-when-elided="true" name="Description-Label" />
+            <ui:Label text="Some description" display-tooltip-when-elided="true" name="DescriptionText-Label" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
