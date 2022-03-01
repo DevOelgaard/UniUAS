@@ -50,7 +50,7 @@ public class AgentManager
     {
         if (!model.AgentsByType.ContainsKey(type))
         {
-            return new List<IAgent>();
+            return new ReactiveList<IAgent>();
         } else
         {
             return model.AgentsByType[type];
