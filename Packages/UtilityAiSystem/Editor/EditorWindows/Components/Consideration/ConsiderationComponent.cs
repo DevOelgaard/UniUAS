@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UniRx;
 
-public class ConsiderationComponent : MainWindowComponent
+internal class ConsiderationComponent : MainWindowComponent
 {
     private TemplateContainer root;
     private Consideration considerationModel => MainWindowModel as Consideration;
@@ -16,7 +16,7 @@ public class ConsiderationComponent : MainWindowComponent
     private VisualElement parametersContainer;
     private VisualElement curveContainer;
 
-    public ConsiderationComponent(Consideration considerationModel) : base(considerationModel)
+    internal ConsiderationComponent(Consideration considerationModel) : base(considerationModel)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("Parameters");

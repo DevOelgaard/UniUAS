@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine.UIElements;
 
-public class AgentActionComponent : MainWindowComponent
+internal class AgentActionComponent : MainWindowComponent
 {
     private TemplateContainer root;
     private VisualElement parametersContainer;
     private AgentAction agentAction;
-    public AgentActionComponent(AgentAction agentAction) : base(agentAction)
+    internal AgentActionComponent(AgentAction agentAction) : base(agentAction)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("ParametersContainer");

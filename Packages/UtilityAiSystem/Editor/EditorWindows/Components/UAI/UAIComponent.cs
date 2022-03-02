@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.UIElements;
 using UniRx;
 
-public class UAIComponent : MainWindowComponent
+internal class UAIComponent : MainWindowComponent
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private TemplateContainer root;
@@ -14,8 +14,8 @@ public class UAIComponent : MainWindowComponent
     private DropdownDescriptionComponent<IUtilityContainerSelector> bucketDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
 
-    private CollectionComponent<Bucket> bucketCollections; 
-    public UAIComponent(UAIModel model) : base(model)
+    private CollectionComponent<Bucket> bucketCollections;
+    internal UAIComponent(UAIModel model) : base(model)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         var scorerContainer = root.Q<VisualElement>("ScorersContainer");

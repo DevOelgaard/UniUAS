@@ -5,14 +5,13 @@ using System.Linq;
 using System.Collections.Generic;
 using UniRxExtension;
 
-public class DecisionComponent : MainWindowComponent
+internal class DecisionComponent : MainWindowComponent
 {
     private TemplateContainer root;
 
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<AgentAction> agentActionCollection;
-    public DecisionComponent(Decision model): base(model)
-
+    internal DecisionComponent(Decision model): base(model)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 

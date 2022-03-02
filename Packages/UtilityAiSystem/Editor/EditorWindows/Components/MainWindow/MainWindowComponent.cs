@@ -7,7 +7,7 @@ using System.Linq;
 using UniRx;
 using System;
 
-public abstract class MainWindowComponent: VisualElement
+internal abstract class MainWindowComponent: VisualElement
 {
     protected CompositeDisposable Subscriptions = new CompositeDisposable();
 
@@ -17,8 +17,9 @@ public abstract class MainWindowComponent: VisualElement
     protected VisualElement ScoreContainer;
     protected VisualElement Body;
     protected VisualElement Footer;
+    protected InfoComponent InfoComponent;
 
-    public List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
+    internal List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
 
     protected MainWindowComponent(MainWindowModel mainWindowModel)
     {
@@ -71,21 +72,8 @@ public abstract class MainWindowComponent: VisualElement
 
     protected virtual void SetFooter()
     {
-        //var deleteButton = new Button(() => MainWindowModel.DeleteObject());
-        //deleteButton.text = "Delete File";
-        //Footer.Add(deleteButton);
-
-        //var copyButton = new Button(() => MainWindowModel.CopyFile());
-        //copyButton.text = "Copy";
-        //Footer.Add(copyButton);
-
-        //var saveChangesButton = new Button(() => MainWindowModel.SaveChanges());
-        //saveChangesButton.text = "Save Changes";
-        //Footer.Add(saveChangesButton);
-
-        //var saveButton = new Button(() => MainWindowModel.SaveFile());
-        //saveButton.text = "Save To New Template";
-        //Footer.Add(saveButton);
+        InfoComponent = new InfoComponent();
+        Footer.Add(InfoComponent);
     }
 
     internal void Close()

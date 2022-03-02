@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class MainWindowService
+internal class MainWindowService
 {
-    public static MainWindowComponent GetComponent(MainWindowModel model)
+    internal static MainWindowComponent GetComponent(MainWindowModel model)
     {
         if (model.GetType() == typeof(UAIModel))
         {
@@ -27,7 +27,7 @@ public class MainWindowService
         throw new NotImplementedException();
     }
 
-    public static Type GetTypeFromString(string label)
+    internal static Type GetTypeFromString(string label)
     {
         switch (label)
         {

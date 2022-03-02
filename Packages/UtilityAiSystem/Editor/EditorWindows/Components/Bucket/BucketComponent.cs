@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UIElements;
 
-public class BucketComponent : MainWindowComponent
+internal class BucketComponent : MainWindowComponent
 {
     private TemplateContainer root;
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<Decision> decisionCollections;
 
-    public BucketComponent(Bucket model) : base(model)
+    internal BucketComponent(Bucket model) : base(model)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         considerationCollections = 
