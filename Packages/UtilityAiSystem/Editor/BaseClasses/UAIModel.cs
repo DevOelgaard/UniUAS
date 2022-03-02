@@ -5,14 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniRxExtension;
+using UniRx;
 
-public class UAIModel: MainWindowModel
+public class UAIModel: AiObjectModel
 {
-    public ReactiveList<Bucket> Buckets = new ReactiveList<Bucket>();
+    private IDisposable bucketSub;
+    private ReactiveList<Bucket> buckets = new ReactiveList<Bucket>();
+    public ReactiveList<Bucket> Buckets
+    {
+        get => buckets;
+        set
+        {
+            buckets = value;
+            if (buckets != null)
+            {
+                bucketSub?.Dispose();
+                UpdateInfo();
+                bucketSub = buckets.OnValueChanged
+                    .Subscribe(_ => UpdateInfo());
+            }
+        }
+    }
     internal AiContext Context = new AiContext();
 
     public UAIModel(): base()
     {
+    }
+
+    protected override void UpdateInfo()
+    {
+        
+        base.UpdateInfo();
+        if (Buckets == null || Buckets.Count <= 0)
+        {
+            Info = new InfoModel("No Buckets, Object won't be selected", InfoTypes.Warning);
+        }
+        else
+        {
+            Info = new InfoModel();
+        }
     }
 
     internal UAIModelState GetState()
@@ -20,7 +51,7 @@ public class UAIModel: MainWindowModel
         return new UAIModelState(Name, Description, Buckets.Values, this);
     }
 
-    internal override MainWindowModel Clone()
+    internal override AiObjectModel Clone()
     {
         var state = GetState();
         var clone = Restore<UAIModel>(state);
@@ -124,6 +155,12 @@ public class UAIModel: MainWindowModel
             utilityScorer = value;
             Context.UtilityScorer = UtilityScorer;
         }
+    }
+
+    protected override void ClearSubscriptions()
+    {
+        base.ClearSubscriptions();
+        bucketSub?.Dispose();
     }
 }
 

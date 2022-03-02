@@ -2,22 +2,29 @@
 using UniRx;
 using System.Collections.Generic;
 
-public abstract class MainWindowModel: RestoreAble
+public abstract class AiObjectModel: RestoreAble
 {
+    protected CompositeDisposable Disposables = new CompositeDisposable();
+
     public IObservable<string> OnNameChanged => onNameChanged;
     private Subject<string> onNameChanged = new Subject<string>();
 
     public IObservable<string> OnDescriptionChanged => onDescriptionChanged;
     private Subject<string> onDescriptionChanged = new Subject<string>();
 
+    internal IObservable<InfoModel> OnInfoChanged => onInfoChanged;
+    private Subject<InfoModel> onInfoChanged = new Subject<InfoModel>();
+
     public List<ScoreModel> ScoreModels = new List<ScoreModel>();
 
-    protected MainWindowModel()
+    protected AiObjectModel()
     {
-        
+        UpdateInfo();
     }
 
-    internal abstract MainWindowModel Clone();
+    protected virtual void UpdateInfo() { }
+
+    internal abstract AiObjectModel Clone();
 
     public virtual string GetNameFormat(string name)
     {
@@ -67,5 +74,26 @@ public abstract class MainWindowModel: RestoreAble
             description = value;
             onDescriptionChanged.OnNext(description);
         }
+    }
+
+    private InfoModel info;
+    internal InfoModel Info 
+    { 
+        get => info; 
+        set 
+        {
+            info = value;
+            onInfoChanged.OnNext(info);
+        } 
+    }
+
+    protected virtual void ClearSubscriptions()
+    {
+        Disposables.Clear();
+    }
+
+    ~AiObjectModel()
+    {
+        ClearSubscriptions();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-public abstract class AgentAction: MainWindowModel
+public abstract class AgentAction: AiObjectModel
 {
     public List<Parameter> Parameters;
     private string namePostfix;
@@ -28,7 +28,7 @@ public abstract class AgentAction: MainWindowModel
         return name;
     }
 
-    internal override MainWindowModel Clone()
+    internal override AiObjectModel Clone()
     {
         var state = GetState();
         var clone = Restore<AgentAction>(state);

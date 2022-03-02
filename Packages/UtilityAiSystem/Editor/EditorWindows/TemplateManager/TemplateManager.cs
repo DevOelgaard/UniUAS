@@ -26,8 +26,8 @@ public class TemplateManager : EditorWindow
     private UASTemplateService uASModel => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
-    private MainWindowModel selectedModel;
-    private MainWindowModel SelectedModel
+    private AiObjectModel selectedModel;
+    private AiObjectModel SelectedModel
     {
         get => selectedModel;
         set
@@ -117,7 +117,7 @@ public class TemplateManager : EditorWindow
     {
         var s = dropDown.value;
         var type = MainWindowService.GetTypeFromString(s);
-        var element = (MainWindowModel)Activator.CreateInstance(type);
+        var element = (AiObjectModel)Activator.CreateInstance(type);
         uASModel.Add(element);
         ModelSelected(element);
     }
@@ -172,7 +172,7 @@ public class TemplateManager : EditorWindow
         UpdateButtons();
     }
 
-    private void LoadModels(List<MainWindowModel> models)
+    private void LoadModels(List<AiObjectModel> models)
     {
         SelectedModel = null;
         buttonContainer.Clear();
@@ -200,7 +200,7 @@ public class TemplateManager : EditorWindow
 
 
 
-    private void ModelSelected(MainWindowModel model)
+    private void ModelSelected(AiObjectModel model)
     {
         if(mainWindowComponent != null)
         {

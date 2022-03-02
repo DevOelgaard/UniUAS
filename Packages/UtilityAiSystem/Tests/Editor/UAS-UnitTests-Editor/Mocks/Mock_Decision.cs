@@ -17,7 +17,7 @@ public class Mock_Decision: Decision
         AgentActions.Add(a);
     }
 
-    public override float GetUtility(AiContext context) {
+    internal override float GetUtility(AiContext context) {
         return ReturnValue;
     }
 }

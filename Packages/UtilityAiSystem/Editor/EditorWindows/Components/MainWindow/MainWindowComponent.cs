@@ -9,11 +9,11 @@ using System;
 
 internal abstract class MainWindowComponent: VisualElement
 {
-    protected CompositeDisposable Subscriptions = new CompositeDisposable();
+    protected CompositeDisposable Disposables = new CompositeDisposable();
 
     private TextField nameTextField;
     private TextField descriptionTextField;
-    protected MainWindowModel MainWindowModel;
+    protected AiObjectModel Model;
     protected VisualElement ScoreContainer;
     protected VisualElement Body;
     protected VisualElement Footer;
@@ -21,25 +21,25 @@ internal abstract class MainWindowComponent: VisualElement
 
     internal List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
 
-    protected MainWindowComponent(MainWindowModel mainWindowModel)
+    protected MainWindowComponent(AiObjectModel mainWindowModel)
     {
         var root = AssetDatabaseService.GetTemplateContainer(typeof(MainWindowComponent).FullName);
         Add(root);
         nameTextField = this.Q<TextField>("Name-TextField");
         nameTextField.RegisterCallback<ChangeEvent<string>>(evt =>
         {
-            if (MainWindowModel != null)
+            if (Model != null)
             {
-                MainWindowModel.Name = evt.newValue;
+                Model.Name = evt.newValue;
             }
         });
 
         descriptionTextField = root.Q<TextField>("Description-TextField");
         descriptionTextField.RegisterCallback<ChangeEvent<string>>(evt =>
         {
-            if (MainWindowModel != null)
+            if (Model != null)
             {
-                MainWindowModel.Description = evt.newValue;
+                Model.Description = evt.newValue;
             }
         });
 
@@ -47,9 +47,8 @@ internal abstract class MainWindowComponent: VisualElement
         Body = this.Q<VisualElement>("Body");
         Footer = this.Q<VisualElement>("Footer");
 
-        SetFooter();
 
-        MainWindowModel = mainWindowModel;
+        Model = mainWindowModel;
         ScoreContainer.Clear();
 
         nameTextField.value = mainWindowModel.Name;
@@ -62,6 +61,9 @@ internal abstract class MainWindowComponent: VisualElement
             ScoreComponents.Add(scoreComponent);
             ScoreContainer.Add(scoreComponent);
         }
+
+        SetFooter();
+
     }
 
 
@@ -74,6 +76,11 @@ internal abstract class MainWindowComponent: VisualElement
     {
         InfoComponent = new InfoComponent();
         Footer.Add(InfoComponent);
+        InfoComponent.DispalyInfo(Model.Info);
+
+        Model.OnInfoChanged
+            .Subscribe(info => InfoComponent.DispalyInfo(info))
+            .AddTo(Disposables);
     }
 
     internal void Close()
@@ -88,6 +95,6 @@ internal abstract class MainWindowComponent: VisualElement
 
     protected virtual void ClearSubscriptions()
     {
-        Subscriptions?.Clear();
+        Disposables?.Clear();
     }
 }

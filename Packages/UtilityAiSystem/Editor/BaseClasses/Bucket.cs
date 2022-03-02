@@ -5,17 +5,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniRxExtension;
+using UniRx;
 
 public class Bucket : UtilityContainer 
 {
-    public ReactiveList<Decision> Decisions = new ReactiveList<Decision>();
+    private IDisposable decisionSub;
+    private ReactiveList<Decision> decisions = new ReactiveList<Decision>();
+    public ReactiveList<Decision> Decisions
+    {
+        get => decisions;
+        set
+        {
+            decisions = value;
+            if (decisions != null)
+            {
+                decisionSub?.Dispose();
+                UpdateInfo();
+                decisionSub = decisions.OnValueChanged
+                    .Subscribe(_ => UpdateInfo());
+            }
+        }
+    }
     public float Weight = 1;
 
-    internal override MainWindowModel Clone()
+    public Bucket(): base()
+    {
+
+    }
+
+    internal override AiObjectModel Clone()
     {
         var state = GetState();
         var clone = Restore<Bucket>(state);
         return clone;
+    }
+
+    internal override float GetUtility(AiContext context)
+    {
+        LastCalculatedUtility = base.GetUtility(context) * Weight;
+        return LastCalculatedUtility;
+    }
+
+    protected override void UpdateInfo()
+    {
+        base.UpdateInfo();
+        if (Decisions.Count <= 0)
+        {
+            Info = new InfoModel("No Decisions, Object won't be selected",InfoTypes.Warning);
+        } else if (Considerations.Count <= 0)
+        {
+            Info = new InfoModel("No Considerations, Object won't be selected", InfoTypes.Warning);
+        } else
+        {
+            Info = new InfoModel();
+        }
     }
 
     internal BucketState GetState()
@@ -43,10 +86,10 @@ public class Bucket : UtilityContainer
         }
     }
 
-    public override float GetUtility(AiContext context)
+    protected override void ClearSubscriptions()
     {
-        LastCalculatedUtility = base.GetUtility(context) * Weight;
-        return LastCalculatedUtility;
+        base.ClearSubscriptions();
+        decisionSub?.Dispose();
     }
 }
 

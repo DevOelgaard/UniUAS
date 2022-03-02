@@ -7,12 +7,16 @@ using UniRxExtension;
 
 internal class DecisionComponent : MainWindowComponent
 {
+    private CompositeDisposable disposables = new CompositeDisposable();
+
     private TemplateContainer root;
 
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<AgentAction> agentActionCollection;
+    private Decision model;
     internal DecisionComponent(Decision model): base(model)
     {
+        this.model = model;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
         considerationCollections = new CollectionComponent<Consideration>(model.Considerations, UASTemplateService.Instance.Considerations, "Consideration-Template", "Considerations");
@@ -23,5 +27,10 @@ internal class DecisionComponent : MainWindowComponent
 
         Body.Clear();
         Body.Add(root);
+    }
+
+    ~DecisionComponent()
+    {
+        disposables.Clear();
     }
 }

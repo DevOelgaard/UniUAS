@@ -5,13 +5,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniRxExtension;
+using UniRx;
 
 public class Decision: UtilityContainer
 {
-    public ReactiveList<AgentAction> AgentActions = new ReactiveList<AgentAction>();
+    private IDisposable agentActionSub;
+    private ReactiveList<AgentAction> agentActions = new ReactiveList<AgentAction>();
+    public ReactiveList<AgentAction> AgentActions
+    {
+        get => agentActions;
+        set
+        {
+            agentActions = value;
+            if (agentActions != null)
+            {
+                agentActionSub?.Dispose();
+                UpdateInfo();
+                agentActionSub = agentActions.OnValueChanged
+                    .Subscribe(_ => UpdateInfo());
+            }
+        }
+    }
 
     public Decision()
     {
+        AgentActions.OnValueChanged
+            .Subscribe(_ => UpdateInfo())
+            .AddTo(Disposables);
+    }
+
+    protected override void UpdateInfo()
+    {
+        base.UpdateInfo();
+        if (AgentActions.Count <= 0)
+        {
+            Info = new InfoModel("No AgentActions, Object won't be selected", InfoTypes.Warning);
+        }
+        else if (Considerations.Count <= 0)
+        {
+            Info = new InfoModel("No Considerations, Object won't be selected", InfoTypes.Warning);
+        }
+        else
+        {
+            Info = new InfoModel();
+        }
     }
 
     public DecisionState GetState()
@@ -19,7 +56,7 @@ public class Decision: UtilityContainer
         return new DecisionState(Name, Description, AgentActions.Values, Considerations.Values, this);
     }
 
-    internal override MainWindowModel Clone()
+    internal override AiObjectModel Clone()
     {
         var state = GetState();
         var clone = Restore<Decision>(state);
@@ -46,6 +83,12 @@ public class Decision: UtilityContainer
             Considerations.Add(consideration);
         }
     }
+    protected override void ClearSubscriptions()
+    {
+        base.ClearSubscriptions();
+        agentActionSub?.Dispose();
+    }
+
 }
 
 [Serializable]
@@ -79,4 +122,5 @@ public class DecisionState: RestoreState
             Considerations.Add(c);
         }
     }
+
 }

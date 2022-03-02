@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 internal class InfoComponent: VisualElement
@@ -13,12 +14,27 @@ internal class InfoComponent: VisualElement
         infoText = root.Q<Label>("InfoText");
     }
 
-    internal void DisplayInfo(string text)
+    internal void DispalyInfo(InfoModel info)
     {
-        infoText.text = text; 
+        switch (info.InfoType)
+        {
+            case InfoTypes.Info:
+                DisplayNormal(info.Info);
+                break;
+            case InfoTypes.Warning:
+                DisplayWarning(info.Info);
+                break;
+        }
     }
 
-    internal void DisplayWarning(string text)
+    private void DisplayNormal(string text)
+    {
+        infoText.text = text;
+        infoText.style.color = Color.white;
+
+    }
+
+    private void DisplayWarning(string text)
     {
         infoText.text = text;
         infoText.style.color = Color.red;

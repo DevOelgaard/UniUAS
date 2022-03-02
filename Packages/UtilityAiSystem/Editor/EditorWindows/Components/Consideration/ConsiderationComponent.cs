@@ -10,7 +10,7 @@ using UniRx;
 internal class ConsiderationComponent : MainWindowComponent
 {
     private TemplateContainer root;
-    private Consideration considerationModel => MainWindowModel as Consideration;
+    private Consideration considerationModel => Model as Consideration;
     private ScoreComponent baseScore => ScoreComponents[0];
     private ScoreComponent normalizedScore => ScoreComponents[1];
     private VisualElement parametersContainer;
@@ -28,11 +28,11 @@ internal class ConsiderationComponent : MainWindowComponent
         ClearSubscriptions();
         considerationModel.BaseScoreChanged
             .Subscribe(score => baseScore.UpdateScore(score))
-            .AddTo(Subscriptions);
+            .AddTo(Disposables);
 
         considerationModel.NormalizedScoreChanged
             .Subscribe(score => normalizedScore.UpdateScore(score))
-            .AddTo(Subscriptions);
+            .AddTo(Disposables);
 
         SetParameters();
         curveContainer.Add(new ResponseCurveComponent(considerationModel));

@@ -8,21 +8,19 @@ using UnityEngine.UIElements;
 using UniRx;
 using UnityEngine;
 
-public class MainWindowFoldedComponent : VisualElement
+internal class MainWindowFoldedComponent : VisualElement
 {
-    private CompositeDisposable subscriptions = new CompositeDisposable();
+    private CompositeDisposable disposables = new CompositeDisposable();
 
     private Label nameLabel;
     private Label descriptionLabel;
     private VisualElement scoreContainer;
     private ScoreComponent baseScore;
-    private MainWindowModel model;
+    private AiObjectModel model;
+    protected InfoComponent InfoComponent;
 
-    public MainWindowFoldedComponent(MainWindowModel model)
+    internal MainWindowFoldedComponent(AiObjectModel model)
     {
-        //var path = AssetDatabaseService.GetAssetPath(typeof(MainWindowFoldedComponent).FullName, "uxml");
-        //template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
-        //var root = template.CloneTree();
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
         Add(root);
@@ -30,13 +28,19 @@ public class MainWindowFoldedComponent : VisualElement
         nameLabel = this.Q<VisualElement>("NameIdentifier").Q<Label>("Value-Label");
         descriptionLabel = this.Q<VisualElement>("DescriptionIdentifier").Q<Label>("Value-Label");
         scoreContainer = this.Q<VisualElement>("ScoreContainer");
-
+        var identifierContaier = this.Q<VisualElement>("IdentifierContainer");
+        InfoComponent = new InfoComponent();
+        identifierContaier.Add(InfoComponent);
         UpdateContent(model);
+
+        model.OnInfoChanged
+            .Subscribe(info => InfoComponent.DispalyInfo(info))
+            .AddTo(disposables);
     }
 
-    private void UpdateContent(MainWindowModel model)
+    private void UpdateContent(AiObjectModel model)
     {
-        subscriptions.Clear();
+        disposables.Clear();
         this.model = model;
 
         nameLabel.text = model.Name;
@@ -44,11 +48,11 @@ public class MainWindowFoldedComponent : VisualElement
 
         model.OnNameChanged
             .Subscribe(name => nameLabel.text = name)
-            .AddTo(subscriptions);
+            .AddTo(disposables);
 
         model.OnDescriptionChanged
             .Subscribe(description => descriptionLabel.text = description)
-            .AddTo(subscriptions);
+            .AddTo(disposables);
 
         scoreContainer.Clear();
         foreach(var scoreModel in model.ScoreModels)
@@ -57,35 +61,14 @@ public class MainWindowFoldedComponent : VisualElement
             scoreContainer.Add(scoreComponent);
         }
 
-        //if (model.GetType().IsAssignableFrom(typeof(UtilityContainer)))
-        //{
-        //    Debug.Log("Adding score");
-        //    var modelCast = model as UtilityContainer;
-        //    baseScore = new ScoreComponent("Base", modelCast.BaseScore);
-
-        //    scoreContainer.Add(baseScore);
-
-        //    modelCast.BaseScoreChanged
-        //        .Subscribe(score => baseScore.UpdateScore(score))
-        //        .AddTo(subscriptions);
-        //}
-
-        //if (model.GetType().IsSubclassOf(typeof(Consideration)))
-        //{
-        //    Debug.Log("Adding score");
-        //    var modelCast = model as Consideration;
-        //    baseScore = new ScoreComponent("Base", modelCast.BaseScore);
-
-        //    scoreContainer.Add(baseScore);
-
-        //    modelCast.BaseScoreChanged
-        //        .Subscribe(score => baseScore.UpdateScore(score))
-        //        .AddTo(subscriptions);
-        //}
+        InfoComponent.DispalyInfo(model.Info);
+        model.OnInfoChanged
+            .Subscribe(info => InfoComponent.DispalyInfo(info))
+            .AddTo(disposables);
     }
 
     ~MainWindowFoldedComponent()
     {
-        subscriptions.Clear();
+        disposables.Clear();
     }
 }

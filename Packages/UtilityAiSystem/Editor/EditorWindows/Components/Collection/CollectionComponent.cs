@@ -5,7 +5,7 @@ using UniRx;
 using UniRxExtension;
 using UnityEngine.UIElements;
 
-public class CollectionComponent<T> : VisualElement where T : MainWindowModel
+public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private CompositeDisposable listViewSubscriptions = new CompositeDisposable();
@@ -23,10 +23,10 @@ public class CollectionComponent<T> : VisualElement where T : MainWindowModel
 
     private T tempElement;
     private ReactiveList<T> collection;
-    private ReactiveList<MainWindowModel> templates;
+    private ReactiveList<AiObjectModel> templates;
     private List<string> dropDownChoices;
 
-    public CollectionComponent(ReactiveList<T> collection, ReactiveList<MainWindowModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
+    public CollectionComponent(ReactiveList<T> collection, ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType());
         Add(root);

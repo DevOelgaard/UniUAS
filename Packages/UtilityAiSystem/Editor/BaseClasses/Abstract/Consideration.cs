@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System.ComponentModel;
 
-public abstract class Consideration : MainWindowModel
+public abstract class Consideration : AiObjectModel
 {
     private string namePostfix;
     public List<Parameter> Parameters;
@@ -102,7 +102,7 @@ public abstract class Consideration : MainWindowModel
         }
     }
 
-    internal override MainWindowModel Clone()
+    internal override AiObjectModel Clone()
     {
         var state = GetState();
         var clone = Restore<Consideration>(state);

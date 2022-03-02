@@ -4,15 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UIElements;
+using UniRx;
 
 internal class BucketComponent : MainWindowComponent
 {
+    private CompositeDisposable disposables = new CompositeDisposable();
     private TemplateContainer root;
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<Decision> decisionCollections;
+    private Bucket model;
 
     internal BucketComponent(Bucket model) : base(model)
     {
+        this.model = model;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         considerationCollections = 
             new CollectionComponent<Consideration>(model.Considerations, 
@@ -26,5 +30,10 @@ internal class BucketComponent : MainWindowComponent
 
         Body.Clear();
         Body.Add(root);
+    }
+
+    ~BucketComponent()
+    {
+        disposables.Clear();
     }
 }

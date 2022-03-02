@@ -8,13 +8,13 @@ using System.Linq;
 public class UASTemplateService: RestoreAble
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
-    private Dictionary<string, ReactiveList<MainWindowModel>> collectionsByLabel = new Dictionary<string, ReactiveList<MainWindowModel>>();
+    private Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
 
-    public ReactiveList<MainWindowModel> AIs;
-    public ReactiveList<MainWindowModel> Buckets;
-    public ReactiveList<MainWindowModel> Decisions;
-    public ReactiveList<MainWindowModel> Considerations;
-    public ReactiveList<MainWindowModel> AgentActions;
+    public ReactiveList<AiObjectModel> AIs;
+    public ReactiveList<AiObjectModel> Buckets;
+    public ReactiveList<AiObjectModel> Decisions;
+    public ReactiveList<AiObjectModel> Considerations;
+    public ReactiveList<AiObjectModel> AgentActions;
 
     private static UASTemplateService instance;
 
@@ -36,13 +36,13 @@ public class UASTemplateService: RestoreAble
 
     private void Init()
     {
-        AIs = new ReactiveList<MainWindowModel>();
-        Buckets = new ReactiveList<MainWindowModel>();
-        Decisions = new ReactiveList<MainWindowModel>();
-        Considerations = new ReactiveList<MainWindowModel>();
-        AgentActions = new ReactiveList<MainWindowModel>();
+        AIs = new ReactiveList<AiObjectModel>();
+        Buckets = new ReactiveList<AiObjectModel>();
+        Decisions = new ReactiveList<AiObjectModel>();
+        Considerations = new ReactiveList<AiObjectModel>();
+        AgentActions = new ReactiveList<AiObjectModel>();
 
-        collectionsByLabel = new Dictionary<string, ReactiveList<MainWindowModel>>();
+        collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
         collectionsByLabel.Add(Statics.Label_UAIModel, AIs);
         collectionsByLabel.Add(Statics.Label_BucketModel, Buckets);
         collectionsByLabel.Add(Statics.Label_DecisionModel, Decisions);
@@ -87,7 +87,7 @@ public class UASTemplateService: RestoreAble
         return aiTemplate.Clone() as UAIModel;
     }
 
-    public ReactiveList<MainWindowModel> GetCollection(string label)
+    public ReactiveList<AiObjectModel> GetCollection(string label)
     {
         if (collectionsByLabel.ContainsKey(label))
         {
@@ -98,7 +98,7 @@ public class UASTemplateService: RestoreAble
         }
     }
 
-    private ReactiveList<MainWindowModel> UpdateListWithFiles<T>(ReactiveList<MainWindowModel> collection)
+    private ReactiveList<AiObjectModel> UpdateListWithFiles<T>(ReactiveList<AiObjectModel> collection)
     {
         var elementsFromFiles = AssetDatabaseService.GetTypeFromFile<T>();
         elementsFromFiles = elementsFromFiles
@@ -108,7 +108,7 @@ public class UASTemplateService: RestoreAble
 
         foreach(var element in elementsFromFiles)
         {
-            collection.Add(element as MainWindowModel);
+            collection.Add(element as AiObjectModel);
         }
         return collection;
     }
@@ -157,13 +157,13 @@ public class UASTemplateService: RestoreAble
         return true;
     }
 
-    internal void Add(MainWindowModel model)
+    internal void Add(AiObjectModel model)
     {
         var collection = GetCollection(model);
         collection.Add(model);
     }
 
-    internal void Remove(MainWindowModel model)
+    internal void Remove(AiObjectModel model)
     {
         var collection = GetCollection(model);
         collection.Remove(model);
@@ -178,7 +178,7 @@ public class UASTemplateService: RestoreAble
         AgentActions.Clear();
     }
 
-    private ReactiveList<MainWindowModel> GetCollection(MainWindowModel model)
+    private ReactiveList<AiObjectModel> GetCollection(AiObjectModel model)
     {
         var type = model.GetType();
 
@@ -262,9 +262,9 @@ public class UASTemplateService: RestoreAble
         }
         
         public UASState(
-            Dictionary<string, ReactiveList<MainWindowModel>> collectionsByLabel, ReactiveList<MainWindowModel> aiS, 
-            ReactiveList<MainWindowModel> buckets, ReactiveList<MainWindowModel> decisions, 
-            ReactiveList<MainWindowModel> considerations, ReactiveList<MainWindowModel> agentActions, UASTemplateService model): base(model)
+            Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel, ReactiveList<AiObjectModel> aiS, 
+            ReactiveList<AiObjectModel> buckets, ReactiveList<AiObjectModel> decisions, 
+            ReactiveList<AiObjectModel> considerations, ReactiveList<AiObjectModel> agentActions, UASTemplateService model): base(model)
         {
             AIs = new List<UAIModelState>();
             foreach(UAIModel ai in aiS.Values)

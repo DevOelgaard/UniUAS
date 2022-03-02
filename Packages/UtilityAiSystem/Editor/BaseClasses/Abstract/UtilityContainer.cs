@@ -4,9 +4,25 @@ using UniRx;
 using UniRxExtension;
 
 [Serializable]
-public abstract class UtilityContainer : MainWindowModel
+public abstract class UtilityContainer : AiObjectModel
 {
-    public ReactiveList<Consideration> Considerations = new ReactiveList<Consideration>();
+    private IDisposable considerationSub;
+    private ReactiveList<Consideration> considerations = new ReactiveList<Consideration>();
+    internal ReactiveList<Consideration> Considerations
+    {
+        get => considerations;
+        set
+        {
+            considerations = value;
+            if (considerations != null)
+            {
+                considerationSub?.Dispose();
+                UpdateInfo();
+                considerationSub = considerations.OnValueChanged
+                    .Subscribe(_ => UpdateInfo());
+            }
+        }
+    }
 
     public float LastCalculatedUtility { get; protected set; } = -1f;
     public IObservable<float> LastUtilityScoreChanged => lastUtilityChanged;
@@ -19,11 +35,18 @@ public abstract class UtilityContainer : MainWindowModel
         ScoreModels.Add(new ScoreModel("Normalized", 0f));
     }
 
-    public virtual float GetUtility(AiContext context)
+    internal virtual float GetUtility(AiContext context)
     {
         LastCalculatedUtility = context.UtilityScorer.CalculateUtility(Considerations.Values, context);
         lastUtilityChanged.OnNext(LastCalculatedUtility);
         return LastCalculatedUtility;
     }
+
+    protected override void ClearSubscriptions()
+    {
+        base.ClearSubscriptions();
+        considerationSub?.Dispose();
+    }
+
 
 }
