@@ -50,31 +50,6 @@ public static class AssetDatabaseService
         return template.CloneTree();
     }
 
-    //public static List<T> GetInstancesFromFile<T>()
-    //{
-    //    var result = new List<T>();
-    //    var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
-    //    foreach (var assemblie in assemblies)
-    //    {
-    //        var types = assemblie.GetTypes();
-    //        foreach (var type in types)
-    //        {
-    //            if (typeof(T).IsAssignableFrom(type) &&
-    //                !type.IsAbstract)
-    //            {
-    //                // Guarding against Test files
-    //                if(!type.ToString().Contains("Mock") &&
-    //                    !type.ToString().Contains("Stub"))
-    //                {
-    //                    var instance = (T)Activator.CreateInstance(type);
-    //                    result.Add(instance);
-    //                }
-    //            }
-    //        }
-    //    }
-    //    return result;
-    //}
-
     public static List<T> GetInstancesOfType<T>()
     {
         var result = new List<T>();
@@ -98,5 +73,23 @@ public static class AssetDatabaseService
             }
         }
         return result;
+    }
+
+    public static T GetInstanceOfType<T>(string typeName)
+    {
+        var result = new List<T>();
+        var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var assemblie in assemblies)
+        {
+            var types = assemblie.GetTypes();
+
+            var type = types.FirstOrDefault(t => t.ToString() == typeName);
+            if (type != null)
+            {
+                var instance = (T)Activator.CreateInstance(type);
+                return instance;
+            }
+        }
+        return default(T);
     }
 }

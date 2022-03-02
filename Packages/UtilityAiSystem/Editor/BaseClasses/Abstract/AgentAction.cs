@@ -45,6 +45,7 @@ public abstract class AgentAction: AiObjectModel
         var state = (AgentActionState)s;
         Name = state.Name;
         Description = state.Description;
+        Parameters = new List<Parameter>();
         foreach (var p in state.Parameters)
         {
             var parameter = Parameter.Restore<Parameter>(p);

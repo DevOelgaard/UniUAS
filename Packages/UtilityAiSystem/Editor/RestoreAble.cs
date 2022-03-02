@@ -12,18 +12,17 @@ public abstract class RestoreAble
     public static T Restore<T>(RestoreState state) where T:RestoreAble
     {
         var type =   Type.GetType(state.FileName);
-        // Type is from another assembly
         if (type == null)
         {
-            var types = AssetDatabaseService.GetInstancesOfType<T>();
-            var e = types.FirstOrDefault(t => t.GetType().FullName == state.FileName);
+            var e = AssetDatabaseService.GetInstanceOfType<T>(state.FileName);
             e.RestoreInternal(state);
             return e;
+        } else
+        {
+            var element = (T)Activator.CreateInstance(type, true);
+            element.RestoreInternal(state);
+            return element;
         }
-        Debug.Log("N: " + state.FileName + " T:" + type);
-        var element = (T)Activator.CreateInstance(type, true);
-        element.RestoreInternal(state);
-        return element;
     }
 }
 
