@@ -31,8 +31,8 @@ public abstract class UtilityContainer : AiObjectModel
     protected UtilityContainer() : base()
     {
         ScoreModels = new List<ScoreModel>();
-        ScoreModels.Add(new ScoreModel("Base", 0f));
-        ScoreModels.Add(new ScoreModel("Normalized", 0f));
+        ScoreModels.Add(new ScoreModel("Score", 0f));
+        //ScoreModels.Add(new ScoreModel("Normalized", 0f));
 
         considerationSub?.Dispose();
         UpdateInfo();
@@ -44,6 +44,7 @@ public abstract class UtilityContainer : AiObjectModel
     {
         LastCalculatedUtility = context.UtilityScorer.CalculateUtility(Considerations.Values, context);
         lastUtilityChanged.OnNext(LastCalculatedUtility);
+        ScoreModels[0].Value = LastCalculatedUtility;
         return LastCalculatedUtility;
     }
 

@@ -61,10 +61,11 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
         {
             Debug.LogWarning("No valid decision in list of buckets. Add a \"fall back\" bucket, which always scores >0");
             return null;
-        } else if (buckets.Count == 1)
-        {
-            return NextActions(buckets[0].Decisions.Values, context);
         }
+        //else if (buckets.Count == 1)
+        //{
+        //    return NextActions(buckets[0].Decisions.Values, context);
+        //}
         else
         {
             var bestBucket = BucketSelector.GetBestUtilityContainer(buckets, context);
