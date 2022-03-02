@@ -10,10 +10,17 @@ using UniRx;
 public class Bucket : UtilityContainer 
 {
     private IDisposable decisionSub;
-    private ReactiveList<Decision> decisions = new ReactiveList<Decision>();
+    private ReactiveList<Decision> decisions;
     public ReactiveList<Decision> Decisions
     {
-        get => decisions;
+        get
+        {
+            if (decisions == null)
+            {
+                decisions = new ReactiveList<Decision>();
+            }
+            return decisions;
+        }
         set
         {
             decisions = value;
@@ -30,7 +37,6 @@ public class Bucket : UtilityContainer
 
     public Bucket(): base()
     {
-
     }
 
     internal override AiObjectModel Clone()

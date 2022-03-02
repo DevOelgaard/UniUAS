@@ -10,10 +10,17 @@ using UniRx;
 public class UAIModel: AiObjectModel
 {
     private IDisposable bucketSub;
-    private ReactiveList<Bucket> buckets = new ReactiveList<Bucket>();
+    private ReactiveList<Bucket> buckets;
     public ReactiveList<Bucket> Buckets
     {
-        get => buckets;
+        get
+        {
+            if (buckets == null)
+            {
+                buckets = new ReactiveList<Bucket>();
+            }
+            return buckets;
+        }
         set
         {
             buckets = value;

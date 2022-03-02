@@ -7,10 +7,16 @@ using UniRxExtension;
 public abstract class UtilityContainer : AiObjectModel
 {
     private IDisposable considerationSub;
-    private ReactiveList<Consideration> considerations = new ReactiveList<Consideration>();
+    private ReactiveList<Consideration> considerations;
     internal ReactiveList<Consideration> Considerations
     {
-        get => considerations;
+        get { 
+            if (considerations == null)
+            {
+                considerations = new ReactiveList<Consideration>();
+            }
+            return considerations;
+        }
         set
         {
             considerations = value;

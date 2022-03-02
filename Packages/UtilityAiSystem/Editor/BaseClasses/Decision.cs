@@ -10,10 +10,17 @@ using UniRx;
 public class Decision: UtilityContainer
 {
     private IDisposable agentActionSub;
-    private ReactiveList<AgentAction> agentActions = new ReactiveList<AgentAction>();
+    private ReactiveList<AgentAction> agentActions;
     public ReactiveList<AgentAction> AgentActions
     {
-        get => agentActions;
+        get
+        {
+            if (agentActions == null)
+            {
+                agentActions = new ReactiveList<AgentAction>();
+            }
+            return agentActions;
+        }
         set
         {
             agentActions = value;
@@ -29,9 +36,6 @@ public class Decision: UtilityContainer
 
     public Decision()
     {
-        AgentActions.OnValueChanged
-            .Subscribe(_ => UpdateInfo())
-            .AddTo(Disposables);
     }
 
     protected override void UpdateInfo()
