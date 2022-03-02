@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 public interface IAgent
 {
     AgentModel Model { get; }
-    string Identifier { get; }
+    string TypeIdentifier { get; }
 }

@@ -5,16 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
 public class AgentMono : MonoBehaviour, IAgent
 {
     private AgentModel model = new AgentModel();
     public AgentModel Model => model;
 
-    public string Identifier => GetType().FullName;
+    public string TypeIdentifier => GetType().FullName;
+
+    public string DefaultAiName = "";
 
     void Start()
     {
         model.Name = SetAgentName();
+        model.AI = UASTemplateService.Instance.GetAiByName(DefaultAiName);
         AgentManager.Instance.Register(this);
     }
 

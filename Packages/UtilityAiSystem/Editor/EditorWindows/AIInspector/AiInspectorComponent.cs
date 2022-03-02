@@ -60,7 +60,7 @@ public class AiInspectorComponent : EditorWindow
             .AgentsUpdated
             .Subscribe(agent =>
             {
-                if (agent.Identifier == identifierDropdown.value)
+                if (agent.TypeIdentifier == identifierDropdown.value)
                 {
                     UpdateLeftPanel();
                 }

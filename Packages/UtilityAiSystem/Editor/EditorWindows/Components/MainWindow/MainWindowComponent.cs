@@ -11,8 +11,6 @@ public abstract class MainWindowComponent: VisualElement
 {
     protected CompositeDisposable Subscriptions = new CompositeDisposable();
 
-    private VisualTreeAsset template;
-    //public TemplateContainer Root { get; private set; }
     private TextField nameTextField;
     private TextField descriptionTextField;
     protected MainWindowModel MainWindowModel;

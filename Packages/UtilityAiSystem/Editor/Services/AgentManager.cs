@@ -32,7 +32,7 @@ public class AgentManager
 
     public void Register(IAgent agent)
     {
-        var identifier = agent.Identifier;
+        var identifier = agent.TypeIdentifier;
         if (!model.AgentsByIdentifier.ContainsKey(identifier))
         {
             model.AgentsByIdentifier.Add(identifier, new ReactiveList<IAgent>());
@@ -50,7 +50,7 @@ public class AgentManager
 
     public void Unregister(IAgent agent)
     {
-        var identifier = agent.Identifier;
+        var identifier = agent.TypeIdentifier;
         if (model.AgentsByIdentifier.ContainsKey(identifier))
         {
             model.AgentsByIdentifier.Remove(identifier);

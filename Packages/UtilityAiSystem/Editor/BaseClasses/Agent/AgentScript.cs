@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public abstract class AgentScript : IAgent
 {
     private AgentModel model = new AgentModel();
     public AgentModel Model => model;
 
-    public string Identifier => GetType().FullName;
+    public string TypeIdentifier => GetType().FullName;
+
+    [SerializeField]
+    protected string DefaultAiName => GetDefaultAiName();
 
     public AgentScript()
     {
+        model.Name = SetAgentName();
+        model.AI = UASTemplateService.Instance.GetAiByName(DefaultAiName);
         AgentManager.Instance.Register(this);
     }
 
@@ -28,6 +34,11 @@ public abstract class AgentScript : IAgent
     /// <returns></returns>
     protected virtual string SetAgentName()
     {
-        return Identifier;
+        return TypeIdentifier;
+    }
+
+    protected virtual string GetDefaultAiName()
+    {
+        return "";
     }
 }

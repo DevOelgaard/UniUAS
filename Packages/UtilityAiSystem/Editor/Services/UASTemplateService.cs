@@ -86,6 +86,7 @@ public class UASTemplateService: RestoreAble
         var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
         return aiTemplate.Clone() as UAIModel;
     }
+
     public ReactiveList<MainWindowModel> GetCollection(string label)
     {
         if (collectionsByLabel.ContainsKey(label))
