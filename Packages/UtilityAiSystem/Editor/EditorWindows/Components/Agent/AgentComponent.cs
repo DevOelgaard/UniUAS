@@ -11,6 +11,8 @@ public class AgentComponent: VisualElement
     private Label agentName;
     private DropdownField aiDropdown;
     private UAIComponent aiComponent;
+    private VisualElement footer;
+    private Button tickerButton;
     private IAgent agent;
 
     public AgentComponent(IAgent agent)
@@ -21,6 +23,14 @@ public class AgentComponent: VisualElement
         body = root.Q<VisualElement>("Body");
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
+        footer = root.Q<VisualElement>("Footer");
+        tickerButton = new Button();
+        tickerButton.text = "TEST-Tick";
+        tickerButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            agent.Tick();
+        });
+        footer.Add(tickerButton);
 
         agentName.text = agent.Model.Name;
 

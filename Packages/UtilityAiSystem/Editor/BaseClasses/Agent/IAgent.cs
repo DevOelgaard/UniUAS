@@ -8,4 +8,5 @@ public interface IAgent
 {
     AgentModel Model { get; }
     string TypeIdentifier { get; }
+    void Tick();
 }

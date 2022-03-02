@@ -19,6 +19,7 @@ public abstract class AgentScript : IAgent
     {
         model.Name = SetAgentName();
         model.AI = UASTemplateService.Instance.GetAiByName(DefaultAiName);
+        model.AI.Context.Agent = this;
         AgentManager.Instance.Register(this);
     }
 
@@ -40,5 +41,10 @@ public abstract class AgentScript : IAgent
     protected virtual string GetDefaultAiName()
     {
         return "";
+    }
+
+    public void Tick()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -12,10 +12,17 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     public IUtilityContainerSelector DecisionSelector;
     public IUtilityContainerSelector BucketSelector;
 
-
     public DecisionScoreEvaluator(IUtilityContainerSelector decisionSelector = null, IUtilityContainerSelector bucketSelector = null)
     {
+        if (decisionSelector == null)
+        {
+            decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Statics.Default_DecisionSelector);
+        }
         DecisionSelector = decisionSelector;
+        if (bucketSelector == null)
+        {
+            bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Statics.Default_BucketSelector);
+        }
         BucketSelector = bucketSelector;
     }
 

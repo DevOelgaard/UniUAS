@@ -15,11 +15,15 @@ public class AgentMono : MonoBehaviour, IAgent
 
     public string DefaultAiName = "";
 
+    private DecisionScoreEvaluator decisionScoreEvaluator;
+
     void Start()
     {
         model.Name = SetAgentName();
         model.AI = UASTemplateService.Instance.GetAiByName(DefaultAiName);
+        model.AI.Context.Agent = this;
         AgentManager.Instance.Register(this);
+        decisionScoreEvaluator = new DecisionScoreEvaluator();
     }
 
     void OnDestroy()
@@ -35,5 +39,14 @@ public class AgentMono : MonoBehaviour, IAgent
     protected virtual string SetAgentName()
     {
         return gameObject.name;
+    }
+
+    public void Tick()
+    {
+        var actions = decisionScoreEvaluator.NextActions(Model.AI.Buckets.Values, Model.AI.Context);
+        foreach(var action in actions)
+        {
+            action.OnStart(Model.AI.Context);
+        }
     }
 }
