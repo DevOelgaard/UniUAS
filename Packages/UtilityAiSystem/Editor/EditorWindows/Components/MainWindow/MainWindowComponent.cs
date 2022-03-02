@@ -15,6 +15,7 @@ internal abstract class MainWindowComponent: VisualElement
     private TextField descriptionTextField;
     protected AiObjectModel Model;
     protected VisualElement ScoreContainer;
+    protected VisualElement Header;
     protected VisualElement Body;
     protected VisualElement Footer;
     protected InfoComponent InfoComponent;
@@ -44,6 +45,7 @@ internal abstract class MainWindowComponent: VisualElement
         });
 
         ScoreContainer = this.Q<VisualElement>("Scores");
+        Header = this.Q<VisualElement>("Header");
         Body = this.Q<VisualElement>("Body");
         Footer = this.Q<VisualElement>("Footer");
 

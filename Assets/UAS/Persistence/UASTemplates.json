@@ -1,229 +1,46 @@
 {
-  "AIs": [
+  "AIs": [],
+  "Buckets": [
     {
       "Name": "Default",
       "Description": null,
-      "Buckets": [
-        {
-          "Name": "Demo write to debug",
-          "Description": null,
-          "Decisions": [
-            {
-              "Name": "Debug.Log if high roll",
-              "Description": null,
-              "AgentActions": [
-                {
-                  "Parameters": [
-                    {
-                      "Name": "Output",
-                      "Value": "Demo agents output",
-                      "FileName": "Parameter"
-                    }
-                  ],
-                  "Name": "Demo action Debug output (Demo_AgentActionParameter)",
-                  "Description": "Output is written to Debug.Log()",
-                  "FileName": "Demo_AgentActionParameter"
-                }
-              ],
-              "Considerations": [
-                {
-                  "Parameters": [],
-                  "ResponseCurveState": {
-                    "Name": "Linear",
-                    "MinY": 0.0,
-                    "MaxY": 1.0,
-                    "Parameters": [
-                      {
-                        "Name": "a",
-                        "Value": 1.0,
-                        "FileName": "Parameter"
-                      },
-                      {
-                        "Name": "b",
-                        "Value": 0.0,
-                        "FileName": "Parameter"
-                      }
-                    ],
-                    "FileName": "RCLinear"
-                  },
-                  "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
-                  "Description": null,
-                  "Min": {
-                    "Name": "Min",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  },
-                  "Max": {
-                    "Name": "Max",
-                    "Value": 1.0,
-                    "FileName": "Parameter"
-                  },
-                  "FileName": "Demo_ConsiderationRandomValue"
-                }
-              ],
-              "FileName": "Decision"
-            }
-          ],
-          "Considerations": [
-            {
-              "Parameters": [],
-              "ResponseCurveState": {
-                "Name": "Linear",
-                "MinY": 0.0,
-                "MaxY": 1.0,
-                "Parameters": [
-                  {
-                    "Name": "a",
-                    "Value": 1.0,
-                    "FileName": "Parameter"
-                  },
-                  {
-                    "Name": "b",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  }
-                ],
-                "FileName": "RCLinear"
-              },
-              "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
-              "Description": null,
-              "Min": {
-                "Name": "Min",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              },
-              "Max": {
-                "Name": "Max",
-                "Value": 1.0,
-                "FileName": "Parameter"
-              },
-              "FileName": "Demo_ConsiderationRandomValue"
-            }
-          ],
-          "FileName": "Bucket"
-        }
-      ],
-      "BucketSelectorName": "Highest Score",
-      "DecisionSelectorName": "Highest Score",
-      "USName": "Average",
-      "FileName": "UAIModel"
-    }
-  ],
-  "Buckets": [
+      "Decisions": [],
+      "Considerations": [],
+      "Weight": {
+        "Name": "Weight",
+        "Value": -0.88,
+        "FileName": "Parameter"
+      },
+      "FileName": "Bucket"
+    },
     {
-      "Name": "Demo write to debug",
+      "Name": "Default",
       "Description": null,
-      "Decisions": [
-        {
-          "Name": "Debug.Log if high roll",
-          "Description": null,
-          "AgentActions": [
-            {
-              "Parameters": [
-                {
-                  "Name": "Output",
-                  "Value": "Demo agents output",
-                  "FileName": "Parameter"
-                }
-              ],
-              "Name": "Demo action Debug output (Demo_AgentActionParameter)",
-              "Description": "Output is written to Debug.Log()",
-              "FileName": "Demo_AgentActionParameter"
-            }
-          ],
-          "Considerations": [
-            {
-              "Parameters": [],
-              "ResponseCurveState": {
-                "Name": "Linear",
-                "MinY": 0.0,
-                "MaxY": 1.0,
-                "Parameters": [
-                  {
-                    "Name": "a",
-                    "Value": 1.0,
-                    "FileName": "Parameter"
-                  },
-                  {
-                    "Name": "b",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  }
-                ],
-                "FileName": "RCLinear"
-              },
-              "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
-              "Description": null,
-              "Min": {
-                "Name": "Min",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              },
-              "Max": {
-                "Name": "Max",
-                "Value": 1.0,
-                "FileName": "Parameter"
-              },
-              "FileName": "Demo_ConsiderationRandomValue"
-            }
-          ],
-          "FileName": "Decision"
-        }
-      ],
-      "Considerations": [
-        {
-          "Parameters": [],
-          "ResponseCurveState": {
-            "Name": "Linear",
-            "MinY": 0.0,
-            "MaxY": 1.0,
-            "Parameters": [
-              {
-                "Name": "a",
-                "Value": 1.0,
-                "FileName": "Parameter"
-              },
-              {
-                "Name": "b",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              }
-            ],
-            "FileName": "RCLinear"
-          },
-          "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
-          "Description": null,
-          "Min": {
-            "Name": "Min",
-            "Value": 0.0,
-            "FileName": "Parameter"
-          },
-          "Max": {
-            "Name": "Max",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          "FileName": "Demo_ConsiderationRandomValue"
-        }
-      ],
+      "Decisions": [],
+      "Considerations": [],
+      "Weight": {
+        "Name": "Weight",
+        "Value": 0.0,
+        "FileName": "Parameter"
+      },
       "FileName": "Bucket"
     }
   ],
   "Decisions": [
     {
-      "Name": "Debug.Log if high roll",
+      "Name": "D",
       "Description": null,
       "AgentActions": [
         {
           "Parameters": [
             {
               "Name": "Output",
-              "Value": "Demo agents output",
+              "Value": "Agent output",
               "FileName": "Parameter"
             }
           ],
-          "Name": "Demo action Debug output (Demo_AgentActionParameter)",
-          "Description": "Output is written to Debug.Log()",
+          "Name": "Default (Demo_AgentActionParameter)",
+          "Description": null,
           "FileName": "Demo_AgentActionParameter"
         }
       ],
@@ -248,7 +65,7 @@
             ],
             "FileName": "RCLinear"
           },
-          "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
+          "Name": "Default (Demo_ConsiderationRandomValue)",
           "Description": null,
           "Min": {
             "Name": "Min",
@@ -351,36 +168,6 @@
           "Name": "T-Int",
           "Value": 11,
           "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Float",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-String",
-          "Value": "string value",
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Int",
-          "Value": 11,
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Float",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-String",
-          "Value": "string value",
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Int",
-          "Value": 11,
-          "FileName": "Parameter"
         }
       ],
       "ResponseCurveState": {
@@ -435,7 +222,7 @@
         ],
         "FileName": "RCLinear"
       },
-      "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
+      "Name": "Default (Demo_ConsiderationRandomValue)",
       "Description": null,
       "Min": {
         "Name": "Min",
@@ -489,18 +276,6 @@
       ],
       "Name": "Default (Demo_AgentActionParameter)",
       "Description": null,
-      "FileName": "Demo_AgentActionParameter"
-    },
-    {
-      "Parameters": [
-        {
-          "Name": "Output",
-          "Value": "Demo agents output",
-          "FileName": "Parameter"
-        }
-      ],
-      "Name": "Demo action Debug output (Demo_AgentActionParameter)",
-      "Description": "Output is written to Debug.Log()",
       "FileName": "Demo_AgentActionParameter"
     }
   ],

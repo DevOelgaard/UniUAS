@@ -18,6 +18,11 @@ internal class BucketComponent : MainWindowComponent
     {
         this.model = model;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
+
+        var weightComponent = new ParameterComponent(model.Weight);
+
+        ScoreContainer.Add(weightComponent);
+
         considerationCollections = 
             new CollectionComponent<Consideration>(model.Considerations, 
             UASTemplateService.Instance.Considerations, "Consideration-Template", "Considerations");

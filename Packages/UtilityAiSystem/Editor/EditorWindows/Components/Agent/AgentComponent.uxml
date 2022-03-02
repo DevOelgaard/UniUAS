@@ -5,5 +5,5 @@
         <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="Ai-Dropdown" />
     </ui:VisualElement>
     <ui:VisualElement name="Body" style="flex-grow: 1;" />
-    <ui:VisualElement name="Footer" />
+    <ui:VisualElement name="Footer" style="flex-direction: row;" />
 </ui:UXML>

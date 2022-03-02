@@ -42,7 +42,7 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
         var highBucket = new Bucket();
         highBucket.Decisions.Add(highDecisions);
         highBucket.Considerations.Add(highConsideration);
-        highBucket.Weight = 9;
+        highBucket.Weight.Value = 9;
 
         buckets.Add(highBucket);
 
@@ -73,7 +73,7 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
         var highWeightBucket = new Bucket();
         highWeightBucket.Decisions.Add(mediumDecision);
         highWeightBucket.Considerations.Add(mediumConsideration);
-        highWeightBucket.Weight = 9;
+        highWeightBucket.Weight.Value = 9;
 
         var loverAction = new Mock_AgentAction();
         highestAction.Name = "Lower";
@@ -87,7 +87,7 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
         var highConsiderationBucket = new Bucket();
         highConsiderationBucket.Decisions.Add(highDecisions);
         highConsiderationBucket.Considerations.Add(highConsideration);
-        highConsiderationBucket.Weight = 2;
+        highConsiderationBucket.Weight.Value = 2;
 
         buckets.Add(highWeightBucket);
         buckets.Add(highConsiderationBucket);
@@ -145,7 +145,7 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
         {
             var b = new Bucket();
             b.Name = "B" + i;
-            b.Weight = bucketWeight;
+            b.Weight.Value = bucketWeight;
             result.Add(b);
 
             var decisions = CreateDecisionsWithConsiderations(numberOfDecisions, numberOfConsiderations, b.Name, min, max, returnValue);

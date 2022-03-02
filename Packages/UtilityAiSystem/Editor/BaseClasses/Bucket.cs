@@ -26,7 +26,7 @@ public class Bucket : UtilityContainer
             }
         }
     }
-    public float Weight = 1;
+    public Parameter Weight;
 
     public Bucket(): base()
     {
@@ -34,6 +34,7 @@ public class Bucket : UtilityContainer
         UpdateInfo();
         decisionSub = decisions.OnValueChanged
             .Subscribe(_ => UpdateInfo());
+        Weight = new Parameter("Weight", 0f);
     }
 
     internal override AiObjectModel Clone()
@@ -45,7 +46,7 @@ public class Bucket : UtilityContainer
 
     internal override float GetUtility(AiContext context)
     {
-        LastCalculatedUtility = base.GetUtility(context) * Weight;
+        LastCalculatedUtility = base.GetUtility(context) * Convert.ToSingle(Weight.Value);
         return LastCalculatedUtility;
     }
 
@@ -66,7 +67,7 @@ public class Bucket : UtilityContainer
 
     internal BucketState GetState()
     {
-        return new BucketState(Name, Description, Decisions.Values, Considerations.Values, this);
+        return new BucketState(Name, Description, Decisions.Values, Considerations.Values, Weight, this);
     }
     protected override void RestoreInternal(RestoreState state)
     {
@@ -87,6 +88,7 @@ public class Bucket : UtilityContainer
             var consideration = Restore<Consideration>(c);
             Considerations.Add(consideration);
         }
+        Weight = Restore<Parameter>(stateCast.Weight);
     }
 
     protected override void ClearSubscriptions()
@@ -103,12 +105,13 @@ public class BucketState: RestoreState
     public string Description;
     public List<DecisionState> Decisions;
     public List<ConsiderationState> Considerations;
+    public ParameterState Weight;
 
     public BucketState(): base()
     {
     }
 
-    public BucketState(string name, string description, List<Decision> decisions, List<Consideration> considerations, RestoreAble o) : base(o)
+    public BucketState(string name, string description, List<Decision> decisions, List<Consideration> considerations, Parameter weight,  RestoreAble o) : base(o)
     {
         this.Name = name;
         this.Description = description;
@@ -125,5 +128,7 @@ public class BucketState: RestoreState
             var state = c.GetState();
             Considerations.Add(state);
         }
+
+        this.Weight = weight.GetState();
     }
 }
