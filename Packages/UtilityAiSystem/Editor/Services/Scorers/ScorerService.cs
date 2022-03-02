@@ -21,7 +21,7 @@ public class ScorerService
     private void LoadContainerSelectors()
     {
         ContainerSelectors = new ReactiveList<IUtilityContainerSelector>();
-        var elements = AssetDatabaseService.GetTypeFromFile<IUtilityContainerSelector>();
+        var elements = AssetDatabaseService.GetInstancesOfType<IUtilityContainerSelector>();
         elements = elements
             .Where(e => 
             ContainerSelectors
@@ -39,7 +39,7 @@ public class ScorerService
     private void LoadUtilityScorers()
     {
         UtilityScorers = new ReactiveList<IUtilityScorer>();
-        var elements = AssetDatabaseService.GetTypeFromFile<IUtilityScorer>();
+        var elements = AssetDatabaseService.GetInstancesOfType<IUtilityScorer>();
         elements = elements
             .Where(e => 
                 UtilityScorers

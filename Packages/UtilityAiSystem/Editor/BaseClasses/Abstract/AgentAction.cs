@@ -15,9 +15,9 @@ public abstract class AgentAction: AiObjectModel
 
     protected abstract List<Parameter> GetParameters();
 
-    public virtual void OnStart() { }
-    public virtual void Ongoing() { }
-    public virtual void OnEnd() { }
+    public virtual void OnStart(AiContext context) { }
+    public virtual void Ongoing(AiContext context) { }
+    public virtual void OnEnd(AiContext context) { }
 
     public override string GetNameFormat(string name)
     {

@@ -1,292 +1,7 @@
 {
-  "AIs": [
-    {
-      "Name": "Default",
-      "Description": null,
-      "Buckets": [
-        {
-          "Name": "Default2",
-          "Description": null,
-          "Decisions": [
-            {
-              "Name": "Default",
-              "Description": null,
-              "AgentActions": [
-                {
-                  "Parameters": [],
-                  "Name": "Default (AgentActionTester2)",
-                  "Description": null,
-                  "FileName": "AgentActionTester2"
-                }
-              ],
-              "Considerations": [
-                {
-                  "Parameters": [],
-                  "ResponseCurveState": {
-                    "Name": "Exponential",
-                    "MinY": 0.0,
-                    "MaxY": 1.0,
-                    "Parameters": [
-                      {
-                        "Name": "Power",
-                        "Value": 2.0,
-                        "FileName": "Parameter"
-                      },
-                      {
-                        "Name": "b",
-                        "Value": 0.0,
-                        "FileName": "Parameter"
-                      }
-                    ],
-                    "FileName": "RCExponential"
-                  },
-                  "Name": "Default (Consideration3Test)",
-                  "Description": null,
-                  "Min": {
-                    "Name": "Min",
-                    "Value": 10.0,
-                    "FileName": "Parameter"
-                  },
-                  "Max": {
-                    "Name": "Max",
-                    "Value": 100.0,
-                    "FileName": "Parameter"
-                  },
-                  "FileName": "Consideration3Test"
-                }
-              ],
-              "FileName": "Decision"
-            }
-          ],
-          "Considerations": [
-            {
-              "Parameters": [],
-              "ResponseCurveState": {
-                "Name": "Exponential",
-                "MinY": 0.0,
-                "MaxY": 1.0,
-                "Parameters": [
-                  {
-                    "Name": "Power",
-                    "Value": 2.0,
-                    "FileName": "Parameter"
-                  },
-                  {
-                    "Name": "b",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  }
-                ],
-                "FileName": "RCExponential"
-              },
-              "Name": "Default (ConsiderationTester2)",
-              "Description": null,
-              "Min": {
-                "Name": "Min",
-                "Value": 10.0,
-                "FileName": "Parameter"
-              },
-              "Max": {
-                "Name": "Max",
-                "Value": 100.0,
-                "FileName": "Parameter"
-              },
-              "FileName": "ConsiderationTester2"
-            },
-            {
-              "Parameters": [
-                {
-                  "Name": "T-Float",
-                  "Value": 0.5,
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-String",
-                  "Value": "string value",
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-Int",
-                  "Value": 11,
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-Float",
-                  "Value": 0.5,
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-String",
-                  "Value": "string value",
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-Int",
-                  "Value": 11,
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-Float",
-                  "Value": 0.5,
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-String",
-                  "Value": "string value",
-                  "FileName": "Parameter"
-                },
-                {
-                  "Name": "T-Int",
-                  "Value": 11,
-                  "FileName": "Parameter"
-                }
-              ],
-              "ResponseCurveState": {
-                "Name": "Exponential",
-                "MinY": 0.0,
-                "MaxY": 1.0,
-                "Parameters": [
-                  {
-                    "Name": "Power",
-                    "Value": 2.0,
-                    "FileName": "Parameter"
-                  },
-                  {
-                    "Name": "b",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  }
-                ],
-                "FileName": "RCExponential"
-              },
-              "Name": "Default (TestConsideration)",
-              "Description": null,
-              "Min": {
-                "Name": "Min",
-                "Value": 10.0,
-                "FileName": "Parameter"
-              },
-              "Max": {
-                "Name": "Max",
-                "Value": 100.0,
-                "FileName": "Parameter"
-              },
-              "FileName": "TestConsideration"
-            }
-          ],
-          "FileName": "Bucket"
-        }
-      ],
-      "BucketSelectorName": "Highest Score",
-      "DecisionSelectorName": "Highest Score",
-      "USName": "Average",
-      "FileName": "UAIModel"
-    },
-    {
-      "Name": "Another AI",
-      "Description": null,
-      "Buckets": [],
-      "BucketSelectorName": "Highest Score",
-      "DecisionSelectorName": "Highest Score",
-      "USName": "Average",
-      "FileName": "UAIModel"
-    }
-  ],
-  "Buckets": [
-    {
-      "Name": "Default",
-      "Description": null,
-      "Decisions": [],
-      "Considerations": [
-        {
-          "Parameters": [],
-          "ResponseCurveState": {
-            "Name": "Exponential",
-            "MinY": 0.0,
-            "MaxY": 1.0,
-            "Parameters": [
-              {
-                "Name": "Power",
-                "Value": 2.0,
-                "FileName": "Parameter"
-              },
-              {
-                "Name": "b",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              }
-            ],
-            "FileName": "RCExponential"
-          },
-          "Name": "Default (ConsiderationTester2)",
-          "Description": null,
-          "Min": {
-            "Name": "Min",
-            "Value": 10.0,
-            "FileName": "Parameter"
-          },
-          "Max": {
-            "Name": "Max",
-            "Value": 100.0,
-            "FileName": "Parameter"
-          },
-          "FileName": "ConsiderationTester2"
-        }
-      ],
-      "FileName": "Bucket"
-    }
-  ],
-  "Decisions": [
-    {
-      "Name": "Default",
-      "Description": null,
-      "AgentActions": [
-        {
-          "Parameters": [],
-          "Name": "Default (AgentActionTester2)",
-          "Description": null,
-          "FileName": "AgentActionTester2"
-        }
-      ],
-      "Considerations": [
-        {
-          "Parameters": [],
-          "ResponseCurveState": {
-            "Name": "Exponential",
-            "MinY": 0.0,
-            "MaxY": 1.0,
-            "Parameters": [
-              {
-                "Name": "Power",
-                "Value": 2.0,
-                "FileName": "Parameter"
-              },
-              {
-                "Name": "b",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              }
-            ],
-            "FileName": "RCExponential"
-          },
-          "Name": "Default (Consideration3Test)",
-          "Description": null,
-          "Min": {
-            "Name": "Min",
-            "Value": 10.0,
-            "FileName": "Parameter"
-          },
-          "Max": {
-            "Name": "Max",
-            "Value": 100.0,
-            "FileName": "Parameter"
-          },
-          "FileName": "Consideration3Test"
-        }
-      ],
-      "FileName": "Decision"
-    }
-  ],
+  "AIs": [],
+  "Buckets": [],
+  "Decisions": [],
   "Considerations": [
     {
       "Parameters": [],
@@ -372,21 +87,6 @@
           "Name": "T-Int",
           "Value": 11,
           "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Float",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-String",
-          "Value": "string value",
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Int",
-          "Value": 11,
-          "FileName": "Parameter"
         }
       ],
       "ResponseCurveState": {
@@ -420,26 +120,45 @@
         "FileName": "Parameter"
       },
       "FileName": "TestConsideration"
+    },
+    {
+      "Parameters": [],
+      "ResponseCurveState": {
+        "Name": "Linear",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "a",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCLinear"
+      },
+      "Name": "Demo consideration Random (Demo_ConsiderationRandomValue)",
+      "Description": "Returns a random number between min and max",
+      "Min": {
+        "Name": "Min",
+        "Value": 0.0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 1.0,
+        "FileName": "Parameter"
+      },
+      "FileName": "Demo_ConsiderationRandomValue"
     }
   ],
   "AgentActions": [
     {
       "Parameters": [
-        {
-          "Name": "T-Float",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-String",
-          "Value": "string value",
-          "FileName": "Parameter"
-        },
-        {
-          "Name": "T-Int",
-          "Value": 11,
-          "FileName": "Parameter"
-        },
         {
           "Name": "T-Float",
           "Value": 0.5,
@@ -465,6 +184,18 @@
       "Name": "Default (AgentActionTester2)",
       "Description": null,
       "FileName": "AgentActionTester2"
+    },
+    {
+      "Parameters": [
+        {
+          "Name": "Output",
+          "Value": "Default output",
+          "FileName": "Parameter"
+        }
+      ],
+      "Name": "Demo Agent Debug (Demo_AgentActionParameter)",
+      "Description": "Writes Output parameter to Debug.Log();",
+      "FileName": "Demo_AgentActionParameter"
     }
   ],
   "TestStrign": "",

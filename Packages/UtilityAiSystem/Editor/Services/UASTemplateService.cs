@@ -100,7 +100,7 @@ public class UASTemplateService: RestoreAble
 
     private ReactiveList<AiObjectModel> UpdateListWithFiles<T>(ReactiveList<AiObjectModel> collection)
     {
-        var elementsFromFiles = AssetDatabaseService.GetTypeFromFile<T>();
+        var elementsFromFiles = AssetDatabaseService.GetInstancesOfType<T>();
         elementsFromFiles = elementsFromFiles
             .Where(e => collection.Values.FirstOrDefault(element => element.GetType() == e.GetType()) == null)
             .Where(e => !e.GetType().ToString().Contains("Mock"))

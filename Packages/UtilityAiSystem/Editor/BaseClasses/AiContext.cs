@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 [Serializable]
 public class AiContext
 {
-    public object Agent;
+    public IAgent Agent;
     public AgentAction CurrentAction;
     private Dictionary<string, object> context = new Dictionary<string, object>();
     public IUtilityScorer UtilityScorer = new USAverageScorer();

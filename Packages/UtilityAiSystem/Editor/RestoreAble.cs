@@ -8,11 +8,20 @@ using UnityEngine;
 
 public abstract class RestoreAble
 {
-
     protected abstract void RestoreInternal(RestoreState state);
     public static T Restore<T>(RestoreState state) where T:RestoreAble
     {
-        var element = (T)Activator.CreateInstance(Type.GetType(state.FileName), true);
+        var type =   Type.GetType(state.FileName);
+        // Type is from another assembly
+        if (type == null)
+        {
+            var types = AssetDatabaseService.GetInstancesOfType<T>();
+            var e = types.FirstOrDefault(t => t.GetType().FullName == state.FileName);
+            e.RestoreInternal(state);
+            return e;
+        }
+        Debug.Log("N: " + state.FileName + " T:" + type);
+        var element = (T)Activator.CreateInstance(type, true);
         element.RestoreInternal(state);
         return element;
     }
