@@ -1,5 +1,114 @@
 {
-  "AIs": [],
+  "AIs": [
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [
+        {
+          "Name": "Demo write to debug",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "Debug.Log if high roll",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "Demo agents output",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Demo action Debug output (Demo_AgentActionParameter)",
+                  "Description": "Output is written to Debug.Log()",
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "FileName": "Demo_ConsiderationRandomValue"
+                }
+              ],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Random Number between max - Linear (Demo_ConsiderationRandomValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "FileName": "Demo_ConsiderationRandomValue"
+            }
+          ],
+          "FileName": "Bucket"
+        }
+      ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "UAIModel"
+    }
+  ],
   "Buckets": [
     {
       "Name": "Demo write to debug",
@@ -228,6 +337,21 @@
     },
     {
       "Parameters": [
+        {
+          "Name": "T-Float",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-String",
+          "Value": "string value",
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "T-Int",
+          "Value": 11,
+          "FileName": "Parameter"
+        },
         {
           "Name": "T-Float",
           "Value": 0.5,

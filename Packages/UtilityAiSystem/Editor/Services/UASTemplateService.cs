@@ -84,6 +84,11 @@ public class UASTemplateService: RestoreAble
     public UAIModel GetAiByName(string name)
     {
         var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
+        if (aiTemplate == null)
+        {
+            Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
+            aiTemplate = AIs.Values.First() as UAIModel;
+        }
         return aiTemplate.Clone() as UAIModel;
     }
 
