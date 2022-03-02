@@ -7,16 +7,10 @@ using UniRxExtension;
 public abstract class UtilityContainer : AiObjectModel
 {
     private IDisposable considerationSub;
-    private ReactiveList<Consideration> considerations;
+    private ReactiveList<Consideration> considerations = new ReactiveList<Consideration>();
     internal ReactiveList<Consideration> Considerations
     {
-        get { 
-            if (considerations == null)
-            {
-                considerations = new ReactiveList<Consideration>();
-            }
-            return considerations;
-        }
+        get => considerations;
         set
         {
             considerations = value;
@@ -39,6 +33,11 @@ public abstract class UtilityContainer : AiObjectModel
         ScoreModels = new List<ScoreModel>();
         ScoreModels.Add(new ScoreModel("Base", 0f));
         ScoreModels.Add(new ScoreModel("Normalized", 0f));
+
+        considerationSub?.Dispose();
+        UpdateInfo();
+        considerationSub = considerations.OnValueChanged
+            .Subscribe(_ => UpdateInfo());
     }
 
     internal virtual float GetUtility(AiContext context)

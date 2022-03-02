@@ -10,17 +10,10 @@ using UniRx;
 public class UAIModel: AiObjectModel
 {
     private IDisposable bucketSub;
-    private ReactiveList<Bucket> buckets;
+    private ReactiveList<Bucket> buckets = new ReactiveList<Bucket>();
     public ReactiveList<Bucket> Buckets
     {
-        get
-        {
-            if (buckets == null)
-            {
-                buckets = new ReactiveList<Bucket>();
-            }
-            return buckets;
-        }
+        get => buckets;
         set
         {
             buckets = value;
@@ -37,6 +30,10 @@ public class UAIModel: AiObjectModel
 
     public UAIModel(): base()
     {
+        bucketSub?.Dispose();
+        UpdateInfo();
+        bucketSub = buckets.OnValueChanged
+            .Subscribe(_ => UpdateInfo());
     }
 
     protected override void UpdateInfo()

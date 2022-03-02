@@ -10,17 +10,10 @@ using UniRx;
 public class Bucket : UtilityContainer 
 {
     private IDisposable decisionSub;
-    private ReactiveList<Decision> decisions;
+    private ReactiveList<Decision> decisions = new ReactiveList<Decision>();
     public ReactiveList<Decision> Decisions
     {
-        get
-        {
-            if (decisions == null)
-            {
-                decisions = new ReactiveList<Decision>();
-            }
-            return decisions;
-        }
+        get => decisions;
         set
         {
             decisions = value;
@@ -37,6 +30,10 @@ public class Bucket : UtilityContainer
 
     public Bucket(): base()
     {
+        decisionSub?.Dispose();
+        UpdateInfo();
+        decisionSub = decisions.OnValueChanged
+            .Subscribe(_ => UpdateInfo());
     }
 
     internal override AiObjectModel Clone()
