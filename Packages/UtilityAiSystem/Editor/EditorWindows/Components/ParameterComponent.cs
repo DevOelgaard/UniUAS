@@ -13,6 +13,11 @@ public class ParameterComponent: VisualElement
     public ParameterComponent(Parameter parameter)
     {
         var t = parameter.Value.GetType();
+        if (t == typeof(double))
+        {
+            parameter.Value = Convert.ToSingle(parameter.Value);
+            t = typeof(float);
+        }
         if (t == typeof(int))
         {
             var field = new IntegerField(parameter.Name);
