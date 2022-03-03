@@ -6,7 +6,6 @@
 
 public enum AiTickerMode
 {
-    MultiThread,
     DesiredFrameRate,
     TimeBudget,
     Unrestricted

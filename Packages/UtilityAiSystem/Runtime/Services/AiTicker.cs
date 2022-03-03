@@ -7,12 +7,12 @@ using UniRx;
 using MoreLinq;
 using UnityEngine;
 
-internal class AiTicker
+internal class AiTicker: RestoreAble
 {
     private CompositeDisposable disposables = new CompositeDisposable();
 
     private static AiTicker instance;
-    public static AiTicker Instance => instance ?? (instance = new AiTicker());
+    public static AiTicker Instance => instance ??= new AiTicker();
     private AgentManager agentManager => AgentManager.Instance;
     private int tickCount = 0;
     internal AiTickerSettingsModel Settings = new AiTickerSettingsModel();
@@ -21,11 +21,11 @@ internal class AiTicker
     {
         Settings.TickerModes = new List<TickerMode>();
         Settings.TickerModes.Add(new TickerModeDesiredFrameRate());
-        Settings.TickerModes.Add(new TickerModeMultiThread());
         Settings.TickerModes.Add(new TickerModeTimeBudget());
         Settings.TickerModes.Add(new TickerModeUnrestricted());
 
         Settings.TickerMode = Settings.TickerModes.First(m => m.Name == AiTickerMode.Unrestricted);
+
     }
 
     internal void Start()
@@ -48,6 +48,31 @@ internal class AiTicker
         var newMode = Settings.TickerModes.FirstOrDefault(m => m.Name == tickerMode);
         if (newMode == null) return;
         Settings.TickerMode = newMode;
-        Debug.Log("TickerMode: " + Settings.TickerMode.Name);
+    }
+
+    protected override void RestoreInternal(RestoreState state)
+    {
+        var s = state as AiTickerState;
+        Settings = Restore<AiTickerSettingsModel>(s.Settings);
+    }
+
+    ~AiTicker()
+    {
+        disposables.Clear();
+    }
+}
+
+[Serializable]
+public class AiTickerState: RestoreState
+{
+    public AiTickerSettingsState Settings;
+
+    public AiTickerState()
+    {
+    }
+
+    internal AiTickerState(AiTickerSettingsModel settings, AiTicker o) : base(o)
+    {
+        Settings = settings.GetState();
     }
 }

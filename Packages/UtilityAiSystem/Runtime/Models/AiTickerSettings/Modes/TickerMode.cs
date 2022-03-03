@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal abstract class TickerMode
+public abstract class TickerMode: RestoreAble
 {
     internal AiTickerMode Name;
     internal string Description;
@@ -21,4 +21,46 @@ internal abstract class TickerMode
 
     internal abstract List<Parameter> GetParameters();
     internal abstract void Tick(List<IAgent> agents, TickMetaData metaData);
+
+    internal TickerModeState GetState()
+    {
+        return new TickerModeState(Name, Description, Parameters, this);
+    }
+
+    protected override void RestoreInternal(RestoreState state)
+    {
+        var s = state as TickerModeState;
+        Name = Enum.Parse<AiTickerMode>(s.Name);
+        Description = s.Description;
+        Parameters = new List<Parameter>();
+        foreach (var p in s.Parameters)
+        {
+            var parameter = Restore<Parameter>(p);
+            Parameters.Add(parameter);  
+        }
+    }
+}
+
+[Serializable]
+public class TickerModeState: RestoreState
+{
+    public string Name;
+    public string Description;
+    public List<ParameterState> Parameters;
+
+    public TickerModeState()
+    {
+    }
+
+    public TickerModeState(AiTickerMode name, string description, List<Parameter> parameters, TickerMode o) : base(o)
+    {
+        Name = name.ToString();
+        Description = description;
+        Parameters = new List<ParameterState>();
+        foreach(var parameter in parameters)
+        {
+            var pS = parameter.GetState();
+            Parameters.Add(pS);
+        }
+    }
 }

@@ -15,6 +15,7 @@ internal class AiTickerManagerWindow: EditorWindow
     private CompositeDisposable disposables = new CompositeDisposable();
     private VisualElement root;
     private EnumField modes;
+    private VisualElement header;
     private VisualElement body;
     private VisualElement footer;
     private HelpBox description; 
@@ -37,10 +38,12 @@ internal class AiTickerManagerWindow: EditorWindow
         treeAsset.CloneTree(root);
 
         modes = root.Q<EnumField>("Mode-EnumField");
+        header = root.Q<VisualElement>("Header");
         body = root.Q<VisualElement>("Body");
         footer = root.Q<VisualElement>("Footer");
 
-        description = new HelpBox();
+        description = new HelpBox("",HelpBoxMessageType.Info);
+        header.Add(description);
         aiTicker = AiTicker.Instance;
         modes.Init(AiTickerMode.Unrestricted);
         modes.value = aiTicker.Settings.TickerMode.Name;

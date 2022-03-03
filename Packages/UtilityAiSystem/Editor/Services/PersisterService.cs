@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class TickMetaData
+internal class PersisterService
 {
-    public int TickCount;
-    public string TickedBy;
+
 }

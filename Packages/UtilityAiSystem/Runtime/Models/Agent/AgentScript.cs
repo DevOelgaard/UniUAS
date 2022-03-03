@@ -54,9 +54,15 @@ public abstract class AgentScript : IAgent
         return "";
     }
 
-    public void Tick()
+    public void Tick(TickMetaData metaData)
     {
         throw new NotImplementedException();
+        //Ai.Context.SetContext(AiContextKey.TickMetaData, metaData);
+        //var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context);
+        //foreach (var action in actions)
+        //{
+        //    action.OnStart(Ai.Context);
+        //}
     }
 
     public void SetAi(UAIModel model)

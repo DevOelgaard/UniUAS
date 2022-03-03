@@ -56,7 +56,6 @@ public static class Consts
     
     // Ticker Modes
     public const string Description_TickerModeUnrestricted = "No restrictions to execution time";
-    public const string Description_TickerModeMultiThread = "No restrictions to execution time. Ticks are divided over X frames";
     public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate";
     public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe";
 

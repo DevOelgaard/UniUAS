@@ -8,7 +8,7 @@ public interface IAgent
 {
     AgentModel Model { get; }
     string TypeIdentifier { get; }
-    void Tick();
+    void Tick(TickMetaData metaData);
     void SetAi(UAIModel model);
     UAIModel Ai { get; set; }
 }

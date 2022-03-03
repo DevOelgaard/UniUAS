@@ -32,7 +32,9 @@ internal class AgentComponent: VisualElement
         tickAgent.text = "TEST-Tick-Agent";
         tickAgent.RegisterCallback<MouseUpEvent>(evt =>
         {
-            agent.Tick();
+            var metaData = new TickMetaData();
+            metaData.TickedBy = "Agent: " + agent.Model.Name;
+            agent.Tick(metaData);
         });
         footer.Add(tickAgent);
 

@@ -56,14 +56,13 @@ public class AgentMono : MonoBehaviour, IAgent
         return gameObject.name;
     }
 
-    public void Tick()
+    public void Tick(TickMetaData metaData)
     {
+        Ai.Context.SetContext(AiContextKey.TickMetaData, metaData);
         var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context);
         foreach(var action in actions)
         {
             action.OnStart(Ai.Context);
         }
     }
-
-
 }

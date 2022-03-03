@@ -5,12 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UniRx;
 
-internal class AiTickerSettingsModel
+public class AiTickerSettingsModel: RestoreAble
 {
-    internal int ThreadCount = 10;
-    internal int MaxTicksPrFrame = 100;
-    internal int MaxTicksPrMillisecond = 100;
-    internal string Description;
     private TickerMode tickerMode;
     internal TickerMode TickerMode
     {
@@ -27,5 +23,44 @@ internal class AiTickerSettingsModel
 
     internal List<TickerMode> TickerModes;
 
+    internal AiTickerSettingsState GetState()
+    {
+        return new AiTickerSettingsState(TickerMode, TickerModes, this);
+    }
 
+    protected override void RestoreInternal(RestoreState state)
+    {
+        var s = state as AiTickerSettingsState;
+        TickerMode = Restore<TickerMode>(s.TickerMode);
+        TickerModes = new List<TickerMode>();
+        foreach(var t in s.TickerModes)
+        {
+            var tickerM = Restore<TickerMode>(t);
+            TickerModes.Add(tickerM);
+        }
+    }
 }
+
+[Serializable]
+public class AiTickerSettingsState: RestoreState
+{
+    public TickerModeState TickerMode;
+    public List<TickerModeState> TickerModes;
+
+    public AiTickerSettingsState()
+    {
+    }
+
+    public AiTickerSettingsState(TickerMode tickerMode, List<TickerMode> tickerModes, AiTickerSettingsModel o) : base(o)
+    {
+        TickerMode = tickerMode.GetState();
+        TickerModes = new List<TickerModeState>();
+        foreach(var tickerM in tickerModes)
+        {
+            var t = tickerM.GetState();
+            TickerModes.Add(t);
+        }
+    }
+}
+
+

@@ -20,8 +20,7 @@ internal class TickerModeUnrestricted : TickerMode
     {
         agents.ForEach(agent =>
         {
-            agent.Ai.Context.SetContext(AiContextKey.TickMetaData, metaData);
-            agent.Tick();
+            agent.Tick(metaData);
         });
     }
 }

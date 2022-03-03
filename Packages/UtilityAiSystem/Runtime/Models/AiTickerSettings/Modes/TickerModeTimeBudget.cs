@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 internal class TickerModeTimeBudget : TickerMode
 {
-    public TickerModeTimeBudget() : base(AiTickerMode.TimeBudget, Consts.Description_TickerModeMultiThread)
+    private int lastTickIndex = -1;
+    internal TickerModeTimeBudget() : base(AiTickerMode.TimeBudget, Consts.Description_TickerModeTimeBudget)
     {
     }
 
@@ -19,6 +21,25 @@ internal class TickerModeTimeBudget : TickerMode
 
     internal override void Tick(List<IAgent> agents, TickMetaData metaData)
     {
-        throw new NotImplementedException();
+        var endTime = Time.deltaTime + (int)Parameters[0].Value;
+
+        foreach(var agent in agents)
+        {
+            agent.Tick(metaData);
+            
+            if (lastTickIndex >= agents.Count)
+            {
+                lastTickIndex = 0;
+            }
+            else
+            {
+                lastTickIndex++;
+            }
+
+            if (Time.deltaTime >= endTime)
+            {
+                break;
+            }
+        }
     }
 }
