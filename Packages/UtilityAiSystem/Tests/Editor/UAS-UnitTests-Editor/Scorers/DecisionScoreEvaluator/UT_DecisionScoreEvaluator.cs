@@ -77,13 +77,13 @@ public class UT_DecisionScoreEvaluator
     [Test]
     public void GetName_Default_ReturnsCorrectName()
     {
-        Assert.AreEqual(Statics.Name_DefaultDSE, uut.GetName());
+        Assert.AreEqual(Consts.Name_DefaultDSE, uut.GetName());
     }
 
     [Test]
     public void GetDescription_Default_ReturnsCorrectDescription()
     {
-        Assert.AreEqual(Statics.Description_DefaultDSE, uut.GetDescription());
+        Assert.AreEqual(Consts.Description_DefaultDSE, uut.GetDescription());
     }
 
     [Test]

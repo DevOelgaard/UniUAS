@@ -26,11 +26,11 @@ public class AiInspectorComponent : EditorWindow
     private AgentManager agentManager => AgentManager.Instance;
 
 
-    [MenuItem(Statics.MenuName + Statics.Name_AiInspector)]
+    [MenuItem(Consts.MenuName + Consts.Name_AiInspector)]
     public static void Open()
     {
         AiInspectorComponent wnd = GetWindow<AiInspectorComponent>();
-        wnd.titleContent = new GUIContent(Statics.Name_AiInspector);
+        wnd.titleContent = new GUIContent(Consts.Name_AiInspector);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }

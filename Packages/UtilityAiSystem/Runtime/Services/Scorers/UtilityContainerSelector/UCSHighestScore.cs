@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class UCSHighestScore : IUtilityContainerSelector
 {
-    private string name = Statics.Name_UCSHighestScore;
-    private string description = Statics.Description_UCSHighestScore;
+    private string name = Consts.Name_UCSHighestScore;
+    private string description = Consts.Description_UCSHighestScore;
 
     public string GetDescription()
     {

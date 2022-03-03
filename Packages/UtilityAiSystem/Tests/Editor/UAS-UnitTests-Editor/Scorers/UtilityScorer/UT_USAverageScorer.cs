@@ -30,13 +30,13 @@ public class UT_USAverageScorer
     [Test]
     public void GetName_Default_ReturnsCorrectName()
     {
-        Assert.AreEqual(Statics.Name_USAverageScore, uut.GetName());
+        Assert.AreEqual(Consts.Name_USAverageScore, uut.GetName());
     }
 
     [Test]
     public void GetDescription_Default_ReturnsCorrectDescription()
     {
-        Assert.AreEqual(Statics.Description_USAverageScore, uut.GetDescription());
+        Assert.AreEqual(Consts.Description_USAverageScore, uut.GetDescription());
     }
 
     [TestCase(1,1)]

@@ -31,15 +31,15 @@ internal class MainWindowService
     {
         switch (label)
         {
-            case Statics.Label_UAIModel:
+            case Consts.Label_UAIModel:
                 return typeof(UAIModel);
-            case Statics.Label_BucketModel:
+            case Consts.Label_BucketModel:
                 return typeof(Bucket);
-            case Statics.Label_DecisionModel:
+            case Consts.Label_DecisionModel:
                 return typeof(Decision);
-            case Statics.Label_ConsiderationModel:
+            case Consts.Label_ConsiderationModel:
                 return typeof(Consideration);
-            case Statics.Label_AgentActionModel:
+            case Consts.Label_AgentActionModel:
                 return typeof(AgentAction);
             default:
                 break;

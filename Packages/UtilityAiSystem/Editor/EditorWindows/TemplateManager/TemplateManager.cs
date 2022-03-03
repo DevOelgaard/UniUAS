@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using UniRx;
 
 
-public class TemplateManager : EditorWindow
+internal class TemplateManager : EditorWindow
 {
-    private IDisposable componentChangedSub;
     private IDisposable activeCollectionChangedSub;
 
     private CompositeDisposable modelsChangedSubsciptions = new CompositeDisposable();
@@ -23,6 +22,7 @@ public class TemplateManager : EditorWindow
     private Button resetButton;
     private Button saveButton;
     private Button loadButton;
+    private Button refreshButton;
     private UASTemplateService uASModel => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -40,16 +40,16 @@ public class TemplateManager : EditorWindow
     private List<string> dropDownChoices;
     private DropdownField dropDown;
 
-    [MenuItem(Statics.MenuName + Statics.Name_TemplateManager)]
-    public static void ShowExample()
+    [MenuItem(Consts.MenuName + Consts.Name_TemplateManager)]
+    internal static void ShowExample()
     {
         TemplateManager wnd = GetWindow<TemplateManager>();
-        wnd.titleContent = new GUIContent(Statics.Name_TemplateManager);
+        wnd.titleContent = new GUIContent(Consts.Name_TemplateManager);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920/3, 1080/2);
     }
 
-    public void CreateGUI()
+    internal void CreateGUI()
     {
         root = rootVisualElement;
 
@@ -101,6 +101,13 @@ public class TemplateManager : EditorWindow
             UpdateLeftPanel();
         });
 
+        refreshButton = root.Q<Button>("RefreshButton");
+        refreshButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            uASModel.Refresh();
+            UpdateLeftPanel();
+        });
+
 
         InitDropdown();
         UpdateLeftPanel();
@@ -108,7 +115,7 @@ public class TemplateManager : EditorWindow
 
     private void UpdateButtons()
     {
-        createNewButton.style.flexGrow = dropDown.value == Statics.Label_ConsiderationModel ? 0 : 1;
+        createNewButton.style.flexGrow = dropDown.value == Consts.Label_ConsiderationModel ? 0 : 1;
         copyButton.SetEnabled(SelectedModel != null);
         deleteButton.SetEnabled(SelectedModel != null);
     }
@@ -138,11 +145,11 @@ public class TemplateManager : EditorWindow
     private void InitDropdown()
     {
         dropDownChoices = new List<string> {
-                Statics.Label_UAIModel, 
-                Statics.Label_BucketModel, 
-                Statics.Label_DecisionModel, 
-                Statics.Label_ConsiderationModel,
-                Statics.Label_AgentActionModel
+                Consts.Label_UAIModel, 
+                Consts.Label_BucketModel, 
+                Consts.Label_DecisionModel, 
+                Consts.Label_ConsiderationModel,
+                Consts.Label_AgentActionModel
             };
 
         dropDown.label = "Categories";
@@ -226,7 +233,6 @@ public class TemplateManager : EditorWindow
 
     private void ClearSubscriptions()
     {
-        componentChangedSub?.Dispose();
         activeCollectionChangedSub?.Dispose();
         modelsChangedSubsciptions.Clear();
     }

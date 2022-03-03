@@ -108,7 +108,7 @@
           "FileName": "Bucket"
         },
         {
-          "Name": "Default",
+          "Name": "Write Ticker Count",
           "Description": null,
           "Decisions": [
             {
@@ -116,16 +116,10 @@
               "Description": null,
               "AgentActions": [
                 {
-                  "Parameters": [
-                    {
-                      "Name": "Output",
-                      "Value": "A2",
-                      "FileName": "Parameter"
-                    }
-                  ],
-                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Parameters": [],
+                  "Name": "Default (Demo_WriteTickCount)",
                   "Description": null,
-                  "FileName": "Demo_AgentActionParameter"
+                  "FileName": "Demo_WriteTickCount"
                 }
               ],
               "Considerations": [
@@ -427,6 +421,12 @@
       "Name": "Default (Demo_AgentActionParameter)",
       "Description": null,
       "FileName": "Demo_AgentActionParameter"
+    },
+    {
+      "Parameters": [],
+      "Name": "Default (Demo_WriteTickCount)",
+      "Description": null,
+      "FileName": "Demo_WriteTickCount"
     }
   ],
   "TestStrign": "",

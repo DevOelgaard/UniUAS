@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class DecisionScoreEvaluator: IDecisionScoreEvaluator
 {
-    private string name = Statics.Name_DefaultDSE;
-    private string description = Statics.Description_DefaultDSE; 
+    private string name = Consts.Name_DefaultDSE;
+    private string description = Consts.Description_DefaultDSE; 
     public IUtilityContainerSelector DecisionSelector;
     public IUtilityContainerSelector BucketSelector;
 
@@ -16,12 +16,12 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     {
         if (decisionSelector == null)
         {
-            decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Statics.Default_DecisionSelector);
+            decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_DecisionSelector);
         }
         DecisionSelector = decisionSelector;
         if (bucketSelector == null)
         {
-            bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Statics.Default_BucketSelector);
+            bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_BucketSelector);
         }
         BucketSelector = bucketSelector;
     }

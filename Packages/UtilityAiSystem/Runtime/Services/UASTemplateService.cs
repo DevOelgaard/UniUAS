@@ -4,8 +4,9 @@ using UniRxExtension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 
-public class UASTemplateService: RestoreAble
+internal class UASTemplateService: RestoreAble
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
@@ -18,7 +19,7 @@ public class UASTemplateService: RestoreAble
 
     private static UASTemplateService instance;
 
-    public UASTemplateService()
+    internal UASTemplateService()
     {
         Init();
     }
@@ -43,11 +44,11 @@ public class UASTemplateService: RestoreAble
         AgentActions = new ReactiveList<AiObjectModel>();
 
         collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
-        collectionsByLabel.Add(Statics.Label_UAIModel, AIs);
-        collectionsByLabel.Add(Statics.Label_BucketModel, Buckets);
-        collectionsByLabel.Add(Statics.Label_DecisionModel, Decisions);
-        collectionsByLabel.Add(Statics.Label_ConsiderationModel, Considerations);
-        collectionsByLabel.Add(Statics.Label_AgentActionModel, AgentActions);
+        collectionsByLabel.Add(Consts.Label_UAIModel, AIs);
+        collectionsByLabel.Add(Consts.Label_BucketModel, Buckets);
+        collectionsByLabel.Add(Consts.Label_DecisionModel, Decisions);
+        collectionsByLabel.Add(Consts.Label_ConsiderationModel, Considerations);
+        collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
 
         LoadCollectionsFromFile();
     }
@@ -68,7 +69,7 @@ public class UASTemplateService: RestoreAble
         AgentActions = UpdateListWithFiles<AgentAction>(AgentActions);
     }
 
-    public static UASTemplateService Instance
+    internal static UASTemplateService Instance
     {
         get
         {
@@ -81,7 +82,7 @@ public class UASTemplateService: RestoreAble
         }
     }
 
-    public UAIModel GetAiByName(string name)
+    internal UAIModel GetAiByName(string name)
     {
         var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
         if (aiTemplate == null)
@@ -92,7 +93,7 @@ public class UASTemplateService: RestoreAble
         return aiTemplate.Clone() as UAIModel;
     }
 
-    public ReactiveList<AiObjectModel> GetCollection(string label)
+    internal ReactiveList<AiObjectModel> GetCollection(string label)
     {
         if (collectionsByLabel.ContainsKey(label))
         {
@@ -107,15 +108,21 @@ public class UASTemplateService: RestoreAble
     {
         var elementsFromFiles = AssetDatabaseService.GetInstancesOfType<T>();
         elementsFromFiles = elementsFromFiles
-            .Where(e => collection.Values.FirstOrDefault(element => element.GetType() == e.GetType()) == null)
+            .Where(e => collection.Values.FirstOrDefault(element => element.GetType().FullName == e.GetType().FullName) == null)
             .Where(e => !e.GetType().ToString().Contains("Mock"))
             .ToList();
+
 
         foreach(var element in elementsFromFiles)
         {
             collection.Add(element as AiObjectModel);
         }
         return collection;
+    }
+
+    internal void Refresh()
+    {
+        LoadCollectionsFromFile();
     }
 
     internal void LoadFromFile()
@@ -149,13 +156,13 @@ public class UASTemplateService: RestoreAble
         subscriptions.Clear();
     }
 
-    public bool SaveToFile()
+    internal bool SaveToFile()
     {
         var sw = new System.Diagnostics.Stopwatch();
         sw.Reset();
         sw.Start();
         var state = new UASState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
-        PersistenceAPI.PersistJson<UASState>(state, Statics.File_MainSavePath, Statics.FileName_UASModelJson);
+        PersistenceAPI.PersistJson<UASState>(state, Consts.File_MainSavePath, Consts.FileName_UASModelJson);
         sw.Stop();
         var elapsed = sw.Elapsed;
         Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
@@ -309,7 +316,7 @@ public class UASTemplateService: RestoreAble
 
         internal static UASState LoadFromFile()
         {
-            return (UASState)PersistenceAPI.LoadJson<UASState>(Statics.File_MainSavePath + Statics.FileName_UASModelJson);
+            return (UASState)PersistenceAPI.LoadJson<UASState>(Consts.File_MainSavePath + Consts.FileName_UASModelJson);
         }
     }
 }

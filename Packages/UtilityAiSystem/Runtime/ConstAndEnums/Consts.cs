@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public static class Statics
+public static class Consts
 {
     internal const string MenuName = "Utility Ai System/";
     internal const string Path_MainFolder= "Assets/UAS/";

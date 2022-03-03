@@ -112,7 +112,7 @@ public class UAIModel: AiObjectModel
             if (bucketSelector == null)
             {
                 bucketSelector = ScorerService.Instance.ContainerSelectors.Values
-                    .FirstOrDefault(bS => bS.GetName() == Statics.Default_BucketSelector);
+                    .FirstOrDefault(bS => bS.GetName() == Consts.Default_BucketSelector);
             }
             return bucketSelector;
         }
@@ -129,7 +129,7 @@ public class UAIModel: AiObjectModel
             if (decisionSelector == null)
             {
                 decisionSelector = ScorerService.Instance.ContainerSelectors.Values
-                    .FirstOrDefault(bS => bS.GetName() == Statics.Default_DecisionSelector);
+                    .FirstOrDefault(bS => bS.GetName() == Consts.Default_DecisionSelector);
             }
             return decisionSelector;
         }
@@ -150,7 +150,7 @@ public class UAIModel: AiObjectModel
                     .Instance
                     .UtilityScorers
                     .Values
-                    .FirstOrDefault(e => e.GetName() == Statics.Default_UtilityScorer);
+                    .FirstOrDefault(e => e.GetName() == Consts.Default_UtilityScorer);
             }
             return utilityScorer;
         }

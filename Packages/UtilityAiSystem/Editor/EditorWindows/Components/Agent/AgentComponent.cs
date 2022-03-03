@@ -44,7 +44,7 @@ public class AgentComponent: VisualElement
         aiDropdown.label = "AIs";
         aiDropdown.choices = UASTemplateService
             .Instance
-            .GetCollection(Statics.Label_UAIModel)
+            .GetCollection(Consts.Label_UAIModel)
             .Values
             .Select(x => x.Name)
             .ToList();

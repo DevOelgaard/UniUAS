@@ -10,6 +10,7 @@
                 <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="flex-grow: 1;" />
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
                 <ui:Button text="Load" display-tooltip-when-elided="true" name="LoadButton" />
+                <ui:Button text="Refresh" display-tooltip-when-elided="true" name="RefreshButton" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="right-panel" />

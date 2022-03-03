@@ -29,11 +29,11 @@ public class USCompensationScorer : IUtilityScorer
 
     public string GetDescription()
     {
-        return Statics.Description_USCompensationScorer;
+        return Consts.Description_USCompensationScorer;
     }
 
     public string GetName()
     {
-        return Statics.Name_USCompensationScorer;
+        return Consts.Name_USCompensationScorer;
     }
 }
