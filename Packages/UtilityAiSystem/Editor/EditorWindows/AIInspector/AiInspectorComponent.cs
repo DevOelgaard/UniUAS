@@ -38,7 +38,6 @@ public class AiInspectorComponent : EditorWindow
     public void CreateGUI()
     {
         root = rootVisualElement;
-
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
 

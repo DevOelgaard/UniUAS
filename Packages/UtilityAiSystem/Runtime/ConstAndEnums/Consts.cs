@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public static class Consts
 {
+    // Paths
     internal const string MenuName = "Utility Ai System/";
     internal const string Path_MainFolder= "Assets/UAS/";
     internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
@@ -21,6 +22,7 @@ public static class Consts
     internal const string File_UASModel = File_MainSavePath + "UASTemplates.dat";
     internal const string FileName_UASModelJson = "UASTemplates.json";
 
+    // Labels
     internal const string Label_MainWindowModel = "MainWindowModel";
     internal const string Label_AgentActionModel = "AgentActions"; 
     internal const string Label_ConsiderationModel = "Considerations";
@@ -28,6 +30,8 @@ public static class Consts
     internal const string Label_BucketModel = "Buckets";
     internal const string Label_UAIModel = "AIs";
 
+
+    // Scorers
     public const string Default_UtilityScorer = Name_USAverageScore;
     public const string Default_BucketSelector = Name_UCSHighestScore;
     public const string Default_DecisionSelector = Name_UCSHighestScore;
@@ -44,6 +48,17 @@ public static class Consts
     public const string Name_DefaultDSE = "Default DSE";
     public const string Description_DefaultDSE = "Selects the highest scored object";
 
+    // Editor Windows
     public const string Name_TemplateManager = "Template Manager";
-    public const string Name_AiInspector = "Ai Inspector";
+    public const string Name_AiInspector = "Runtime Inspector";
+    public const string Name_AiTickerManager = "Ticker Manager";
+    
+    
+    // Ticker Modes
+    public const string Description_TickerModeUnrestricted = "No restrictions to execution time";
+    public const string Description_TickerModeMultiThread = "No restrictions to execution time. Ticks are divided over X frames";
+    public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate";
+    public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe";
+
+
 }

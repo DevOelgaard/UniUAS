@@ -9,7 +9,7 @@ using UniRx;
 
 public class ParameterComponent: VisualElement
 {
-    private CompositeDisposable subscriptins = new CompositeDisposable();
+    private CompositeDisposable disposables = new CompositeDisposable();
     public ParameterComponent(Parameter parameter)
     {
         var t = parameter.Value.GetType();
@@ -28,7 +28,7 @@ public class ParameterComponent: VisualElement
                 {
                     field.value = (int)v;
                 })
-                .AddTo(subscriptins);
+                .AddTo(disposables);
             Add(field);
         }
         else if (t == typeof(float))
@@ -43,7 +43,7 @@ public class ParameterComponent: VisualElement
                 {
                     field.value = (float)v;
                 })
-                .AddTo(subscriptins);
+                .AddTo(disposables);
             Add(field);
         }
         else if (t == typeof(string))
@@ -56,7 +56,7 @@ public class ParameterComponent: VisualElement
                 {
                     field.value = (string)v;
                 })
-                .AddTo(subscriptins);
+                .AddTo(disposables);
             Add(field);
 
         } else if (t == typeof(long))
@@ -69,13 +69,25 @@ public class ParameterComponent: VisualElement
                 {
                     field.value = (long)v;
                 })
-                .AddTo(subscriptins); 
+                .AddTo(disposables); 
+            Add(field);
+        } else if (t == typeof(bool))
+        {
+            var field = new Toggle(parameter.Name);
+            field.value = (bool)parameter.Value;
+            field.RegisterCallback<ChangeEvent<bool>>(evt => parameter.Value = evt.newValue);
+            parameter.ValueChanged
+                .Subscribe(v =>
+                {
+                    field.value = (bool)v;
+                })
+                .AddTo(disposables);
             Add(field);
         }
     }
 
     ~ParameterComponent()
     {
-        subscriptins.Clear();
+        disposables.Clear();
     }
 }

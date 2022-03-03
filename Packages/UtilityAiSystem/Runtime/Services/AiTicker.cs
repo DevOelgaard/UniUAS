@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UniRx;
 using MoreLinq;
+using UnityEngine;
 
 internal class AiTicker
 {
@@ -14,27 +15,39 @@ internal class AiTicker
     public static AiTicker Instance => instance ?? (instance = new AiTicker());
     private AgentManager agentManager => AgentManager.Instance;
     private int tickCount = 0;
+    internal AiTickerSettingsModel Settings = new AiTickerSettingsModel();
 
     internal AiTicker()
     {
-        //Observable.IntervalFrame(120)
-        //    .Subscribe(_ => TickAis())
-        //    .AddTo(disposables);
+        Settings.TickerModes = new List<TickerMode>();
+        Settings.TickerModes.Add(new TickerModeDesiredFrameRate());
+        Settings.TickerModes.Add(new TickerModeMultiThread());
+        Settings.TickerModes.Add(new TickerModeTimeBudget());
+        Settings.TickerModes.Add(new TickerModeUnrestricted());
+
+        Settings.TickerMode = Settings.TickerModes.First(m => m.Name == AiTickerMode.Unrestricted);
     }
 
     internal void Start()
     {
-
+        Observable.TimerFrame(1)
+            .Subscribe(_ => TickAis())
+            .AddTo(disposables);
     }
 
     internal void TickAis()
     {
         tickCount++;
-        agentManager.Model.Agents.Values
-            .ForEach(agent =>
-            {
-                agent.Ai.Context.SetContext(AiContextKey.TickValue_INT,tickCount);
-                agent.Tick();
-            });
+        var metaData = new TickMetaData();
+        metaData.TickCount = tickCount;
+        Settings.TickerMode.Tick(agentManager.Model.Agents.Values, metaData);
+    }
+
+    internal void SetTickerMode(AiTickerMode tickerMode)
+    {
+        var newMode = Settings.TickerModes.FirstOrDefault(m => m.Name == tickerMode);
+        if (newMode == null) return;
+        Settings.TickerMode = newMode;
+        Debug.Log("TickerMode: " + Settings.TickerMode.Name);
     }
 }
