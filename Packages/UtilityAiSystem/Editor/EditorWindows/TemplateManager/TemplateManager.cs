@@ -182,6 +182,7 @@ public class TemplateManager : EditorWindow
         {
             var button = new Button();
             button.text = model.Name;
+            button.style.unityTextAlign = TextAnchor.MiddleLeft;
             button.RegisterCallback<MouseUpEvent>(evt =>
             {
                 SelectedModel = model;
