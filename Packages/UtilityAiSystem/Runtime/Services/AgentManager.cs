@@ -47,7 +47,6 @@ internal class AgentManager
         Model.AgentsByIdentifier[identifier].Add(agent);
         Model.Agents.Add(agent);
         agentsUpdated.OnNext(agent);
-        Debug.Log("Registering : " + agent.Model);
     }
 
     internal void Unregister(IAgent agent)

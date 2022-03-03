@@ -20,10 +20,4 @@ public class AgentModel
     public IObservable<string> OnNameChanged => onNameChanged;
     private Subject<string> onNameChanged = new Subject<string> ();
 
-    public UAIModel AI { get; set; }
-
-    public override string ToString()
-    {
-        return Name + " Ai: " + AI?.Name;
-    }
 }

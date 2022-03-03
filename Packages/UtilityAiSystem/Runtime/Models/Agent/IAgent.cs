@@ -9,4 +9,6 @@ public interface IAgent
     AgentModel Model { get; }
     string TypeIdentifier { get; }
     void Tick();
+    void SetAi(UAIModel model);
+    UAIModel Ai { get; set; }
 }

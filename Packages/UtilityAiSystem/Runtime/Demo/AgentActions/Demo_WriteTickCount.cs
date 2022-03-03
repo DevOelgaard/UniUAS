@@ -15,6 +15,7 @@ internal class Demo_WriteTickCount : AgentAction
     public override void OnStart(AiContext context)
     {
         base.OnStart(context);
-        Debug.Log("TickCount: " + (int)context.GetContext(AiContextKey.TickValue_INT));
+        var value = context.GetContext<int>(AiContextKey.TickValue_INT);
+        Debug.Log("Agent: " + context.Agent.Model.Name + " TickCount: " + value); ;
     }
 }

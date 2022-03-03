@@ -20,6 +20,6 @@ internal class Demo_AgentActionParameter : AgentAction
     {
         base.OnStart(context);
 
-        Debug.Log(context.Agent.Model.Name + " " + (string)Parameters[0].Value);
+        Debug.Log("Agent: " + context.Agent.Model.Name + " " + (string)Parameters[0].Value);
     }
 }

@@ -138,7 +138,6 @@ public class AiInspectorComponent : EditorWindow
 
         agentComponent = new AgentComponent(SelectedAgent);
         rightContainer.Add(agentComponent);
-        Debug.Log("Selecting: " + SelectedAgent);
     }
 
     private IAgent SelectedAgent

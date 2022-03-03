@@ -17,9 +17,9 @@ internal class AiTicker
 
     internal AiTicker()
     {
-        Observable.IntervalFrame(120)
-            .Subscribe(_ => TickAis())
-            .AddTo(disposables);
+        //Observable.IntervalFrame(120)
+        //    .Subscribe(_ => TickAis())
+        //    .AddTo(disposables);
     }
 
     internal void Start()
@@ -27,13 +27,13 @@ internal class AiTicker
 
     }
 
-    private void TickAis()
+    internal void TickAis()
     {
         tickCount++;
         agentManager.Model.Agents.Values
             .ForEach(agent =>
             {
-                agent.Model.AI.Context.SetContext(AiContextKey.TickValue_INT,tickCount);
+                agent.Ai.Context.SetContext(AiContextKey.TickValue_INT,tickCount);
                 agent.Tick();
             });
     }

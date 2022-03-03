@@ -11,7 +11,6 @@ public abstract class RestoreAble
     protected abstract void RestoreInternal(RestoreState state);
     public static T Restore<T>(RestoreState state) where T:RestoreAble
     {
-        Debug.Log("State: " + state.FileName);
         var type = Type.GetType(state.FileName);
         if (type == null)
         {

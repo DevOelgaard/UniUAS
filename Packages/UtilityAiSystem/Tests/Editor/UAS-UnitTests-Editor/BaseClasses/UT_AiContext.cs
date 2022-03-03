@@ -25,7 +25,7 @@ public class UT_AiContext
         var key = "TestKey";
         float value = 1f;
         uut.SetContext(key, value);
-        var result = (float)uut.GetContext(key);
+        var result = uut.GetContext<float>(key);
 
         Assert.AreEqual(value, result);
     }
@@ -40,7 +40,7 @@ public class UT_AiContext
         uut.SetContext(key, original);
         uut.SetContext(key, newValue);
 
-        var result = (string)uut.GetContext(key);
+        var result = uut.GetContext<string>(key);
 
         Assert.AreEqual(newValue, result);
     }
@@ -53,7 +53,7 @@ public class UT_AiContext
 
         uut.SetContext(key, original);
         uut.RemoveContext(key);
-        var result = uut.GetContext(key);
+        var result = uut.GetContext<string>(key);
 
         Assert.That(result == null);
     }

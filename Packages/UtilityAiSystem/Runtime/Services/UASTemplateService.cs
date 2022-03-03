@@ -27,7 +27,6 @@ internal class UASTemplateService: RestoreAble
     private UASTemplateService(bool restore)
     {
         Init();
-        Debug.Log("Constructiong");
 
         if (restore)
         {
@@ -75,7 +74,6 @@ internal class UASTemplateService: RestoreAble
         {
             if (instance == null)
             {
-                Debug.Log("Creating new UAS-Model");
                 instance = new UASTemplateService(true);
             }
             return instance;

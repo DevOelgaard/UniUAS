@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine.UIElements;
 using System.Linq;
+using MoreLinq;
 
-public class AgentComponent: VisualElement
+internal class AgentComponent: VisualElement
 {
     private TemplateContainer root;
     private VisualElement body;
@@ -12,10 +13,12 @@ public class AgentComponent: VisualElement
     private DropdownField aiDropdown;
     private UAIComponent aiComponent;
     private VisualElement footer;
-    private Button tickerButton;
+    private Button tickAgent;
+    private Button tickAllButton;
+    private Button applyToAllButton;
     private IAgent agent;
 
-    public AgentComponent(IAgent agent)
+    internal AgentComponent(IAgent agent)
     {
         this.agent = agent;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
@@ -24,13 +27,36 @@ public class AgentComponent: VisualElement
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
         footer = root.Q<VisualElement>("Footer");
-        tickerButton = new Button();
-        tickerButton.text = "TEST-Tick";
-        tickerButton.RegisterCallback<MouseUpEvent>(evt =>
+
+        tickAgent = new Button();
+        tickAgent.text = "TEST-Tick-Agent";
+        tickAgent.RegisterCallback<MouseUpEvent>(evt =>
         {
             agent.Tick();
         });
-        footer.Add(tickerButton);
+        footer.Add(tickAgent);
+
+        tickAllButton = new Button();
+        tickAllButton.text = "TEST-Tick-All";
+        tickAllButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            AiTicker.Instance.TickAis();
+        });
+        footer.Add(tickAllButton);
+
+        applyToAllButton = new Button();
+        applyToAllButton.text = "Apply to all";
+        applyToAllButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            AgentManager.Instance.GetAgentsByIdentifier(agent.TypeIdentifier).Values
+                .ForEach(a =>
+                {
+                    var aiClone = agent.Ai.Clone() as UAIModel;
+                    a.SetAi(aiClone);
+                });
+
+        });
+        footer.Add(applyToAllButton);
 
         agentName.text = agent.Model.Name;
 
@@ -49,14 +75,14 @@ public class AgentComponent: VisualElement
             .Select(x => x.Name)
             .ToList();
 
-        if (agent.Model.AI != null && aiDropdown.choices.Contains(agent.Model.AI.Name))
+        if (agent.Ai != null && aiDropdown.choices.Contains(agent.Ai.Name))
         {
-            aiDropdown.value = agent.Model.AI?.Name;
+            aiDropdown.value = agent.Ai?.Name;
         }
 
         aiDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
         {
-            agent.Model.AI = UASTemplateService.Instance.GetAiByName(evt.newValue);
+            agent.Ai = UASTemplateService.Instance.GetAiByName(evt.newValue);
             UpdateAiComponent();
         });
     }
@@ -65,8 +91,8 @@ public class AgentComponent: VisualElement
     {
         body.Clear();
 
-        if (agent.Model.AI == null) return;
-        aiComponent = new UAIComponent(agent.Model.AI);
+        if (agent.Ai == null) return;
+        aiComponent = new UAIComponent(agent.Ai);
         body.Add(aiComponent);
     }
 }

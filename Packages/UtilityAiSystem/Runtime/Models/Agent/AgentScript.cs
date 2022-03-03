@@ -15,11 +15,22 @@ public abstract class AgentScript : IAgent
     [SerializeField]
     protected string DefaultAiName => GetDefaultAiName();
 
+    private UAIModel ai;
+    public UAIModel Ai
+    {
+        get => ai;
+        set
+        {
+            ai = value;
+            ai.Context.Agent = this;
+        }
+    }
+
     public AgentScript()
     {
         model.Name = SetAgentName();
-        model.AI = UASTemplateService.Instance.GetAiByName(DefaultAiName);
-        model.AI.Context.Agent = this;
+        var ai = UASTemplateService.Instance.GetAiByName(DefaultAiName);
+        SetAi(ai);
         AgentManager.Instance.Register(this);
     }
 
@@ -46,5 +57,10 @@ public abstract class AgentScript : IAgent
     public void Tick()
     {
         throw new NotImplementedException();
+    }
+
+    public void SetAi(UAIModel model)
+    {
+        Ai = model;
     }
 }

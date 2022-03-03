@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 public class AiContext
 {
     public IAgent Agent;
-    public AgentAction CurrentAction;
+    internal AgentAction CurrentAction;
     private Dictionary<string, object> contextStringKey = new Dictionary<string, object>();
     private Dictionary<AiContextKey, object> contextEnumKey = new Dictionary<AiContextKey, object>();
-    public IUtilityScorer UtilityScorer = new USAverageScorer();
+    internal IUtilityScorer UtilityScorer = new USAverageScorer();
     //public IUtilityContainerSelector BucketSelector = new UCSHighestScore();
     //public IUtilityContainerSelector DecisionSelector = new UCSHighestScore();
          
@@ -24,14 +24,14 @@ public class AiContext
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
-    public object GetContext(string key)
+    public T GetContext<T>(string key)
     {
         if (contextStringKey.ContainsKey(key))
         {
-            return contextStringKey[key];
+            return (T)contextStringKey[key];
         } else
         {
-            return null;
+            return default(T);
         }
     }
 
@@ -69,15 +69,15 @@ public class AiContext
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
-    public object GetContext(AiContextKey key)
+    public T GetContext<T>(AiContextKey key)
     {
         if (contextEnumKey.ContainsKey(key))
         {
-            return contextEnumKey[key];
+            return (T)contextEnumKey[key];
         }
         else
         {
-            return null;
+            return default;
         }
     }
 
