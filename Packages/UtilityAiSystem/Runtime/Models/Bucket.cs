@@ -46,7 +46,7 @@ public class Bucket : UtilityContainer
 
     internal override float GetUtility(AiContext context)
     {
-        LastCalculatedUtility = base.GetUtility(context) * Convert.ToSingle(Weight.Value);
+        LastCalculatedUtility = context.UtilityScorer.CalculateUtility(Considerations.Values, context) * Convert.ToSingle(Weight.Value);
         return LastCalculatedUtility;
     }
 

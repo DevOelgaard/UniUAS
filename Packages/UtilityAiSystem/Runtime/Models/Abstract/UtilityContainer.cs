@@ -24,7 +24,18 @@ public abstract class UtilityContainer : AiObjectModel
         }
     }
 
-    public float LastCalculatedUtility { get; protected set; } = -1f;
+    private float lastCalculatedUtility;
+    public float LastCalculatedUtility
+    {
+        get => lastCalculatedUtility;
+        set
+        {
+            lastCalculatedUtility = value;
+            ScoreModels[0].Value = value;
+            lastUtilityChanged.OnNext(value);
+        }
+    }
+    
     public IObservable<float> LastUtilityScoreChanged => lastUtilityChanged;
     private Subject<float> lastUtilityChanged = new Subject<float>();
 
@@ -43,8 +54,6 @@ public abstract class UtilityContainer : AiObjectModel
     internal virtual float GetUtility(AiContext context)
     {
         LastCalculatedUtility = context.UtilityScorer.CalculateUtility(Considerations.Values, context);
-        lastUtilityChanged.OnNext(LastCalculatedUtility);
-        ScoreModels[0].Value = LastCalculatedUtility;
         return LastCalculatedUtility;
     }
 
