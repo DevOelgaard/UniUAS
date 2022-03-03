@@ -115,6 +115,7 @@ public class AiInspectorComponent : EditorWindow
         {
             var button = new Button();
             button.text = agent.Model.Name;
+            button.style.unityTextAlign = TextAnchor.MiddleLeft;
             button.RegisterCallback<MouseUpEvent>(evt =>
             {
                 SelectedAgent = agent;
