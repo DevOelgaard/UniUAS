@@ -103,7 +103,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         }
         tempElement = (T)element.Clone();
         tempBody.Clear();
-        var elementComponent =  MainWindowService.GetComponent(element);
+        var elementComponent =  MainWindowService.GetComponent(tempElement);
         tempBody.Add(elementComponent);
     }
 
