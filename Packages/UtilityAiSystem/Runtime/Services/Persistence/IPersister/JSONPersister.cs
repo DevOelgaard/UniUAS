@@ -35,7 +35,7 @@ internal class JSONPersister : IPersister
         if (!File.Exists(directory))
         {
             Directory.CreateDirectory(directory);
-            var file = File.Create(path + fileName);
+            var file = File.Create(directory + fileName);
             file.Close();
         }
     }

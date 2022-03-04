@@ -18,6 +18,8 @@ internal class UASTemplateService: RestoreAble
     public ReactiveList<AiObjectModel> AgentActions;
 
     private static UASTemplateService instance;
+    private PersistenceAPI persistApi = new PersistenceAPI(new JSONPersister());
+
 
     internal UASTemplateService()
     {
@@ -123,14 +125,7 @@ internal class UASTemplateService: RestoreAble
         LoadCollectionsFromFile();
     }
 
-    internal void LoadFromFile()
-    {
-        var state = UASTemplateServiceState.LoadFromFile();
-        if(state != null)
-        {
-            RestoreInternal(state);
-        }
-    }
+
 
     private void OnEnable()
     {
@@ -160,13 +155,21 @@ internal class UASTemplateService: RestoreAble
         sw.Reset();
         sw.Start();
         var state = new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
-        var persistApi = new PersistenceAPI(new JSONPersister());
         persistApi.SaveObjectPanel<UASTemplateServiceState>(state);
-        //PersistenceAPI.PersistJson<UASState>(state, Consts.File_MainSavePath, Consts.FileName_UASModelJson);
         sw.Stop();
         var elapsed = sw.Elapsed;
         Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
         return true;
+    }
+
+    internal void LoadFromFile()
+    {
+        //var state = UASTemplateServiceState.LoadFromFile();
+        var state = persistApi.LoadObjectPanel<UASTemplateServiceState>();
+        if (state != null)
+        {
+            RestoreInternal(state);
+        }
     }
 
     internal void Add(AiObjectModel model)

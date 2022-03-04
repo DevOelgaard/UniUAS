@@ -43,10 +43,4 @@ internal class PersistenceAPI
     {
         return persister.LoadObject<T>(path);
     }
-
-    private string GetPath(string title, string startDirectory, string extension)
-    {
-        var p = EditorUtility.OpenFolderPanel(title, startDirectory, extension);
-        return p;
-    }
 }
