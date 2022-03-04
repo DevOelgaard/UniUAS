@@ -27,6 +27,7 @@ internal class TemplateManager : EditorWindow
 
     private MainWindowComponent mainWindowComponent;
     private AiObjectModel selectedModel;
+    private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
     private AiObjectModel SelectedModel
     {
         get => selectedModel;
@@ -89,15 +90,18 @@ internal class TemplateManager : EditorWindow
         });
 
         saveButton = root.Q<Button>("SaveButton");
+        saveButton.text = "Save collection";
         saveButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            uASModel.SaveToFile();
+            persistenceAPI.SaveObjectPanel(uASModel);
         });
 
         loadButton = root.Q<Button>("LoadButton");
+        loadButton.text = "Load collection";
         loadButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            uASModel.LoadFromFile();
+            var uasState = persistenceAPI.LoadObjectPanel<UASTemplateServiceState>();
+            uASModel.Restore(uasState);
             UpdateLeftPanel();
         });
 

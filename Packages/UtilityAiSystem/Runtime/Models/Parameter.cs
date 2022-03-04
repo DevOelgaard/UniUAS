@@ -44,6 +44,12 @@ public class Parameter: RestoreAble
         Name = state.Name;
         v = state.Value;
     }
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
 }
 
 [Serializable]

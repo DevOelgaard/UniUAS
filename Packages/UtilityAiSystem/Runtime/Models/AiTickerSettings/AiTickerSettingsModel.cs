@@ -23,10 +23,7 @@ public class AiTickerSettingsModel: RestoreAble
 
     internal List<TickerMode> TickerModes;
 
-    internal AiTickerSettingsState GetState()
-    {
-        return new AiTickerSettingsState(TickerMode, TickerModes, this);
-    }
+
 
     protected override void RestoreInternal(RestoreState state)
     {
@@ -38,6 +35,16 @@ public class AiTickerSettingsModel: RestoreAble
             var tickerM = Restore<TickerMode>(t);
             TickerModes.Add(tickerM);
         }
+    }
+    internal AiTickerSettingsState GetState()
+    {
+        return new AiTickerSettingsState(TickerMode, TickerModes, this);
+    }
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
     }
 }
 

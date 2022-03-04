@@ -44,11 +44,6 @@ public abstract class ResponseCurveModel: RestoreAble
 
     protected abstract float ResponseFunction(float x);
 
-    public ResponseCurveState GetSerializable()
-    {
-        return new ResponseCurveState(Name, MinY, MaxY, Parameters, this);
-    }
-
     protected override void RestoreInternal(RestoreState s)
     {
         var state = (ResponseCurveState)s;
@@ -61,6 +56,16 @@ public abstract class ResponseCurveModel: RestoreAble
             var parameter = Parameter.Restore<Parameter>(p);
             Parameters.Add(parameter);
         }
+    }
+    public ResponseCurveState GetState()
+    {
+        return new ResponseCurveState(Name, MinY, MaxY, Parameters, this);
+    }
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
     }
 }
 

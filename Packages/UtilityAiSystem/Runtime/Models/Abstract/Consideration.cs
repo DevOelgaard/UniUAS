@@ -114,9 +114,15 @@ public abstract class Consideration : AiObjectModel
         return new ConsiderationState(Name,Description,Parameters, ResponseCurve, Min, Max, this);
     }
 
-    internal void Restore(ConsiderationState state)
-    {
+    //internal void Restore(ConsiderationState state)
+    //{
 
+    //}
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
     }
 }
 
@@ -138,7 +144,7 @@ public class ConsiderationState: RestoreState
     {
         Name = name;
         Description = description;
-        ResponseCurveState = responseCurve.GetSerializable();
+        ResponseCurveState = responseCurve.GetState();
         Min = min.GetState();
         Max = max.GetState();
 

@@ -96,6 +96,12 @@ public class Bucket : UtilityContainer
         base.ClearSubscriptions();
         decisionSub?.Dispose();
     }
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
 }
 
 [Serializable]

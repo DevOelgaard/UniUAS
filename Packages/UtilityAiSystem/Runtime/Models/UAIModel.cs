@@ -104,6 +104,11 @@ public class UAIModel: AiObjectModel
         }
     }
 
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
     private IUtilityContainerSelector bucketSelector;
     public IUtilityContainerSelector BucketSelector
     {

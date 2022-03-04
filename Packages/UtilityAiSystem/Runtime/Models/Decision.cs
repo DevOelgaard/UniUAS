@@ -56,6 +56,11 @@ public class Decision: UtilityContainer
     {
         return new DecisionState(Name, Description, AgentActions.Values, Considerations.Values, this);
     }
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
 
     internal override AiObjectModel Clone()
     {

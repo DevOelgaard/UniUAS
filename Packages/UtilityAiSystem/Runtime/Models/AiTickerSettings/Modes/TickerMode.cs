@@ -27,6 +27,12 @@ public abstract class TickerMode: RestoreAble
         return new TickerModeState(Name, Description, Parameters, this);
     }
 
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
+
     protected override void RestoreInternal(RestoreState state)
     {
         var s = state as TickerModeState;

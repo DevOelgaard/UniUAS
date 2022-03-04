@@ -56,6 +56,17 @@ internal class AiTicker: RestoreAble
         Settings = Restore<AiTickerSettingsModel>(s.Settings);
     }
 
+    public AiTickerState GetState()
+    {
+        return new AiTickerState(Settings, this);
+    }
+
+    internal override void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
+
     ~AiTicker()
     {
         disposables.Clear();

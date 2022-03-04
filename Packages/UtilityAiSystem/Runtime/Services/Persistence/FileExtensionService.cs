@@ -14,37 +14,37 @@ internal class FileExtensionService
 
     internal static string GetExtension(Type type)
     {
-        if (type.IsAssignableFrom(typeof(AgentActionState)))
+        if (type.IsAssignableFrom(typeof(AgentAction)))
         {
             return Consts.FileExtension_AgentAction;
         }
 
-        if (type.IsAssignableFrom(typeof(ConsiderationState)))
+        if (type.IsAssignableFrom(typeof(Consideration)))
         {
             return Consts.FileExtension_Consideration;
         }
 
-        if (type.IsAssignableFrom(typeof(DecisionState)))
+        if (type.IsAssignableFrom(typeof(Decision)))
         {
             return Consts.FileExtension_Decision;
         }
 
-        if (type.IsAssignableFrom(typeof(BucketState)))
+        if (type.IsAssignableFrom(typeof(Bucket)))
         {
             return Consts.FileExtension_Bucket;
         }
 
-        if (type.IsAssignableFrom(typeof(UAIModelState)))
+        if (type.IsAssignableFrom(typeof(UAIModel)))
         {
             return Consts.FileExtension_UAI;
         }
 
-        if (type.IsAssignableFrom(typeof(UASTemplateServiceState)))
+        if (type.IsAssignableFrom(typeof(UASTemplateService)))
         {
-            return Consts.FileExtension_UasTemplate;
+            return Consts.FileExtension_UasTemplateCollection;
         }
 
-        if (type.IsAssignableFrom(typeof(AiTickerSettingsState)))
+        if (type.IsAssignableFrom(typeof(AiTickerSettingsModel)))
         {
             return Consts.FileExtension_TickerSettings;
         }

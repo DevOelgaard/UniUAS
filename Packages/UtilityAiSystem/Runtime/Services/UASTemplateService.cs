@@ -18,7 +18,6 @@ internal class UASTemplateService: RestoreAble
     public ReactiveList<AiObjectModel> AgentActions;
 
     private static UASTemplateService instance;
-    private PersistenceAPI persistApi = new PersistenceAPI(new JSONPersister());
 
 
     internal UASTemplateService()
@@ -32,7 +31,7 @@ internal class UASTemplateService: RestoreAble
 
         if (restore)
         {
-            LoadFromFile();
+            //LoadFromFile();
         } 
     }
 
@@ -149,27 +148,33 @@ internal class UASTemplateService: RestoreAble
         subscriptions.Clear();
     }
 
-    internal bool SaveToFile()
+    internal UASTemplateServiceState GetState()
     {
-        var sw = new System.Diagnostics.Stopwatch();
-        sw.Reset();
-        sw.Start();
-        var state = new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
-        persistApi.SaveObjectPanel<UASTemplateServiceState>(state);
-        sw.Stop();
-        var elapsed = sw.Elapsed;
-        Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
-        return true;
+        return new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
     }
 
-    internal void LoadFromFile()
+    //internal bool SaveToFile()
+    //{
+    //    var sw = new System.Diagnostics.Stopwatch();
+    //    sw.Reset();
+    //    sw.Start();
+    //    var state = GetState();
+    //    persistApi.SaveObjectPanel<UASTemplateServiceState>(state);
+    //    sw.Stop();
+    //    var elapsed = sw.Elapsed;
+    //    Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
+    //    return true;
+    //}
+
+    internal override void SaveToFile(string path, IPersister persister)
     {
-        //var state = UASTemplateServiceState.LoadFromFile();
-        var state = persistApi.LoadObjectPanel<UASTemplateServiceState>();
-        if (state != null)
-        {
-            RestoreInternal(state);
-        }
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
+
+    internal void Restore(UASTemplateServiceState state)
+    {
+        RestoreInternal(state);
     }
 
     internal void Add(AiObjectModel model)
@@ -261,6 +266,7 @@ internal class UASTemplateService: RestoreAble
             AgentActions.Add(action);
         }
     }
+
 }
 
 [Serializable]

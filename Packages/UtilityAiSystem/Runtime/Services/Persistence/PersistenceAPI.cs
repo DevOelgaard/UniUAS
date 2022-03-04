@@ -13,7 +13,7 @@ internal class PersistenceAPI
         this.persister = persister;
     }
 
-    internal void SaveObjectPanel<T>(T o)
+    internal void SaveObjectPanel(RestoreAble o)
     {
         var extension = FileExtensionService.GetExtension(o);
         var path = EditorUtility.SaveFilePanel("Save object", "", "name", extension);
@@ -21,8 +21,8 @@ internal class PersistenceAPI
         {
             return;
         }
-        //var path = GetPath("Save object", "", ".test");
-        persister.SaveObject(o, path);
+        o.SaveToFile(path, persister);
+        //persister.SaveObject(o, path);
     }
 
     internal void SaveObjectPath<T>(T o, string path)
