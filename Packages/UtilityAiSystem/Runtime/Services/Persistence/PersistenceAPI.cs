@@ -27,10 +27,9 @@ internal class PersistenceAPI
         //persister.SaveObject(o, path);
     }
 
-    internal void SaveObjectPath<T>(T o, string path)
+    internal void SaveObjectPath(RestoreAble o, string path)
     {
-        path += FileExtensionService.GetExtension(o);
-        persister.SaveObject(o, path);
+        o.SaveToFile(path, persister);
     }
 
     internal T LoadObjectPanel<T>()

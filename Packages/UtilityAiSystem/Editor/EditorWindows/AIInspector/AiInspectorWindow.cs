@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UniRx;
 
-public class AiInspectorComponent : EditorWindow
+public class AiInspectorWindow : EditorWindow
 {
     private CompositeDisposable agentNameUpdatedSubscriptions = new CompositeDisposable();
 
@@ -29,7 +29,7 @@ public class AiInspectorComponent : EditorWindow
     [MenuItem(Consts.MenuName + Consts.Name_AiInspector)]
     public static void Open()
     {
-        AiInspectorComponent wnd = GetWindow<AiInspectorComponent>();
+        AiInspectorWindow wnd = GetWindow<AiInspectorWindow>();
         wnd.titleContent = new GUIContent(Consts.Name_AiInspector);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
@@ -158,7 +158,12 @@ public class AiInspectorComponent : EditorWindow
         agentNameUpdatedSubscriptions.Clear();
     }
 
-    ~AiInspectorComponent()
+    private void OnDestroy()
+    {
+        ClearSubscriptions();
+    }
+
+    ~AiInspectorWindow()
     {
         ClearSubscriptions();
     }

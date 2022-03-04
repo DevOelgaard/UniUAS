@@ -4,6 +4,8 @@
             <uie:EnumField label="Mode" value="Center" name="Mode-EnumField" />
         </ui:VisualElement>
         <ui:VisualElement name="Body" style="flex-grow: 1;" />
-        <ui:VisualElement name="Footer" />
+        <ui:VisualElement name="Footer">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="SaveButton" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

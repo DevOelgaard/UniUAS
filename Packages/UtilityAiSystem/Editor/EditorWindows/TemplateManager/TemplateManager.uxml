@@ -11,7 +11,7 @@
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
                 <ui:Button text="Load" display-tooltip-when-elided="true" name="LoadButton" />
                 <ui:Button text="Refresh" display-tooltip-when-elided="true" name="RefreshButton" />
-                <ui:Button text="Save Selected" display-tooltip-when-elided="true" name="SaveSelectedButton" />
+                <ui:Button text="Export" display-tooltip-when-elided="true" name="ExportButton" />
                 <ui:Button text="Import" display-tooltip-when-elided="true" name="ImportButton" enable-rich-text="true" />
             </ui:VisualElement>
         </ui:VisualElement>

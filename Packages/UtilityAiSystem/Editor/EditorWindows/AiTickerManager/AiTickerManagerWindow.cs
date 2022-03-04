@@ -22,6 +22,7 @@ internal class AiTickerManagerWindow: EditorWindow
 
     private AiTicker aiTicker;
 
+
     [MenuItem(Consts.MenuName + Consts.Name_AiTickerManager)]
     public static void Open()
     {
@@ -57,7 +58,6 @@ internal class AiTickerManagerWindow: EditorWindow
             .AddTo(disposables);
 
         LoadTicker(aiTicker.Settings.TickerMode);
-
     }
 
     private void LoadTicker(TickerMode tickerMode)
@@ -74,5 +74,11 @@ internal class AiTickerManagerWindow: EditorWindow
             });
 
         description.text = tickerMode.Description;
+    }
+
+    private void OnDestroy()
+    {
+        aiTicker.Save();
+        disposables.Clear();
     }
 }

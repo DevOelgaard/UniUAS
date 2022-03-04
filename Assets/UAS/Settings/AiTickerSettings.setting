@@ -1,0 +1,57 @@
+{
+  "TickerMode": {
+    "Name": "DesiredFrameRate",
+    "Description": "Dynamically alters ticks/frame to stay above target framerate",
+    "Parameters": [
+      {
+        "Name": "Target Framerate",
+        "Value": 75,
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "Sample Time S",
+        "Value": 2.24,
+        "FileName": "Parameter"
+      }
+    ],
+    "FileName": "TickerModeDesiredFrameRate"
+  },
+  "TickerModes": [
+    {
+      "Name": "DesiredFrameRate",
+      "Description": "Dynamically alters ticks/frame to stay above target framerate",
+      "Parameters": [
+        {
+          "Name": "Target Framerate",
+          "Value": 75,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "Sample Time S",
+          "Value": 2.24,
+          "FileName": "Parameter"
+        }
+      ],
+      "FileName": "TickerModeDesiredFrameRate"
+    },
+    {
+      "Name": "TimeBudget",
+      "Description": "Executes as many ticks as possible in a given timeframe",
+      "Parameters": [
+        {
+          "Name": "Time Budget MS",
+          "Value": 23,
+          "FileName": "Parameter"
+        }
+      ],
+      "FileName": "TickerModeTimeBudget"
+    },
+    {
+      "Name": "Unrestricted",
+      "Description": "No restrictions to execution time",
+      "Parameters": [],
+      "FileName": "TickerModeUnrestricted"
+    }
+  ],
+  "FileName": "AiTickerSettingsModel"
+}

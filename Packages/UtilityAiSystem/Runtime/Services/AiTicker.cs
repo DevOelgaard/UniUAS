@@ -16,16 +16,24 @@ internal class AiTicker: RestoreAble
     private AgentManager agentManager => AgentManager.Instance;
     private int tickCount = 0;
     internal AiTickerSettingsModel Settings = new AiTickerSettingsModel();
+    private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
 
     internal AiTicker()
     {
-        Settings.TickerModes = new List<TickerMode>();
-        Settings.TickerModes.Add(new TickerModeDesiredFrameRate());
-        Settings.TickerModes.Add(new TickerModeTimeBudget());
-        Settings.TickerModes.Add(new TickerModeUnrestricted());
+        var loadedState = persistenceAPI.LoadObjectPath<AiTickerSettingsState>(Consts.Path_AiTickerSettings);
+        Debug.Log("AiTicker: Loading");
+        if (loadedState != null)
+        {
+            Settings = Restore<AiTickerSettingsModel>(loadedState);
+        } else
+        {
+            Settings.TickerModes = new List<TickerMode>();
+            Settings.TickerModes.Add(new TickerModeDesiredFrameRate());
+            Settings.TickerModes.Add(new TickerModeTimeBudget());
+            Settings.TickerModes.Add(new TickerModeUnrestricted());
 
-        Settings.TickerMode = Settings.TickerModes.First(m => m.Name == AiTickerMode.Unrestricted);
-
+            Settings.TickerMode = Settings.TickerModes.First(m => m.Name == AiTickerMode.Unrestricted);
+        }
     }
 
     internal void Start()
@@ -66,12 +74,21 @@ internal class AiTicker: RestoreAble
         var state = GetState();
         persister.SaveObject(state, path);
     }
+    
+    internal void Save()
+    {
+        persistenceAPI.SaveObjectPath(Settings, Consts.Path_AiTickerSettings);
+
+    }
 
     ~AiTicker()
     {
+        Save();
         disposables.Clear();
     }
 }
+
+
 
 [Serializable]
 public class AiTickerState: RestoreState
