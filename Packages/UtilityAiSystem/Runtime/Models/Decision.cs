@@ -52,10 +52,11 @@ public class Decision: UtilityContainer
         }
     }
 
-    public DecisionState GetState()
+    internal override RestoreState GetState()
     {
         return new DecisionState(Name, Description, AgentActions.Values, Considerations.Values, this);
     }
+
     internal override void SaveToFile(string path, IPersister persister)
     {
         var state = GetState();
@@ -117,14 +118,14 @@ public class DecisionState: RestoreState
         AgentActions = new List<AgentActionState>();
         foreach (AgentAction action in agentActions)
         {
-            var a = action.GetState();
+            var a = action.GetState() as AgentActionState;
             AgentActions.Add(a);
         }
 
         Considerations = new List<ConsiderationState>();
         foreach (Consideration consideration in considerations)
         {
-            var c = consideration.GetState();
+            var c = consideration.GetState() as ConsiderationState;
             Considerations.Add(c);
         }
     }

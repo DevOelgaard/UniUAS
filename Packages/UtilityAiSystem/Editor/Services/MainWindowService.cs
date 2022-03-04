@@ -46,9 +46,4 @@ internal class MainWindowService
         }
         return null;
     }
-
-    //public static string MainWindowModelToString(MainWindowModel model)
-    //{
-    //    return model.Name;
-    //}
 }

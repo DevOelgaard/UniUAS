@@ -26,6 +26,8 @@ public abstract class RestoreAble
     }
 
     internal abstract void SaveToFile(string path, IPersister persister);
+
+    internal abstract RestoreState GetState();
 }
 
 public class RestoreState

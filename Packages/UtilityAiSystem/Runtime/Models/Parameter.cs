@@ -33,7 +33,7 @@ public class Parameter: RestoreAble
         Value = value;
     }
 
-    public ParameterState GetState()
+    internal override RestoreState GetState()
     {
         return new ParameterState(Name, v, this);
     }

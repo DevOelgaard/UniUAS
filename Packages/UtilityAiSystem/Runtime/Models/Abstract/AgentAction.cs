@@ -35,7 +35,7 @@ public abstract class AgentAction: AiObjectModel
         return clone;
     }
 
-    internal AgentActionState GetState()
+    internal override RestoreState GetState()
     {
         return new AgentActionState(Parameters, Name, Description, this);
     }
@@ -79,7 +79,7 @@ public class AgentActionState: RestoreState
         Parameters = new List<ParameterState>();
         foreach (var parameter in parameters)
         {
-            Parameters.Add(parameter.GetState());
+            Parameters.Add(parameter.GetState() as ParameterState);
         }
     }
 }

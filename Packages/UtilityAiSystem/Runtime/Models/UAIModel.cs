@@ -50,7 +50,7 @@ public class UAIModel: AiObjectModel
         }
     }
 
-    internal UAIModelState GetState()
+    internal override RestoreState GetState()
     {
         return new UAIModelState(Name, Description, Buckets.Values, this);
     }
@@ -193,7 +193,7 @@ public class UAIModelState: RestoreState
         Buckets = new List<BucketState>();
         foreach(var b in buckets)
         {
-            var bS = b.GetState();
+            var bS = b.GetState() as BucketState;
             Buckets.Add(bS);
         }
 

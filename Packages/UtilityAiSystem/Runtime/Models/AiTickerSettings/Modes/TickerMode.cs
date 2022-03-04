@@ -22,7 +22,7 @@ public abstract class TickerMode: RestoreAble
     internal abstract List<Parameter> GetParameters();
     internal abstract void Tick(List<IAgent> agents, TickMetaData metaData);
 
-    internal TickerModeState GetState()
+    internal override RestoreState GetState()
     {
         return new TickerModeState(Name, Description, Parameters, this);
     }
@@ -65,7 +65,7 @@ public class TickerModeState: RestoreState
         Parameters = new List<ParameterState>();
         foreach(var parameter in parameters)
         {
-            var pS = parameter.GetState();
+            var pS = parameter.GetState() as ParameterState;
             Parameters.Add(pS);
         }
     }

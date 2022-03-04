@@ -66,7 +66,8 @@ public static class Consts
     public const string FileExtension_Decision = "dec";
     public const string FileExtension_Bucket = "buc";
     public const string FileExtension_UAI = "uai";
-    public const string FileExtension_UasTemplateCollection= "col";
+    public const string FileExtension_UasTemplateCollection= "temp";
     public const string FileExtension_TickerSettings = "set";
+    public const string FileExtension_RestoreAbleCollection = "coll";
 
 }

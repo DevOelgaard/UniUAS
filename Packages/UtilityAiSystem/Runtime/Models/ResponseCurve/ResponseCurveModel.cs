@@ -57,7 +57,7 @@ public abstract class ResponseCurveModel: RestoreAble
             Parameters.Add(parameter);
         }
     }
-    public ResponseCurveState GetState()
+    internal override RestoreState GetState()
     {
         return new ResponseCurveState(Name, MinY, MaxY, Parameters, this);
     }
@@ -89,7 +89,7 @@ public class ResponseCurveState: RestoreState
         Parameters = new List<ParameterState>();
         foreach(var parameter in parameters)
         {
-            Parameters.Add(parameter.GetState());
+            Parameters.Add(parameter.GetState() as ParameterState);
         }
     }
 }

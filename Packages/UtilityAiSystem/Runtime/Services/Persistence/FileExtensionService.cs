@@ -9,46 +9,54 @@ internal class FileExtensionService
     internal static string GetExtension(object o)
     {
         var type = o.GetType();
-        return GetExtension(type);
+        return GetExtension(type, o);
     }
 
-    internal static string GetExtension(Type type)
+    internal static string GetExtension(Type type, object o)
     {
+        var result = "";
         if (type.IsAssignableFrom(typeof(AgentAction)))
         {
-            return Consts.FileExtension_AgentAction;
+            result = Consts.FileExtension_AgentAction;
         }
 
         if (type.IsAssignableFrom(typeof(Consideration)))
         {
-            return Consts.FileExtension_Consideration;
+            result = Consts.FileExtension_Consideration;
         }
 
         if (type.IsAssignableFrom(typeof(Decision)))
         {
-            return Consts.FileExtension_Decision;
+            result = Consts.FileExtension_Decision;
         }
 
         if (type.IsAssignableFrom(typeof(Bucket)))
         {
-            return Consts.FileExtension_Bucket;
+            result = Consts.FileExtension_Bucket;
         }
 
         if (type.IsAssignableFrom(typeof(UAIModel)))
         {
-            return Consts.FileExtension_UAI;
+            result = Consts.FileExtension_UAI;
         }
 
         if (type.IsAssignableFrom(typeof(UASTemplateService)))
         {
-            return Consts.FileExtension_UasTemplateCollection;
+            result = Consts.FileExtension_UasTemplateCollection;
         }
 
         if (type.IsAssignableFrom(typeof(AiTickerSettingsModel)))
         {
-            return Consts.FileExtension_TickerSettings;
+            result = Consts.FileExtension_TickerSettings;
         }
-        return "";
+
+        if (type.IsAssignableFrom(typeof(RestoreAbleCollection)))
+        {
+            var cast = o as RestoreAbleCollection;
+            var t = cast.Type;
+            result = GetExtension(t, o) + Consts.FileExtension_RestoreAbleCollection;
+        }
+        return result;
     }
 
 }

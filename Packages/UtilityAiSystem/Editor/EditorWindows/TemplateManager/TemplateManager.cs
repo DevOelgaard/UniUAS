@@ -23,6 +23,8 @@ internal class TemplateManager : EditorWindow
     private Button saveButton;
     private Button loadButton;
     private Button refreshButton;
+    private Button exportButton;
+    private Button importButton;
     private UASTemplateService uASModel => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -97,7 +99,7 @@ internal class TemplateManager : EditorWindow
         });
 
         loadButton = root.Q<Button>("LoadButton");
-        loadButton.text = "Load collection";
+        loadButton.text = "Load";
         loadButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             var uasState = persistenceAPI.LoadObjectPanel<UASTemplateServiceState>();
@@ -110,6 +112,28 @@ internal class TemplateManager : EditorWindow
         {
             uASModel.Refresh();
             UpdateLeftPanel();
+        });
+
+        exportButton = root.Q<Button>("ExportButton");
+        exportButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            var saveObjects = new List<RestoreAble>();
+            selectedObjects.ForEach(pair => saveObjects.Add(pair.Key));
+            var type = MainWindowService.GetTypeFromString(dropDown.value);
+            var restoreAble = new RestoreAbleCollection(saveObjects, type);
+            persistenceAPI.SaveObjectPanel(restoreAble);
+        });
+
+        importButton = root.Q<Button>("ImportButton");
+        importButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            var state = persistenceAPI.LoadObjectPanel<RestoreAbleCollectionState>();
+            var loadedCollection = RestoreAbleCollection.Restore<RestoreAbleCollection>(state);
+            var toCollection = uASModel.GetCollection(loadedCollection.Type);
+            loadedCollection.Models.ForEach(m =>
+            {
+                toCollection.Add(m as AiObjectModel);
+            });
         });
 
 
@@ -179,6 +203,7 @@ internal class TemplateManager : EditorWindow
             .OnValueChanged
             .Subscribe(values => LoadModels(values));
 
+
         LoadModels(models.Values);
         UpdateButtons();
     }
@@ -188,6 +213,7 @@ internal class TemplateManager : EditorWindow
         SelectedModel = null;
         buttonContainer.Clear();
         buttons.Clear();
+        selectedObjects.Clear();
         modelsChangedSubsciptions.Clear();
 
         foreach (var model in models)

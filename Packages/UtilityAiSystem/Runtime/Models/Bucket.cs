@@ -65,7 +65,7 @@ public class Bucket : UtilityContainer
         }
     }
 
-    internal BucketState GetState()
+    internal override RestoreState GetState()
     {
         return new BucketState(Name, Description, Decisions.Values, Considerations.Values, Weight, this);
     }
@@ -124,17 +124,17 @@ public class BucketState: RestoreState
         this.Decisions = new List<DecisionState>();
         foreach (var d in decisions)
         {
-            var state = d.GetState();
+            var state = d.GetState() as DecisionState;
             Decisions.Add(state);
         }
 
         this.Considerations = new List<ConsiderationState>();
         foreach (var c in considerations)
         {
-            var state = c.GetState();
+            var state = c.GetState() as ConsiderationState;
             Considerations.Add(state);
         }
 
-        this.Weight = weight.GetState();
+        this.Weight = weight.GetState() as ParameterState;
     }
 }

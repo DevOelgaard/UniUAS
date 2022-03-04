@@ -36,7 +36,7 @@ public class AiTickerSettingsModel: RestoreAble
             TickerModes.Add(tickerM);
         }
     }
-    internal AiTickerSettingsState GetState()
+    internal override RestoreState GetState()
     {
         return new AiTickerSettingsState(TickerMode, TickerModes, this);
     }
@@ -60,11 +60,11 @@ public class AiTickerSettingsState: RestoreState
 
     public AiTickerSettingsState(TickerMode tickerMode, List<TickerMode> tickerModes, AiTickerSettingsModel o) : base(o)
     {
-        TickerMode = tickerMode.GetState();
+        TickerMode = tickerMode.GetState() as TickerModeState;
         TickerModes = new List<TickerModeState>();
         foreach(var tickerM in tickerModes)
         {
-            var t = tickerM.GetState();
+            var t = tickerM.GetState() as TickerModeState;
             TickerModes.Add(t);
         }
     }

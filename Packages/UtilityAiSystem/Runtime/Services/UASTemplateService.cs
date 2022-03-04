@@ -103,6 +103,32 @@ internal class UASTemplateService: RestoreAble
         }
     }
 
+    internal ReactiveList<AiObjectModel> GetCollection(Type t)
+    {
+        if (t.IsAssignableFrom(typeof(UAIModel)))
+        {
+            return AIs;
+        }
+        if (t.IsAssignableFrom(typeof(Bucket)))
+        {
+            return Buckets;
+        }
+        if (t.IsAssignableFrom(typeof(Decision)))
+        {
+            return Decisions;
+        }
+        if (t.IsAssignableFrom(typeof(Consideration)))
+        {
+            return Considerations;
+        }
+
+        if (t.IsAssignableFrom(typeof(AgentAction)))
+        {
+            return AgentActions;
+        }
+        return null;
+    }
+
     private ReactiveList<AiObjectModel> UpdateListWithFiles<T>(ReactiveList<AiObjectModel> collection)
     {
         var elementsFromFiles = AssetDatabaseService.GetInstancesOfType<T>();
@@ -148,7 +174,7 @@ internal class UASTemplateService: RestoreAble
         subscriptions.Clear();
     }
 
-    internal UASTemplateServiceState GetState()
+    internal override RestoreState GetState()
     {
         return new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
     }
@@ -278,35 +304,35 @@ public class UASTemplateServiceState : RestoreState
         AIs = new List<UAIModelState>();
         foreach (UAIModel ai in aiS.Values)
         {
-            var a = ai.GetState();
+            var a = ai.GetState() as UAIModelState;
             AIs.Add(a);
         }
 
         Buckets = new List<BucketState>();
         foreach (Bucket bucket in buckets.Values)
         {
-            var b = bucket.GetState();
+            var b = bucket.GetState() as BucketState;
             Buckets.Add(b);
         }
 
         Decisions = new List<DecisionState>();
         foreach (Decision decision in decisions.Values)
         {
-            var d = decision.GetState();
+            var d = decision.GetState() as DecisionState;
             Decisions.Add(d);
         }
 
         Considerations = new List<ConsiderationState>();
         foreach (Consideration consideration in considerations.Values)
         {
-            var c = consideration.GetState();
+            var c = consideration.GetState() as ConsiderationState;
             Considerations.Add(c);
         }
 
         AgentActions = new List<AgentActionState>();
         foreach (AgentAction action in agentActions.Values)
         {
-            var a = action.GetState();
+            var a = action.GetState() as AgentActionState;
             AgentActions.Add(a);
         }
     }

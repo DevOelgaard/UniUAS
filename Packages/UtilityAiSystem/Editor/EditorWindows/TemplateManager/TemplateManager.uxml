@@ -3,7 +3,7 @@
         <ui:VisualElement name="left-panel">
             <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="TypeDropdown" />
             <ui:ScrollView name="ButtonContainer" style="flex-grow: 1;" />
-            <ui:VisualElement name="Buttons" style="flex-direction: row; flex-grow: 0; height: 24px;">
+            <ui:VisualElement name="Buttons" style="flex-direction: row; flex-grow: 0; height: 24px; flex-wrap: wrap-reverse;">
                 <ui:Button text="Create New" display-tooltip-when-elided="true" name="CreateNewButton" style="flex-grow: 1;" />
                 <ui:Button text="Copy" display-tooltip-when-elided="true" name="CopyButton" style="flex-grow: 1;" />
                 <ui:Button text="Delete" display-tooltip-when-elided="true" name="DeleteButton" />
@@ -11,6 +11,8 @@
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
                 <ui:Button text="Load" display-tooltip-when-elided="true" name="LoadButton" />
                 <ui:Button text="Refresh" display-tooltip-when-elided="true" name="RefreshButton" />
+                <ui:Button text="Save Selected" display-tooltip-when-elided="true" name="SaveSelectedButton" />
+                <ui:Button text="Import" display-tooltip-when-elided="true" name="ImportButton" enable-rich-text="true" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="right-panel" />

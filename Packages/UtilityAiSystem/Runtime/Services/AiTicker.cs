@@ -56,7 +56,7 @@ internal class AiTicker: RestoreAble
         Settings = Restore<AiTickerSettingsModel>(s.Settings);
     }
 
-    public AiTickerState GetState()
+    internal override RestoreState GetState()
     {
         return new AiTickerState(Settings, this);
     }
@@ -84,6 +84,6 @@ public class AiTickerState: RestoreState
 
     internal AiTickerState(AiTickerSettingsModel settings, AiTicker o) : base(o)
     {
-        Settings = settings.GetState();
+        Settings = settings.GetState() as AiTickerSettingsState;
     }
 }

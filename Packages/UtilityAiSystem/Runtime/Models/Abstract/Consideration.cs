@@ -109,7 +109,7 @@ public abstract class Consideration : AiObjectModel
         return clone;
     }
 
-    internal ConsiderationState GetState()
+    internal override RestoreState GetState()
     {
         return new ConsiderationState(Name,Description,Parameters, ResponseCurve, Min, Max, this);
     }
@@ -144,14 +144,14 @@ public class ConsiderationState: RestoreState
     {
         Name = name;
         Description = description;
-        ResponseCurveState = responseCurve.GetState();
-        Min = min.GetState();
-        Max = max.GetState();
+        ResponseCurveState = responseCurve.GetState() as ResponseCurveState;
+        Min = min.GetState() as ParameterState;
+        Max = max.GetState() as ParameterState;
 
         Parameters = new List<ParameterState>();
         foreach (var parameter in parameters)
         {
-            Parameters.Add(parameter.GetState());
+            Parameters.Add(parameter.GetState() as ParameterState);
         }
     }
 }
