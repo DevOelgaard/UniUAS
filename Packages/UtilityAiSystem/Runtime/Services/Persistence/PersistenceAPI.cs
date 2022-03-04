@@ -41,14 +41,12 @@ internal class PersistenceAPI
         return o;
     }
 
-    //internal T LoadCollectionPanel<T>()
-    //{
-    //    var extension = FileExtensionService.GetExtension(typeof(T)) + Consts.FileExtension_RestoreAbleCollection;
-    //    var path = EditorUtility.OpenFilePanel("Load object", "", extension);
-    //    var o = persister.LoadObject<T>(path);
-    //    return o;
-    //}
-
+    internal T LoadObjectPanel<T>(string[] filters)
+    {
+        var path = EditorUtility.OpenFilePanelWithFilters("Load object", "", filters);
+        var o = persister.LoadObject<T>(path);
+        return o;
+    }
 
     internal T LoadObjectPath<T>(string path)
     {

@@ -92,7 +92,7 @@ internal class TemplateManager : EditorWindow
         });
 
         saveButton = root.Q<Button>("SaveButton");
-        saveButton.text = "Save collection";
+        saveButton.text = "Save project";
         saveButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             persistenceAPI.SaveObjectPanel(uASModel);
@@ -127,7 +127,11 @@ internal class TemplateManager : EditorWindow
         importButton = root.Q<Button>("ImportButton");
         importButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            var state = persistenceAPI.LoadObjectPanel<RestoreAbleCollectionState>();
+            var state = persistenceAPI.LoadObjectPanel<RestoreAbleCollectionState>(Consts.FileExtensions);
+            if (state == null || state == default)
+            {
+                return;
+            }
             var loadedCollection = RestoreAbleCollection.Restore<RestoreAbleCollection>(state);
             var toCollection = uASModel.GetCollection(loadedCollection.Type);
             loadedCollection.Models.ForEach(m =>
@@ -135,7 +139,6 @@ internal class TemplateManager : EditorWindow
                 toCollection.Add(m as AiObjectModel);
             });
         });
-
 
         InitDropdown();
         UpdateLeftPanel();

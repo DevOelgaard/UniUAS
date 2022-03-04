@@ -58,8 +58,8 @@ internal class FileExtensionService
         {
             start = Consts.FileExtension_TickerSettings;
         }
-        
-        return start+end;
+
+        return start;// +end;
     }
 
 }

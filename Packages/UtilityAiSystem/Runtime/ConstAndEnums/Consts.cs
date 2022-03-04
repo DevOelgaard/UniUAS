@@ -8,7 +8,7 @@ public static class Consts
 {
     // Paths
     internal const string MenuName = "Utility Ai System/";
-    internal const string Path_MainFolder= "Assets/UAS/";
+    internal const string Path_MainFolder = "Assets/UAS/";
     internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
     internal const string Path_Templates = Path_ScriptableObjects + "Templates/Templates.asset";
 
@@ -24,7 +24,7 @@ public static class Consts
 
     // Labels
     internal const string Label_MainWindowModel = "MainWindowModel";
-    internal const string Label_AgentActionModel = "AgentActions"; 
+    internal const string Label_AgentActionModel = "AgentActions";
     internal const string Label_ConsiderationModel = "Considerations";
     internal const string Label_DecisionModel = "Decisions";
     internal const string Label_BucketModel = "Buckets";
@@ -52,8 +52,8 @@ public static class Consts
     public const string Name_TemplateManager = "Template Manager";
     public const string Name_AiInspector = "Runtime Inspector";
     public const string Name_AiTickerManager = "Ticker Manager";
-    
-    
+
+
     // Ticker Modes
     public const string Description_TickerModeUnrestricted = "No restrictions to execution time";
     public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate";
@@ -61,13 +61,25 @@ public static class Consts
 
 
     // File extensions
-    public const string FileExtension_AgentAction = "act";
-    public const string FileExtension_Consideration = "con";
-    public const string FileExtension_Decision = "dec";
-    public const string FileExtension_Bucket = "buc";
+    public const string FileExtension_AgentAction = "action";
+    public const string FileExtension_Consideration = "consideration";
+    public const string FileExtension_Decision = "decision";
+    public const string FileExtension_Bucket = "bucket";
     public const string FileExtension_UAI = "uai";
-    public const string FileExtension_UasTemplateCollection= "temp";
-    public const string FileExtension_TickerSettings = "set";
-    public const string FileExtension_RestoreAbleCollection = "coll";
+    public const string FileExtension_UasTemplateCollection = "uaiproj";
+    public const string FileExtension_TickerSettings = "setting";
+    public const string FileExtension_RestoreAbleCollection = "collection";
+
+    public static readonly string[] FileExtensions =
+    {
+        "AgentAction", FileExtension_AgentAction,
+        "Consideration", FileExtension_Consideration,
+        "Decision", FileExtension_Decision,
+        "Bucket", FileExtension_Bucket,
+        "AI", FileExtension_UAI,
+        "Templates", FileExtension_UasTemplateCollection,
+        "Ticker Settings", FileExtension_TickerSettings,
+    };
+
 
 }
