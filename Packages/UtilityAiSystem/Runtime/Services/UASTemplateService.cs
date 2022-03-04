@@ -125,7 +125,7 @@ internal class UASTemplateService: RestoreAble
 
     internal void LoadFromFile()
     {
-        var state = UASState.LoadFromFile();
+        var state = UASTemplateServiceState.LoadFromFile();
         if(state != null)
         {
             RestoreInternal(state);
@@ -159,8 +159,10 @@ internal class UASTemplateService: RestoreAble
         var sw = new System.Diagnostics.Stopwatch();
         sw.Reset();
         sw.Start();
-        var state = new UASState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
-        PersistenceAPI.PersistJson<UASState>(state, Consts.File_MainSavePath, Consts.FileName_UASModelJson);
+        var state = new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
+        var persistApi = new PersistenceAPI(new JSONPersister());
+        persistApi.SaveObjectPanel<UASTemplateServiceState>(state);
+        //PersistenceAPI.PersistJson<UASState>(state, Consts.File_MainSavePath, Consts.FileName_UASModelJson);
         sw.Stop();
         var elapsed = sw.Elapsed;
         Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
@@ -220,7 +222,7 @@ internal class UASTemplateService: RestoreAble
     protected override void RestoreInternal(RestoreState s)
     {
         ClearCollections();
-        var state = (UASState)s;
+        var state = (UASTemplateServiceState)s;
         if (state == null)
         {
             return;
@@ -256,65 +258,69 @@ internal class UASTemplateService: RestoreAble
             AgentActions.Add(action);
         }
     }
+}
 
-    [Serializable]
-    public class UASState: RestoreState
+[Serializable]
+public class UASTemplateServiceState : RestoreState
+{
+    public List<UAIModelState> AIs;
+    public List<BucketState> Buckets;
+    public List<DecisionState> Decisions;
+    public List<ConsiderationState> Considerations;
+    public List<AgentActionState> AgentActions;
+    public string TestStrign = "";
+    public string InternalTestString = "";
+    public UASTemplateServiceState() : base()
     {
-        public List<UAIModelState> AIs;
-        public List<BucketState> Buckets;
-        public List<DecisionState> Decisions;
-        public List<ConsiderationState> Considerations;
-        public List<AgentActionState> AgentActions;
-        public string TestStrign = "";
-        public string InternalTestString = "";
-        public UASState(): base()
+    }
+
+    internal UASTemplateServiceState(
+        Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel, ReactiveList<AiObjectModel> aiS,
+        ReactiveList<AiObjectModel> buckets, ReactiveList<AiObjectModel> decisions,
+        ReactiveList<AiObjectModel> considerations, ReactiveList<AiObjectModel> agentActions, UASTemplateService model) : base(model)
+    {
+        AIs = new List<UAIModelState>();
+        foreach (UAIModel ai in aiS.Values)
         {
-        }
-        
-        public UASState(
-            Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel, ReactiveList<AiObjectModel> aiS, 
-            ReactiveList<AiObjectModel> buckets, ReactiveList<AiObjectModel> decisions, 
-            ReactiveList<AiObjectModel> considerations, ReactiveList<AiObjectModel> agentActions, UASTemplateService model): base(model)
-        {
-            AIs = new List<UAIModelState>();
-            foreach(UAIModel ai in aiS.Values)
-            {
-                var a = ai.GetState();
-                AIs.Add(a);
-            }
-
-            Buckets = new List<BucketState>();
-            foreach(Bucket bucket in buckets.Values)
-            {
-                var b = bucket.GetState();
-                Buckets.Add(b);
-            }
-
-            Decisions = new List<DecisionState>();
-            foreach(Decision decision in decisions.Values)
-            {
-                var d = decision.GetState();
-                Decisions.Add(d);
-            }
-            
-            Considerations = new List<ConsiderationState>();
-            foreach(Consideration consideration  in considerations.Values)
-            {
-                var c = consideration.GetState();
-                Considerations.Add(c);
-            }
-
-            AgentActions = new List<AgentActionState>();
-            foreach(AgentAction action in agentActions.Values)
-            {
-                var a = action.GetState();
-                AgentActions.Add(a);
-            }
+            var a = ai.GetState();
+            AIs.Add(a);
         }
 
-        internal static UASState LoadFromFile()
+        Buckets = new List<BucketState>();
+        foreach (Bucket bucket in buckets.Values)
         {
-            return (UASState)PersistenceAPI.LoadJson<UASState>(Consts.File_MainSavePath + Consts.FileName_UASModelJson);
+            var b = bucket.GetState();
+            Buckets.Add(b);
         }
+
+        Decisions = new List<DecisionState>();
+        foreach (Decision decision in decisions.Values)
+        {
+            var d = decision.GetState();
+            Decisions.Add(d);
+        }
+
+        Considerations = new List<ConsiderationState>();
+        foreach (Consideration consideration in considerations.Values)
+        {
+            var c = consideration.GetState();
+            Considerations.Add(c);
+        }
+
+        AgentActions = new List<AgentActionState>();
+        foreach (AgentAction action in agentActions.Values)
+        {
+            var a = action.GetState();
+            AgentActions.Add(a);
+        }
+    }
+
+    internal static UASTemplateServiceState LoadFromFile()
+    {
+        Debug.Log("Change this");
+        var p = new PersistenceAPI(new JSONPersister());
+        var state = p.LoadObjectPanel<UASTemplateServiceState>();
+        return state;
+        //return (UASState)PersistenceAPI.LoadJson<UASState>(Consts.File_MainSavePath + Consts.FileName_UASModelJson);
     }
 }

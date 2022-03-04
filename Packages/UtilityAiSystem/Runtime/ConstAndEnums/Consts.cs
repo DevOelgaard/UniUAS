@@ -60,4 +60,13 @@ public static class Consts
     public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe";
 
 
+    // File extensions
+    public const string FileExtension_AgentAction = "act";
+    public const string FileExtension_Consideration = "con";
+    public const string FileExtension_Decision = "dec";
+    public const string FileExtension_Bucket = "buc";
+    public const string FileExtension_UAI = "uai";
+    public const string FileExtension_UasTemplate= "tem";
+    public const string FileExtension_TickerSettings = "set";
+
 }
