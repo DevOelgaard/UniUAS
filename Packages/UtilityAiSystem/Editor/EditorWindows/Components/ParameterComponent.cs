@@ -18,12 +18,12 @@ public class ParameterComponent: VisualElement
             parameter.Value = Convert.ToSingle(parameter.Value);
             t = typeof(float);
         }
-        if (t == typeof(int))
+        if (t == typeof(int) || t == typeof(Int16) || t == typeof(Int32) || t == typeof(Int64))
         {
             var field = new IntegerField(parameter.Name);
-            field.value = (int)parameter.Value;
+            field.value =  Convert.ToInt32(parameter.Value);
             field.RegisterCallback<ChangeEvent<int>>(evt => parameter.Value = evt.newValue);
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     field.value = (int)v;
@@ -31,14 +31,14 @@ public class ParameterComponent: VisualElement
                 .AddTo(disposables);
             Add(field);
         }
-        else if (t == typeof(float))
+        else if (t == typeof(float) || t == typeof(Single))
         {
             var field = new FloatField(parameter.Name);
-            field.value = (float)parameter.Value;
+            field.value = Convert.ToSingle(parameter.Value);
             field.RegisterCallback<ChangeEvent<float>>(evt => 
                     parameter.Value = evt.newValue
                 );
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     field.value = (float)v;
@@ -51,7 +51,7 @@ public class ParameterComponent: VisualElement
             var field = new TextField(parameter.Name);
             field.value = (string)parameter.Value;
             field.RegisterCallback<ChangeEvent<string>>(evt => parameter.Value = evt.newValue);
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     field.value = (string)v;
@@ -64,7 +64,7 @@ public class ParameterComponent: VisualElement
             var field = new LongField(parameter.Name);
             field.value = (long)parameter.Value;
             field.RegisterCallback<ChangeEvent<long>>(evt => parameter.Value = evt.newValue);
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     field.value = (long)v;
@@ -76,7 +76,7 @@ public class ParameterComponent: VisualElement
             var field = new Toggle(parameter.Name);
             field.value = (bool)parameter.Value;
             field.RegisterCallback<ChangeEvent<bool>>(evt => parameter.Value = evt.newValue);
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     field.value = (bool)v;

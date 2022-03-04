@@ -12,6 +12,7 @@ public static class Consts
     internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
     internal const string Path_Templates = Path_ScriptableObjects + "Templates/Templates.asset";
     internal const string Path_AiTickerSettings = Path_MainFolder + "Settings/AiTickerSettings" + "." + FileExtension_TickerSettings;
+    internal const string Path_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
 
     internal const string Path_AiAsset = Path_ScriptableObjects + "Ais/";
     internal const string Path_BucketAsset = Path_ScriptableObjects + "Buckets/";
@@ -57,7 +58,7 @@ public static class Consts
 
     // Ticker Modes
     public const string Description_TickerModeUnrestricted = "No restrictions to execution time";
-    public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate";
+    public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate. Increasing samplerate trades Reaction time for framerate precision.";
     public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe";
 
 

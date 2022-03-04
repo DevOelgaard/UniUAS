@@ -55,7 +55,7 @@ public class ResponseCurveComponent: VisualElement
             var pComponent = new ParameterComponent(parameter);
             parametersContainer.Add(pComponent);
 
-            parameter.ValueChanged
+            parameter.OnValueChange
                 .Subscribe(v =>
                 {
                     ReDrawCurve();
@@ -63,11 +63,11 @@ public class ResponseCurveComponent: VisualElement
                 .AddTo(subscriptions);
         }
 
-        considerationModel.Min.ValueChanged
+        considerationModel.Min.OnValueChange
             .Subscribe(_ => ReDrawCurve())
             .AddTo(subscriptions);
 
-        considerationModel.Max.ValueChanged
+        considerationModel.Max.OnValueChange
             .Subscribe(_ => ReDrawCurve())
             .AddTo(subscriptions);
     }

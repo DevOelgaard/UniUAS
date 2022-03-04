@@ -34,7 +34,7 @@ public class Bucket : UtilityContainer
         UpdateInfo();
         decisionSub = decisions.OnValueChanged
             .Subscribe(_ => UpdateInfo());
-        Weight = new Parameter("Weight", 0f);
+        Weight = new Parameter("Weight", 1f);
     }
 
     internal override AiObjectModel Clone()

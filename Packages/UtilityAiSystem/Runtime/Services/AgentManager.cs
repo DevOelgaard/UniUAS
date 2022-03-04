@@ -17,7 +17,7 @@ internal class AgentManager
     private Subject<IAgent> agentsUpdated = new Subject<IAgent>();
     internal AgentManager()
     {
-        AiTicker.Instance.Start();
+        //AiTicker.Instance.Start();
     }
 
     internal static AgentManager Instance { 

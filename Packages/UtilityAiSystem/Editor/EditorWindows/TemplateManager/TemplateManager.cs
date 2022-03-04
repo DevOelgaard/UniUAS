@@ -25,6 +25,7 @@ internal class TemplateManager : EditorWindow
     private Button refreshButton;
     private Button exportButton;
     private Button importButton;
+    private Button saveToPlayButton;
     private UASTemplateService uASModel => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -54,6 +55,12 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
+        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.Path_PlayAi);
+        if (state != null)
+        {
+            uASModel.Restore(state);
+        }
+
         root = rootVisualElement;
 
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
@@ -140,6 +147,13 @@ internal class TemplateManager : EditorWindow
             });
         });
 
+        saveToPlayButton = root.Q<Button>("SaveToPlayButton");
+        saveToPlayButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            persistenceAPI.SaveObjectPath(uASModel, Consts.Path_PlayAi);
+        });
+
+        
         InitDropdown();
         UpdateLeftPanel();
     }

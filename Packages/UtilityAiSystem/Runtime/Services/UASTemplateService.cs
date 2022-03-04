@@ -28,11 +28,6 @@ internal class UASTemplateService: RestoreAble
     private UASTemplateService(bool restore)
     {
         Init();
-
-        if (restore)
-        {
-            //LoadFromFile();
-        } 
     }
 
     private void Init()
@@ -50,7 +45,15 @@ internal class UASTemplateService: RestoreAble
         collectionsByLabel.Add(Consts.Label_ConsiderationModel, Considerations);
         collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
 
-        LoadCollectionsFromFile();
+        var perstistAPI = new PersistenceAPI(new JSONPersister());
+        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.Path_PlayAi);
+        if (state == null)
+        {
+            LoadCollectionsFromFile();
+        } else
+        {
+            Restore(state);
+        }
     }
 
 
@@ -84,10 +87,15 @@ internal class UASTemplateService: RestoreAble
     internal UAIModel GetAiByName(string name)
     {
         var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
+
         if (aiTemplate == null)
         {
             Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
             aiTemplate = AIs.Values.First() as UAIModel;
+            if (aiTemplate == null)
+            {
+                Debug.LogError("No ai found");
+            }
         }
         return aiTemplate.Clone() as UAIModel;
     }
@@ -203,12 +211,12 @@ internal class UASTemplateService: RestoreAble
     }
 
     private void ClearCollections() {
-        subscriptions.Clear();
-        AIs.Clear();
-        Buckets.Clear();
-        Decisions.Clear();
-        Considerations.Clear();
-        AgentActions.Clear();
+        subscriptions?.Clear();
+        AIs?.Clear();
+        Buckets?.Clear();
+        Decisions?.Clear();
+        Considerations?.Clear();
+        AgentActions?.Clear();
     }
 
     private ReactiveList<AiObjectModel> GetCollection(AiObjectModel model)

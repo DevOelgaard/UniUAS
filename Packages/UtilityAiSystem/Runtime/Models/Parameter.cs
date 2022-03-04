@@ -19,7 +19,7 @@ public class Parameter: RestoreAble
         }
     }
 
-    public IObservable<object> ValueChanged => valueChanged;
+    public IObservable<object> OnValueChange => valueChanged;
     private Subject<object> valueChanged = new Subject<object>();
 
     public Parameter()

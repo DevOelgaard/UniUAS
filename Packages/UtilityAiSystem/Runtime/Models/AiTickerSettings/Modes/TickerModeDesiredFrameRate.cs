@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UniRx;
 
 internal class TickerModeDesiredFrameRate : TickerMode
 {
+    private CompositeDisposable disposables = new CompositeDisposable();
     private int frameCount = 0;
     private float timeCount = 0f;
     private int tickedItemsLastSample = 0;
@@ -16,16 +18,20 @@ internal class TickerModeDesiredFrameRate : TickerMode
     internal float SampelTimeInSeconds => Convert.ToSingle(Parameters[1].Value);
     internal float TargetFrameRate => Convert.ToSingle(Parameters[0].Value);
 
+
     public TickerModeDesiredFrameRate() : base(AiTickerMode.DesiredFrameRate, Consts.Description_TickerModeDesiredFrameRate)
     {
     }
 
+
     internal override List<Parameter> GetParameters()
     {
-        var result = new List<Parameter>();
-        result.Add(new Parameter("Target Framerate", (int)60));
-        result.Add(new Parameter("Sample Time S", 1f));
-        return result;
+        return new List<Parameter>()
+        {
+            new Parameter("Target Framerate", (int)60),
+            new Parameter("Sample Time Seconds", 1f),
+            new Parameter("Debug", false)
+        };
     }
 
     internal override void Tick(List<IAgent> agents, TickMetaData metaData)
@@ -67,5 +73,14 @@ internal class TickerModeDesiredFrameRate : TickerMode
                 break;
             }
         }
+        if ((bool)Parameters[2].Value)
+        {
+            Debug.Log("Framerate: " + LastFrameRate + " Allowed TicksPrFrame: " + allowedTicksPrFrame);
+        }
+    }
+
+    ~TickerModeDesiredFrameRate()
+    {
+        disposables.Clear();
     }
 }

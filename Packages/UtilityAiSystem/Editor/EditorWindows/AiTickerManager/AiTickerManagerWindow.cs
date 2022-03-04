@@ -18,7 +18,10 @@ internal class AiTickerManagerWindow: EditorWindow
     private VisualElement header;
     private VisualElement body;
     private VisualElement footer;
-    private HelpBox description; 
+    private HelpBox description;
+    private Button startButton;
+    private Button stopButton;
+    private Button reloadButton;
 
     private AiTicker aiTicker;
 
@@ -42,6 +45,9 @@ internal class AiTickerManagerWindow: EditorWindow
         header = root.Q<VisualElement>("Header");
         body = root.Q<VisualElement>("Body");
         footer = root.Q<VisualElement>("Footer");
+        startButton = root.Q<Button>("StartButton");
+        stopButton = root.Q<Button>("StopButton");
+        reloadButton = root.Q<Button>("ReloadButton");
 
         description = new HelpBox("",HelpBoxMessageType.Info);
         header.Add(description);
@@ -56,6 +62,21 @@ internal class AiTickerManagerWindow: EditorWindow
         aiTicker.Settings.OnTickerModeChanged
             .Subscribe(tickerMode => LoadTicker(tickerMode))
             .AddTo(disposables);
+
+        startButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            aiTicker.Start();
+        });
+
+        stopButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            aiTicker.Stop();
+        });
+
+        reloadButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            aiTicker.Reload();
+        });
 
         LoadTicker(aiTicker.Settings.TickerMode);
     }
