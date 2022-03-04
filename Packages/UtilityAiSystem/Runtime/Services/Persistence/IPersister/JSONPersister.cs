@@ -5,10 +5,10 @@ using UnityEngine;
 
 internal class JSONPersister : IPersister
 {
-    public string GetExtension()
-    {
-        return ".json";
-    }
+    //public string GetExtension()
+    //{
+    //    return ".json";
+    //}
 
     public T LoadObject<T>(string path)
     {

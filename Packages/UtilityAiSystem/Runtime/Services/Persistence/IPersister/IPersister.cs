@@ -8,5 +8,5 @@ internal interface IPersister
 {
     void SaveObject<T>(T o, string path);
     T LoadObject<T>(string path);
-    string GetExtension();
+    //string GetExtension();
 }

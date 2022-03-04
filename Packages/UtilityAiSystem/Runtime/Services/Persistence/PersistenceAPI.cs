@@ -17,7 +17,7 @@ internal class PersistenceAPI
 
     internal void SaveObjectPanel(RestoreAble o)
     {
-        var extension = FileExtensionService.GetExtension(o) + persister.GetExtension();
+        var extension = FileExtensionService.GetExtension(o);
         var path = EditorUtility.SaveFilePanel("Save object", "", "name", extension);
         if (path == null || path.Length == 0)
         {
@@ -27,18 +27,6 @@ internal class PersistenceAPI
         //persister.SaveObject(o, path);
     }
 
-    //internal void SaveObjectsPanel(RestoreableCollection<RestoreAble> o)
-    //{
-    //    var extension = FileExtensionService.GetExtension(o);
-    //    var path = EditorUtility.SaveFilePanel("Save object", "", "name", extension);
-    //    if (path == null || path.Length == 0)
-    //    {
-    //        return;
-    //    }
-    //    o.SaveToFile(path, persister);
-    //    //objects.ForEach(o => states.Add(o.GetState()));
-    //}
-
     internal void SaveObjectPath<T>(T o, string path)
     {
         path += FileExtensionService.GetExtension(o);
@@ -47,11 +35,20 @@ internal class PersistenceAPI
 
     internal T LoadObjectPanel<T>()
     {
-        var extension = FileExtensionService.GetExtension(typeof(T)) + persister.GetExtension();
+        var extension = FileExtensionService.GetExtension(typeof(T));
         var path = EditorUtility.OpenFilePanel("Load object", "", extension);
         var o = persister.LoadObject<T>(path);
         return o;
     }
+
+    //internal T LoadCollectionPanel<T>()
+    //{
+    //    var extension = FileExtensionService.GetExtension(typeof(T)) + Consts.FileExtension_RestoreAbleCollection;
+    //    var path = EditorUtility.OpenFilePanel("Load object", "", extension);
+    //    var o = persister.LoadObject<T>(path);
+    //    return o;
+    //}
+
 
     internal T LoadObjectPath<T>(string path)
     {
