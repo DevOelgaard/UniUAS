@@ -153,19 +153,6 @@ internal class UASTemplateService: RestoreAble
         return new UASTemplateServiceState(collectionsByLabel, AIs, Buckets, Decisions, Considerations, AgentActions, this);
     }
 
-    //internal bool SaveToFile()
-    //{
-    //    var sw = new System.Diagnostics.Stopwatch();
-    //    sw.Reset();
-    //    sw.Start();
-    //    var state = GetState();
-    //    persistApi.SaveObjectPanel<UASTemplateServiceState>(state);
-    //    sw.Stop();
-    //    var elapsed = sw.Elapsed;
-    //    Debug.Log("Save time: " + elapsed.Milliseconds +"ms");
-    //    return true;
-    //}
-
     internal override void SaveToFile(string path, IPersister persister)
     {
         var state = GetState();

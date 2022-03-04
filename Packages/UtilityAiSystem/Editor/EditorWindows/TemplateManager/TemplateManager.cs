@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 using System;
 using System.Collections.Generic;
 using UniRx;
-
+using System.Linq;
 
 internal class TemplateManager : EditorWindow
 {
@@ -187,6 +187,7 @@ internal class TemplateManager : EditorWindow
     {
         SelectedModel = null;
         buttonContainer.Clear();
+        buttons.Clear();
         modelsChangedSubsciptions.Clear();
 
         foreach (var model in models)
@@ -196,10 +197,10 @@ internal class TemplateManager : EditorWindow
             button.style.unityTextAlign = TextAnchor.MiddleLeft;
             button.RegisterCallback<MouseUpEvent>(evt =>
             {
-                SelectedModel = model;
-                ModelSelected(model);
+                ObjectClicked(model, button, evt);
             });
             buttonContainer.Add(button);
+            buttons.Add(button);
             model.OnNameChanged
                 .Subscribe(newName => button.text = newName)
                 .AddTo(modelsChangedSubsciptions);
@@ -210,7 +211,80 @@ internal class TemplateManager : EditorWindow
         createNewButton.visible = !type.IsAbstract;
     }
 
+    private List<Button> buttons = new List<Button>();
+    private List<KeyValuePair<AiObjectModel,Button>> selectedObjects = new List<KeyValuePair<AiObjectModel, Button>>();
 
+    private void ObjectClicked(AiObjectModel model, Button button, MouseUpEvent e)
+    {
+        if(e.ctrlKey)
+        {
+            var isSelected = selectedObjects.FirstOrDefault(o => o.Key == model).Key;
+            if (isSelected == null)
+            {
+                selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(model, button));
+            } else
+            {
+                selectedObjects = selectedObjects.Where(o => o.Key != model).ToList();
+            }
+        } else if (e.shiftKey)
+        {
+            var selectedIndex = buttons.IndexOf(button);
+            var lowestSelectedIndex = int.MaxValue;
+            var highestSelectedIndex = int.MinValue;
+            selectedObjects
+                .ForEach(pair =>
+                {
+                    var i = buttons.IndexOf(pair.Value);
+                    if (i < lowestSelectedIndex)
+                    {
+                        lowestSelectedIndex = i;
+                    }
+                    if (i > highestSelectedIndex)
+                    {
+                        highestSelectedIndex = i;
+                    }
+                });
+            if (selectedIndex < lowestSelectedIndex)
+            {
+                selectedObjects.Clear();
+                for(var i = selectedIndex; i <= lowestSelectedIndex; i++)
+                {
+                    var m = uASModel.GetCollection(dropDown.value).Values[i];
+                    var b = buttons[i];
+                    selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(m, b));
+                }
+            } else if (selectedIndex > highestSelectedIndex)
+            {
+                selectedObjects.Clear();
+                for(var i = highestSelectedIndex; i <= selectedIndex; i++)
+                {
+                    var m = uASModel.GetCollection(dropDown.value).Values[i];
+                    var b = buttons[i];
+                    selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(m, b));
+                }
+            }
+        }
+        else
+        {
+            selectedObjects.Clear();
+            selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(model,button));
+        }
+
+        SelectedModel = model;
+        ModelSelected(model);
+
+        foreach (var b in buttons)
+        {
+            b.style.color = Color.white;
+        }
+
+        foreach(var pair in selectedObjects)
+        {
+            pair.Value.style.color = Color.gray;
+        }
+         
+
+    }
 
     private void ModelSelected(AiObjectModel model)
     {
