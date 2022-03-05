@@ -75,5 +75,10 @@ public static class Consts
         "All Files", "*"
     };
 
+    // UI Element Text
+    public const string Text_Button_SortByPerformance = "Sort By Performance";
+    public const string Text_Button_SortByWeight = "Sort By Weight";
+
+
 
 }

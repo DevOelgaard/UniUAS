@@ -52,11 +52,10 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         addcopyButton.RegisterCallback<MouseUpEvent>(_ =>
             AddTempConsiderationCopy());
 
-        var enableSortButton = collection.GetType() == typeof(ReactiveList<Consideration>);
-        sortCollectionButton.SetEnabled(enableSortButton);
-
-        if (enableSortButton)
+        var t = collection.GetType();
+        if (t == typeof(ReactiveList<Consideration>))
         {
+            sortCollectionButton.text = Consts.Text_Button_SortByPerformance;
             sortCollectionButton.RegisterCallback<MouseUpEvent>(evt =>
             {
                 var cast = collection as ReactiveList<Consideration>;
@@ -64,7 +63,19 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
                 cast.Clear();
                 sortedList.ForEach(c => cast.Add(c));
             });
-        } else
+        }
+        else if (t == typeof(ReactiveList<Bucket>))
+        {
+            sortCollectionButton.text = Consts.Text_Button_SortByWeight;
+            sortCollectionButton.RegisterCallback<MouseUpEvent>(evt =>
+            {
+                var cast = collection as ReactiveList<Bucket>;
+                var sortedList = cast.Values.OrderByDescending(b => b.Weight.Value).ToList();
+                cast.Clear();
+                sortedList.ForEach(c => cast.Add(c));
+            });
+        }
+        else
         {
             sortCollectionButton.style.display = DisplayStyle.None;
         }
