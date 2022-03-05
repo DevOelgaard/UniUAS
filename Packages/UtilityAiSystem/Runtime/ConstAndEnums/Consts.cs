@@ -8,22 +8,12 @@ public static class Consts
 {
     // Paths
     internal const string MenuName = "Utility Ai System/";
-    internal const string Path_MainFolder = "Assets/UAS/";
-    internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
-    internal const string Path_Templates = Path_ScriptableObjects + "Templates/Templates.asset";
-    internal const string Path_AiTickerSettings = Path_MainFolder + "Settings/AiTickerSettings" + "." + FileExtension_TickerSettings;
+    internal const string Path_MainFolder = "Assets/UAS/bin/";
+    internal const string File_TickerSettings = Path_MainFolder + "Settings/TickerSettings" + "." + FileExtension_TickerSettings;
     internal const string File_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
     internal const string File_UASModelAutoSave = Path_MainFolder + "Ai/AutoSave" + "." + FileExtension_UasTemplateCollection;
 
-    internal const string Path_AiAsset = Path_ScriptableObjects + "Ais/";
-    internal const string Path_BucketAsset = Path_ScriptableObjects + "Buckets/";
-    internal const string Path_DecisionAsset = Path_ScriptableObjects + "Decisions/";
-    internal const string Path_ConsiderationAsset = Path_ScriptableObjects + "Considerations/";
-    internal const string Path_UASManagerModel = Path_ScriptableObjects + "Models/Manager/UASMModel.asset";
-
     internal const string File_MainSavePath = Path_MainFolder + "Persistence/";
-    internal const string File_UASModel = File_MainSavePath + "UASTemplates.dat";
-    internal const string FileName_UASModelJson = "UASTemplates.json";
 
     // Labels
     internal const string Label_MainWindowModel = "MainWindowModel";
@@ -82,6 +72,7 @@ public static class Consts
         "AI", FileExtension_UAI,
         "Templates", FileExtension_UasTemplateCollection,
         "Ticker Settings", FileExtension_TickerSettings,
+        "All Files", "*"
     };
 
 

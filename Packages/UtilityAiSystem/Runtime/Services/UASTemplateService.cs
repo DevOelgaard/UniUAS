@@ -90,11 +90,15 @@ internal class UASTemplateService: RestoreAble
 
         if (aiTemplate == null)
         {
-            Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
+            if (Debug.isDebugBuild)
+            {
+                Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
+            }
             aiTemplate = AIs.Values.First() as UAIModel;
             if (aiTemplate == null)
             {
                 Debug.LogError("No ai found");
+                throw new Exception("AiTemplate not found AiName: " + name);
             }
         }
         return aiTemplate.Clone() as UAIModel;

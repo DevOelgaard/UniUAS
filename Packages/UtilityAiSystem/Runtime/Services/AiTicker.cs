@@ -33,7 +33,7 @@ internal class AiTicker: RestoreAble
 
     internal AiTicker()
     {
-        var loadedState = persistenceAPI.LoadObjectPath<AiTickerSettingsState>(Consts.Path_AiTickerSettings);
+        var loadedState = persistenceAPI.LoadObjectPath<AiTickerSettingsState>(Consts.File_TickerSettings);
         if (loadedState != null)
         {
             Settings = Restore<AiTickerSettingsModel>(loadedState);
@@ -99,7 +99,7 @@ internal class AiTicker: RestoreAble
 
     internal void Save()
     {
-        persistenceAPI.SaveObjectPath(Settings, Consts.Path_AiTickerSettings);
+        persistenceAPI.SaveObjectPath(Settings, Consts.File_TickerSettings);
 
     }
 
