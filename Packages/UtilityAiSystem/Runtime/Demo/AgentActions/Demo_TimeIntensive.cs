@@ -7,6 +7,7 @@ using UnityEngine;
 
 internal class Demo_TimeIntensive : AgentAction
 {
+    private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
     protected override List<Parameter> GetParameters()
     {
         return new List<Parameter>() { 
@@ -16,11 +17,25 @@ internal class Demo_TimeIntensive : AgentAction
 
     public override void OnStart(AiContext context)
     {
-        var end = Time.deltaTime + Convert.ToInt32(Parameters[0].Value);
+        stopwatch.Reset();
+        stopwatch.Start();
+        var time = stopwatch.ElapsedMilliseconds;
+        var extra = Convert.ToInt32(Parameters[0].Value);
+        var end = time + extra;
 
-        while(end > Time.deltaTime)
+        var i = 0;
+        //Debug.Log("Time: " + time + " extra: " + extra + " end: " + end);
+        while (end > stopwatch.ElapsedMilliseconds)
         {
-
+            //i++;
+            //if (i > 10000000)
+            //{
+            //    break;
+            //    Debug.Log("Breaking Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms");
+            //}
         }
+        stopwatch.Stop();
+
+        //Debug.Log("Completed in: " + stopwatch.ElapsedMilliseconds + "ms");
     }
 }

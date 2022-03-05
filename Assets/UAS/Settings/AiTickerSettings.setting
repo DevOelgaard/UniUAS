@@ -10,12 +10,17 @@
       },
       {
         "Name": "Sample Time Seconds",
-        "Value": 1.0,
+        "Value": 5.0,
         "FileName": "Parameter"
       },
       {
         "Name": "Debug",
-        "Value": true,
+        "Value": false,
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "DebugTickCount",
+        "Value": 500,
         "FileName": "Parameter"
       }
     ],
@@ -33,12 +38,17 @@
         },
         {
           "Name": "Sample Time Seconds",
-          "Value": 1.0,
+          "Value": 5.0,
           "FileName": "Parameter"
         },
         {
           "Name": "Debug",
           "Value": true,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "DebugTickCount",
+          "Value": 15,
           "FileName": "Parameter"
         }
       ],

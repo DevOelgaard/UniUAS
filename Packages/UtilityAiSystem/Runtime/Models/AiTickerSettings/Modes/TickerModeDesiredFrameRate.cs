@@ -9,14 +9,16 @@ using UniRx;
 internal class TickerModeDesiredFrameRate : TickerMode
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    private int frameCount = 0;
-    private float timeCount = 0f;
+    private int framesThisSample = 0;
+    private float elapsedTime = 0f;
     private int tickedItemsLastSample = 0;
+    private int tickedItemsLastSampleStored = 0;
     private int allowedTicksPrFrame = int.MaxValue;
     private int lastTickIndex = -1;
-    internal float LastFrameRate { get; private set; } = 0f;
+    internal float LastFrameRate { get; private set; } = float.MaxValue;
     internal float SampelTimeInSeconds => Convert.ToSingle(Parameters[1].Value);
     internal float TargetFrameRate => Convert.ToSingle(Parameters[0].Value);
+    private int debugTickCount = 0;
 
 
     public TickerModeDesiredFrameRate() : base(AiTickerMode.DesiredFrameRate, Consts.Description_TickerModeDesiredFrameRate)
@@ -30,42 +32,64 @@ internal class TickerModeDesiredFrameRate : TickerMode
         {
             new Parameter("Target Framerate", (int)60),
             new Parameter("Sample Time Seconds", 1f),
-            new Parameter("Debug", false)
+            new Parameter("Debug", false),
+            new Parameter("DebugTickCount", (int)0)
         };
     }
 
     internal override void Tick(List<IAgent> agents, TickMetaData metaData)
     {
-        if (timeCount < SampelTimeInSeconds)
+        if (elapsedTime < SampelTimeInSeconds)
         {
-            timeCount += Time.deltaTime;
-            frameCount++;
+            elapsedTime += Time.deltaTime;
+            framesThisSample++;
         }
         else
         {
-            LastFrameRate = (float)frameCount / timeCount;
-            frameCount = 0;
-            timeCount = 0f;
+            LastFrameRate = (float)framesThisSample / elapsedTime;
+
+
+            if (LastFrameRate < TargetFrameRate)
+            {
+                var oldAllowedTicks = allowedTicksPrFrame;
+                var optimizeFactor = LastFrameRate / TargetFrameRate;
+                var ticksThisSample = tickedItemsLastSample * optimizeFactor;
+                allowedTicksPrFrame = Mathf.FloorToInt(ticksThisSample / framesThisSample);
+                if ((bool)Parameters[2].Value)
+                {
+                    Debug.Log("LastFrameRate: " + LastFrameRate + " TargetFrameRate: " + TargetFrameRate + " optimizeFactor: " + optimizeFactor + " tickedItemsLastSample: " + tickedItemsLastSample + " allowedTicsPrFrame: " + allowedTicksPrFrame + " oldAllowedTicks: " + oldAllowedTicks);
+                }
+            }
+
+
+            if ((bool)Parameters[2].Value)
+            {
+                Debug.Log("LastFrameRate: " + LastFrameRate + " framesThisSample: " + framesThisSample + " elapsedTime: " + elapsedTime + " SampleTime: " + SampelTimeInSeconds);
+            }
+            framesThisSample = 0;
+            elapsedTime = 0f;
+            tickedItemsLastSample = 0;
         }
 
-        if (LastFrameRate < TargetFrameRate)
-        {
-            var optimizeFactor = LastFrameRate / TargetFrameRate;
-            allowedTicksPrFrame = Mathf.FloorToInt(tickedItemsLastSample * optimizeFactor);
-        }
+
 
         var tickCountThisFrame = 0;
         foreach(var agent in agents)
         {
             tickCountThisFrame++;
-            if (lastTickIndex >= agents.Count)
+            if (lastTickIndex >= agents.Count-1)
             {
+                if ((bool)Parameters[2].Value)
+                {
+                    Debug.Log("All Agents ticked Agent count: " + agents.Count + " TickCount: " + metaData.TickCount);
+                }
                 lastTickIndex = 0;
             } else
             {
                 lastTickIndex++;
             }
             agents[lastTickIndex].Tick(metaData);
+            tickedItemsLastSample++;
 
             
             if (tickCountThisFrame >= allowedTicksPrFrame)
@@ -73,9 +97,12 @@ internal class TickerModeDesiredFrameRate : TickerMode
                 break;
             }
         }
-        if ((bool)Parameters[2].Value)
+
+        debugTickCount++;
+        if ((bool)Parameters[2].Value && debugTickCount >= Convert.ToInt32(Parameters[3].Value))
         {
-            Debug.Log("Framerate: " + LastFrameRate + " Allowed TicksPrFrame: " + allowedTicksPrFrame);
+            debugTickCount = 0;
+            Debug.Log("Framerate: " + LastFrameRate + " Allowed TicksPrFrame: " + allowedTicksPrFrame + " FrameCount: " + framesThisSample);
         }
     }
 

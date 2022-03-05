@@ -22,6 +22,7 @@ internal class AiTickerManagerWindow: EditorWindow
     private Button startButton;
     private Button stopButton;
     private Button reloadButton;
+    private Label tickCount;
 
     private AiTicker aiTicker;
 
@@ -48,6 +49,7 @@ internal class AiTickerManagerWindow: EditorWindow
         startButton = root.Q<Button>("StartButton");
         stopButton = root.Q<Button>("StopButton");
         reloadButton = root.Q<Button>("ReloadButton");
+        tickCount = root.Q<Label>("TickCountValue-Label");
 
         description = new HelpBox("",HelpBoxMessageType.Info);
         header.Add(description);
@@ -79,6 +81,12 @@ internal class AiTickerManagerWindow: EditorWindow
         });
 
         LoadTicker(aiTicker.Settings.TickerMode);
+
+        tickCount.text = aiTicker.TickCount.ToString();
+
+        aiTicker.OnTickCountChanged
+            .Subscribe(value => tickCount.text = value.ToString())
+            .AddTo(disposables);
     }
 
     private void LoadTicker(TickerMode tickerMode)
@@ -102,4 +110,5 @@ internal class AiTickerManagerWindow: EditorWindow
         aiTicker.Save();
         disposables.Clear();
     }
+
 }

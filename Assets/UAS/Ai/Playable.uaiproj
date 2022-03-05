@@ -16,7 +16,7 @@
                   "Parameters": [
                     {
                       "Name": "ExecutionTime ms",
-                      "Value": 200,
+                      "Value": 3,
                       "FileName": "Parameter"
                     }
                   ],

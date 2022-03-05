@@ -14,7 +14,20 @@ internal class AiTicker: RestoreAble
     private static AiTicker instance;
     public static AiTicker Instance => instance ??= new AiTicker();
     private AgentManager agentManager => AgentManager.Instance;
-    private int tickCount = 0;
+
+    private int tickCount; 
+    public int TickCount { 
+        get => tickCount; 
+        private set
+        {
+            tickCount = value;
+            onTickCountChanged.OnNext(tickCount);
+        } 
+    }
+
+    public IObservable<int> OnTickCountChanged => onTickCountChanged;
+    private Subject<int> onTickCountChanged = new Subject<int>();
+    
     internal AiTickerSettingsModel Settings = new AiTickerSettingsModel();
     private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
 
@@ -32,7 +45,7 @@ internal class AiTicker: RestoreAble
 
     internal void Start()
     {
-        Observable.TimerFrame(1)
+        Observable.IntervalFrame(1)
             .Subscribe(_ => TickAis())
             .AddTo(disposables);
     }
@@ -44,9 +57,9 @@ internal class AiTicker: RestoreAble
 
     internal void TickAis()
     {
-        tickCount++;
+        TickCount++;
         var metaData = new TickMetaData();
-        metaData.TickCount = tickCount;
+        metaData.TickCount = TickCount;
         Settings.TickerMode.Tick(agentManager.Model.Agents.Values, metaData);
     }
 
