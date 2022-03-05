@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UniRx;
+using UnityEditor.UIElements;
+using UnityEngine;
 
 internal class ConsiderationComponent : MainWindowComponent
 {
@@ -15,12 +17,14 @@ internal class ConsiderationComponent : MainWindowComponent
     private ScoreComponent normalizedScore => ScoreComponents[1];
     private VisualElement parametersContainer;
     private VisualElement curveContainer;
+    private EnumField performanceTag;
 
     internal ConsiderationComponent(Consideration considerationModel) : base(considerationModel)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("Parameters");
         curveContainer = root.Q<VisualElement>("Curve");
+        performanceTag = root.Q<EnumField>("PerformanceTag");
 
         Body.Clear();
         Body.Add(root);
@@ -33,6 +37,14 @@ internal class ConsiderationComponent : MainWindowComponent
         considerationModel.NormalizedScoreChanged
             .Subscribe(score => normalizedScore.UpdateScore(score))
             .AddTo(Disposables);
+
+        performanceTag.Init(PerformanceTag.Normal);
+        performanceTag.value = considerationModel.PerformanceTag;
+        performanceTag.RegisterCallback<ChangeEvent<Enum>>(evt =>
+        {
+            considerationModel.PerformanceTag = (PerformanceTag)evt.newValue;
+        });
+
 
         SetParameters();
         curveContainer.Add(new ResponseCurveComponent(considerationModel));

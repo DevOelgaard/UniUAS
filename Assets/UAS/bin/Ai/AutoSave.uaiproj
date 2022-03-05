@@ -58,6 +58,7 @@
                     "Value": 1.0,
                     "FileName": "Parameter"
                   },
+                  "PerformanceTag": 0,
                   "FileName": "Demo_ConsiderationRandomValue"
                 }
               ],
@@ -97,6 +98,7 @@
                 "Value": 1.0,
                 "FileName": "Parameter"
               },
+              "PerformanceTag": 0,
               "FileName": "Demo_ConsiderationRandomValue"
             }
           ],
@@ -169,6 +171,7 @@
                 "Value": 1.0,
                 "FileName": "Parameter"
               },
+              "PerformanceTag": 0,
               "FileName": "Demo_ConsiderationRandomValue"
             }
           ],
@@ -208,6 +211,7 @@
             "Value": 1.0,
             "FileName": "Parameter"
           },
+          "PerformanceTag": 0,
           "FileName": "Demo_ConsiderationRandomValue"
         }
       ],
@@ -270,6 +274,7 @@
             "Value": 1.0,
             "FileName": "Parameter"
           },
+          "PerformanceTag": 0,
           "FileName": "Demo_ConsiderationRandomValue"
         }
       ],
@@ -309,6 +314,7 @@
         "Value": 1.0,
         "FileName": "Parameter"
       },
+      "PerformanceTag": 3,
       "FileName": "Demo_ConsiderationRandomValue"
     }
   ],

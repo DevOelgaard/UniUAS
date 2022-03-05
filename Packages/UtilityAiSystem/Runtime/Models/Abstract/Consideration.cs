@@ -9,6 +9,7 @@ public abstract class Consideration : AiObjectModel
     private string namePostfix;
     public List<Parameter> Parameters;
     public ResponseCurveModel ResponseCurve = new RCExponential();
+    public PerformanceTag PerformanceTag;
     public float BaseScore
     {
         get => ScoreModels[0].Value;
@@ -32,6 +33,7 @@ public abstract class Consideration : AiObjectModel
         ScoreModels.Add(new ScoreModel("Base", 0f));
         ScoreModels.Add(new ScoreModel("Normalized", 0f));
         namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
+        PerformanceTag = GetPerformanceTag();
     }
 
     public override string GetNameFormat(string name)
@@ -41,6 +43,11 @@ public abstract class Consideration : AiObjectModel
             return name + namePostfix;
         }
         return name;
+    }
+
+    protected virtual PerformanceTag GetPerformanceTag()
+    {
+        return PerformanceTag.Normal;
     }
 
     protected abstract List<Parameter> GetParameters();
@@ -100,6 +107,7 @@ public abstract class Consideration : AiObjectModel
             var parameter = Parameter.Restore<Parameter>(pState);
             Parameters.Add(parameter);
         }
+        PerformanceTag = (PerformanceTag)state.PerformanceTag;
     }
 
     internal override AiObjectModel Clone()
@@ -135,6 +143,7 @@ public class ConsiderationState: RestoreState
     public string Description;
     public ParameterState Min;
     public ParameterState Max;
+    public int PerformanceTag;
 
     public ConsiderationState() : base()
     {
@@ -153,5 +162,7 @@ public class ConsiderationState: RestoreState
         {
             Parameters.Add(parameter.GetState() as ParameterState);
         }
+
+        PerformanceTag = (int)consideration.PerformanceTag;
     }
 }

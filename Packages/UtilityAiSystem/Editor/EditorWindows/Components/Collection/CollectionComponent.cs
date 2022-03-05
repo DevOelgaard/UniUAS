@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using UniRx;
 using UniRxExtension;
 using UnityEngine.UIElements;
@@ -15,6 +16,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     private Label tempLabel;
     private Button addcopyButton;
+    private Button sortCollectionButton;
     private VisualElement tempBody;
 
     private Label elementsLabel;
@@ -37,16 +39,36 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
         this.tempLabel = root.Q<Label>("Temp-Label");
         addcopyButton = root.Q<Button>("AddCopy-Button");
+        sortCollectionButton = root.Q<Button>("SortCollection-Button");
         tempBody = root.Q<VisualElement>("TempBody");
 
         this.elementsLabel = root.Q<Label>("Elements-Label");
         elementsBody = root.Q<ScrollView>("ElementsBody");
         elementsDropdown = root.Q<DropdownField>("Temp-DropdownField");
 
+
         this.tempLabel.text = tempLabel;
 
         addcopyButton.RegisterCallback<MouseUpEvent>(_ =>
             AddTempConsiderationCopy());
+
+        var enableSortButton = collection.GetType() == typeof(ReactiveList<Consideration>);
+        sortCollectionButton.SetEnabled(enableSortButton);
+
+        if (enableSortButton)
+        {
+            sortCollectionButton.RegisterCallback<MouseUpEvent>(evt =>
+            {
+                var cast = collection as ReactiveList<Consideration>;
+                var sortedList = cast.Values.OrderBy(c => c.PerformanceTag).ToList();
+                cast.Clear();
+                sortedList.ForEach(c => cast.Add(c));
+            });
+        } else
+        {
+            sortCollectionButton.style.display = DisplayStyle.None;
+        }
+
 
         elementsDropdown.label = dropDownLabel;
 
