@@ -222,11 +222,12 @@ internal class TemplateManager : EditorWindow
 
     public void UpdateLeftPanel(string label = "")
     {
-        if (label == "")
+        if (String.IsNullOrEmpty(label))
         {
             label = dropDown.value;
         }
         var models = uASModel.GetCollection(label);
+        if (models == null) return;
 
         activeCollectionChangedSub?.Dispose();
         activeCollectionChangedSub = models

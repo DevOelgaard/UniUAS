@@ -8,5 +8,5 @@ public enum AiTickerMode
 {
     DesiredFrameRate,
     TimeBudget,
-    Unrestricted
+    Unrestricted,
 }
