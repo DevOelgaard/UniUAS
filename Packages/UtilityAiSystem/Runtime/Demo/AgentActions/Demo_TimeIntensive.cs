@@ -23,19 +23,9 @@ internal class Demo_TimeIntensive : AgentAction
         var extra = Convert.ToInt32(Parameters[0].Value);
         var end = time + extra;
 
-        var i = 0;
-        //Debug.Log("Time: " + time + " extra: " + extra + " end: " + end);
         while (end > stopwatch.ElapsedMilliseconds)
         {
-            //i++;
-            //if (i > 10000000)
-            //{
-            //    break;
-            //    Debug.Log("Breaking Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms");
-            //}
         }
         stopwatch.Stop();
-
-        //Debug.Log("Completed in: " + stopwatch.ElapsedMilliseconds + "ms");
     }
 }
