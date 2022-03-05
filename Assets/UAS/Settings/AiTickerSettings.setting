@@ -1,30 +1,20 @@
 {
   "TickerMode": {
-    "Name": "DesiredFrameRate",
-    "Description": "Dynamically alters ticks/frame to stay above target framerate. Increasing samplerate trades Reaction time for framerate precision.",
+    "Name": "TimeBudget",
+    "Description": "Executes as many ticks as possible in a given timeframe",
     "Parameters": [
       {
-        "Name": "Target Framerate",
-        "Value": 60,
-        "FileName": "Parameter"
-      },
-      {
-        "Name": "Sample Time Seconds",
-        "Value": 5.0,
+        "Name": "Time Budget MS",
+        "Value": 39,
         "FileName": "Parameter"
       },
       {
         "Name": "Debug",
-        "Value": false,
-        "FileName": "Parameter"
-      },
-      {
-        "Name": "DebugTickCount",
-        "Value": 500,
+        "Value": true,
         "FileName": "Parameter"
       }
     ],
-    "FileName": "TickerModeDesiredFrameRate"
+    "FileName": "TickerModeTimeBudget"
   },
   "TickerModes": [
     {
@@ -38,17 +28,17 @@
         },
         {
           "Name": "Sample Time Seconds",
-          "Value": 5.0,
+          "Value": 1.0,
           "FileName": "Parameter"
         },
         {
           "Name": "Debug",
-          "Value": true,
+          "Value": false,
           "FileName": "Parameter"
         },
         {
           "Name": "DebugTickCount",
-          "Value": 15,
+          "Value": 0,
           "FileName": "Parameter"
         }
       ],
@@ -60,7 +50,12 @@
       "Parameters": [
         {
           "Name": "Time Budget MS",
-          "Value": 23,
+          "Value": 18,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "Debug",
+          "Value": true,
           "FileName": "Parameter"
         }
       ],

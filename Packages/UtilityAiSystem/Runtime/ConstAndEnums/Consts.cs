@@ -59,7 +59,7 @@ public static class Consts
     // Ticker Modes
     public const string Description_TickerModeUnrestricted = "No restrictions to execution time";
     public const string Description_TickerModeDesiredFrameRate = "Dynamically alters ticks/frame to stay above target framerate. Increasing samplerate trades Reaction time for framerate precision.";
-    public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe";
+    public const string Description_TickerModeTimeBudget = "Executes as many ticks as possible in a given timeframe. The Time budget may be exceeded by the execution time of one agent";
 
 
     // File extensions
