@@ -12,7 +12,8 @@ public static class Consts
     internal const string Path_ScriptableObjects = Path_MainFolder + "ScriptableObjects/";
     internal const string Path_Templates = Path_ScriptableObjects + "Templates/Templates.asset";
     internal const string Path_AiTickerSettings = Path_MainFolder + "Settings/AiTickerSettings" + "." + FileExtension_TickerSettings;
-    internal const string Path_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
+    internal const string File_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
+    internal const string File_UASModelAutoSave = Path_MainFolder + "Ai/AutoSave" + "." + FileExtension_UasTemplateCollection;
 
     internal const string Path_AiAsset = Path_ScriptableObjects + "Ais/";
     internal const string Path_BucketAsset = Path_ScriptableObjects + "Buckets/";

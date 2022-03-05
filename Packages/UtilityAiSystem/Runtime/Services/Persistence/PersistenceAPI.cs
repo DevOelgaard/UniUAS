@@ -51,6 +51,4 @@ internal class PersistenceAPI
     {
         return persister.LoadObject<T>(path);
     }
-
-
 }

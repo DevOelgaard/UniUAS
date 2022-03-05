@@ -26,6 +26,7 @@ internal class TemplateManager : EditorWindow
     private Button exportButton;
     private Button importButton;
     private Button saveToPlayButton;
+    private Button restoreButton;
     private UASTemplateService uASModel => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -55,7 +56,7 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.Path_PlayAi);
+        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
         if (state != null)
         {
             uASModel.Restore(state);
@@ -147,10 +148,22 @@ internal class TemplateManager : EditorWindow
             });
         });
 
+
+        restoreButton = root.Q<Button>("RestoreButton");
+        restoreButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASModelAutoSave);
+            if (state == null || state == default)
+            {
+                return;
+            }
+            uASModel.Restore(state);
+        });
+
         saveToPlayButton = root.Q<Button>("SaveToPlayButton");
         saveToPlayButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            persistenceAPI.SaveObjectPath(uASModel, Consts.Path_PlayAi);
+            persistenceAPI.SaveObjectPath(uASModel, Consts.File_PlayAi);
         });
 
         
@@ -349,6 +362,7 @@ internal class TemplateManager : EditorWindow
 
     private void OnDestroy()
     {
+        persistenceAPI.SaveObjectPath(uASModel, Consts.File_UASModelAutoSave);
         ClearSubscriptions();
     }
 

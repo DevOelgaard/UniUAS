@@ -14,6 +14,7 @@
                 <ui:Button text="Export" display-tooltip-when-elided="true" name="ExportButton" />
                 <ui:Button text="Import" display-tooltip-when-elided="true" name="ImportButton" enable-rich-text="true" />
                 <ui:Button text="Save To Play" display-tooltip-when-elided="true" name="SaveToPlayButton" />
+                <ui:Button text="Restore" display-tooltip-when-elided="true" name="RestoreButton" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="right-panel" />

@@ -46,7 +46,7 @@ internal class UASTemplateService: RestoreAble
         collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
 
         var perstistAPI = new PersistenceAPI(new JSONPersister());
-        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.Path_PlayAi);
+        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
         if (state == null)
         {
             LoadCollectionsFromFile();
