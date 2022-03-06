@@ -50,6 +50,26 @@ namespace UniRxExtension
                 Remove(element);
             }
         }
+
+        public void IncreaIndex(T element)
+        {
+            var index = list.IndexOf(element);
+            if (index >= list.Count-1) return;
+            var itemToReplace = list[index+1];
+            list[index + 1] = element;
+            list[index] = itemToReplace;
+            onValueChanged.OnNext(list);
+        }
+
+        public void DecreaseIndex(T element)
+        {
+            var index = list.IndexOf(element);
+            if (index <= 0) return;
+            var itemToReplace = list[index - 1];
+            list[index - 1] = element;
+            list[index] = itemToReplace;
+            onValueChanged.OnNext(list);
+        }
         public int Count => list.Count;
     }
 }

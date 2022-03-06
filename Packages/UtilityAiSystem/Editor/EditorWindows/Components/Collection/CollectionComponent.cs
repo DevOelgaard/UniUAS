@@ -162,6 +162,14 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
                 .Subscribe(_ => collection.Remove(element))
                 .AddTo(listViewSubscriptions);
 
+            listView.OnUpClicked
+                .Subscribe(_ => collection.DecreaseIndex(element))
+                .AddTo(listViewSubscriptions);
+
+            listView.OnDownClicked
+                .Subscribe(_ => collection.IncreaIndex(element))
+                .AddTo(listViewSubscriptions);
+
             elementsBody.Add(listView);
         }
     }
