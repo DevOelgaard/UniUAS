@@ -19,11 +19,13 @@ internal class Demo_AllObjectsWithTag : Decision
         };
     }
 
-    internal override float GetUtility(AiContext context)
+    internal override float CalculateUtility(AiContext context)
     {
         var targets = GameObject.FindGameObjectsWithTag((string)Parameters[0].Value);
         GameObject selectedTarget = null;
         var highestUtility = 0f;
+        var address = GetContextAddress(context);
+
         if (targets == null)
         {
             return 0f;
@@ -31,7 +33,7 @@ internal class Demo_AllObjectsWithTag : Decision
         {
             foreach(var target in targets)
             {
-                context.SetContext(AiContextKey.CurrentTargetGameObject, target);
+                context.SetContext(address+AiContextKey.CurrentTargetGameObject, target);
                 var utility = context.UtilityScorer.CalculateUtility(Considerations.Values, context);
                 if (utility > highestUtility)
                 {
@@ -44,7 +46,6 @@ internal class Demo_AllObjectsWithTag : Decision
                 return 0f;
             } else
             {
-                var address = GetContextAddress(context);
                 context.SetContext(address + AiContextKey.CurrentTargetGameObject, selectedTarget);
                 return highestUtility;
             }

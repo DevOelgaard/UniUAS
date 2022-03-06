@@ -17,6 +17,7 @@ internal class AgentComponent: VisualElement
     private Button tickAllButton;
     private Button applyToAllButton;
     private IAgent agent;
+    private UASTemplateService uasTemplateService;
 
     internal AgentComponent(IAgent agent)
     {
@@ -27,6 +28,8 @@ internal class AgentComponent: VisualElement
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
         footer = root.Q<VisualElement>("Footer");
+
+        uasTemplateService = UASTemplateService.Instance;
 
         tickAgent = new Button();
         tickAgent.text = "TEST-Tick-Agent";
@@ -70,8 +73,8 @@ internal class AgentComponent: VisualElement
     private void InitDropdown()
     {
         aiDropdown.label = "AIs";
-        aiDropdown.choices = UASTemplateService
-            .Instance
+        uasTemplateService.LoadPlayMode();
+        aiDropdown.choices = uasTemplateService
             .GetCollection(Consts.Label_UAIModel)
             .Values
             .Select(x => x.Name)

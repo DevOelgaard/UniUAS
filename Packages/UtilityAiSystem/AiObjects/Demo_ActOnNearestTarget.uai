@@ -2,15 +2,15 @@
   "States": [
     {
       "$type": "UAIModelState, Devoe.UAS.Runtime",
-      "Name": "Demo_Act on nearest Target",
+      "Name": "Act on nearest target",
       "Description": null,
       "Buckets": [
         {
-          "Name": "Acton on nearest target",
+          "Name": "Default",
           "Description": null,
           "Decisions": [
             {
-              "Name": "Find Nearest Target (Demo_AllObjectsWithTag)",
+              "Name": "Default (Demo_AllObjectsWithTag)",
               "Description": null,
               "AgentActions": [
                 {
@@ -57,18 +57,19 @@
                   "FileName": "ConsiderationNearestTarget"
                 }
               ],
+              "Parameters": [
+                {
+                  "Name": "Tag",
+                  "Value": "Target",
+                  "FileName": "Parameter"
+                }
+              ],
               "FileName": "Demo_AllObjectsWithTag"
             }
           ],
           "Considerations": [
             {
-              "Parameters": [
-                {
-                  "Name": "Return value",
-                  "Value": 1.0,
-                  "FileName": "Parameter"
-                }
-              ],
+              "Parameters": [],
               "ResponseCurveState": {
                 "Name": "Linear",
                 "MinY": 0.0,
@@ -87,20 +88,20 @@
                 ],
                 "FileName": "RCLinear"
               },
-              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Name": "Default (ConsiderationNearestTarget)",
               "Description": null,
               "Min": {
                 "Name": "Min",
-                "Value": 0.0,
+                "Value": 0,
                 "FileName": "Parameter"
               },
               "Max": {
                 "Name": "Max",
-                "Value": 1.0,
+                "Value": 1000,
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
-              "FileName": "Demo_ConsiderationFixedValue"
+              "FileName": "ConsiderationNearestTarget"
             }
           ],
           "Weight": {

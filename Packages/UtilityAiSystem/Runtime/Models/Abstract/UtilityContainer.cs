@@ -51,9 +51,14 @@ public abstract class UtilityContainer : AiObjectModel
             .Subscribe(_ => UpdateInfo());
     }
 
-    internal virtual float GetUtility(AiContext context)
+    internal virtual float CalculateUtility(AiContext context)
     {
-        LastCalculatedUtility = context.UtilityScorer.CalculateUtility(Considerations.Values, context);
+        return context.UtilityScorer.CalculateUtility(Considerations.Values, context);
+    }
+
+    internal float GetUtility(AiContext context)
+    {
+        LastCalculatedUtility = CalculateUtility(context);
         return LastCalculatedUtility;
     }
 
@@ -62,6 +67,4 @@ public abstract class UtilityContainer : AiObjectModel
         base.ClearSubscriptions();
         considerationSub?.Dispose();
     }
-
-
 }

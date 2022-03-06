@@ -15,9 +15,8 @@ public class Mock_Bucket: Bucket
     }
 
 
-    internal override float GetUtility(AiContext context)
+    internal override float CalculateUtility(AiContext context)
     {
-        LastCalculatedUtility = ReturnValue;
         return ReturnValue;
     }
 }

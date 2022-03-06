@@ -2,13 +2,7 @@
     <ui:VisualElement name="Container" style="flex-direction: column; flex-grow: 1;">
         <ui:VisualElement name="TempContainer">
             <ui:VisualElement name="TempHeader" style="flex-direction: row;">
-                <ui:DropdownField label="Templates" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="Temp-DropdownField" />
-                <ui:Button text="Add Copy" display-tooltip-when-elided="true" name="AddCopy-Button" />
                 <ui:Button text="Sort By Execution" display-tooltip-when-elided="true" name="SortCollection-Button" />
-            </ui:VisualElement>
-            <ui:VisualElement name="TempBody">
-                <ui:Label text="Temp Action" display-tooltip-when-elided="true" name="Temp-Label" />
-                <ui:VisualElement name="TempContainer" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ElementsContainer" style="flex-grow: 1;">

@@ -43,16 +43,21 @@ internal class UASTemplateService: RestoreAble
 
         if (restore)
         {
-            var perstistAPI = new PersistenceAPI(new JSONPersister());
-            var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
-            if (state == null)
-            {
-                //LoadCollectionsFromFile();
-            }
-            else
-            {
-                Restore(state);
-            }
+            LoadPlayMode();
+        }
+    }
+
+    internal void LoadPlayMode()
+    {
+        var perstistAPI = new PersistenceAPI(new JSONPersister());
+        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
+        if (state == null)
+        {
+            //LoadCollectionsFromFile();
+        }
+        else
+        {
+            Restore(state);
         }
     }
 

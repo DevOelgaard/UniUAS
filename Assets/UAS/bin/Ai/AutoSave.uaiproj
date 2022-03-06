@@ -953,6 +953,128 @@
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
       "FileName": "UAIModel"
+    },
+    {
+      "Name": "Act on nearest target",
+      "Description": null,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "Default (Demo_AllObjectsWithTag)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [],
+                  "Name": "Default (ActOnTarget)",
+                  "Description": null,
+                  "FileName": "ActOnTarget"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (ConsiderationNearestTarget)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1000,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "FileName": "ConsiderationNearestTarget"
+                }
+              ],
+              "Parameters": [
+                {
+                  "Name": "Tag",
+                  "Value": "Target",
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "Demo_AllObjectsWithTag"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 0.5,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        }
+      ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "UAIModel"
     }
   ],
   "Buckets": [

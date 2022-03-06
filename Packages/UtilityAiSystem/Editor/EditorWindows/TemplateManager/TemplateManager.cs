@@ -28,6 +28,7 @@ internal class TemplateManager : EditorWindow
     private Button importButton;
     private Button saveToPlayButton;
     private Button restoreButton;
+    private Button playModeButton;
     private PopupField<string> addElementPopup;
     private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
@@ -162,6 +163,14 @@ internal class TemplateManager : EditorWindow
         {
             persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_PlayAi);
         });
+
+        playModeButton = root.Q<Button>("PlayModeButton");
+        playModeButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            uASTemplateService.LoadPlayMode();
+        });
+
+        
 
 
         InitDropdown();

@@ -18,8 +18,8 @@ internal class ConsiderationNearestTarget : Consideration
         var agent = (AgentMono)context.Agent;
         var address = context.CurrentEvalutedDecision.GetContextAddress(context);
         var target = context.GetContext<GameObject>(address + AiContextKey.CurrentTargetGameObject);
-        
-        return Vector3.Distance(agent.transform.position,target.transform.position);
+        var distance = Vector3.Distance(agent.transform.position, target.transform.position);
+        return Convert.ToSingle(Max.Value) - distance;
     }
 
     protected override List<Parameter> GetParameters()
