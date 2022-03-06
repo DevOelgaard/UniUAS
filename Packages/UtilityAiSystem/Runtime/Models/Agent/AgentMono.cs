@@ -60,9 +60,25 @@ public class AgentMono : MonoBehaviour, IAgent
     {
         Ai.Context.SetContext(AiContextKey.TickMetaData, metaData);
         var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context);
+
+        var oldActions = Ai.Context.LastActions;
         foreach(var action in actions)
         {
-            action.OnStart(Ai.Context);
+            if (oldActions.Contains(action))
+            {
+                action.OnGoing(Ai.Context);
+                oldActions.Remove(action);
+            } else
+            {
+                action.OnStart(Ai.Context);
+            }
         }
+
+        foreach(var action in oldActions)
+        {
+            action.OnEnd(Ai.Context);
+        }
+
+        Ai.Context.LastActions = actions;
     }
 }

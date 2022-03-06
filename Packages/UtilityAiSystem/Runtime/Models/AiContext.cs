@@ -12,8 +12,11 @@ public class AiContext
     private Dictionary<string, object> contextStringKey = new Dictionary<string, object>();
     private Dictionary<AiContextKey, object> contextEnumKey = new Dictionary<AiContextKey, object>();
     internal IUtilityScorer UtilityScorer = new USAverageScorer();
-    //public IUtilityContainerSelector BucketSelector = new UCSHighestScore();
-    //public IUtilityContainerSelector DecisionSelector = new UCSHighestScore();
+    internal List<AgentAction> LastActions = new List<AgentAction>();
+    internal Decision LastSelectedDecision;
+    internal Decision CurrentEvalutedDecision;
+    internal Bucket LastSelectedBucket;
+    internal Bucket CurrentEvaluatedBucket;
          
     public AiContext()
     {

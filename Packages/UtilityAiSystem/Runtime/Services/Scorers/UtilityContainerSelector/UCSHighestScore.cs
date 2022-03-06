@@ -32,9 +32,10 @@ public class UCSHighestScore : IUtilityContainerSelector
             {
                 continue;
             }
-
+            context.CurrentEvaluatedBucket = container;
             bestContainer = CheckBestContainer(container, context, bestContainer);
         }
+        context.LastSelectedBucket = bestContainer as Bucket;
         return bestContainer as Bucket;
     }
 
@@ -43,8 +44,10 @@ public class UCSHighestScore : IUtilityContainerSelector
         UtilityContainer bestContainer = null;
         foreach (var container in containers)
         {
+            context.CurrentEvalutedDecision = container;
             bestContainer = CheckBestContainer(container, context, bestContainer);
         }
+        context.LastSelectedDecision = bestContainer as Decision;
         return bestContainer as Decision;
     }
 
