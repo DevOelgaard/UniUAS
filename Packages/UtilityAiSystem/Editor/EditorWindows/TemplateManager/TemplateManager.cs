@@ -18,13 +18,12 @@ internal class TemplateManager : EditorWindow
     private VisualElement elementsContainer;
     private VisualElement rightPanel;
     private VisualElement buttonContainer;
-    private Button createNewButton;
     private Button copyButton;
     private Button deleteButton;
     private Button resetButton;
     private Button saveButton;
     private Button loadButton;
-    private Button refreshButton;
+    //private Button refreshButton;
     private Button exportButton;
     private Button importButton;
     private Button saveToPlayButton;
@@ -86,30 +85,24 @@ internal class TemplateManager : EditorWindow
 
         rightPanel = root.Q<VisualElement>("right-panel");
 
-        createNewButton = root.Q<Button>("CreateNewButton");
-        createNewButton.RegisterCallback<MouseUpEvent>(evt =>
-        {
-            CreateNewModel();
-        });
-
         copyButton = root.Q<Button>("CopyButton");
         copyButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            CopySelectedModel();
+            CopySelectedElements();
         });
 
         deleteButton = root.Q<Button>("DeleteButton");
         deleteButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            DeleteSelectedElement();
+            DeleteSelectedElements();
         });
 
         resetButton = root.Q<Button>("ResetButton");
         resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             uASTemplateService.Reset();
-            UpdateLeftPanel();
-            rightPanel.Clear();
+            //UpdateLeftPanel();
+            //rightPanel.Clear();
         });
 
         saveButton = root.Q<Button>("SaveButton");
@@ -128,12 +121,12 @@ internal class TemplateManager : EditorWindow
             UpdateLeftPanel();
         });
 
-        refreshButton = root.Q<Button>("RefreshButton");
-        refreshButton.RegisterCallback<MouseUpEvent>(evt =>
-        {
-            uASTemplateService.Refresh();
-            UpdateLeftPanel();
-        });
+        //refreshButton = root.Q<Button>("RefreshButton");
+        //refreshButton.RegisterCallback<MouseUpEvent>(evt =>
+        //{
+        //    uASTemplateService.Refresh();
+        //    UpdateLeftPanel();
+        //});
 
         exportButton = root.Q<Button>("ExportButton");
         exportButton.RegisterCallback<MouseUpEvent>(evt =>
@@ -186,7 +179,6 @@ internal class TemplateManager : EditorWindow
 
     private void UpdateButtons()
     {
-        createNewButton.style.flexGrow = dropDown.value == Consts.Label_ConsiderationModel ? 0 : 1;
         copyButton.SetEnabled(SelectedModel != null);
         deleteButton.SetEnabled(SelectedModel != null);
     }
@@ -198,25 +190,33 @@ internal class TemplateManager : EditorWindow
         ModelSelected(aiObject);
     }
 
-    private void CreateNewModel()
+    private void CopySelectedElements()
     {
-        var s = dropDown.value;
-        var type = MainWindowService.GetTypeFromString(s);
-        var element = (AiObjectModel)Activator.CreateInstance(type);
-        uASTemplateService.Add(element);
-        ModelSelected(element);
+        var clones = new List<AiObjectModel>();
+        foreach (var element in selectedObjects)
+        {
+            var clone = element.Key.Clone();
+            clones.Add(clone);
+        }
+        foreach(var clone in clones)
+        {
+            uASTemplateService.Add(clone);
+        }
+
+        SelectedModel = clones[0];
     }
 
-    private void CopySelectedModel()
+    private void DeleteSelectedElements()
     {
-        var clone = SelectedModel.Clone();
-        uASTemplateService.Add(clone);
-        SelectedModel = clone;
-    }
-
-    private void DeleteSelectedElement()
-    {
-        uASTemplateService.Remove(SelectedModel);
+        var toDelete = new List<AiObjectModel>();
+        foreach(var element in selectedObjects)
+        {
+            toDelete.Add(element.Key);
+        }
+        foreach(var element in toDelete)
+        {
+            uASTemplateService.Remove(element);
+        }
         selectedModel = null;
     }
 
@@ -292,8 +292,7 @@ internal class TemplateManager : EditorWindow
         }
 
         var type = MainWindowService.GetTypeFromString(dropDown.value);
-        createNewButton.SetEnabled(!type.IsAbstract);
-        createNewButton.visible = !type.IsAbstract;
+
     }
 
     private List<Button> buttons = new List<Button>();

@@ -22,15 +22,11 @@ internal class UASTemplateService: RestoreAble
 
     internal UASTemplateService()
     {
-        Init();
+        Init(true);
     }
 
-    private UASTemplateService(bool restore)
-    {
-        Init();
-    }
 
-    private void Init()
+    private void Init(bool restore)
     {
         AIs = new ReactiveList<AiObjectModel>();
         Buckets = new ReactiveList<AiObjectModel>();
@@ -45,14 +41,18 @@ internal class UASTemplateService: RestoreAble
         collectionsByLabel.Add(Consts.Label_ConsiderationModel, Considerations);
         collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
 
-        var perstistAPI = new PersistenceAPI(new JSONPersister());
-        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
-        if (state == null)
+        if (restore)
         {
-            LoadCollectionsFromFile();
-        } else
-        {
-            Restore(state);
+            var perstistAPI = new PersistenceAPI(new JSONPersister());
+            var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
+            if (state == null)
+            {
+                //LoadCollectionsFromFile();
+            }
+            else
+            {
+                Restore(state);
+            }
         }
     }
 
@@ -62,16 +62,16 @@ internal class UASTemplateService: RestoreAble
     {
         subscriptions.Clear();
         ClearCollections();
-        Init();
-        LoadCollectionsFromFile();
+        Init(false);
+        //LoadCollectionsFromFile();
     }
 
-    private void LoadCollectionsFromFile()
-    {
-        Considerations = UpdateListWithFiles<Consideration>(Considerations);
-        AgentActions = UpdateListWithFiles<AgentAction>(AgentActions);
-        Decisions = UpdateListWithFiles<Decision>(Decisions);
-    }
+    //private void LoadCollectionsFromFile()
+    //{
+    //    Considerations = UpdateListWithFiles<Consideration>(Considerations);
+    //    AgentActions = UpdateListWithFiles<AgentAction>(AgentActions);
+    //    Decisions = UpdateListWithFiles<Decision>(Decisions);
+    //}
 
     internal static UASTemplateService Instance
     {
@@ -79,7 +79,7 @@ internal class UASTemplateService: RestoreAble
         {
             if (instance == null)
             {
-                instance = new UASTemplateService(true);
+                instance = new UASTemplateService();
             }
             return instance;
         }
@@ -157,10 +157,10 @@ internal class UASTemplateService: RestoreAble
         return collection;
     }
 
-    internal void Refresh()
-    {
-        LoadCollectionsFromFile();
-    }
+    //internal void Refresh()
+    //{
+    //    LoadCollectionsFromFile();
+    //}
 
 
 
