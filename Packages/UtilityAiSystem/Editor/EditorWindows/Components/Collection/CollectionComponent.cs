@@ -4,6 +4,7 @@ using System.Linq;
 using MoreLinq;
 using UniRx;
 using UniRxExtension;
+using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 public class CollectionComponent<T> : VisualElement where T : AiObjectModel
@@ -14,19 +15,20 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     private TemplateContainer root;
 
-    private Label tempLabel;
-    private Button addcopyButton;
+    //private Label tempLabel;
+    //private Button addcopyButton;
     private Button sortCollectionButton;
-    private VisualElement tempBody;
+    private VisualElement tempHeader;
+    //private VisualElement tempBody;
+    private PopupField<string> addCopyPopup;
 
     private Label elementsLabel;
     private ScrollView elementsBody;
-    private DropdownField elementsDropdown;
+    //private DropdownField elementsDropdown;
 
-    private T tempElement;
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
-    private List<string> dropDownChoices;
+    //private List<string> dropDownChoices;
 
     public CollectionComponent(ReactiveList<T> collection, ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
@@ -36,21 +38,28 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         this.collection = collection;
         this.templates = templates;
 
-
-        this.tempLabel = root.Q<Label>("Temp-Label");
-        addcopyButton = root.Q<Button>("AddCopy-Button");
         sortCollectionButton = root.Q<Button>("SortCollection-Button");
-        tempBody = root.Q<VisualElement>("TempBody");
-
         this.elementsLabel = root.Q<Label>("Elements-Label");
         elementsBody = root.Q<ScrollView>("ElementsBody");
-        elementsDropdown = root.Q<DropdownField>("Temp-DropdownField");
+        
+        tempHeader = root.Q<VisualElement>("TempHeader");
+        addCopyPopup = new PopupField<string>("Add " + tempLabel);
+        tempHeader.Add(addCopyPopup);
 
+        addCopyPopup.RegisterCallback<ChangeEvent<string>>(evt =>
+         {
+             AddCopy(evt.newValue);
+         });
+        this.templates = templates;
 
-        this.tempLabel.text = tempLabel;
+        InitAddCopyPopup();
 
-        addcopyButton.RegisterCallback<MouseUpEvent>(_ =>
-            AddTempConsiderationCopy());
+        this.elementsLabel.text = elementsLabel;
+
+        //this.tempLabel.text = tempLabel;
+
+        //addcopyButton.RegisterCallback<MouseUpEvent>(_ =>
+        //    AddTempConsiderationCopy());
 
         var t = collection.GetType();
         if (t == typeof(ReactiveList<Consideration>))
@@ -80,71 +89,39 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             sortCollectionButton.style.display = DisplayStyle.None;
         }
 
-
-        elementsDropdown.label = dropDownLabel;
-
-        elementsDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
-        {
-            SetTempElementFromName(evt.newValue);
-        });
-
-        this.elementsLabel.text = elementsLabel;
-
         collectionUpdatedSub?.Dispose();
         collectionUpdatedSub = collection.OnValueChanged
             .Subscribe(elements => UpdateElements(elements));
         UpdateElements(collection.Values);
-
-        templates.OnValueChanged
-            .Subscribe(_ => UpdateChoices())
-            .AddTo(subscriptions);
-        UpdateChoices();
     }
 
-    private void UpdateChoices()
+    private void InitAddCopyPopup()
     {
-        dropDownChoices = templates.Values
-            .Select(c => c.Name)
+        var namesFromFiles = AssetDatabaseService.GetActivateableTypes(typeof(T));
+        addCopyPopup.choices = namesFromFiles
+            .Where(t => !t.Name.Contains("Mock") && !t.Name.Contains("Stub"))
+            .Select(t => t.Name)
             .ToList();
 
-        elementsDropdown.choices.Clear();
-        foreach (var choice in this.dropDownChoices)
+
+        foreach(var template in templates.Values)
         {
-            elementsDropdown.choices.Add(choice);
+            addCopyPopup.choices.Add(template.Name);
         }
     }
 
-    private void AddTempConsiderationCopy()
+    private void AddCopy(string name)
     {
-        if (tempElement == null)
+        T aiObject = templates.Values.FirstOrDefault(t => t.Name == name) as T;
+        if (aiObject != null)
         {
-            return;
-        }
-        collection.Add(tempElement);
-        ClearElement();
-    }
-
-    private void SetTempElementFromName(string name)
-    {
-        //var element = (MainWindowModel)UASModel.Instance.Considerations.Values.FirstOrDefault(c => c.Name == name);
-        var element = templates.Values.FirstOrDefault(e  => e.Name == name);
-        var enableCopyButton = element != null ? true : false;
-        addcopyButton.SetEnabled(enableCopyButton);
-        if (element == null)
+            aiObject = (T)aiObject.Clone();
+        } else
         {
-            return;
+            aiObject = AssetDatabaseService.CreateInstanceOfType<T>(name);
         }
-        tempElement = (T)element.Clone();
-        tempBody.Clear();
-        var elementComponent =  MainWindowService.GetComponent(tempElement);
-        tempBody.Add(elementComponent);
-    }
-
-    private void ClearElement()
-    {
-        tempBody.Clear();
-        tempElement = null;
-        elementsDropdown.value = null;
+        collection.Add(aiObject);
+        
     }
 
     private void UpdateElements(List<T> elements)

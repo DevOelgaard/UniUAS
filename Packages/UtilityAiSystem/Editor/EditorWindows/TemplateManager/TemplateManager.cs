@@ -101,8 +101,6 @@ internal class TemplateManager : EditorWindow
         resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             uASTemplateService.Reset();
-            //UpdateLeftPanel();
-            //rightPanel.Clear();
         });
 
         saveButton = root.Q<Button>("SaveButton");
@@ -120,13 +118,6 @@ internal class TemplateManager : EditorWindow
             uASTemplateService.Restore(uasState);
             UpdateLeftPanel();
         });
-
-        //refreshButton = root.Q<Button>("RefreshButton");
-        //refreshButton.RegisterCallback<MouseUpEvent>(evt =>
-        //{
-        //    uASTemplateService.Refresh();
-        //    UpdateLeftPanel();
-        //});
 
         exportButton = root.Q<Button>("ExportButton");
         exportButton.RegisterCallback<MouseUpEvent>(evt =>
@@ -261,7 +252,6 @@ internal class TemplateManager : EditorWindow
             .Where(t => !t.Name.Contains("Mock") && !t.Name.Contains("Stub"))
             .Select(t => t.Name)
             .ToList();
-
 
         LoadModels(models.Values);
         UpdateButtons();

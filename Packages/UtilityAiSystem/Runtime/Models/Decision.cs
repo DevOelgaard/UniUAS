@@ -79,7 +79,7 @@ public class Decision: UtilityContainer
 
     internal override RestoreState GetState()
     {
-        return new DecisionState(Name, Description, AgentActions.Values, Considerations.Values, this);
+        return new DecisionState(Name, Description, AgentActions.Values, Considerations.Values, Parameters, this);
     }
 
     internal override void SaveToFile(string path, IPersister persister)
@@ -131,12 +131,13 @@ public class DecisionState: RestoreState
     public string Description;
     public List<AgentActionState> AgentActions;
     public List<ConsiderationState> Considerations;
+    public List<ParameterState> Parameters;
 
     public DecisionState() : base()
     {
     }
 
-    public DecisionState(string name, string description, List<AgentAction> agentActions, List<Consideration> considerations, RestoreAble o) : base(o)
+    public DecisionState(string name, string description, List<AgentAction> agentActions, List<Consideration> considerations, List<Parameter> parameters, RestoreAble o) : base(o)
     {
         Name = name;
         Description = description;
@@ -153,6 +154,12 @@ public class DecisionState: RestoreState
         {
             var c = consideration.GetState() as ConsiderationState;
             Considerations.Add(c);
+        }
+
+        Parameters = new List<ParameterState>();
+        foreach (var parameter in parameters)
+        {
+            Parameters.Add(parameter.GetState() as ParameterState);
         }
     }
 

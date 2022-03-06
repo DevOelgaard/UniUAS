@@ -68,6 +68,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             }
           ],
@@ -185,6 +186,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             }
           ],
@@ -302,6 +304,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             }
           ],
@@ -464,6 +467,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             },
             {
@@ -561,6 +565,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             }
           ],
@@ -698,6 +703,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             },
             {
@@ -770,6 +776,7 @@
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
+              "Parameters": [],
               "FileName": "Decision"
             }
           ],
@@ -779,6 +786,124 @@
                 {
                   "Name": "Return value",
                   "Value": 0.5,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "1",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "1",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
                   "FileName": "Parameter"
                 }
               ],
@@ -895,6 +1020,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         }
       ],
@@ -1012,6 +1138,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         }
       ],
@@ -1164,6 +1291,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         },
         {
@@ -1261,6 +1389,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         }
       ],
@@ -1388,6 +1517,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         },
         {
@@ -1460,6 +1590,7 @@
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
+          "Parameters": [],
           "FileName": "Decision"
         }
       ],
@@ -1610,6 +1741,7 @@
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
+      "Parameters": [],
       "FileName": "Decision"
     },
     {
@@ -1682,7 +1814,22 @@
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
+      "Parameters": [],
       "FileName": "Decision"
+    },
+    {
+      "Name": "Default (Demo_AllObjectsWithTag)",
+      "Description": null,
+      "AgentActions": [],
+      "Considerations": [],
+      "Parameters": [
+        {
+          "Name": "Tag",
+          "Value": "Target",
+          "FileName": "Parameter"
+        }
+      ],
+      "FileName": "Demo_AllObjectsWithTag"
     }
   ],
   "Considerations": [

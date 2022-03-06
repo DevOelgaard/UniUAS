@@ -25,12 +25,12 @@ internal class BucketComponent : MainWindowComponent
 
         considerationCollections = 
             new CollectionComponent<Consideration>(model.Considerations, 
-            UASTemplateService.Instance.Considerations, "Consideration-Template", "Considerations");
+            UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
         root.Add(considerationCollections);
         
         decisionCollections = 
             new CollectionComponent<Decision>(model.Decisions, 
-            UASTemplateService.Instance.Decisions, "Decision-Template", "Decisions");
+            UASTemplateService.Instance.Decisions, "Decision", "Decisions");
         root.Add(decisionCollections);
 
         Body.Clear();

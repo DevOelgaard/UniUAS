@@ -42,7 +42,7 @@ internal class UAIComponent : MainWindowComponent
 
         bucketCollections =
             new CollectionComponent<Bucket>(model.Buckets,
-            UASTemplateService.Instance.Buckets, "Bucket-Template", "Buckets");
+            UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
         root.Add(bucketCollections);
         Body.Clear();
         Body.Add(root);
