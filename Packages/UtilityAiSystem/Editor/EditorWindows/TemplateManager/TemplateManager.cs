@@ -248,6 +248,7 @@ internal class TemplateManager : EditorWindow
 
         var type = MainWindowService.GetTypeFromString(label);
         var namesFromFiles = AssetDatabaseService.GetActivateableTypes(type);
+
         addElementPopup.choices = namesFromFiles
             .Where(t => !t.Name.Contains("Mock") && !t.Name.Contains("Stub"))
             .Select(t => t.Name)
