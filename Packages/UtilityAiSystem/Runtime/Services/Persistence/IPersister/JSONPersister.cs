@@ -12,25 +12,37 @@ internal class JSONPersister : IPersister
 
     public T LoadObject<T>(string path)
     {
-        Debug.LogWarning("This should implement a Try/Catch if serialization fails");
-        if (!File.Exists(path)) return default(T);
-        var json = File.ReadAllText(path);
-        var deserialized = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
+        try
         {
-            TypeNameHandling = TypeNameHandling.Auto
-        });
-        return deserialized;
+            if (!File.Exists(path)) return default(T);
+            var json = File.ReadAllText(path);
+            var deserialized = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+            return deserialized;
+        } catch(Exception ex)
+        {
+            throw new Exception("Loading failed: ", ex);
+        }
     }
 
     public void SaveObject<T>(T o, string path)
     {
-        var toJson = JsonConvert.SerializeObject(o, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings
+        try
         {
-            TypeNameHandling = TypeNameHandling.Auto
-        });
+            var toJson = JsonConvert.SerializeObject(o, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
 
-        CreateFile(path);
-        File.WriteAllText(path, toJson);
+            CreateFile(path);
+            File.WriteAllText(path, toJson);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception("File Not Saved: ", ex);
+        }
     }
 
     private void CreateFile(string path)
