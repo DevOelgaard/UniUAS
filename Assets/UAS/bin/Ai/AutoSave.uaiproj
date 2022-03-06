@@ -1,33 +1,39 @@
 {
   "AIs": [
     {
-      "Name": "Time Intensitive",
+      "Name": "Don't Evaluate buckets who can't win",
       "Description": null,
       "Buckets": [
         {
-          "Name": "Default",
+          "Name": "3",
           "Description": null,
           "Decisions": [
             {
-              "Name": "Default",
+              "Name": "1",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [
                     {
-                      "Name": "ExecutionTime ms",
-                      "Value": 200,
+                      "Name": "Output",
+                      "Value": "1",
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default (Demo_TimeIntensive)",
+                  "Name": "Default (Demo_AgentActionParameter)",
                   "Description": null,
-                  "FileName": "Demo_TimeIntensive"
+                  "FileName": "Demo_AgentActionParameter"
                 }
               ],
               "Considerations": [
                 {
-                  "Parameters": [],
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
                   "ResponseCurveState": {
                     "Name": "Linear",
                     "MinY": 0.0,
@@ -46,7 +52,7 @@
                     ],
                     "FileName": "RCLinear"
                   },
-                  "Name": "Default (Demo_ConsiderationRandomValue)",
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
@@ -58,8 +64,8 @@
                     "Value": 1.0,
                     "FileName": "Parameter"
                   },
-                  "PerformanceTag": 0,
-                  "FileName": "Demo_ConsiderationRandomValue"
+                  "PerformanceTag": 2,
+                  "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
               "FileName": "Decision"
@@ -67,7 +73,13 @@
           ],
           "Considerations": [
             {
-              "Parameters": [],
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
               "ResponseCurveState": {
                 "Name": "Linear",
                 "MinY": 0.0,
@@ -86,7 +98,7 @@
                 ],
                 "FileName": "RCLinear"
               },
-              "Name": "Default (Demo_ConsiderationRandomValue)",
+              "Name": "Default (Demo_ConsiderationFixedValue)",
               "Description": null,
               "Min": {
                 "Name": "Min",
@@ -98,13 +110,247 @@
                 "Value": 1.0,
                 "FileName": "Parameter"
               },
-              "PerformanceTag": 0,
-              "FileName": "Demo_ConsiderationRandomValue"
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
           "Weight": {
             "Name": "Weight",
-            "Value": 0.0,
+            "Value": 3.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "2",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "1",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 2.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "1",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "1",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
             "FileName": "Parameter"
           },
           "FileName": "Bucket"
@@ -118,29 +364,35 @@
   ],
   "Buckets": [
     {
-      "Name": "Default",
+      "Name": "3",
       "Description": null,
       "Decisions": [
         {
-          "Name": "Default",
+          "Name": "1",
           "Description": null,
           "AgentActions": [
             {
               "Parameters": [
                 {
-                  "Name": "ExecutionTime ms",
-                  "Value": 200,
+                  "Name": "Output",
+                  "Value": "1",
                   "FileName": "Parameter"
                 }
               ],
-              "Name": "Default (Demo_TimeIntensive)",
+              "Name": "Default (Demo_AgentActionParameter)",
               "Description": null,
-              "FileName": "Demo_TimeIntensive"
+              "FileName": "Demo_AgentActionParameter"
             }
           ],
           "Considerations": [
             {
-              "Parameters": [],
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
               "ResponseCurveState": {
                 "Name": "Linear",
                 "MinY": 0.0,
@@ -159,7 +411,7 @@
                 ],
                 "FileName": "RCLinear"
               },
-              "Name": "Default (Demo_ConsiderationRandomValue)",
+              "Name": "Default (Demo_ConsiderationFixedValue)",
               "Description": null,
               "Min": {
                 "Name": "Min",
@@ -171,8 +423,8 @@
                 "Value": 1.0,
                 "FileName": "Parameter"
               },
-              "PerformanceTag": 0,
-              "FileName": "Demo_ConsiderationRandomValue"
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
           "FileName": "Decision"
@@ -180,7 +432,13 @@
       ],
       "Considerations": [
         {
-          "Parameters": [],
+          "Parameters": [
+            {
+              "Name": "Return value",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            }
+          ],
           "ResponseCurveState": {
             "Name": "Linear",
             "MinY": 0.0,
@@ -199,7 +457,7 @@
             ],
             "FileName": "RCLinear"
           },
-          "Name": "Default (Demo_ConsiderationRandomValue)",
+          "Name": "Default (Demo_ConsiderationFixedValue)",
           "Description": null,
           "Min": {
             "Name": "Min",
@@ -211,77 +469,178 @@
             "Value": 1.0,
             "FileName": "Parameter"
           },
-          "PerformanceTag": 0,
-          "FileName": "Demo_ConsiderationRandomValue"
+          "PerformanceTag": 2,
+          "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
       "Weight": {
         "Name": "Weight",
-        "Value": 0.0,
+        "Value": 3.0,
+        "FileName": "Parameter"
+      },
+      "FileName": "Bucket"
+    },
+    {
+      "Name": "1",
+      "Description": null,
+      "Decisions": [
+        {
+          "Name": "1",
+          "Description": null,
+          "AgentActions": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Output",
+                  "Value": "1",
+                  "FileName": "Parameter"
+                }
+              ],
+              "Name": "Default (Demo_AgentActionParameter)",
+              "Description": null,
+              "FileName": "Demo_AgentActionParameter"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "FileName": "Decision"
+        }
+      ],
+      "Considerations": [
+        {
+          "Parameters": [
+            {
+              "Name": "Return value",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "ResponseCurveState": {
+            "Name": "Linear",
+            "MinY": 0.0,
+            "MaxY": 1.0,
+            "Parameters": [
+              {
+                "Name": "a",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              {
+                "Name": "b",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              }
+            ],
+            "FileName": "RCLinear"
+          },
+          "Name": "Default (Demo_ConsiderationFixedValue)",
+          "Description": null,
+          "Min": {
+            "Name": "Min",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          },
+          "Max": {
+            "Name": "Max",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "PerformanceTag": 2,
+          "FileName": "Demo_ConsiderationFixedValue"
+        }
+      ],
+      "Weight": {
+        "Name": "Weight",
+        "Value": 1.0,
         "FileName": "Parameter"
       },
       "FileName": "Bucket"
     }
   ],
-  "Decisions": [
+  "Decisions": [],
+  "Considerations": [
     {
-      "Name": "Default",
-      "Description": null,
-      "AgentActions": [
+      "Parameters": [
         {
-          "Parameters": [
-            {
-              "Name": "ExecutionTime ms",
-              "Value": 200,
-              "FileName": "Parameter"
-            }
-          ],
-          "Name": "Default (Demo_TimeIntensive)",
-          "Description": null,
-          "FileName": "Demo_TimeIntensive"
+          "Name": "Return value",
+          "Value": 0.5,
+          "FileName": "Parameter"
         }
       ],
-      "Considerations": [
-        {
-          "Parameters": [],
-          "ResponseCurveState": {
-            "Name": "Linear",
-            "MinY": 0.0,
-            "MaxY": 1.0,
-            "Parameters": [
-              {
-                "Name": "a",
-                "Value": 1.0,
-                "FileName": "Parameter"
-              },
-              {
-                "Name": "b",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              }
-            ],
-            "FileName": "RCLinear"
-          },
-          "Name": "Default (Demo_ConsiderationRandomValue)",
-          "Description": null,
-          "Min": {
-            "Name": "Min",
-            "Value": 0.0,
-            "FileName": "Parameter"
-          },
-          "Max": {
-            "Name": "Max",
+      "ResponseCurveState": {
+        "Name": "Linear",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "a",
             "Value": 1.0,
             "FileName": "Parameter"
           },
-          "PerformanceTag": 0,
-          "FileName": "Demo_ConsiderationRandomValue"
-        }
-      ],
-      "FileName": "Decision"
-    }
-  ],
-  "Considerations": [
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCLinear"
+      },
+      "Name": "Default (Demo_ConsiderationFixedValue)",
+      "Description": null,
+      "Min": {
+        "Name": "Min",
+        "Value": 0.0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 1.0,
+        "FileName": "Parameter"
+      },
+      "PerformanceTag": 2,
+      "FileName": "Demo_ConsiderationFixedValue"
+    },
     {
       "Parameters": [],
       "ResponseCurveState": {
@@ -314,7 +673,7 @@
         "Value": 1.0,
         "FileName": "Parameter"
       },
-      "PerformanceTag": 3,
+      "PerformanceTag": 2,
       "FileName": "Demo_ConsiderationRandomValue"
     }
   ],

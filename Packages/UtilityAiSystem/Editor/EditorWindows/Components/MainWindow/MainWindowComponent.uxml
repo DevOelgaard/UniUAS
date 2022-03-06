@@ -9,5 +9,7 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Body" style="flex-grow: 1;" />
-    <ui:VisualElement name="Footer" style="height: 36px; flex-direction: row;" />
+    <ui:VisualElement name="Footer" style="height: 36px; flex-direction: row;">
+        <ui:Button text="Save To Template" display-tooltip-when-elided="true" name="SaveToTemplate-Button" />
+    </ui:VisualElement>
 </ui:UXML>

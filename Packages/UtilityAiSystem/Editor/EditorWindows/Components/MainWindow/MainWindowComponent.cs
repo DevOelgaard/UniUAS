@@ -19,6 +19,7 @@ internal abstract class MainWindowComponent: VisualElement
     protected VisualElement Body;
     protected VisualElement Footer;
     protected InfoComponent InfoComponent;
+    protected Button SaveToTemplate;
 
     internal List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
 
@@ -48,6 +49,12 @@ internal abstract class MainWindowComponent: VisualElement
         Header = this.Q<VisualElement>("Header");
         Body = this.Q<VisualElement>("Body");
         Footer = this.Q<VisualElement>("Footer");
+        SaveToTemplate = this.Q<Button>("SaveToTemplate-Button");
+        SaveToTemplate.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            var clone = Model.Clone();
+            UASTemplateService.Instance.Add(clone);
+        });
 
 
         Model = mainWindowModel;
