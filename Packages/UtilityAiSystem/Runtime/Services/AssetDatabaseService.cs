@@ -75,7 +75,27 @@ public static class AssetDatabaseService
         return result;
     }
 
-    public static T GetInstanceOfType<T>(string typeName)
+    public static List<Type> GetActivateableTypes(Type t)
+    {
+        var restult = new List<Type>();
+        var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var assemblie in assemblies)
+        {
+            var types = assemblie.GetTypes();
+            foreach (var type in types)
+            {
+                if (t.IsAssignableFrom(type) &&
+                    !type.IsAbstract)
+                {
+                    restult.Add(type);
+                }
+            }
+        }
+
+        return restult;
+    }
+
+    public static T CreateInstanceOfType<T>(string typeName)
     {
         var result = new List<T>();
         var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();

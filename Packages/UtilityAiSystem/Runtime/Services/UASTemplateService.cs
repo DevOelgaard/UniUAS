@@ -70,6 +70,7 @@ internal class UASTemplateService: RestoreAble
     {
         Considerations = UpdateListWithFiles<Consideration>(Considerations);
         AgentActions = UpdateListWithFiles<AgentAction>(AgentActions);
+        Decisions = UpdateListWithFiles<Decision>(Decisions);
     }
 
     internal static UASTemplateService Instance
@@ -148,7 +149,6 @@ internal class UASTemplateService: RestoreAble
             .Where(e => collection.Values.FirstOrDefault(element => element.GetType().FullName == e.GetType().FullName) == null)
             .Where(e => !e.GetType().ToString().Contains("Mock"))
             .ToList();
-
 
         foreach(var element in elementsFromFiles)
         {

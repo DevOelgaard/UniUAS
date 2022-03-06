@@ -123,11 +123,6 @@ public abstract class Consideration : AiObjectModel
         return new ConsiderationState(Name,Description,Parameters, ResponseCurve, Min, Max, this);
     }
 
-    //internal void Restore(ConsiderationState state)
-    //{
-
-    //}
-
     internal override void SaveToFile(string path, IPersister persister)
     {
         var state = GetState();

@@ -2,6 +2,7 @@
 {
     TickValue_INT,
     TickMetaData,
+    CurrentTargetGameObject,
 }
 
 public enum AiTickerMode

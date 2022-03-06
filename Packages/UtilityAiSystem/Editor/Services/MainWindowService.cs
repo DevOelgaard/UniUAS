@@ -4,23 +4,24 @@ internal class MainWindowService
 {
     internal static MainWindowComponent GetComponent(AiObjectModel model)
     {
-        if (model.GetType() == typeof(UAIModel))
+        var type = model.GetType();
+        if (type == typeof(UAIModel))
         {
             return new UAIComponent(model as UAIModel);
         }
-        else if (model.GetType() == typeof(Bucket))
+        else if (type == typeof(Bucket))
         {
             return new BucketComponent(model as Bucket);
         }
-        else if (model.GetType() == typeof(Decision))
+        else if (type == typeof(Decision) || type.IsSubclassOf(typeof(Decision)))
         {
             return new DecisionComponent(model as Decision);
         }
-        else if (model.GetType().IsSubclassOf(typeof(Consideration)))
+        else if (type.IsSubclassOf(typeof(Consideration)))
         {
             return new ConsiderationComponent(model as Consideration);
         }
-        else if (model.GetType().IsSubclassOf(typeof(AgentAction)))
+        else if (type.IsSubclassOf(typeof(AgentAction)))
         {
             return new AgentActionComponent(model as AgentAction);
         }

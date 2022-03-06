@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using System.Linq;
+using UnityEditor.UIElements;
 
 internal class TemplateManager : EditorWindow
 {
@@ -14,8 +15,9 @@ internal class TemplateManager : EditorWindow
 
     private VisualElement root;
     private VisualElement leftPanel;
-    private VisualElement buttonContainer;
+    private VisualElement elementsContainer;
     private VisualElement rightPanel;
+    private VisualElement buttonContainer;
     private Button createNewButton;
     private Button copyButton;
     private Button deleteButton;
@@ -27,6 +29,7 @@ internal class TemplateManager : EditorWindow
     private Button importButton;
     private Button saveToPlayButton;
     private Button restoreButton;
+    private PopupField<string> addElementPopup;
     private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -63,13 +66,23 @@ internal class TemplateManager : EditorWindow
         }
 
         root = rootVisualElement;
-
+        
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
         dropDown = root.Q<DropdownField>("TypeDropdown");
 
         leftPanel = root.Q<VisualElement>("left-panel");
-        buttonContainer = leftPanel.Q<VisualElement>("ButtonContainer");
+        elementsContainer = leftPanel.Q<VisualElement>("ButtonContainer");
+
+        buttonContainer = root.Q<VisualElement>("Buttons");
+        addElementPopup = new PopupField<string>("Add element");
+        addElementPopup.RegisterCallback<ChangeEvent<string>>(evt =>
+        {
+            AddNewAiObject(evt.newValue);
+        });
+
+        buttonContainer.Add(addElementPopup);
+
 
         rightPanel = root.Q<VisualElement>("right-panel");
 
@@ -166,7 +179,7 @@ internal class TemplateManager : EditorWindow
             persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_PlayAi);
         });
 
-        
+
         InitDropdown();
         UpdateLeftPanel();
     }
@@ -176,6 +189,13 @@ internal class TemplateManager : EditorWindow
         createNewButton.style.flexGrow = dropDown.value == Consts.Label_ConsiderationModel ? 0 : 1;
         copyButton.SetEnabled(SelectedModel != null);
         deleteButton.SetEnabled(SelectedModel != null);
+    }
+
+    private void AddNewAiObject(string name)
+    {
+        var aiObject = AssetDatabaseService.CreateInstanceOfType<AiObjectModel>(name);
+        uASTemplateService.Add(aiObject);
+        ModelSelected(aiObject);
     }
 
     private void CreateNewModel()
@@ -235,6 +255,14 @@ internal class TemplateManager : EditorWindow
             .Subscribe(values => LoadModels(values));
 
 
+        var type = MainWindowService.GetTypeFromString(label);
+        var namesFromFiles = AssetDatabaseService.GetActivateableTypes(type);
+        addElementPopup.choices = namesFromFiles
+            .Where(t => !t.Name.Contains("Mock") && !t.Name.Contains("Stub"))
+            .Select(t => t.Name)
+            .ToList();
+
+
         LoadModels(models.Values);
         UpdateButtons();
     }
@@ -242,7 +270,7 @@ internal class TemplateManager : EditorWindow
     private void LoadModels(List<AiObjectModel> models)
     {
         SelectedModel = null;
-        buttonContainer.Clear();
+        elementsContainer.Clear();
         buttons.Clear();
         selectedObjects.Clear();
         modelsChangedSubsciptions.Clear();
@@ -256,7 +284,7 @@ internal class TemplateManager : EditorWindow
             {
                 ObjectClicked(model, button, evt);
             });
-            buttonContainer.Add(button);
+            elementsContainer.Add(button);
             buttons.Add(button);
             model.OnNameChanged
                 .Subscribe(newName => button.text = newName)

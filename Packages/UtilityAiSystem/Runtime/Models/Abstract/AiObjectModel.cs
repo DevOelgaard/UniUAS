@@ -26,6 +26,12 @@ public abstract class AiObjectModel: RestoreAble
 
     internal abstract AiObjectModel Clone();
 
+
+    internal virtual string GetContextAddress(AiContext context)
+    {
+        return Name;
+    }
+
     public virtual string GetNameFormat(string name)
     {
         return name;

@@ -9,7 +9,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "1",
+              "Name": "1 (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -126,7 +126,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "1",
+              "Name": "1 (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -243,7 +243,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "1",
+              "Name": "1 (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -370,7 +370,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "Do not repeat 1",
+              "Name": "Do not repeat 1 (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -467,7 +467,7 @@
               "FileName": "Decision"
             },
             {
-              "Name": "Do not repeat 2",
+              "Name": "Do not repeat 2 (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -629,7 +629,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "return fixed - Action state",
+              "Name": "return fixed - Action state (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -701,7 +701,7 @@
               "FileName": "Decision"
             },
             {
-              "Name": "aaa",
+              "Name": "aaa (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -836,7 +836,7 @@
       "Description": null,
       "Decisions": [
         {
-          "Name": "1",
+          "Name": "1 (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -953,7 +953,7 @@
       "Description": null,
       "Decisions": [
         {
-          "Name": "1",
+          "Name": "1 (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -1070,7 +1070,7 @@
       "Description": null,
       "Decisions": [
         {
-          "Name": "Do not repeat 1",
+          "Name": "Do not repeat 1 (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -1167,7 +1167,7 @@
           "FileName": "Decision"
         },
         {
-          "Name": "Do not repeat 2",
+          "Name": "Do not repeat 2 (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -1319,7 +1319,7 @@
       "Description": null,
       "Decisions": [
         {
-          "Name": "return fixed - Action state",
+          "Name": "return fixed - Action state (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -1391,7 +1391,7 @@
           "FileName": "Decision"
         },
         {
-          "Name": "return fixed - Action state",
+          "Name": "return fixed - Action state (Decision)",
           "Description": null,
           "AgentActions": [
             {
@@ -1516,7 +1516,7 @@
   ],
   "Decisions": [
     {
-      "Name": "Do not repeat 1",
+      "Name": "Do not repeat 1 (Decision)",
       "Description": null,
       "AgentActions": [
         {
@@ -1613,7 +1613,7 @@
       "FileName": "Decision"
     },
     {
-      "Name": "return fixed - Action state",
+      "Name": "return fixed - Action state (Decision)",
       "Description": null,
       "AgentActions": [
         {
@@ -1683,6 +1683,27 @@
         }
       ],
       "FileName": "Decision"
+    },
+    {
+      "Name": "Default (Demo_AllObjectsWithTag)",
+      "Description": null,
+      "AgentActions": [],
+      "Considerations": [],
+      "FileName": "Demo_AllObjectsWithTag"
+    },
+    {
+      "Name": "Default (Demo_AllObjectsWithTag)",
+      "Description": null,
+      "AgentActions": [],
+      "Considerations": [],
+      "FileName": "Demo_AllObjectsWithTag"
+    },
+    {
+      "Name": "Default (Demo_AllObjectsWithTag)",
+      "Description": null,
+      "AgentActions": [],
+      "Considerations": [],
+      "FileName": "Demo_AllObjectsWithTag"
     }
   ],
   "Considerations": [
@@ -1831,6 +1852,41 @@
       },
       "PerformanceTag": 2,
       "FileName": "DoNotRepeatBucket"
+    },
+    {
+      "Parameters": [],
+      "ResponseCurveState": {
+        "Name": "Linear",
+        "MinY": 0.0,
+        "MaxY": 1.0,
+        "Parameters": [
+          {
+            "Name": "a",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          {
+            "Name": "b",
+            "Value": 0.0,
+            "FileName": "Parameter"
+          }
+        ],
+        "FileName": "RCLinear"
+      },
+      "Name": "Default (ConsiderationNearestTarget)",
+      "Description": null,
+      "Min": {
+        "Name": "Min",
+        "Value": 0,
+        "FileName": "Parameter"
+      },
+      "Max": {
+        "Name": "Max",
+        "Value": 1000,
+        "FileName": "Parameter"
+      },
+      "PerformanceTag": 2,
+      "FileName": "ConsiderationNearestTarget"
     }
   ],
   "AgentActions": [
@@ -1891,6 +1947,12 @@
       "Name": "Default (Demo_AllStates)",
       "Description": null,
       "FileName": "Demo_AllStates"
+    },
+    {
+      "Parameters": [],
+      "Name": "Default (ActOnTarget)",
+      "Description": null,
+      "FileName": "ActOnTarget"
     }
   ],
   "TestStrign": "",

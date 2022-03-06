@@ -9,8 +9,11 @@ using UniRx;
 
 public class Decision: UtilityContainer
 {
+    private string namePostfix;
     private IDisposable agentActionSub;
     private ReactiveList<AgentAction> agentActions = new ReactiveList<AgentAction>();
+    public List<Parameter> Parameters;
+
     public ReactiveList<AgentAction> AgentActions
     {
         get=> agentActions;
@@ -27,13 +30,30 @@ public class Decision: UtilityContainer
         }
     }
 
+    public override string GetNameFormat(string name)
+    {
+        if (!name.Contains(namePostfix))
+        {
+            return name + namePostfix;
+        }
+        return name;
+    }
+
     public Decision()
     {
+        Parameters = new List<Parameter>(GetParameters());
+        namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         agentActionSub?.Dispose();
         UpdateInfo();
         agentActionSub = agentActions.OnValueChanged
             .Subscribe(_ => UpdateInfo());
     }
+
+    protected virtual List<Parameter> GetParameters()
+    {
+        return new List<Parameter>();
+    }
+
 
     protected override void UpdateInfo()
     {
@@ -50,6 +70,11 @@ public class Decision: UtilityContainer
         {
             Info = new InfoModel();
         }
+    }
+
+    internal override string GetContextAddress(AiContext context)
+    {
+        return context.CurrentEvaluatedBucket.Name + Name;
     }
 
     internal override RestoreState GetState()
@@ -69,6 +94,7 @@ public class Decision: UtilityContainer
         var clone = Restore<Decision>(state);
         return clone;
     }
+
 
     protected override void RestoreInternal(RestoreState s)
     {
