@@ -8,7 +8,7 @@ public abstract class Consideration : AiObjectModel
 {
     private string namePostfix;
     public List<Parameter> Parameters;
-    public ResponseCurveModel ResponseCurve = new RCExponential();
+    public ResponseCurveModel ResponseCurve = new RCLinear();
     public PerformanceTag PerformanceTag;
     public float BaseScore
     {
@@ -23,8 +23,8 @@ public abstract class Consideration : AiObjectModel
     }
     public IObservable<float> NormalizedScoreChanged => ScoreModels[1].OnValueChanged;
 
-    public Parameter Min = new Parameter("Min", 10f);
-    public Parameter Max = new Parameter("Max", 100f);
+    public Parameter Min = new Parameter("Min", 0f);
+    public Parameter Max = new Parameter("Max", 1f);
 
     protected Consideration()
     {
@@ -102,6 +102,7 @@ public abstract class Consideration : AiObjectModel
 
         ResponseCurve = ResponseCurveModel.Restore<ResponseCurveModel>(state.ResponseCurveState);
 
+        Parameters = new List<Parameter>();
         foreach (var pState in state.Parameters)
         {
             var parameter = Parameter.Restore<Parameter>(pState);

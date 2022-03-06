@@ -1,6 +1,7 @@
 {
-  "AIs": [
+  "States": [
     {
+      "$type": "UAIModelState, Devoe.UAS.Runtime",
       "Name": "Don't Evaluate buckets who can't win",
       "Description": null,
       "Buckets": [
@@ -362,125 +363,6 @@
       "FileName": "UAIModel"
     }
   ],
-  "Buckets": [],
-  "Decisions": [],
-  "Considerations": [
-    {
-      "Parameters": [
-        {
-          "Name": "Return value",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        }
-      ],
-      "ResponseCurveState": {
-        "Name": "Linear",
-        "MinY": 0.0,
-        "MaxY": 1.0,
-        "Parameters": [
-          {
-            "Name": "a",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          {
-            "Name": "b",
-            "Value": 0.0,
-            "FileName": "Parameter"
-          }
-        ],
-        "FileName": "RCLinear"
-      },
-      "Name": "Default (Demo_ConsiderationFixedValue)",
-      "Description": null,
-      "Min": {
-        "Name": "Min",
-        "Value": 0.0,
-        "FileName": "Parameter"
-      },
-      "Max": {
-        "Name": "Max",
-        "Value": 1.0,
-        "FileName": "Parameter"
-      },
-      "PerformanceTag": 2,
-      "FileName": "Demo_ConsiderationFixedValue"
-    },
-    {
-      "Parameters": [],
-      "ResponseCurveState": {
-        "Name": "Linear",
-        "MinY": 0.0,
-        "MaxY": 1.0,
-        "Parameters": [
-          {
-            "Name": "a",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          {
-            "Name": "b",
-            "Value": 0.0,
-            "FileName": "Parameter"
-          }
-        ],
-        "FileName": "RCLinear"
-      },
-      "Name": "Default (Demo_ConsiderationRandomValue)",
-      "Description": null,
-      "Min": {
-        "Name": "Min",
-        "Value": 0.0,
-        "FileName": "Parameter"
-      },
-      "Max": {
-        "Name": "Max",
-        "Value": 1.0,
-        "FileName": "Parameter"
-      },
-      "PerformanceTag": 2,
-      "FileName": "Demo_ConsiderationRandomValue"
-    }
-  ],
-  "AgentActions": [
-    {
-      "Parameters": [
-        {
-          "Name": "Output",
-          "Value": "Agent output",
-          "FileName": "Parameter"
-        }
-      ],
-      "Name": "Default (Demo_AgentActionParameter)",
-      "Description": null,
-      "FileName": "Demo_AgentActionParameter"
-    },
-    {
-      "Parameters": [
-        {
-          "Name": "ExecutionTime ms",
-          "Value": 3,
-          "FileName": "Parameter"
-        }
-      ],
-      "Name": "Default (Demo_TimeIntensive)",
-      "Description": null,
-      "FileName": "Demo_TimeIntensive"
-    },
-    {
-      "Parameters": [
-        {
-          "Name": "Bool",
-          "Value": true,
-          "FileName": "Parameter"
-        }
-      ],
-      "Name": "Default (Demo_WriteTickCount)",
-      "Description": null,
-      "FileName": "Demo_WriteTickCount"
-    }
-  ],
-  "TestStrign": "",
-  "InternalTestString": "",
-  "FileName": "UASTemplateService"
+  "TypeString": "UAIModel",
+  "FileName": "RestoreAbleCollection"
 }

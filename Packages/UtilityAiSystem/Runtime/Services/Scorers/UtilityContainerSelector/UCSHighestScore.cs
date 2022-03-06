@@ -23,8 +23,16 @@ public class UCSHighestScore : IUtilityContainerSelector
     public Bucket GetBestUtilityContainer(List<Bucket> containers, AiContext context)
     {
         UtilityContainer bestContainer = null;
-        foreach(var container in containers)
+        foreach(Bucket container in containers)
         {
+            var weight = Convert.ToSingle(container.Weight.Value);
+
+            // Only evaluate if the bucket has a chance of winning
+            if (bestContainer != null && weight < bestContainer.LastCalculatedUtility)
+            {
+                continue;
+            }
+
             bestContainer = CheckBestContainer(container, context, bestContainer);
         }
         return bestContainer as Bucket;

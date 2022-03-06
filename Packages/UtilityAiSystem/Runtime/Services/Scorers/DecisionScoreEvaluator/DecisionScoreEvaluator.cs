@@ -47,8 +47,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             var bestDecision = DecisionSelector.GetBestUtilityContainer(decisions, context);
             if (bestDecision.LastCalculatedUtility <= 0)
             {
-                //Debug.LogWarning("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
-                return null;
+                throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
 
             return bestDecision.AgentActions.Values;

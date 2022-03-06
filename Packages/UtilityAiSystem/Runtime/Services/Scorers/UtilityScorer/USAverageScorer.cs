@@ -17,6 +17,8 @@ public class USAverageScorer : IUtilityScorer
         foreach (var consideration in considerations)
         {
             var score = consideration.CalculateScore(context);
+            
+            // If any consideration fails, the decision/bucket can't be executed
             if (score <= 0)
             {
                 return score;
