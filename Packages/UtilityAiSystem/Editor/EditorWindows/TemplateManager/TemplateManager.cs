@@ -27,7 +27,7 @@ internal class TemplateManager : EditorWindow
     private Button importButton;
     private Button saveToPlayButton;
     private Button restoreButton;
-    private UASTemplateService uASModel => UASTemplateService.Instance;
+    private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
     private AiObjectModel selectedModel;
@@ -56,10 +56,10 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
+        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicelAutoSave);
         if (state != null)
         {
-            uASModel.Restore(state);
+            uASTemplateService.Restore(state);
         }
 
         root = rootVisualElement;
@@ -94,7 +94,7 @@ internal class TemplateManager : EditorWindow
         resetButton = root.Q<Button>("ResetButton");
         resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            uASModel.Reset();
+            uASTemplateService.Reset();
             UpdateLeftPanel();
             rightPanel.Clear();
         });
@@ -103,7 +103,7 @@ internal class TemplateManager : EditorWindow
         saveButton.text = "Save project";
         saveButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            persistenceAPI.SaveObjectPanel(uASModel);
+            persistenceAPI.SaveObjectPanel(uASTemplateService);
         });
 
         loadButton = root.Q<Button>("LoadButton");
@@ -111,14 +111,14 @@ internal class TemplateManager : EditorWindow
         loadButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             var uasState = persistenceAPI.LoadObjectPanel<UASTemplateServiceState>();
-            uASModel.Restore(uasState);
+            uASTemplateService.Restore(uasState);
             UpdateLeftPanel();
         });
 
         refreshButton = root.Q<Button>("RefreshButton");
         refreshButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            uASModel.Refresh();
+            uASTemplateService.Refresh();
             UpdateLeftPanel();
         });
 
@@ -141,7 +141,7 @@ internal class TemplateManager : EditorWindow
                 return;
             }
             var loadedCollection = RestoreAbleCollection.Restore<RestoreAbleCollection>(state);
-            var toCollection = uASModel.GetCollection(loadedCollection.Type);
+            var toCollection = uASTemplateService.GetCollection(loadedCollection.Type);
             loadedCollection.Models.ForEach(m =>
             {
                 toCollection.Add(m as AiObjectModel);
@@ -152,18 +152,18 @@ internal class TemplateManager : EditorWindow
         restoreButton = root.Q<Button>("RestoreButton");
         restoreButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASModelAutoSave);
+            var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicelAutoSave);
             if (state == null || state == default)
             {
                 return;
             }
-            uASModel.Restore(state);
+            uASTemplateService.Restore(state);
         });
 
         saveToPlayButton = root.Q<Button>("SaveToPlayButton");
         saveToPlayButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            persistenceAPI.SaveObjectPath(uASModel, Consts.File_PlayAi);
+            persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_PlayAi);
         });
 
         
@@ -183,20 +183,20 @@ internal class TemplateManager : EditorWindow
         var s = dropDown.value;
         var type = MainWindowService.GetTypeFromString(s);
         var element = (AiObjectModel)Activator.CreateInstance(type);
-        uASModel.Add(element);
+        uASTemplateService.Add(element);
         ModelSelected(element);
     }
 
     private void CopySelectedModel()
     {
         var clone = SelectedModel.Clone();
-        uASModel.Add(clone);
+        uASTemplateService.Add(clone);
         SelectedModel = clone;
     }
 
     private void DeleteSelectedElement()
     {
-        uASModel.Remove(SelectedModel);
+        uASTemplateService.Remove(SelectedModel);
         selectedModel = null;
     }
 
@@ -226,7 +226,7 @@ internal class TemplateManager : EditorWindow
         {
             label = dropDown.value;
         }
-        var models = uASModel.GetCollection(label);
+        var models = uASTemplateService.GetCollection(label);
         if (models == null) return;
 
         activeCollectionChangedSub?.Dispose();
@@ -306,7 +306,7 @@ internal class TemplateManager : EditorWindow
                 selectedObjects.Clear();
                 for(var i = selectedIndex; i <= lowestSelectedIndex; i++)
                 {
-                    var m = uASModel.GetCollection(dropDown.value).Values[i];
+                    var m = uASTemplateService.GetCollection(dropDown.value).Values[i];
                     var b = buttons[i];
                     selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(m, b));
                 }
@@ -315,7 +315,7 @@ internal class TemplateManager : EditorWindow
                 selectedObjects.Clear();
                 for(var i = highestSelectedIndex; i <= selectedIndex; i++)
                 {
-                    var m = uASModel.GetCollection(dropDown.value).Values[i];
+                    var m = uASTemplateService.GetCollection(dropDown.value).Values[i];
                     var b = buttons[i];
                     selectedObjects.Add(new KeyValuePair<AiObjectModel, Button>(m, b));
                 }
@@ -363,7 +363,7 @@ internal class TemplateManager : EditorWindow
 
     private void OnDestroy()
     {
-        persistenceAPI.SaveObjectPath(uASModel, Consts.File_UASModelAutoSave);
+        persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_UASTemplateServicelAutoSave);
         ClearSubscriptions();
     }
 

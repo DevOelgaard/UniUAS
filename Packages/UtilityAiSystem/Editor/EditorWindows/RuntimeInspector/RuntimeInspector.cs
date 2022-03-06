@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UniRx;
 
-public class AiInspectorWindow : EditorWindow
+public class RuntimeInspector : EditorWindow
 {
     private CompositeDisposable agentNameUpdatedSubscriptions = new CompositeDisposable();
 
@@ -29,7 +29,7 @@ public class AiInspectorWindow : EditorWindow
     [MenuItem(Consts.MenuName + Consts.Name_AiInspector)]
     public static void Open()
     {
-        AiInspectorWindow wnd = GetWindow<AiInspectorWindow>();
+        RuntimeInspector wnd = GetWindow<RuntimeInspector>();
         wnd.titleContent = new GUIContent(Consts.Name_AiInspector);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
@@ -160,10 +160,12 @@ public class AiInspectorWindow : EditorWindow
 
     private void OnDestroy()
     {
+        var persistenceAPI = new PersistenceAPI(new JSONPersister());
+        persistenceAPI.SaveObjectPath(UASTemplateService.Instance, Consts.File_UASTemplateServicelAutoSave);
         ClearSubscriptions();
     }
 
-    ~AiInspectorWindow()
+    ~RuntimeInspector()
     {
         ClearSubscriptions();
     }
