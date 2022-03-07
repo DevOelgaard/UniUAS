@@ -36,6 +36,7 @@ public class ResponseCurveComponent: VisualElement
         SetCurveField(considerationModel.ResponseCurve.Name);
 
         UpdateResponseCurve(considerationModel.ResponseCurve);
+
     }
 
 
@@ -76,7 +77,11 @@ public class ResponseCurveComponent: VisualElement
     {
         curveContainer.Clear();
         curveField = new CurveField(name);
+
         curveContainer.Add(curveField);
+
+        var linecChart = new LineChartComponent();
+        curveContainer.Add(linecChart);
     }
 
     private void ReDrawCurve()
@@ -101,6 +106,8 @@ public class ResponseCurveComponent: VisualElement
         curveField.value = points;
         curveContainer.Clear();
         curveContainer.Add(curveField);
+        var linecChart = new LineChartComponent();
+        curveContainer.Add(linecChart);
     }
 
     private void CurveTypeChanged(string name)

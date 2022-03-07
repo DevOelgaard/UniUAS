@@ -48,6 +48,7 @@ internal class ConsiderationComponent : MainWindowComponent
 
         SetParameters();
         curveContainer.Add(new ResponseCurveComponent(considerationModel));
+
     }
 
     private void SetParameters()

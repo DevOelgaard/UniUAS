@@ -174,6 +174,9 @@ internal class TemplateManager : EditorWindow
 
         InitDropdown();
         UpdateLeftPanel();
+
+        var lineChart = new LineChartComponent();
+        rightPanel.Add(lineChart);
     }
 
     private void UpdateButtons()
@@ -227,7 +230,7 @@ internal class TemplateManager : EditorWindow
                 Consts.Label_DecisionModel, 
                 Consts.Label_ConsiderationModel,
                 Consts.Label_AgentActionModel
-            };
+        };
 
         dropDown.label = "Categories";
         dropDown.choices = dropDownChoices;
