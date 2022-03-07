@@ -47,9 +47,11 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         tempHeader.Add(addCopyPopup);
 
         addCopyPopup.RegisterCallback<ChangeEvent<string>>(evt =>
-         {
-             AddCopy(evt.newValue);
-         });
+        {
+            if (evt.newValue == null) return;
+            AddCopy(evt.newValue);
+            addCopyPopup.value = null;
+        });
         this.templates = templates;
 
         InitAddCopyPopup();
@@ -108,18 +110,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private void AddCopy(string name)
     {
         T aiObject = templates.Values.FirstOrDefault(t => t.Name == name) as T;
-
-        //var numberOfIdenticalNames = collection
-        //    .Values
-        //    .Where(e => e.Name.Contains(aiObject.Name))
-        //    .ToList()
-        //    .Count;
-
-        //if (numberOfIdenticalNames > 0)
-        //{
-        //    aiObject.Name += "("+numberOfIdenticalNames+")";
-        //}
-            
 
         if (aiObject != null)
         {

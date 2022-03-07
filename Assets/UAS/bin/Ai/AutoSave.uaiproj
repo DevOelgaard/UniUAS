@@ -1335,6 +1335,58 @@
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
       "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "Default(1)",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        }
+      ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
     }
   ],
   "Buckets": [

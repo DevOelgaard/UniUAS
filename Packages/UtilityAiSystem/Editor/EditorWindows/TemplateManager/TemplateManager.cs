@@ -77,7 +77,9 @@ internal class TemplateManager : EditorWindow
         addElementPopup = new PopupField<string>("Add element");
         addElementPopup.RegisterCallback<ChangeEvent<string>>(evt =>
         {
+            if (evt.newValue == null) return;
             AddNewAiObject(evt.newValue);
+            addElementPopup.value = null;
         });
 
         buttonContainer.Add(addElementPopup);
