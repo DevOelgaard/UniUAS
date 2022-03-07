@@ -1,129 +1,103 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LineChartComponent : IMGUIContainer
+internal class LineChartComponent: IMGUIContainer
 {
+    private float marginLeft = 50f;
+    private float marginRight = 50f;
+    private float marginTop = 25f;
+    private float marginBottom = 25f;
+    private float marginTextBottom = -7.5f;
+    private float marginTextLeft = 30f;
+    private float textXAxisAdjuster = -3f;
+    private float textYAxisAdjuster = 5f;
+    private float screenHeight;
+    private float screenWidth;
+    private float graphHeight;
+    private float graphWidth;
+    private Vector3 graphOrigon;
+
+
+    private float graphMinX = 45000f;
+    private float graphMaxX = 50000f;
+    private float graphRangeX => graphMaxX - graphMinX;
+
+    private float graphMinY = 0.5f;
+    private float graphMaxY = 1f;
+    private float graphRangeY => graphMaxY - graphMinY;
+    private float stepCountX = 10f;
+    private float stepCountY = 10f;
+
     public LineChartComponent()
     {
-        this.style.flexGrow = 1;
-        this.style.minHeight = 200;
-        this.style.minWidth = 400;
-        //this.style.backgroundColor = Color.green;
+        style.flexGrow = 1;
+        style.minHeight = 200;
+        style.minWidth = 400;
+
         onGUIHandler = () =>
         {
+            // Init
+            screenHeight = resolvedStyle.height;
+            screenWidth = resolvedStyle.width;
+            graphHeight = screenHeight - marginTop - marginBottom;
+            graphWidth = screenWidth - marginLeft - marginRight;
+            graphOrigon = new Vector3(marginLeft, screenHeight - marginBottom, 0);
 
-            var marginBottom = 25;
-            var marginTop = 25;
-            var marginLeft = 50;
-            var marginRight = 50;
-            var textMarginBottom = 5;
-            var textMarginLeft = 25;
-            var textAdjustmentY = 12;
-            var graphHeight = this.resolvedStyle.height - marginTop - marginBottom;
-            var graphWidth = this.resolvedStyle.width - marginLeft - marginRight;
-
-            var origon = new Vector3(marginLeft, graphHeight, 0);
-            var endX = new Vector3(graphWidth, graphHeight, 0);
-            var endY = new Vector3(origon.x,  marginTop, 0);
-
-            var labelsX = new List<ChartLabel>();
-            var labelsY = new List<ChartLabel>();
-
-
-            var minX = 0f;
-            var maxX = 1f;
-            var numberOfPointsX = 10;
-            float xValueStepSize = maxX / numberOfPointsX;
-            var xStepSize = (graphWidth - marginRight) / numberOfPointsX;
-
-            for(var i = minX; i <= numberOfPointsX; i++)
-            {
-                var pos = new Vector3(origon.x + i * xStepSize, origon.y, 0);
-                var labelPosition = new Vector3(pos.x, pos.y + textMarginBottom, 0);
-                var label = new ChartLabel(labelPosition, (i * xValueStepSize).ToString());
-                labelsX.Add(label);
-                label.Draw();
-                var linePositionStart = new Vector3(pos.x, pos.y, 0);
-                var linePositionEnd = new Vector3(pos.x, endY.y, 0);
-                Handles.DrawLine(linePositionStart, linePositionEnd);
-            }
-
-            var minY = 0f;
-            var maxY = 1f;
-            var numberOfPointsY = 10;
-            float yValueStepSize = maxY / numberOfPointsY;
-            var yStepSize = (graphHeight - marginTop) / numberOfPointsX;
-
-            for(var i = minY; i <= numberOfPointsY; i++)
-            {
-                var pos = new Vector3(origon.x-textMarginLeft,origon.y-i*yStepSize, 0);
-                var labelPosition = new Vector3(pos.x, pos.y + textMarginBottom - textAdjustmentY, 0);
-                var label = new ChartLabel(labelPosition, (i * yValueStepSize).ToString());
-                labelsY.Add(label);
-                label.Draw();
-                var linePositionStart = new Vector3(origon.x, pos.y, 0);
-                var linePositionEnd = new Vector3(endX.x, pos.y, 0);
-                Handles.DrawLine(linePositionStart, linePositionEnd);
-            }
-
-            //foreach (var label in labelsX)
-            //{
-            //    label.Draw();
-            //    label.DrawVerticalLine(graphHeight);
-            //}
-
-            //foreach (var label in labelsY)
-            //{
-            //    label.Draw(false,true);
-            //    label.DrawHorizontalLine(graphWidth);
-            //}
-
-            //if (GUI.Button(new Rect(10, 10, 50, 50), "text"))
-            //{
-            //    Debug.Log("H: " + graphHeight + " W: " + graphWidth);
-
-            //}
+            DrawBaseGraph();
         };
     }
 
-    private class ChartLabel
+    private void DrawBaseGraph()
     {
-        public Vector3 Position;
-        public string Text;
-        private Vector3 adjusterX = new Vector3(5, 0, 0);
-        private Vector3 adjusterY = new Vector3(0, 15, 0);
-
-        public ChartLabel(Vector3 position, string text)
+        // X labels
+        Handles.color = Color.grey;
+        var stepSizeX = graphRangeX / stepCountX;
+        for (var i = 0; i <= stepCountX; i++)
         {
-            Position = position;
-            Text = text;
+            var x = i * stepSizeX + graphMinX;
+            var basePosition = GraphToScreenCoordinates(x, graphMinY);
+            Handles.DrawLine(basePosition, GraphToScreenCoordinates(x, graphMaxY), 0.01f);
+
+            var labelPosition = new Vector3(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom, 0);
+            Handles.Label(labelPosition, x.ToString());
         }
 
-        public void Draw(bool isXAxis = false, bool isYAxis = false)
+        // Y labels
+        Handles.color = Color.grey;
+        var stepSizeY = graphRangeY/ stepCountY;
+        for (var i = 0; i <= stepCountY; i++)
         {
-            var p = Position;
-            if (isXAxis)
-            {
-                p += adjusterX;
-            }
-            if (isYAxis)
-            {
-                p -= adjusterY;
-            }
-            Handles.Label(p, Text);
+            var y = i * stepSizeY + graphMinY;
+            var basePosition = GraphToScreenCoordinates(graphMinX, y);
+            Handles.DrawLine(basePosition, GraphToScreenCoordinates(graphMaxX, y), 0.01f);
+
+            var labelPosition = new Vector3(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster, 0);
+            Handles.Label(labelPosition, y.ToString());
         }
 
-        //public void DrawHorizontalLine(float length)
-        //{
-        //    Handles.DrawLine(Position, new Vector3(Position.x + length, Position.y, 0));
-        //}
 
-        //public void DrawVerticalLine(,float length)
-        //{
-        //    Handles.DrawLine(Position, new Vector3(Position.x, Position.y - length, 0));
-        //}
+        // Base Lines
+        Handles.color = Color.white;
+        var xAxixEnd = GraphToScreenCoordinates(graphMaxX, graphMinY);
+        var yAxixEnd = GraphToScreenCoordinates(graphMinX, graphMaxY);
+        Handles.DrawLine(graphOrigon, xAxixEnd);
+        Handles.DrawLine(graphOrigon, yAxixEnd);
+
+        Debug.Log("GraphOrigon: " + graphOrigon + " xAxisEnd: " + xAxixEnd + " yAxisEnd: " + yAxixEnd);
+    }
+
+    private Vector3 GraphToScreenCoordinates(float graphX, float graphY)
+    {
+        return GraphToScreenCoordinates(new Vector3(graphX, graphY, 0));
+    }
+
+    private Vector3 GraphToScreenCoordinates(Vector3 graphPos)
+    {
+        var x = graphOrigon.x + (graphPos.x - graphMinX) / graphRangeX * graphWidth;
+        var y = graphOrigon.y - (graphPos.y - graphMinY) / graphRangeY * graphHeight;
+        return new Vector3(x,y,0);
     }
 }

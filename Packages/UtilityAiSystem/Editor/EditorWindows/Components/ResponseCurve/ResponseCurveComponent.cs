@@ -80,7 +80,7 @@ public class ResponseCurveComponent: VisualElement
 
         curveContainer.Add(curveField);
 
-        var linecChart = new LineChartComponent();
+        var linecChart = new LineChartComponentOld();
         curveContainer.Add(linecChart);
     }
 
@@ -106,7 +106,7 @@ public class ResponseCurveComponent: VisualElement
         curveField.value = points;
         curveContainer.Clear();
         curveContainer.Add(curveField);
-        var linecChart = new LineChartComponent();
+        var linecChart = new LineChartComponentOld();
         curveContainer.Add(linecChart);
     }
 
