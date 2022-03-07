@@ -362,7 +362,7 @@
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
-      "FileName": "UAIModel"
+      "FileName": "Ai"
     },
     {
       "Name": "Do not repeat decision",
@@ -623,7 +623,7 @@
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
-      "FileName": "UAIModel"
+      "FileName": "Ai"
     },
     {
       "Name": "Action states",
@@ -952,7 +952,7 @@
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
-      "FileName": "UAIModel"
+      "FileName": "Ai"
     },
     {
       "Name": "Act on nearest target",
@@ -1074,7 +1074,7 @@
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
-      "FileName": "UAIModel"
+      "FileName": "Ai"
     }
   ],
   "Buckets": [

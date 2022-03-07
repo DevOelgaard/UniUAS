@@ -44,7 +44,7 @@ internal class FileExtensionService
             start = Consts.FileExtension_Bucket;
         }
 
-        if (type.IsAssignableFrom(typeof(UAIModel)))
+        if (type.IsAssignableFrom(typeof(Ai)))
         {
             start = Consts.FileExtension_UAI;
         }

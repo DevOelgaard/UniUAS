@@ -16,8 +16,8 @@ public class AgentMono : MonoBehaviour, IAgent
     public string DefaultAiName = "";
 
     private DecisionScoreEvaluator decisionScoreEvaluator;
-    private UAIModel ai;
-    public UAIModel Ai
+    private Ai ai;
+    public Ai Ai
     {
         get => ai;
         set
@@ -36,7 +36,7 @@ public class AgentMono : MonoBehaviour, IAgent
         decisionScoreEvaluator = new DecisionScoreEvaluator();
     }
 
-    public void SetAi(UAIModel model)
+    public void SetAi(Ai model)
     {
         Ai = model;
     }

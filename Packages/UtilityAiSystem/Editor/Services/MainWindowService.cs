@@ -5,9 +5,9 @@ internal class MainWindowService
     internal static MainWindowComponent GetComponent(AiObjectModel model)
     {
         var type = model.GetType();
-        if (type == typeof(UAIModel))
+        if (type == typeof(Ai))
         {
-            return new UAIComponent(model as UAIModel);
+            return new UAIComponent(model as Ai);
         }
         else if (type == typeof(Bucket))
         {
@@ -33,7 +33,7 @@ internal class MainWindowService
         switch (label)
         {
             case Consts.Label_UAIModel:
-                return typeof(UAIModel);
+                return typeof(Ai);
             case Consts.Label_BucketModel:
                 return typeof(Bucket);
             case Consts.Label_DecisionModel:

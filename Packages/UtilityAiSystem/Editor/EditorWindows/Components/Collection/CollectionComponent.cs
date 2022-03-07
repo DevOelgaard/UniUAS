@@ -56,11 +56,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
         this.elementsLabel.text = elementsLabel;
 
-        //this.tempLabel.text = tempLabel;
-
-        //addcopyButton.RegisterCallback<MouseUpEvent>(_ =>
-        //    AddTempConsiderationCopy());
-
         var t = collection.GetType();
         if (t == typeof(ReactiveList<Consideration>))
         {
@@ -113,6 +108,19 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private void AddCopy(string name)
     {
         T aiObject = templates.Values.FirstOrDefault(t => t.Name == name) as T;
+
+        //var numberOfIdenticalNames = collection
+        //    .Values
+        //    .Where(e => e.Name.Contains(aiObject.Name))
+        //    .ToList()
+        //    .Count;
+
+        //if (numberOfIdenticalNames > 0)
+        //{
+        //    aiObject.Name += "("+numberOfIdenticalNames+")";
+        //}
+            
+
         if (aiObject != null)
         {
             aiObject = (T)aiObject.Clone();

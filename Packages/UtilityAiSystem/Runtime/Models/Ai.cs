@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using UniRxExtension;
 using UniRx;
 
-public class UAIModel: AiObjectModel
+public class Ai: AiObjectModel
 {
     private IDisposable bucketSub;
-    private ReactiveList<Bucket> buckets = new ReactiveList<Bucket>();
-    public ReactiveList<Bucket> Buckets
+    private ReactiveListNameSafe<Bucket> buckets = new ReactiveListNameSafe<Bucket>();
+    public ReactiveListNameSafe<Bucket> Buckets
     {
         get => buckets;
         set
@@ -28,7 +28,7 @@ public class UAIModel: AiObjectModel
     }
     internal AiContext Context = new AiContext();
 
-    public UAIModel(): base()
+    public Ai(): base()
     {
         bucketSub?.Dispose();
         UpdateInfo();
@@ -58,7 +58,7 @@ public class UAIModel: AiObjectModel
     internal override AiObjectModel Clone()
     {
         var state = GetState();
-        var clone = Restore<UAIModel>(state);
+        var clone = Restore<Ai>(state);
         return clone;
     }
 
@@ -68,7 +68,7 @@ public class UAIModel: AiObjectModel
         Name = state.Name;
         Description = state.Description;
 
-        Buckets = new ReactiveList<Bucket>();
+        Buckets = new ReactiveListNameSafe<Bucket>();
         foreach(var bS in state.Buckets)
         {
             var b = Bucket.Restore<Bucket>(bS);
@@ -186,7 +186,7 @@ public class UAIModelState: RestoreState
     {
     }
 
-    public UAIModelState(string name, string description, List<Bucket> buckets, UAIModel model): base(model)
+    public UAIModelState(string name, string description, List<Bucket> buckets, Ai model): base(model)
     {
         Name = name;
         Description = description;

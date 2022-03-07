@@ -15,7 +15,7 @@ internal class UAIComponent : MainWindowComponent
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
 
     private CollectionComponent<Bucket> bucketCollections;
-    internal UAIComponent(UAIModel model) : base(model)
+    internal UAIComponent(Ai model) : base(model)
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         var scorerContainer = root.Q<VisualElement>("ScorersContainer");

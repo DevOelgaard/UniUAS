@@ -10,8 +10,8 @@ using UniRx;
 public class Bucket : UtilityContainer 
 {
     private IDisposable decisionSub;
-    private ReactiveList<Decision> decisions = new ReactiveList<Decision>();
-    public ReactiveList<Decision> Decisions
+    private ReactiveListNameSafe<Decision> decisions = new ReactiveListNameSafe<Decision>();
+    public ReactiveListNameSafe<Decision> Decisions
     {
         get => decisions;
         set
@@ -74,14 +74,14 @@ public class Bucket : UtilityContainer
         Name = stateCast.Name;
         Description = stateCast.Description;
 
-        Decisions = new ReactiveList<Decision>();
+        Decisions = new ReactiveListNameSafe<Decision>();
         foreach (var d in stateCast.Decisions)
         {
             var decision = Restore<Decision>(d);
             Decisions.Add(decision);
         }
 
-        Considerations = new ReactiveList<Consideration>();
+        Considerations = new ReactiveListNameSafe<Consideration>();
         foreach (var c in stateCast.Considerations)
         {
             var consideration = Restore<Consideration>(c);

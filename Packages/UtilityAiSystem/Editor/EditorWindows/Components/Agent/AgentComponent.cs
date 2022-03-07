@@ -56,7 +56,7 @@ internal class AgentComponent: VisualElement
             AgentManager.Instance.GetAgentsByIdentifier(agent.TypeIdentifier).Values
                 .ForEach(a =>
                 {
-                    var aiClone = agent.Ai.Clone() as UAIModel;
+                    var aiClone = agent.Ai.Clone() as Ai;
                     a.SetAi(aiClone);
                 });
 

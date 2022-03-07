@@ -30,6 +30,8 @@ internal class TemplateManager : EditorWindow
     private Button restoreButton;
     private Button playModeButton;
     private PopupField<string> addElementPopup;
+    private List<string> dropDownChoices;
+    private DropdownField dropDown;
     private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
     private MainWindowComponent mainWindowComponent;
@@ -44,9 +46,6 @@ internal class TemplateManager : EditorWindow
             UpdateButtons();
         }
     }
-
-    private List<string> dropDownChoices;
-    private DropdownField dropDown;
 
     [MenuItem(Consts.MenuName + Consts.Name_TemplateManager)]
     internal static void ShowExample()
@@ -169,8 +168,6 @@ internal class TemplateManager : EditorWindow
         {
             uASTemplateService.LoadPlayMode();
         });
-
-        
 
 
         InitDropdown();

@@ -11,10 +11,10 @@ public class Decision: UtilityContainer
 {
     private string namePostfix;
     private IDisposable agentActionSub;
-    private ReactiveList<AgentAction> agentActions = new ReactiveList<AgentAction>();
+    private ReactiveListNameSafe<AgentAction> agentActions = new ReactiveListNameSafe<AgentAction>();
     public List<Parameter> Parameters;
 
-    public ReactiveList<AgentAction> AgentActions
+    public ReactiveListNameSafe<AgentAction> AgentActions
     {
         get=> agentActions;
         set
@@ -102,14 +102,14 @@ public class Decision: UtilityContainer
         Name = state.Name;
         Description = state.Description;
 
-        AgentActions = new ReactiveList<AgentAction>();
+        AgentActions = new ReactiveListNameSafe<AgentAction>();
         foreach (var a in state.AgentActions)
         {
             var action = AgentAction.Restore<AgentAction>(a);
             AgentActions.Add(action);
         }
 
-        Considerations = new ReactiveList<Consideration>();
+        Considerations = new ReactiveListNameSafe<Consideration>();
         foreach (var c in state.Considerations)
         {
             var consideration = Consideration.Restore<Consideration>(c);

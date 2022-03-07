@@ -19,7 +19,6 @@ internal class UASTemplateService: RestoreAble
 
     private static UASTemplateService instance;
 
-
     internal UASTemplateService()
     {
         Init(true);
@@ -57,7 +56,13 @@ internal class UASTemplateService: RestoreAble
         }
         else
         {
-            Restore(state);
+            try
+            {
+                Restore(state);
+            } catch (Exception ex)
+            {
+                Debug.LogWarning("UASTemplateService Restore failed: " + ex);
+            }
         }
     }
 
@@ -90,9 +95,9 @@ internal class UASTemplateService: RestoreAble
         }
     }
 
-    internal UAIModel GetAiByName(string name)
+    internal Ai GetAiByName(string name)
     {
-        var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as UAIModel;
+        var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as Ai;
 
         if (aiTemplate == null)
         {
@@ -100,14 +105,14 @@ internal class UASTemplateService: RestoreAble
             {
                 Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
             }
-            aiTemplate = AIs.Values.First() as UAIModel;
+            aiTemplate = AIs.Values.First() as Ai;
             if (aiTemplate == null)
             {
                 Debug.LogError("No ai found");
                 throw new Exception("AiTemplate not found AiName: " + name);
             }
         }
-        return aiTemplate.Clone() as UAIModel;
+        return aiTemplate.Clone() as Ai;
     }
 
     internal ReactiveList<AiObjectModel> GetCollection(string label)
@@ -123,7 +128,7 @@ internal class UASTemplateService: RestoreAble
 
     internal ReactiveList<AiObjectModel> GetCollection(Type t)
     {
-        if (t.IsAssignableFrom(typeof(UAIModel)))
+        if (t.IsAssignableFrom(typeof(Ai)))
         {
             return AIs;
         }
@@ -204,6 +209,15 @@ internal class UASTemplateService: RestoreAble
 
     internal void Restore(UASTemplateServiceState state)
     {
+        try
+        {
+            RestoreInternal(state);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning("UASTemplateService Restore failed: " + ex);
+        }
+
         RestoreInternal(state);
     }
 
@@ -245,7 +259,7 @@ internal class UASTemplateService: RestoreAble
         } else if (TypeMatches(type, typeof(Bucket)))
         {
             return Buckets;
-        } else if (TypeMatches(type, typeof(UAIModel)))
+        } else if (TypeMatches(type, typeof(Ai)))
         {
             return AIs;
         }
@@ -268,7 +282,7 @@ internal class UASTemplateService: RestoreAble
 
         foreach(var aState in state.AIs)
         {
-            var ai = UAIModel.Restore<UAIModel>(aState);
+            var ai = Ai.Restore<Ai>(aState);
             AIs.Add(ai);
         }
 
@@ -319,7 +333,7 @@ public class UASTemplateServiceState : RestoreState
         ReactiveList<AiObjectModel> considerations, ReactiveList<AiObjectModel> agentActions, UASTemplateService model) : base(model)
     {
         AIs = new List<UAIModelState>();
-        foreach (UAIModel ai in aiS.Values)
+        foreach (Ai ai in aiS.Values)
         {
             var a = ai.GetState() as UAIModelState;
             AIs.Add(a);

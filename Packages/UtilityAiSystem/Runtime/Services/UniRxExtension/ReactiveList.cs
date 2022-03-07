@@ -30,13 +30,13 @@ namespace UniRxExtension
             return new List<T>(list);
         }
 
-        public void Add(T element)
+        public virtual void Add(T element)
         {
             list.Add(element);
             onValueChanged.OnNext(Values);
         }
 
-        public void Remove(T element)
+        public virtual void Remove(T element)
         {
             list.Remove(element);
             onValueChanged.OnNext(Values);

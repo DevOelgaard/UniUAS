@@ -7,8 +7,8 @@ using UniRxExtension;
 public abstract class UtilityContainer : AiObjectModel
 {
     private IDisposable considerationSub;
-    private ReactiveList<Consideration> considerations = new ReactiveList<Consideration>();
-    internal ReactiveList<Consideration> Considerations
+    private ReactiveListNameSafe<Consideration> considerations = new ReactiveListNameSafe<Consideration>();
+    internal ReactiveListNameSafe<Consideration> Considerations
     {
         get => considerations;
         set

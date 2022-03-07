@@ -15,8 +15,8 @@ public abstract class AgentScript : IAgent
     [SerializeField]
     protected string DefaultAiName => GetDefaultAiName();
 
-    private UAIModel ai;
-    public UAIModel Ai
+    private Ai ai;
+    public Ai Ai
     {
         get => ai;
         set
@@ -65,7 +65,7 @@ public abstract class AgentScript : IAgent
         //}
     }
 
-    public void SetAi(UAIModel model)
+    public void SetAi(Ai model)
     {
         Ai = model;
     }
