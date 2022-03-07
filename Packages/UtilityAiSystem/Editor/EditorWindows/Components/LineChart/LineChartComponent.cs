@@ -25,17 +25,27 @@ internal class LineChartComponent: IMGUIContainer
     private float graphMaxX = 50000f;
     private float graphRangeX => graphMaxX - graphMinX;
 
-    private float graphMinY = 0.5f;
+    private float graphMinY = 0f;
     private float graphMaxY = 1f;
     private float graphRangeY => graphMaxY - graphMinY;
     private float stepCountX = 10f;
     private float stepCountY = 10f;
+    private List<Vector2> points = new List<Vector2>();
+
+    private float TESTCalculateY(float x)
+    {
+        var xNormalized = (x - graphMinX) / graphRangeX;
+        var y = 1 * xNormalized + 0;
+        return y;
+    }
 
     public LineChartComponent()
     {
         style.flexGrow = 1;
         style.minHeight = 200;
         style.minWidth = 400;
+
+ 
 
         onGUIHandler = () =>
         {
@@ -46,7 +56,19 @@ internal class LineChartComponent: IMGUIContainer
             graphWidth = screenWidth - marginLeft - marginRight;
             graphOrigon = new Vector3(marginLeft, screenHeight - marginBottom, 0);
 
+            #region TEST
+            var demoSteps = 150;
+            var stepSize = graphRangeX / demoSteps;
+            points = new List<Vector2>();
+            for (var i = 0; i <= demoSteps; i++)
+            {
+                var x = i * stepSize + graphMinX;
+                points.Add(new Vector2(x, TESTCalculateY(x)));
+            }
+            #endregion
             DrawBaseGraph();
+
+            DrawCurve(points);
         };
     }
 
@@ -61,7 +83,7 @@ internal class LineChartComponent: IMGUIContainer
             var basePosition = GraphToScreenCoordinates(x, graphMinY);
             Handles.DrawLine(basePosition, GraphToScreenCoordinates(x, graphMaxY), 0.01f);
 
-            var labelPosition = new Vector3(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom, 0);
+            var labelPosition = new Vector2(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom);
             Handles.Label(labelPosition, x.ToString());
         }
 
@@ -74,7 +96,7 @@ internal class LineChartComponent: IMGUIContainer
             var basePosition = GraphToScreenCoordinates(graphMinX, y);
             Handles.DrawLine(basePosition, GraphToScreenCoordinates(graphMaxX, y), 0.01f);
 
-            var labelPosition = new Vector3(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster, 0);
+            var labelPosition = new Vector2(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster);
             Handles.Label(labelPosition, y.ToString());
         }
 
@@ -89,12 +111,26 @@ internal class LineChartComponent: IMGUIContainer
         Debug.Log("GraphOrigon: " + graphOrigon + " xAxisEnd: " + xAxixEnd + " yAxisEnd: " + yAxixEnd);
     }
 
-    private Vector3 GraphToScreenCoordinates(float graphX, float graphY)
+    internal void DrawCurve(List<Vector2> points)
     {
-        return GraphToScreenCoordinates(new Vector3(graphX, graphY, 0));
+        for(var i = 1; i < points.Count; i++)
+        {
+            var p1 = points[i-1];
+            var p2 = points[i];
+
+            var screenCoordP1 = GraphToScreenCoordinates(p1);
+            var screenCoordP2 = GraphToScreenCoordinates(p2);
+            Handles.DrawLine(screenCoordP1, screenCoordP2);
+        }
+        MarkDirtyLayout();
     }
 
-    private Vector3 GraphToScreenCoordinates(Vector3 graphPos)
+    private Vector3 GraphToScreenCoordinates(float graphX, float graphY)
+    {
+        return GraphToScreenCoordinates(new Vector2(graphX, graphY));
+    }
+
+    private Vector3 GraphToScreenCoordinates(Vector2 graphPos)
     {
         var x = graphOrigon.x + (graphPos.x - graphMinX) / graphRangeX * graphWidth;
         var y = graphOrigon.y - (graphPos.y - graphMinY) / graphRangeY * graphHeight;
