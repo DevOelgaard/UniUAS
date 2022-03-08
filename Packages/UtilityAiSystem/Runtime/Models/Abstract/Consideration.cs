@@ -12,7 +12,7 @@ public abstract class Consideration : AiObjectModel
     private string namePostfix;
     public List<Parameter> Parameters;
     private List<ResponseCurveModel> responseCurves = new List<ResponseCurveModel>();
-    private ResponseCurveModel currentResponseCurve = new RCLinear();
+    private ResponseCurveModel currentResponseCurve;
     public ResponseCurveModel CurrentResponseCurve
     {
         get 
@@ -78,6 +78,8 @@ public abstract class Consideration : AiObjectModel
             curve.MinX = Convert.ToSingle(Min.Value);
             curve.MaxX = Convert.ToSingle(Max.Value);
         }
+        CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
+        CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
     }
 
     public override string GetNameFormat(string name)
@@ -181,7 +183,6 @@ public abstract class Consideration : AiObjectModel
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
-
     }
 
     internal override AiObjectModel Clone()

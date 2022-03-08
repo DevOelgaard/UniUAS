@@ -59,6 +59,7 @@ internal class LineChartComponent: IMGUIContainer
 
             var screenCoordP1 = GraphToScreenCoordinates(p1);
             var screenCoordP2 = GraphToScreenCoordinates(p2);
+            Handles.color = Color.green;
             Handles.DrawLine(screenCoordP1, screenCoordP2);
         }
     }

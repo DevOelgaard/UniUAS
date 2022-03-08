@@ -39,7 +39,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -148,7 +148,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -281,7 +281,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -390,7 +390,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -523,7 +523,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -632,7 +632,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -769,7 +769,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -872,7 +872,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -991,7 +991,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1094,7 +1094,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1203,7 +1203,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1356,7 +1356,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1491,7 +1491,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1600,7 +1600,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1733,7 +1733,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1842,7 +1842,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1973,7 +1973,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1000.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -2088,7 +2088,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2233,7 +2233,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -2342,7 +2342,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2487,7 +2487,7 @@
                     "MinY": 0.0,
                     "MaxY": 1.0,
                     "MinX": 0.0,
-                    "MaxX": 0.0,
+                    "MaxX": 1.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -2596,7 +2596,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2789,7 +2789,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2898,7 +2898,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3031,7 +3031,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3140,7 +3140,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3267,7 +3267,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3370,7 +3370,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3489,7 +3489,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3592,7 +3592,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3701,7 +3701,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3844,7 +3844,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3979,7 +3979,7 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 0.0,
+                "MaxX": 1.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -4088,7 +4088,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -4213,7 +4213,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -4316,7 +4316,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -4451,7 +4451,7 @@
             "MinY": 0.0,
             "MaxY": 1.0,
             "MinX": 0.0,
-            "MaxX": 0.0,
+            "MaxX": 1.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -4574,7 +4574,7 @@
         "MinY": 0.0,
         "MaxY": 1.0,
         "MinX": 0.0,
-        "MaxX": 0.0,
+        "MaxX": 1.0,
         "Parameters": [
           {
             "Name": "a",
@@ -4670,8 +4670,8 @@
         "Name": "Linear",
         "MinY": 0.0,
         "MaxY": 1.0,
-        "MinX": 0.0,
-        "MaxX": 0.0,
+        "MinX": 0.33,
+        "MaxX": 2.74,
         "Parameters": [
           {
             "Name": "a",
@@ -4690,12 +4690,12 @@
       "Description": null,
       "Min": {
         "Name": "Min",
-        "Value": 0.0,
+        "Value": 0.33,
         "FileName": "Parameter"
       },
       "Max": {
         "Name": "Max",
-        "Value": 1.0,
+        "Value": 2.74,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
@@ -4704,8 +4704,8 @@
           "Name": "Exponential",
           "MinY": 0.0,
           "MaxY": 1.0,
-          "MinX": 0.0,
-          "MaxX": 1.0,
+          "MinX": 0.33,
+          "MaxX": 2.74,
           "Parameters": [
             {
               "Name": "Power",
@@ -4724,8 +4724,8 @@
           "Name": "Inverse Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
-          "MinX": 0.0,
-          "MaxX": 1.0,
+          "MinX": 0.33,
+          "MaxX": 2.74,
           "Parameters": [],
           "FileName": "RCInverseLogistic"
         },
@@ -4733,8 +4733,8 @@
           "Name": "Linear",
           "MinY": 0.0,
           "MaxY": 1.0,
-          "MinX": 0.0,
-          "MaxX": 1.0,
+          "MinX": 0.33,
+          "MaxX": 2.74,
           "Parameters": [
             {
               "Name": "a",
@@ -4753,8 +4753,8 @@
           "Name": "Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
-          "MinX": 0.0,
-          "MaxX": 1.0,
+          "MinX": 0.33,
+          "MaxX": 2.74,
           "Parameters": [],
           "FileName": "RCLogistic"
         }
@@ -4767,8 +4767,8 @@
         "Name": "Linear",
         "MinY": 0.0,
         "MaxY": 1.0,
-        "MinX": 0.0,
-        "MaxX": 0.0,
+        "MinX": -0.05,
+        "MaxX": 1.28,
         "Parameters": [
           {
             "Name": "a",

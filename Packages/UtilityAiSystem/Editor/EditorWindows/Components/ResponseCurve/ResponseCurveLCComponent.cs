@@ -110,7 +110,7 @@ internal class ResponseCurveLCComponent : VisualElement
     {
         var points = new List<Vector2>();
         var stepSize = (max - min) / steps;
-        for (var i = min; i <= steps; i++)
+        for (var i = 0; i <= steps; i++)
         {
             var x = i * stepSize + min;
             var y = consideration.CurrentResponseCurve.CalculateResponse(x);
