@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UniRxExtension;
 
 internal class LineChartComponent: IMGUIContainer
 {
@@ -39,13 +40,34 @@ internal class LineChartComponent: IMGUIContainer
         return y;
     }
 
+    public void DrawCurve(List<Vector2> points, float min = 0, float max = 1, int steps = 100, int stepCountX = 10)
+    {
+        this.stepCountX = stepCountX;
+        graphMinX = min;
+        graphMaxX = max;
+        this.points = points;
+
+        MarkDirtyRepaint();
+    }
+
+    public void DrawCurve()
+    {
+        for (var i = 1; i < points.Count; i++)
+        {
+            var p1 = points[i - 1];
+            var p2 = points[i];
+
+            var screenCoordP1 = GraphToScreenCoordinates(p1);
+            var screenCoordP2 = GraphToScreenCoordinates(p2);
+            Handles.DrawLine(screenCoordP1, screenCoordP2);
+        }
+    }
+
     public LineChartComponent()
     {
         style.flexGrow = 1;
         style.minHeight = 200;
         style.minWidth = 400;
-
- 
 
         onGUIHandler = () =>
         {
@@ -56,19 +78,19 @@ internal class LineChartComponent: IMGUIContainer
             graphWidth = screenWidth - marginLeft - marginRight;
             graphOrigon = new Vector3(marginLeft, screenHeight - marginBottom, 0);
 
-            #region TEST
-            var demoSteps = 150;
-            var stepSize = graphRangeX / demoSteps;
-            points = new List<Vector2>();
-            for (var i = 0; i <= demoSteps; i++)
-            {
-                var x = i * stepSize + graphMinX;
-                points.Add(new Vector2(x, TESTCalculateY(x)));
-            }
-            #endregion
+            //#region TEST
+            //var demoSteps = 150;
+            //var stepSize = graphRangeX / demoSteps;
+            //points = new List<Vector2>();
+            //for (var i = 0; i <= demoSteps; i++)
+            //{
+            //    var x = i * stepSize + graphMinX;
+            //    points.Add(new Vector2(x, TESTCalculateY(x)));
+            //}
+            //#endregion
+            DrawCurve();
             DrawBaseGraph();
 
-            DrawCurve(points);
         };
     }
 
@@ -107,22 +129,6 @@ internal class LineChartComponent: IMGUIContainer
         var yAxixEnd = GraphToScreenCoordinates(graphMinX, graphMaxY);
         Handles.DrawLine(graphOrigon, xAxixEnd);
         Handles.DrawLine(graphOrigon, yAxixEnd);
-
-        Debug.Log("GraphOrigon: " + graphOrigon + " xAxisEnd: " + xAxixEnd + " yAxisEnd: " + yAxixEnd);
-    }
-
-    internal void DrawCurve(List<Vector2> points)
-    {
-        for(var i = 1; i < points.Count; i++)
-        {
-            var p1 = points[i-1];
-            var p2 = points[i];
-
-            var screenCoordP1 = GraphToScreenCoordinates(p1);
-            var screenCoordP2 = GraphToScreenCoordinates(p2);
-            Handles.DrawLine(screenCoordP1, screenCoordP2);
-        }
-        MarkDirtyLayout();
     }
 
     private Vector3 GraphToScreenCoordinates(float graphX, float graphY)

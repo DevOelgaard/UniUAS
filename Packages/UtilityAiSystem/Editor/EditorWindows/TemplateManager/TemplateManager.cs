@@ -175,8 +175,6 @@ internal class TemplateManager : EditorWindow
         InitDropdown();
         UpdateLeftPanel();
 
-        var lineChart = new LineChartComponent();
-        rightPanel.Add(lineChart);
     }
 
     private void UpdateButtons()

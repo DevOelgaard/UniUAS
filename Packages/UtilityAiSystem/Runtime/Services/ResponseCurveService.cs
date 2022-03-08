@@ -7,32 +7,14 @@ using UnityEditor;
 
 public class ResponseCurveService
 {
-    static List<string> responseCurveNames = new List<string>
-    {
-        "Exponential",
-        "Inverse Logistic",
-        "Linear",
-        "Logistic"
-    };
+    private static List<string> curveNames = new List<string>();
     public static List<string> GetResponseCurveNames()
     {
-        return responseCurveNames;
-    }
-
-    public static ResponseCurveModel GetResponseCurve(string name)
-    {
-        if (name == "Exponential")
-            return new RCExponential();
-
-        if (name == "Inverse Logistic")
-            return new RCInverseLogistic();
-
-        if (name == "Linear")
-            return new RCLinear();
-
-        if (name == "Logistic")
-            return new RCLogistic();
-
-        throw new Exception("Name: " + name + " does not exist"); 
+        if (curveNames.Count <= 0)
+        {
+            var list = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>();
+            curveNames = list.Select(x => x.Name).ToList();
+        }
+        return curveNames;
     }
 }

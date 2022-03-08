@@ -12,6 +12,8 @@ public abstract class ResponseCurveModel: RestoreAble
     public string Name = "";
     public float MinY = 0.0f;
     public float MaxY = 1.0f;
+    public float MinX = 0.0f;
+    public float MaxX = 1.0f;
 
     public List<Parameter> Parameters = new List<Parameter>();
 
@@ -37,9 +39,17 @@ public abstract class ResponseCurveModel: RestoreAble
 
     public float CalculateResponse(float x)
     {
-
-        var response = ResponseFunction(x);
+        var normalizedX = Normalize(x);
+        var response = ResponseFunction(normalizedX);
+        Debug.Log("x: " + x + " Normalized: " + normalizedX + " response: " + response + " MinX: " + MinX + " MaxX: " + MaxX);
+        //var result = response * MaxY + MinY;
         return Mathf.Clamp(response, MinY, MaxY);
+    }
+
+    private float Normalize(float value)
+    {
+        var x = (value - MinX) / (MaxX - MinX);
+        return Mathf.Clamp(x, 0, 1);
     }
 
     protected abstract float ResponseFunction(float x);
