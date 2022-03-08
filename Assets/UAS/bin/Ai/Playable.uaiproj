@@ -65,6 +65,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -112,6 +164,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -183,6 +287,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -230,6 +386,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -301,6 +509,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -348,6 +608,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -423,6 +735,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "DoNotReapeatDecision"
                 },
                 {
@@ -464,6 +828,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -521,6 +937,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "DoNotReapeatDecision"
                 },
                 {
@@ -562,6 +1030,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -609,6 +1129,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -700,6 +1272,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -707,7 +1331,7 @@
               "FileName": "Decision"
             },
             {
-              "Name": "return fixed - Action state (Decision)",
+              "Name": "return fixed - Action state (Decision)(1)",
               "Description": null,
               "AgentActions": [
                 {
@@ -773,6 +1397,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -820,6 +1496,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -891,6 +1619,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "Demo_ConsiderationFixedValue"
                 }
               ],
@@ -938,6 +1718,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1007,6 +1839,58 @@
                     "FileName": "Parameter"
                   },
                   "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
                   "FileName": "ConsiderationNearestTarget"
                 }
               ],
@@ -1060,6 +1944,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1069,8 +2005,528 @@
             "FileName": "Parameter"
           },
           "FileName": "Bucket"
+        },
+        {
+          "Name": "Default(1)",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "3",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "1",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 3.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "Default(2)",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "3(1)",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "1",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Linear",
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "RCLinear"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "ResponseCurveStates": [
+                    {
+                      "Name": "Exponential",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "Power",
+                          "Value": 2.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCExponential"
+                    },
+                    {
+                      "Name": "Inverse Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCInverseLogistic"
+                    },
+                    {
+                      "Name": "Linear",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [
+                        {
+                          "Name": "a",
+                          "Value": 1.0,
+                          "FileName": "Parameter"
+                        },
+                        {
+                          "Name": "b",
+                          "Value": 0.0,
+                          "FileName": "Parameter"
+                        }
+                      ],
+                      "FileName": "RCLinear"
+                    },
+                    {
+                      "Name": "Logistic",
+                      "MinY": 0.0,
+                      "MaxY": 1.0,
+                      "Parameters": [],
+                      "FileName": "RCLogistic"
+                    }
+                  ],
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Linear",
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "RCLinear"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 3.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
         }
       ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        },
+        {
+          "Name": "Default(1)",
+          "Description": null,
+          "Decisions": [],
+          "Considerations": [],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "FileName": "Bucket"
+        }
+      ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
@@ -1139,6 +2595,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1186,6 +2694,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1257,6 +2817,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1304,6 +2916,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1369,6 +3033,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "DoNotReapeatDecision"
             },
             {
@@ -1410,6 +3126,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1467,6 +3235,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "DoNotReapeatDecision"
             },
             {
@@ -1508,6 +3328,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1555,6 +3427,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1636,6 +3560,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1643,7 +3619,7 @@
           "FileName": "Decision"
         },
         {
-          "Name": "return fixed - Action state (Decision)",
+          "Name": "return fixed - Action state (Decision)(1)",
           "Description": null,
           "AgentActions": [
             {
@@ -1709,6 +3685,58 @@
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
+              "ResponseCurveStates": [
+                {
+                  "Name": "Exponential",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "Power",
+                      "Value": 2.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCExponential"
+                },
+                {
+                  "Name": "Inverse Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCInverseLogistic"
+                },
+                {
+                  "Name": "Linear",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [
+                    {
+                      "Name": "a",
+                      "Value": 1.0,
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "b",
+                      "Value": 0.0,
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "FileName": "RCLinear"
+                },
+                {
+                  "Name": "Logistic",
+                  "MinY": 0.0,
+                  "MaxY": 1.0,
+                  "Parameters": [],
+                  "FileName": "RCLogistic"
+                }
+              ],
               "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
@@ -1756,6 +3784,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1819,6 +3899,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "DoNotReapeatDecision"
         },
         {
@@ -1860,6 +3992,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1933,6 +4117,58 @@
             "FileName": "Parameter"
           },
           "PerformanceTag": 2,
+          "ResponseCurveStates": [
+            {
+              "Name": "Exponential",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "Power",
+                  "Value": 2.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCExponential"
+            },
+            {
+              "Name": "Inverse Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCInverseLogistic"
+            },
+            {
+              "Name": "Linear",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [
+                {
+                  "Name": "a",
+                  "Value": 1.0,
+                  "FileName": "Parameter"
+                },
+                {
+                  "Name": "b",
+                  "Value": 0.0,
+                  "FileName": "Parameter"
+                }
+              ],
+              "FileName": "RCLinear"
+            },
+            {
+              "Name": "Logistic",
+              "MinY": 0.0,
+              "MaxY": 1.0,
+              "Parameters": [],
+              "FileName": "RCLogistic"
+            }
+          ],
           "FileName": "Demo_ConsiderationFixedValue"
         }
       ],
@@ -1959,29 +4195,29 @@
       "Parameters": [
         {
           "Name": "Return value",
-          "Value": 0.5,
+          "Value": 0.08,
           "FileName": "Parameter"
         }
       ],
       "ResponseCurveState": {
-        "Name": "Linear",
+        "Name": "Exponential",
         "MinY": 0.0,
         "MaxY": 1.0,
         "Parameters": [
           {
-            "Name": "a",
-            "Value": 1.0,
+            "Name": "Power",
+            "Value": 3.0,
             "FileName": "Parameter"
           },
           {
             "Name": "b",
-            "Value": 0.0,
+            "Value": 0.5,
             "FileName": "Parameter"
           }
         ],
-        "FileName": "RCLinear"
+        "FileName": "RCExponential"
       },
-      "Name": "Default (Demo_ConsiderationFixedValue)",
+      "Name": "Some Response value changed for Exponentioalll (Demo_ConsiderationFixedValue)",
       "Description": null,
       "Min": {
         "Name": "Min",
@@ -1990,10 +4226,62 @@
       },
       "Max": {
         "Name": "Max",
-        "Value": 1.0,
+        "Value": 3.0,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
+      "ResponseCurveStates": [
+        {
+          "Name": "Exponential",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 3.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.5,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Inverse Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCInverseLogistic"
+        },
+        {
+          "Name": "Linear",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCLogistic"
+        }
+      ],
       "FileName": "Demo_ConsiderationFixedValue"
     },
     {
@@ -2029,53 +4317,146 @@
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
+      "ResponseCurveStates": [
+        {
+          "Name": "Exponential",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Inverse Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCInverseLogistic"
+        },
+        {
+          "Name": "Linear",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCLogistic"
+        }
+      ],
       "FileName": "Demo_ConsiderationRandomValue"
     },
     {
       "Parameters": [],
       "ResponseCurveState": {
-        "Name": "Linear",
+        "Name": "Logistic",
         "MinY": 0.0,
         "MaxY": 1.0,
-        "Parameters": [
-          {
-            "Name": "a",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          {
-            "Name": "b",
-            "Value": 0.0,
-            "FileName": "Parameter"
-          }
-        ],
-        "FileName": "RCLinear"
+        "Parameters": [],
+        "FileName": "RCLogistic"
       },
       "Name": "Default (DoNotReapeatDecision)",
       "Description": null,
       "Min": {
         "Name": "Min",
-        "Value": 0.0,
+        "Value": -0.05,
         "FileName": "Parameter"
       },
       "Max": {
         "Name": "Max",
-        "Value": 1.0,
+        "Value": 4.5,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
+      "ResponseCurveStates": [
+        {
+          "Name": "Exponential",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Inverse Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCInverseLogistic"
+        },
+        {
+          "Name": "Linear",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCLogistic"
+        }
+      ],
       "FileName": "DoNotReapeatDecision"
     },
     {
       "Parameters": [],
       "ResponseCurveState": {
-        "Name": "Linear",
+        "Name": "Exponential",
         "MinY": 0.0,
         "MaxY": 1.0,
         "Parameters": [
           {
-            "Name": "a",
-            "Value": 1.0,
+            "Name": "Power",
+            "Value": 0.18,
             "FileName": "Parameter"
           },
           {
@@ -2084,7 +4465,7 @@
             "FileName": "Parameter"
           }
         ],
-        "FileName": "RCLinear"
+        "FileName": "RCExponential"
       },
       "Name": "Default (DoNotRepeatBucket)",
       "Description": null,
@@ -2095,10 +4476,62 @@
       },
       "Max": {
         "Name": "Max",
-        "Value": 1.0,
+        "Value": 8.84,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
+      "ResponseCurveStates": [
+        {
+          "Name": "Exponential",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 0.18,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Inverse Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCInverseLogistic"
+        },
+        {
+          "Name": "Linear",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Logistic",
+          "MinY": 0.0,
+          "MaxY": 1.0,
+          "Parameters": [],
+          "FileName": "RCLogistic"
+        }
+      ],
       "FileName": "DoNotRepeatBucket"
     }
   ],

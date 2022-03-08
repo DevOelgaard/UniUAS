@@ -60,6 +60,8 @@ public abstract class ResponseCurveModel: RestoreAble
         Name = state.Name;
         MinY = state.MinY;
         MaxY = state.MaxY;
+        MinX = state.MinX;
+        MaxX = state.MaxX;
         Parameters = new List<Parameter>();
         foreach (var p in state.Parameters)
         {
@@ -85,6 +87,8 @@ public class ResponseCurveState: RestoreState
     public string Name;
     public float MinY;
     public float MaxY;
+    public float MinX;
+    public float MaxX;
     public List<ParameterState> Parameters;
 
     public ResponseCurveState(): base()
@@ -96,6 +100,8 @@ public class ResponseCurveState: RestoreState
         Name = name;
         MinY = minY;
         MaxY = maxY;
+        MinX = responseCurveModel.MinX;
+        MaxX = responseCurveModel.MaxX;
         Parameters = new List<ParameterState>();
         foreach(var parameter in parameters)
         {
