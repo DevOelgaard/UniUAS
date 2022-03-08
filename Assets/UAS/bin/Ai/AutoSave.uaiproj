@@ -38,6 +38,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -70,6 +72,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -88,6 +92,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -95,6 +101,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -113,6 +121,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -137,6 +147,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -169,6 +181,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -187,6 +201,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -194,6 +210,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -212,6 +230,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -260,6 +280,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -292,6 +314,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -310,6 +334,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -317,6 +343,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -335,6 +363,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -359,6 +389,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -391,6 +423,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -409,6 +443,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -416,6 +452,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -434,6 +472,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -482,6 +522,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -514,6 +556,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -532,6 +576,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -539,6 +585,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -557,6 +605,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -581,6 +631,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -613,6 +665,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -631,6 +685,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -638,6 +694,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -656,6 +714,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -708,6 +768,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -740,6 +802,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -758,6 +822,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -765,6 +831,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -783,6 +851,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -801,6 +871,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -833,6 +905,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -851,6 +925,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -858,6 +934,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -876,6 +954,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -910,6 +990,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -942,6 +1024,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -960,6 +1044,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -967,6 +1053,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -985,6 +1073,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1003,6 +1093,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1035,6 +1127,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -1053,6 +1147,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -1060,6 +1156,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -1078,6 +1176,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1102,6 +1202,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1134,6 +1236,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -1152,6 +1256,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -1159,6 +1265,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -1177,6 +1285,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -1245,6 +1355,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1277,6 +1389,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -1295,6 +1409,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -1302,6 +1418,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -1320,6 +1438,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1370,6 +1490,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1402,6 +1524,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -1420,6 +1544,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -1427,6 +1553,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -1445,6 +1573,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1469,6 +1599,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1501,6 +1633,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -1519,6 +1653,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -1526,6 +1662,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -1544,6 +1682,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -1592,6 +1732,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1624,6 +1766,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -1642,6 +1786,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -1649,6 +1795,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -1667,6 +1815,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1691,6 +1841,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1723,6 +1875,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -1741,6 +1895,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -1748,6 +1904,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -1766,6 +1924,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -1812,6 +1972,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -1844,6 +2006,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1000.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -1862,6 +2026,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1000.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -1869,6 +2035,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1000.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -1887,6 +2055,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1000.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -1917,6 +2087,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -1949,6 +2121,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -1967,6 +2141,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -1974,6 +2150,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -1992,6 +2170,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -2052,6 +2232,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -2084,6 +2266,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -2102,6 +2286,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -2109,6 +2295,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -2127,6 +2315,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -2151,6 +2341,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2183,6 +2375,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -2201,6 +2395,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -2208,6 +2404,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -2226,6 +2424,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -2286,6 +2486,8 @@
                     "Name": "Linear",
                     "MinY": 0.0,
                     "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 0.0,
                     "Parameters": [
                       {
                         "Name": "a",
@@ -2318,6 +2520,8 @@
                       "Name": "Exponential",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "Power",
@@ -2336,6 +2540,8 @@
                       "Name": "Inverse Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCInverseLogistic"
                     },
@@ -2343,6 +2549,8 @@
                       "Name": "Linear",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [
                         {
                           "Name": "a",
@@ -2361,6 +2569,8 @@
                       "Name": "Logistic",
                       "MinY": 0.0,
                       "MaxY": 1.0,
+                      "MinX": 0.0,
+                      "MaxX": 1.0,
                       "Parameters": [],
                       "FileName": "RCLogistic"
                     }
@@ -2385,6 +2595,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2417,6 +2629,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -2435,6 +2649,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -2442,6 +2658,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -2460,6 +2678,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -2568,6 +2788,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2600,6 +2822,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -2618,6 +2842,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -2625,6 +2851,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -2643,6 +2871,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -2667,6 +2897,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -2699,6 +2931,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -2717,6 +2951,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -2724,6 +2960,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -2742,6 +2980,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -2790,6 +3030,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -2822,6 +3064,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -2840,6 +3084,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -2847,6 +3093,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -2865,6 +3113,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -2889,6 +3139,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -2921,6 +3173,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -2939,6 +3193,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -2946,6 +3202,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -2964,6 +3222,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -3006,6 +3266,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3038,6 +3300,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3056,6 +3320,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3063,6 +3329,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3081,6 +3349,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3099,6 +3369,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3131,6 +3403,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3149,6 +3423,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3156,6 +3432,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3174,6 +3452,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3208,6 +3488,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3240,6 +3522,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3258,6 +3542,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3265,6 +3551,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3283,6 +3571,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3301,6 +3591,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3333,6 +3625,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3351,6 +3645,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3358,6 +3654,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3376,6 +3674,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3400,6 +3700,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3432,6 +3734,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -3450,6 +3754,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -3457,6 +3763,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -3475,6 +3783,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -3533,6 +3843,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3565,6 +3877,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3583,6 +3897,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3590,6 +3906,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3608,6 +3926,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3658,6 +3978,8 @@
                 "Name": "Linear",
                 "MinY": 0.0,
                 "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 0.0,
                 "Parameters": [
                   {
                     "Name": "a",
@@ -3690,6 +4012,8 @@
                   "Name": "Exponential",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "Power",
@@ -3708,6 +4032,8 @@
                   "Name": "Inverse Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCInverseLogistic"
                 },
@@ -3715,6 +4041,8 @@
                   "Name": "Linear",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [
                     {
                       "Name": "a",
@@ -3733,6 +4061,8 @@
                   "Name": "Logistic",
                   "MinY": 0.0,
                   "MaxY": 1.0,
+                  "MinX": 0.0,
+                  "MaxX": 1.0,
                   "Parameters": [],
                   "FileName": "RCLogistic"
                 }
@@ -3757,6 +4087,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3789,6 +4121,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -3807,6 +4141,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -3814,6 +4150,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -3832,6 +4170,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -3872,6 +4212,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3904,6 +4246,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -3922,6 +4266,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -3929,6 +4275,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -3947,6 +4295,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -3965,6 +4315,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -3997,6 +4349,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -4015,6 +4369,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -4022,6 +4378,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -4040,6 +4398,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -4090,6 +4450,8 @@
             "Name": "Linear",
             "MinY": 0.0,
             "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 0.0,
             "Parameters": [
               {
                 "Name": "a",
@@ -4122,6 +4484,8 @@
               "Name": "Exponential",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "Power",
@@ -4140,6 +4504,8 @@
               "Name": "Inverse Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCInverseLogistic"
             },
@@ -4147,6 +4513,8 @@
               "Name": "Linear",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [
                 {
                   "Name": "a",
@@ -4165,6 +4533,8 @@
               "Name": "Logistic",
               "MinY": 0.0,
               "MaxY": 1.0,
+              "MinX": 0.0,
+              "MaxX": 1.0,
               "Parameters": [],
               "FileName": "RCLogistic"
             }
@@ -4203,6 +4573,8 @@
         "Name": "Linear",
         "MinY": 0.0,
         "MaxY": 1.0,
+        "MinX": 0.0,
+        "MaxX": 0.0,
         "Parameters": [
           {
             "Name": "a",
@@ -4235,6 +4607,8 @@
           "Name": "Exponential",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [
             {
               "Name": "Power",
@@ -4253,6 +4627,8 @@
           "Name": "Inverse Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [],
           "FileName": "RCInverseLogistic"
         },
@@ -4260,6 +4636,8 @@
           "Name": "Linear",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [
             {
               "Name": "a",
@@ -4278,6 +4656,8 @@
           "Name": "Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [],
           "FileName": "RCLogistic"
         }
@@ -4290,6 +4670,8 @@
         "Name": "Linear",
         "MinY": 0.0,
         "MaxY": 1.0,
+        "MinX": 0.0,
+        "MaxX": 0.0,
         "Parameters": [
           {
             "Name": "a",
@@ -4322,6 +4704,8 @@
           "Name": "Exponential",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [
             {
               "Name": "Power",
@@ -4340,6 +4724,8 @@
           "Name": "Inverse Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [],
           "FileName": "RCInverseLogistic"
         },
@@ -4347,6 +4733,8 @@
           "Name": "Linear",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [
             {
               "Name": "a",
@@ -4365,6 +4753,8 @@
           "Name": "Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": 0.0,
+          "MaxX": 1.0,
           "Parameters": [],
           "FileName": "RCLogistic"
         }
@@ -4377,6 +4767,8 @@
         "Name": "Linear",
         "MinY": 0.0,
         "MaxY": 1.0,
+        "MinX": 0.0,
+        "MaxX": 0.0,
         "Parameters": [
           {
             "Name": "a",
@@ -4409,6 +4801,8 @@
           "Name": "Exponential",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -0.05,
+          "MaxX": 1.28,
           "Parameters": [
             {
               "Name": "Power",
@@ -4427,6 +4821,8 @@
           "Name": "Inverse Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -0.05,
+          "MaxX": 1.28,
           "Parameters": [],
           "FileName": "RCInverseLogistic"
         },
@@ -4434,6 +4830,8 @@
           "Name": "Linear",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -0.05,
+          "MaxX": 1.28,
           "Parameters": [
             {
               "Name": "a",
@@ -4452,6 +4850,8 @@
           "Name": "Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -0.05,
+          "MaxX": 1.28,
           "Parameters": [],
           "FileName": "RCLogistic"
         }
@@ -4464,6 +4864,8 @@
         "Name": "Exponential",
         "MinY": 0.0,
         "MaxY": 1.0,
+        "MinX": -8.26,
+        "MaxX": 18.6,
         "Parameters": [
           {
             "Name": "Power",
@@ -4482,12 +4884,12 @@
       "Description": null,
       "Min": {
         "Name": "Min",
-        "Value": 0.0,
+        "Value": -8.26,
         "FileName": "Parameter"
       },
       "Max": {
         "Name": "Max",
-        "Value": 8.84,
+        "Value": 18.6,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
@@ -4496,6 +4898,8 @@
           "Name": "Exponential",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -8.26,
+          "MaxX": 18.6,
           "Parameters": [
             {
               "Name": "Power",
@@ -4514,6 +4918,8 @@
           "Name": "Inverse Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -8.26,
+          "MaxX": 18.6,
           "Parameters": [],
           "FileName": "RCInverseLogistic"
         },
@@ -4521,6 +4927,8 @@
           "Name": "Linear",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -8.26,
+          "MaxX": 18.6,
           "Parameters": [
             {
               "Name": "a",
@@ -4539,6 +4947,8 @@
           "Name": "Logistic",
           "MinY": 0.0,
           "MaxY": 1.0,
+          "MinX": -8.26,
+          "MaxX": 18.6,
           "Parameters": [],
           "FileName": "RCLogistic"
         }

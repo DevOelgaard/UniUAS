@@ -11,6 +11,7 @@ using UnityEngine;
 
 internal class ConsiderationComponent : MainWindowComponent
 {
+    private CompositeDisposable minMaxSubs = new CompositeDisposable();
     private TemplateContainer root;
     private Consideration considerationModel => Model as Consideration;
     private ScoreComponent baseScore => ScoreComponents[0];
@@ -18,6 +19,8 @@ internal class ConsiderationComponent : MainWindowComponent
     private VisualElement parametersContainer;
     private VisualElement curveContainer;
     private EnumField performanceTag;
+    private FloatFieldMinMax minField;
+    private FloatFieldMinMax maxField;
 
     internal ConsiderationComponent(Consideration considerationModel) : base(considerationModel)
     {
@@ -53,12 +56,41 @@ internal class ConsiderationComponent : MainWindowComponent
     private void SetParameters()
     {
         parametersContainer.Clear();
-        parametersContainer.Add(new ParameterComponent(considerationModel.Min));
-        parametersContainer.Add(new ParameterComponent(considerationModel.Max));
+        var minParamComp = new ParameterComponent(considerationModel.Min);
+        var maxParamComp = new ParameterComponent(considerationModel.Max);
+        parametersContainer.Add(minParamComp);
+        parametersContainer.Add(maxParamComp);
+        minField = minParamComp.field as FloatFieldMinMax;
+        maxField = maxParamComp.field as FloatFieldMinMax;
+
+        minField.Max = Convert.ToSingle(considerationModel.Max.Value);
+        maxField.Min = Convert.ToSingle(considerationModel.Min.Value);
+
+        minMaxSubs.Clear();
+        considerationModel.Min
+            .OnValueChange
+            .Subscribe(value =>
+            {
+                maxField.Min = Convert.ToSingle(value);
+            })
+            .AddTo(minMaxSubs);
+
+        considerationModel.Max
+            .OnValueChange
+            .Subscribe(value =>
+            {
+                minField.Max = Convert.ToSingle(value);
+            })
+            .AddTo(minMaxSubs);
 
         foreach(var parameter in considerationModel.Parameters)
         {
             parametersContainer.Add(new ParameterComponent(parameter));
         }
+    }
+
+    ~ConsiderationComponent()
+    {
+        minMaxSubs.Clear();
     }
 }
