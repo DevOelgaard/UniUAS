@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 public class RCLinear : ResponseCurveModel
 {
-    public RCLinear() : base("Linear",
-        new List<Parameter> {
+    public RCLinear() : base("Linear")
+    {
+    }
+
+    protected override List<Parameter> GetParameters()
+    {
+        return new List<Parameter>()
+        {
             new Parameter("a",1f),
             new Parameter("b",0f)
-        })
-    {
+        };
     }
 
     protected override float ResponseFunction(float x)

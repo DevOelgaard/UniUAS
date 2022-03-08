@@ -1,9 +1,30 @@
 {
   "TickerMode": {
-    "Name": "Unrestricted",
-    "Description": "No restrictions to execution time",
-    "Parameters": [],
-    "FileName": "TickerModeUnrestricted"
+    "Name": "DesiredFrameRate",
+    "Description": "Dynamically alters ticks/frame to stay above target framerate. Increasing samplerate trades Reaction time for framerate precision.",
+    "Parameters": [
+      {
+        "Name": "Target Framerate",
+        "Value": 60,
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "Sample Time Seconds",
+        "Value": 3.0,
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "Debug",
+        "Value": false,
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "DebugTickCount",
+        "Value": 0,
+        "FileName": "Parameter"
+      }
+    ],
+    "FileName": "TickerModeDesiredFrameRate"
   },
   "TickerModes": [
     {

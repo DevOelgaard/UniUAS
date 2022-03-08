@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 public class Mock_ResponseCurve_IT:ResponseCurveModel
 {
-    public Mock_ResponseCurve_IT(string name, List<Parameter> parameters) : base(name, parameters)
+    public Mock_ResponseCurve_IT(string name) : base(name)
     {
+    }
+
+    protected override List<Parameter> GetParameters()
+    {
+        return new List<Parameter>();
     }
 
     protected override float ResponseFunction(float x)

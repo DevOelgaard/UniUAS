@@ -23,18 +23,12 @@ public abstract class ResponseCurveModel: RestoreAble
         Parameters = parameters;
     }
 
-    protected ResponseCurveModel(string name, float minY = 0.0f, float maxY = 1.0f, List<Parameter> parameters = null)
+    protected ResponseCurveModel(string name, float minY = 0.0f, float maxY = 1.0f)
     {
         Name = name;
         MinY = minY;
         MaxY = maxY;
-        if (parameters == null)
-        {
-            Parameters = new List<Parameter>();
-        } else
-        {
-            Parameters = parameters;
-        }
+        Parameters = GetParameters();
     }
 
     public float CalculateResponse(float x)
@@ -49,6 +43,10 @@ public abstract class ResponseCurveModel: RestoreAble
     {
         var x = (value - MinX) / (MaxX - MinX);
         return Mathf.Clamp(x, 0, 1);
+    }
+    protected virtual List<Parameter> GetParameters()
+    {
+        return new List<Parameter>();
     }
 
     protected abstract float ResponseFunction(float x);

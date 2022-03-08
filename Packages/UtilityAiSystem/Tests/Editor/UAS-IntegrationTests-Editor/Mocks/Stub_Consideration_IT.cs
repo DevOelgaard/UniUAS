@@ -12,7 +12,7 @@ public class Stub_Consideration_IT : Consideration
         ReturnValue = returnValue;
 
         Parameters = parameters;
-        CurrentResponseCurve = new Mock_ResponseCurve_IT("Mock", new List<Parameter>());
+        CurrentResponseCurve = new Mock_ResponseCurve_IT("Mock");
         Min.Value = min;
         Max.Value = max;
     }

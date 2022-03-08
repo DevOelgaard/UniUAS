@@ -12,7 +12,7 @@ public class Stub_Consideration_UT : Consideration
         ReturnValue = returnValue;
 
         Parameters = parameters;
-        CurrentResponseCurve = new Mock_ResponseCurve("Mock", new List<Parameter>());
+        CurrentResponseCurve = new Mock_ResponseCurve("Mock");
     }
 
     protected override float CalculateBaseScore(AiContext context)

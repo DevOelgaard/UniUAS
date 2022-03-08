@@ -58,6 +58,7 @@ public abstract class Consideration : AiObjectModel
         namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         PerformanceTag = GetPerformanceTag();
         responseCurves = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>();
+        
         CurrentResponseCurve = responseCurves.FirstOrDefault();
 
         Min.OnValueChange
