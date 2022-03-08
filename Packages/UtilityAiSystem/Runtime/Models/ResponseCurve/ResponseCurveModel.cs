@@ -41,7 +41,6 @@ public abstract class ResponseCurveModel: RestoreAble
     {
         var normalizedX = Normalize(x);
         var response = ResponseFunction(normalizedX);
-        Debug.Log("x: " + x + " Normalized: " + normalizedX + " response: " + response + " MinX: " + MinX + " MaxX: " + MaxX);
         //var result = response * MaxY + MinY;
         return Mathf.Clamp(response, MinY, MaxY);
     }

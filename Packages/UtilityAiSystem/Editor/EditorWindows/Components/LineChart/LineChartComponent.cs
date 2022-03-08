@@ -88,9 +88,9 @@ internal class LineChartComponent: IMGUIContainer
             //    points.Add(new Vector2(x, TESTCalculateY(x)));
             //}
             //#endregion
-            DrawCurve();
             DrawBaseGraph();
-
+            
+            DrawCurve();
         };
     }
 
@@ -106,7 +106,7 @@ internal class LineChartComponent: IMGUIContainer
             Handles.DrawLine(basePosition, GraphToScreenCoordinates(x, graphMaxY), 0.01f);
 
             var labelPosition = new Vector2(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom);
-            Handles.Label(labelPosition, x.ToString());
+            Handles.Label(labelPosition, x.ToString("0.00"));
         }
 
         // Y labels
@@ -119,7 +119,7 @@ internal class LineChartComponent: IMGUIContainer
             Handles.DrawLine(basePosition, GraphToScreenCoordinates(graphMaxX, y), 0.01f);
 
             var labelPosition = new Vector2(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster);
-            Handles.Label(labelPosition, y.ToString());
+            Handles.Label(labelPosition, y.ToString("0.0"));
         }
 
 
