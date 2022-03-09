@@ -218,7 +218,7 @@ internal class UASTemplateService: RestoreAble
             Debug.LogWarning("UASTemplateService Restore failed: " + ex);
         }
 
-        RestoreInternal(state);
+        //RestoreInternal(state);
     }
 
     internal void Add(AiObjectModel model)
