@@ -120,6 +120,11 @@ internal class ResponseCurveLCComponent : VisualElement
             {
                 var segmentParam = responseCurve.Segments[funcitionIndex];
                 var paramComponent = new ParameterComponent(segmentParam);
+                segmentParam
+                    .OnValueChange
+                    .Subscribe(_ => ReDrawChart())
+                    .AddTo(funcitonDisposables);
+
                 functionsContainer.Add(paramComponent);
             }
         }
