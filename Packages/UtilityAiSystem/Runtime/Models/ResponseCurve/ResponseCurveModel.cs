@@ -54,7 +54,7 @@ public class ResponseCurveModel: RestoreAble
             //newFunction.SetMaxX(MaxX, MaxX);
         } else
         {
-            var segmentValue = (float)lastFunction.MaxX / 2;
+            var segmentValue = (float)(lastFunction.MaxX-lastFunction.MinX) / 2 + lastFunction.MinX;
             var newSegment = new Parameter(" ", segmentValue);
             var segmentSub = newSegment.OnValueChange
                 .Subscribe(value =>
