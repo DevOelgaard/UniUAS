@@ -7,6 +7,8 @@ using UniRxExtension;
 
 internal class LineChartComponent: IMGUIContainer
 {
+    internal bool isMinimized { get; private set; } = true;
+
     private float marginLeft = 50f;
     private float marginRight = 50f;
     private float marginTop = 25f;
@@ -66,9 +68,7 @@ internal class LineChartComponent: IMGUIContainer
 
     public LineChartComponent()
     {
-        style.flexGrow = 1;
-        style.minHeight = 200;
-        style.minWidth = 400;
+        SetSize();
 
         onGUIHandler = () =>
         {
@@ -95,34 +95,69 @@ internal class LineChartComponent: IMGUIContainer
         };
     }
 
+    public void ToggleSize()
+    {
+        isMinimized = !isMinimized;
+
+        SetSize();
+    }
+
+    private void SetSize()
+    {
+        if (isMinimized)
+        {
+            SetMinimized();
+        }
+        else
+        {
+            SetExpanded();
+        }
+    }
+
+    private void SetMinimized()
+    {
+        style.flexGrow = 1;
+        style.minHeight = 80;
+        style.minWidth = 400;
+    }
+
+    private void SetExpanded()
+    {
+        style.flexGrow = 1;
+        style.minHeight = 200;
+        style.minWidth = 400;
+    }
+
     private void DrawBaseGraph()
     {
-        // X labels
-        Handles.color = Color.grey;
-        var stepSizeX = graphRangeX / stepCountX;
-        for (var i = 0; i <= stepCountX; i++)
+        if (!isMinimized)
         {
-            var x = i * stepSizeX + graphMinX;
-            var basePosition = GraphToScreenCoordinates(x, graphMinY);
-            Handles.DrawLine(basePosition, GraphToScreenCoordinates(x, graphMaxY), 0.01f);
+            // X labels
+            Handles.color = Color.grey;
+            var stepSizeX = graphRangeX / stepCountX;
+            for (var i = 0; i <= stepCountX; i++)
+            {
+                var x = i * stepSizeX + graphMinX;
+                var basePosition = GraphToScreenCoordinates(x, graphMinY);
+                Handles.DrawLine(basePosition, GraphToScreenCoordinates(x, graphMaxY), 0.01f);
 
-            var labelPosition = new Vector2(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom);
-            Handles.Label(labelPosition, x.ToString("0.00"));
+                var labelPosition = new Vector2(basePosition.x + textXAxisAdjuster, basePosition.y - marginTextBottom);
+                Handles.Label(labelPosition, x.ToString("0.00"));
+            }
+
+            // Y labels
+            Handles.color = Color.grey;
+            var stepSizeY = graphRangeY / stepCountY;
+            for (var i = 0; i <= stepCountY; i++)
+            {
+                var y = i * stepSizeY + graphMinY;
+                var basePosition = GraphToScreenCoordinates(graphMinX, y);
+                Handles.DrawLine(basePosition, GraphToScreenCoordinates(graphMaxX, y), 0.01f);
+
+                var labelPosition = new Vector2(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster);
+                Handles.Label(labelPosition, y.ToString("0.0"));
+            }
         }
-
-        // Y labels
-        Handles.color = Color.grey;
-        var stepSizeY = graphRangeY/ stepCountY;
-        for (var i = 0; i <= stepCountY; i++)
-        {
-            var y = i * stepSizeY + graphMinY;
-            var basePosition = GraphToScreenCoordinates(graphMinX, y);
-            Handles.DrawLine(basePosition, GraphToScreenCoordinates(graphMaxX, y), 0.01f);
-
-            var labelPosition = new Vector2(basePosition.x - marginTextLeft, basePosition.y - textYAxisAdjuster);
-            Handles.Label(labelPosition, y.ToString("0.0"));
-        }
-
 
         // Base Lines
         Handles.color = Color.white;

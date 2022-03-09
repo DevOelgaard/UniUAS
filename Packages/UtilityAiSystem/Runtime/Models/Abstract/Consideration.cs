@@ -152,7 +152,10 @@ public abstract class Consideration : AiObjectModel
         Min = Parameter.Restore<Parameter>(state.Min);
         Max = Parameter.Restore<Parameter>(state.Max);
 
-        CurrentResponseCurve = ResponseCurveModel.Restore<ResponseCurveModel>(state.ResponseCurveState);
+        if (state.ResponseCurveState != null)
+        {
+            CurrentResponseCurve = ResponseCurveModel.Restore<ResponseCurveModel>(state.ResponseCurveState);
+        }
 
         Parameters = new List<Parameter>();
         foreach (var pState in state.Parameters)

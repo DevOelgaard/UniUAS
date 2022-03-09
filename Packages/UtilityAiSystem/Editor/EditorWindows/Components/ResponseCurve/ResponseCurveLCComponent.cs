@@ -21,6 +21,7 @@ internal class ResponseCurveLCComponent : VisualElement
     private int steps = 100;
 
     //private Label nameLabel;
+    private Button foldButton;
     private DropdownField responseCurveDropdown;
     private VisualElement body;
     private VisualElement footer;
@@ -31,6 +32,7 @@ internal class ResponseCurveLCComponent : VisualElement
         Add(root);
 
         //nameLabel = root.Q<Label>("ChartName-Label");
+        foldButton = root.Q<Button>("FoldButton");
         responseCurveDropdown = root.Q<DropdownField>("ResponseCurve-Dropdown");
         body = root.Q<VisualElement>("Body");
         footer = root.Q<VisualElement>("Footer");
@@ -39,6 +41,26 @@ internal class ResponseCurveLCComponent : VisualElement
         //this.responseCurve = consideration.CurrentResponseCurve;
         lineChart = new LineChartComponent();
         body.Add(lineChart);
+
+        foldButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            lineChart.ToggleSize();
+            if (lineChart.isMinimized)
+            {
+                foldButton.text = "Expand";
+            } else
+            {
+                foldButton.text = "Minimiza";
+            }
+        });
+        if (lineChart.isMinimized)
+        {
+            foldButton.text = "Expand";
+        }
+        else
+        {
+            foldButton.text = "Minimiza";
+        }
 
         responseCurveDropdown.value = consideration.CurrentResponseCurve.Name;
         responseCurveDropdown.choices = ResponseCurveService.GetResponseCurveNames();
