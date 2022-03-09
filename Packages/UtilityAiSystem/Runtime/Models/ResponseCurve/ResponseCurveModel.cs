@@ -49,8 +49,9 @@ public class ResponseCurveModel: RestoreAble
 
         if (lastFunction == null)
         {
-            newFunction.MinX = MinX;
-            newFunction.MaxX = MaxX;
+            newFunction.SetMinMaxX(MinX, MaxX, MinX, MaxX);
+            //newFunction.SetMinX(MinX, MaxX - MinX);
+            //newFunction.SetMaxX(MaxX, MaxX);
         } else
         {
             var segmentValue = (float)lastFunction.MaxX / 2;
@@ -58,14 +59,19 @@ public class ResponseCurveModel: RestoreAble
             var segmentSub = newSegment.OnValueChange
                 .Subscribe(value =>
                 {
-                    lastFunction.MaxX = Convert.ToSingle(value);
-                    newFunction.MinX = Convert.ToSingle(value);
+                    var valueCast = Convert.ToSingle(value);
+                    lastFunction.SetMinMaxX(lastFunction.MinX,valueCast,MinX,MaxX);
+                    newFunction.SetMinMaxX(valueCast,newFunction.MaxY,MinX,MaxX);
+                    //lastFunction.SetMaxX(valueCast, MaxX);
+                    //newFunction.SetMinX(valueCast, MaxX - MinX);
                 });
 
             segmentDisposables.Add(newSegment,segmentSub);
 
-            lastFunction.MaxX = segmentValue;
-            newFunction.MinX = segmentValue;
+            lastFunction.SetMinMaxX(lastFunction.MinX,segmentValue,MinX,MaxX);
+            newFunction.SetMinMaxX(segmentValue,newFunction.MaxY,MinX,MaxX);
+            //lastFunction.SetMaxX(segmentValue, MaxX);
+            //newFunction.SetMinX(segmentValue, MaxX - MinX);
 
             Segments.Add(newSegment);
         }
@@ -85,13 +91,16 @@ public class ResponseCurveModel: RestoreAble
                 return;
             }
             RemoveSegment(Segments[0]);
-            ResponseFunctions[0].MinX = MinX;
+            //ResponseFunctions[0].SetMinX(MinX,MaxX-MinX);
+            ResponseFunctions[0].SetMinMaxX(MinX, ResponseFunctions[0].MaxX, MinX, MaxX);
         } 
         else if (functionIndex == Segments.Count) // Removing last function
         {
             ResponseFunctions.Remove(responseFunction);
             RemoveSegment(Segments[removeIndex]);
-            ResponseFunctions.Last().MaxX = MaxX;
+            var lastFuncion = ResponseFunctions.Last();
+            //ResponseFunctions.Last().SetMaxX(MaxX, MaxX);
+            lastFuncion.SetMinMaxX(lastFuncion.MinX, MaxX, MinX, MaxX);
         }
         else
         {
@@ -109,13 +118,18 @@ public class ResponseCurveModel: RestoreAble
                 var sub = segmentToUpdate.OnValueChange
                     .Subscribe(value =>
                     {
-                        firstFunction.MaxX = Convert.ToSingle(value);
-                        lastFunction.MinX = Convert.ToSingle(value);
+                        var valueCast = Convert.ToSingle(value);
+                        firstFunction.SetMinMaxX(firstFunction.MinX, valueCast, MinX, MaxX);
+                        lastFunction.SetMinMaxX(valueCast,lastFunction.MinX, MinX, MaxX);
+                        //firstFunction.SetMaxX(valueCast, MaxX);
+                        //lastFunction.SetMinX(valueCast, MaxX - MinX);
                     });
                 segmentDisposables[segmentToUpdate] = sub;
                 var segmentValue = (lastFunction.MinX - firstFunction.MaxX) / 2;
-                firstFunction.MaxX = segmentValue;
-                lastFunction.MinX = segmentValue;
+                firstFunction.SetMinMaxX(firstFunction.MinX, segmentValue, MinX, MaxX);
+                lastFunction.SetMinMaxX(segmentValue, lastFunction.MinX, MinX, MaxX);
+                //firstFunction.SetMaxX(segmentValue, MaxX);
+                //lastFunction.SetMinX(segmentValue, MaxX - MinX);
 
 
             }
@@ -126,12 +140,13 @@ public class ResponseCurveModel: RestoreAble
     internal void UpdateFunction(ResponseFunction oldFunction, ResponseFunction newFunction)
     {
         var oldFunctionIndex = ResponseFunctions.IndexOf(oldFunction);
-        newFunction.MinX = oldFunction.MinX;
-        newFunction.MaxX = oldFunction.MaxX;
+        newFunction.SetMinMaxX(oldFunction.MinX, oldFunction.MaxX, MinX, MaxX);
+        //newFunction.SetMinX(oldFunction.MinX, MaxX - MinX);
+        //newFunction.SetMaxX(oldFunction.MaxX, MaxX);
         ResponseFunctions[oldFunctionIndex] = newFunction;
         UpdateSegmentSubscriptions();
-        onValuesChanged.OnNext(true);
 
+        onValuesChanged.OnNext(true);
     }
 
     private void UpdateSegmentSubscriptions()
@@ -146,8 +161,11 @@ public class ResponseCurveModel: RestoreAble
             var sub = segment.OnValueChange
                     .Subscribe(value =>
                     {
-                        previousFunction.MaxX = Convert.ToSingle(value);
-                        nextFunction.MinX = Convert.ToSingle(value);
+                        var valueCast = Convert.ToSingle(value);
+                        previousFunction.SetMinMaxX(valueCast,previousFunction.MaxX,MinX,MaxX);
+                        nextFunction.SetMinMaxX(nextFunction.MinX, valueCast, MinX, MaxX);
+                        //previousFunction.SetMaxX(valueCast, MaxX);
+                        //nextFunction.SetMinX(valueCast, MaxX - MinX);
                     });
 
             segmentDisposables[segment] = sub;
@@ -164,24 +182,40 @@ public class ResponseCurveModel: RestoreAble
     public float CalculateResponse(float x)
     {
         // Calculate resonse of all functions
-        var normalizedX = Normalize(x);
-        foreach(var funciton in ResponseFunctions)
+        var previousFunctions = new List<ResponseFunction>();
+        ResponseFunction lastValidFunction = ResponseFunctions.First();
+
+        for(var i = 0; i < ResponseFunctions.Count; i++)
         {
-            if (x <= funciton.MaxX)
+            var currentFunction = ResponseFunctions[i];
+            if (x > currentFunction.MinX)
             {
-                var response = funciton.CalculateResponse(normalizedX);
-                //var result = response * MaxY + MinY;
-                return Mathf.Clamp(response, MinY, MaxY);
+                lastValidFunction = currentFunction;
+            }
+
+            if (ResponseFunctions.Count-1 > i) 
+            {
+                var nextFunciton = ResponseFunctions[i + 1];
+                if (x > nextFunciton.MinX)
+                {
+                    previousFunctions.Add(lastValidFunction);
+                }
             }
         }
-        throw new Exception("This should not be reached");
+
+        var result = 0f;
+        foreach (var function in previousFunctions)
+        {
+            result += function.GetResponseValue(function.MaxX);
+        }
+        if (x > lastValidFunction.MinX)
+        {
+            result += lastValidFunction.GetResponseValue(x);
+        }
+
+        return Mathf.Clamp(result,0,1);
     }
 
-    private float Normalize(float value)
-    {
-        var x = (value - MinX) / (MaxX - MinX);
-        return Mathf.Clamp(x, 0, 1);
-    }
     
     protected override void RestoreInternal(RestoreState s)
     {

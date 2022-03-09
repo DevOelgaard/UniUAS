@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public abstract class ResponseFunction: RestoreAble
 {
     public string Name = "";
-    public float MinX = 0.0f;
-    public float MaxX = 1.0f;
+    public float MinX { get; private set; } = 0.0f;
+    public float MaxX { get; private set; } = 1.0f;
+    public float MinY { get; private set; } = 0.0f;
+    public float MaxY { get; private set; } = 1.0f;
     public List<Parameter> Parameters;
 
     public ResponseFunction()
@@ -26,8 +29,30 @@ public abstract class ResponseFunction: RestoreAble
     {
         return new List<Parameter>();
     }
-    public abstract float CalculateResponse(float x);
 
+    public void SetMinMaxX(float localMinX, float localMaxX, float totalMinX , float totalMaxX)
+    {
+        var totalRange = totalMaxX - totalMinX;
+        MinX = localMinX;
+        MinY = localMinX / totalRange;
+        MaxX = localMaxX;
+        MaxY = localMaxX / totalMaxX;
+    }
+
+    protected abstract float CalculateResponse(float x);
+    public float GetResponseValue(float x)
+    {
+        var normalized = Normalize(x);
+        return CalculateResponse(normalized);
+    }
+
+    private float Normalize(float value)
+    {
+        var x = (value - MinX) / (MaxX - MinX);
+        //var result = Mathf.Clamp(x, 0, 1);
+        return x * MaxY;
+       
+    }
     protected override void RestoreInternal(RestoreState s)
     {
         var state = (ResponseFunctionState)s;

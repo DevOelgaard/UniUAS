@@ -15,7 +15,7 @@ public class RCInverseLogistic : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponse(float x)
     {
         return Mathf.Log(x / (1 - x));
     }

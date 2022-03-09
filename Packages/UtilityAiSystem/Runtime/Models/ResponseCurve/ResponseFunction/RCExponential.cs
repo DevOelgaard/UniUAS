@@ -16,7 +16,7 @@ public class RCExponential : ResponseFunction
             };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponse(float x)
     {
         return Mathf.Pow(x, Convert.ToSingle(Parameters[0].Value)) + Convert.ToSingle(Parameters[1].Value);
     }
