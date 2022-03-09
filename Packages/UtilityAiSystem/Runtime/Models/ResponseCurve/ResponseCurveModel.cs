@@ -85,11 +85,11 @@ public class ResponseCurveModel: RestoreAble
         var removeIndex = functionIndex - 1;
         if (removeIndex < 0) // Removing first or only function
         {
-            ResponseFunctions.Remove(responseFunction);
             if (ResponseFunctions.Count <= 0)
             {
-                return;
+                throw new Exception("Can't remove the last Response function");
             }
+            ResponseFunctions.Remove(responseFunction);
             RemoveSegment(Segments[0]);
             //ResponseFunctions[0].SetMinX(MinX,MaxX-MinX);
             ResponseFunctions[0].SetMinMaxX(MinX, ResponseFunctions[0].MaxX, MinX, MaxX);
@@ -107,32 +107,49 @@ public class ResponseCurveModel: RestoreAble
             RemoveSegment(Segments[removeIndex]);
             ResponseFunctions.Remove(responseFunction);
 
-            if (Segments.Count > 0)
-            {
-                var segmentToUpdate = Segments[removeIndex];
-                segmentDisposables[segmentToUpdate].Dispose();
+            var segmentToUpdate = Segments[removeIndex];
+            segmentDisposables[segmentToUpdate].Dispose();
 
-                var firstFunction = ResponseFunctions[removeIndex];
-                var lastFunction = ResponseFunctions[removeIndex + 1];
+            var previousFunction = ResponseFunctions[removeIndex];
+            var nextFunction = ResponseFunctions[removeIndex + 1];
 
-                var sub = segmentToUpdate.OnValueChange
-                    .Subscribe(value =>
-                    {
-                        var valueCast = Convert.ToSingle(value);
-                        firstFunction.SetMinMaxX(firstFunction.MinX, valueCast, MinX, MaxX);
-                        lastFunction.SetMinMaxX(valueCast,lastFunction.MinX, MinX, MaxX);
+            var sub = segmentToUpdate.OnValueChange
+                .Subscribe(value =>
+                {
+                    var valueCast = Convert.ToSingle(value);
+                    previousFunction.SetMinMaxX(previousFunction.MinX, valueCast, MinX, MaxX);
+                    nextFunction.SetMinMaxX(valueCast, nextFunction.MinX, MinX, MaxX);
                         //firstFunction.SetMaxX(valueCast, MaxX);
                         //lastFunction.SetMinX(valueCast, MaxX - MinX);
                     });
-                segmentDisposables[segmentToUpdate] = sub;
-                var segmentValue = (lastFunction.MinX - firstFunction.MaxX) / 2;
-                firstFunction.SetMinMaxX(firstFunction.MinX, segmentValue, MinX, MaxX);
-                lastFunction.SetMinMaxX(segmentValue, lastFunction.MinX, MinX, MaxX);
-                //firstFunction.SetMaxX(segmentValue, MaxX);
-                //lastFunction.SetMinX(segmentValue, MaxX - MinX);
+            segmentDisposables[segmentToUpdate] = sub;
 
+            //var segmentValue = (nextFunction.MinX - previousFunction.MaxX) / 2;
+            previousFunction.SetMinMaxX(previousFunction.MinX, previousFunction.MaxX, MinX, MaxX);
+            nextFunction.SetMinMaxX(previousFunction.MaxX, nextFunction.MaxX, MinX, MaxX);
 
-            }
+            //if (Segments.Count > 0)
+            //{
+            //    var segmentToUpdate = Segments[removeIndex];
+            //    segmentDisposables[segmentToUpdate].Dispose();
+
+            //    var firstFunction = ResponseFunctions[removeIndex];
+            //    var lastFunction = ResponseFunctions[removeIndex + 1];
+
+            //    var sub = segmentToUpdate.OnValueChange
+            //        .Subscribe(value =>
+            //        {
+            //            var valueCast = Convert.ToSingle(value);
+            //            firstFunction.SetMinMaxX(firstFunction.MinX, valueCast, MinX, MaxX);
+            //            lastFunction.SetMinMaxX(valueCast,lastFunction.MinX, MinX, MaxX);
+            //            //firstFunction.SetMaxX(valueCast, MaxX);
+            //            //lastFunction.SetMinX(valueCast, MaxX - MinX);
+            //        });
+            //    segmentDisposables[segmentToUpdate] = sub;
+            //    var segmentValue = (lastFunction.MinX - firstFunction.MaxX) / 2;
+            //    firstFunction.SetMinMaxX(firstFunction.MinX, segmentValue, MinX, MaxX);
+            //    lastFunction.SetMinMaxX(segmentValue, lastFunction.MinX, MinX, MaxX);
+            //}
         }
         onValuesChanged.OnNext(true);
     }
