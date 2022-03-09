@@ -184,13 +184,14 @@ public class ResponseCurveModel: RestoreAble
         foreach (var function in previousFunctions)
         {
             result += function.GetResponseValue(function.MaxX);
+            result = Mathf.Clamp(result, MinY, MaxY);
         }
         if (x > lastValidFunction.MinX)
         {
             result += lastValidFunction.GetResponseValue(x);
         }
 
-        return Mathf.Clamp(result,0,1);
+        return Mathf.Clamp(result,MinY,MaxY);
     }
 
     

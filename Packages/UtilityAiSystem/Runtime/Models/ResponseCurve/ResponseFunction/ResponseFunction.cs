@@ -11,6 +11,7 @@ public abstract class ResponseFunction: RestoreAble
     public float MinX { get; private set; } = 0.0f;
     public float MaxX { get; private set; } = 1.0f;
     public float MinY { get; private set; } = 0.0f;
+    private float totalMax;
     public float ResultFactor { get; private set; } = 1.0f;
     public List<Parameter> Parameters;
 
