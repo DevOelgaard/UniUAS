@@ -2,7 +2,7 @@
 using UnityEngine;
 
 // https://stackoverflow.com/questions/10097891/inverse-logistic-function-reverse-sigmoid-function
-public class RCInverseLogistic : ResponseCurveModel
+public class RCInverseLogistic : ResponseFunction
 {
     public RCInverseLogistic() : base("Inverse Logistic")
     {
@@ -15,7 +15,7 @@ public class RCInverseLogistic : ResponseCurveModel
         };
     }
 
-    protected override float ResponseFunction(float x)
+    public override float CalculateResponse(float x)
     {
         return Mathf.Log(x / (1 - x));
     }

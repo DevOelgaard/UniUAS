@@ -185,7 +185,7 @@ internal class TemplateManager : EditorWindow
 
     private void AddNewAiObject(string name)
     {
-        var aiObject = AssetDatabaseService.CreateInstanceOfType<AiObjectModel>(name);
+        var aiObject = AssetDatabaseService.GetInstanceOfType<AiObjectModel>(name);
         uASTemplateService.Add(aiObject);
         ModelSelected(aiObject);
     }

@@ -10,37 +10,38 @@ using UnityEditor.UIElements;
 
 internal class ResponseCurveLCComponent : VisualElement
 {
-    private CompositeDisposable parameterDisposables = new CompositeDisposable();
+    private CompositeDisposable funcitonDisposables = new CompositeDisposable();
     private CompositeDisposable considerationDisposables = new CompositeDisposable();
-    private Consideration consideration;
     private ResponseCurveModel responseCurve;
     private LineChartComponent lineChart;
 
-    private float min => Convert.ToSingle(consideration.Min.Value);
-    private float max => Convert.ToSingle(consideration.Max.Value);
+    private float min => Convert.ToSingle(responseCurve.MinX);
+    private float max => Convert.ToSingle(responseCurve.MaxX);
     private int steps = 100;
 
     //private Label nameLabel;
     private Button foldButton;
     private DropdownField responseCurveDropdown;
-    private VisualElement body;
+    private VisualElement curveContainer;
+    private VisualElement functionsContainer;
     private VisualElement footer;
     private IntegerField resolution;
-    public ResponseCurveLCComponent(Consideration consideration)
+    private Button addFunctionButton;
+
+    public ResponseCurveLCComponent(ResponseCurveModel responseCurve)
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
-
+        this.responseCurve = responseCurve;
         //nameLabel = root.Q<Label>("ChartName-Label");
         foldButton = root.Q<Button>("FoldButton");
         responseCurveDropdown = root.Q<DropdownField>("ResponseCurve-Dropdown");
-        body = root.Q<VisualElement>("Body");
+        curveContainer = root.Q<VisualElement>("CurveContainer");
+        functionsContainer = root.Q<VisualElement>("FunctionsContainer");
         footer = root.Q<VisualElement>("Footer");
-
-        this.consideration = consideration;
-        //this.responseCurve = consideration.CurrentResponseCurve;
+        addFunctionButton = root.Q<Button>("AddFunctionButton");
         lineChart = new LineChartComponent();
-        body.Add(lineChart);
+        curveContainer.Add(lineChart);
 
         foldButton.RegisterCallback<MouseUpEvent>(evt =>
         {
@@ -62,22 +63,15 @@ internal class ResponseCurveLCComponent : VisualElement
             foldButton.text = "Minimiza";
         }
 
-        responseCurveDropdown.value = consideration.CurrentResponseCurve.Name;
-        responseCurveDropdown.choices = ResponseCurveService.GetResponseCurveNames();
-        responseCurveDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
+        addFunctionButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            consideration.SetResponseCurve(evt.newValue);
+            var function = AssetDatabaseService
+                .GetInstancesOfType<ResponseFunction>()
+                .First();
+            responseCurve.AddResponseFunction(function);
         });
 
-        resolution = new IntegerField("Resolution");
-        resolution.value = steps;
-        resolution.RegisterCallback<ChangeEvent<int>>(evt =>
-        {
-            steps = evt.newValue;
-            ReDrawChart();
-        });
-
-        consideration.OnResponseCurveChanged
+        this.responseCurve.OnSegmentsChanged
             .Subscribe(_ =>
             {
                 UpdateUi();
@@ -85,18 +79,11 @@ internal class ResponseCurveLCComponent : VisualElement
             })
             .AddTo(considerationDisposables);
 
-        consideration.Min
-            .OnValueChange
+        this.responseCurve
+            .OnValuesChanged
             .Subscribe(_ =>
             {
-                ReDrawChart();
-            })
-            .AddTo(considerationDisposables);
-
-        consideration.Max
-            .OnValueChange
-            .Subscribe(_ =>
-            {
+                UpdateUi();
                 ReDrawChart();
             })
             .AddTo(considerationDisposables);
@@ -107,23 +94,33 @@ internal class ResponseCurveLCComponent : VisualElement
 
     private void UpdateUi()
     {
-        if (responseCurve != consideration.CurrentResponseCurve)
+        functionsContainer.Clear();
+        funcitonDisposables.Clear();
+        foreach (var function in responseCurve.ResponseFunctions)
         {
-            responseCurve = consideration.CurrentResponseCurve;
+            var functionComponent = new ResponseFunctionComponent(function);
+            functionComponent
+                .OnParametersChanged
+                .Subscribe(_ => ReDrawChart())
+                .AddTo(funcitonDisposables);
 
-            //nameLabel.text = responseCurve.Name;
-            footer.Clear();
-            footer.Add(resolution);
-            foreach(var param in responseCurve.Parameters)
+            functionComponent
+                .OnRemoveClicked
+                .Subscribe(f => responseCurve.RemoveResponseFunction(f))
+                .AddTo(funcitonDisposables);
+
+            functionComponent
+                .OnResponseFunctionChanged
+                .Subscribe(f => responseCurve.UpdateFunction(function, f))
+                .AddTo(funcitonDisposables);
+
+            functionsContainer.Add(functionComponent);
+            var funcitionIndex = responseCurve.ResponseFunctions.IndexOf(function);
+            if (responseCurve.Segments.Count > funcitionIndex)
             {
-                footer.Add(new ParameterComponent(param));
-                param
-                    .OnValueChange
-                    .Subscribe(_ =>
-                    {
-                        ReDrawChart();
-                    })
-                    .AddTo(parameterDisposables);
+                var segmentParam = responseCurve.Segments[funcitionIndex];
+                var paramComponent = new ParameterComponent(segmentParam);
+                functionsContainer.Add(paramComponent);
             }
         }
     }
@@ -135,7 +132,7 @@ internal class ResponseCurveLCComponent : VisualElement
         for (var i = 0; i <= steps; i++)
         {
             var x = i * stepSize + min;
-            var y = consideration.CurrentResponseCurve.CalculateResponse(x);
+            var y = responseCurve.CalculateResponse(x);
             points.Add(new Vector2(x, y));
         }
 
@@ -143,7 +140,7 @@ internal class ResponseCurveLCComponent : VisualElement
     }
 
     ~ResponseCurveLCComponent(){
-        parameterDisposables.Clear();
+        funcitonDisposables.Clear();
         considerationDisposables.Clear();
     }
 }

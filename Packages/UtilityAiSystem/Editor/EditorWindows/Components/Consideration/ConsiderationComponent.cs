@@ -50,7 +50,7 @@ internal class ConsiderationComponent : MainWindowComponent
 
 
         SetParameters();
-        curveContainer.Add(new ResponseCurveLCComponent(considerationModel));
+        curveContainer.Add(new ResponseCurveLCComponent(considerationModel.CurrentResponseCurve));
     }
 
     private void SetParameters()

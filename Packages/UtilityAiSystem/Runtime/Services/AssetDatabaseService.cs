@@ -95,7 +95,7 @@ public static class AssetDatabaseService
         return restult;
     }
 
-    public static T CreateInstanceOfType<T>(string typeName)
+    public static T GetInstanceOfType<T>(string typeName)
     {
         var result = new List<T>();
         var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();

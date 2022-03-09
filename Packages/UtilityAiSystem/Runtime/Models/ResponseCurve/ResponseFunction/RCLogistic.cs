@@ -4,7 +4,7 @@ using UnityEngine;
 
 // https://stackoverflow.com/questions/412019/math-optimization-in-c-sharp
 // https://en.wikipedia.org/wiki/Logistic_function
-public class RCLogistic : ResponseCurveModel
+public class RCLogistic : ResponseFunction
 {
     public RCLogistic() : base("Logistic")
     {
@@ -15,7 +15,7 @@ public class RCLogistic : ResponseCurveModel
         return new List<Parameter>();
     }
 
-    protected override float ResponseFunction(float x)
+    public override float CalculateResponse(float x)
     {
         var k = Mathf.Exp(x);
         return k / (1.0f + k);

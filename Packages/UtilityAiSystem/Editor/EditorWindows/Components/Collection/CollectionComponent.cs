@@ -116,7 +116,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             aiObject = (T)aiObject.Clone();
         } else
         {
-            aiObject = AssetDatabaseService.CreateInstanceOfType<T>(name);
+            aiObject = AssetDatabaseService.GetInstanceOfType<T>(name);
         }
         collection.Add(aiObject);
         

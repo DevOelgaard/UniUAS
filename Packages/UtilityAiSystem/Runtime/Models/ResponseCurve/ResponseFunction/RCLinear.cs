@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class RCLinear : ResponseCurveModel
+public class RCLinear : ResponseFunction
 {
     public RCLinear() : base("Linear")
     {
@@ -19,7 +19,7 @@ public class RCLinear : ResponseCurveModel
         };
     }
 
-    protected override float ResponseFunction(float x)
+    public override float CalculateResponse(float x)
     {
         return Convert.ToSingle(Parameters[0].Value) * x + Convert.ToSingle(Parameters[1].Value);
     }

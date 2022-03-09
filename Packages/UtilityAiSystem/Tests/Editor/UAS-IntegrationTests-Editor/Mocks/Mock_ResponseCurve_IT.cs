@@ -9,14 +9,4 @@ public class Mock_ResponseCurve_IT:ResponseCurveModel
     public Mock_ResponseCurve_IT(string name) : base(name)
     {
     }
-
-    protected override List<Parameter> GetParameters()
-    {
-        return new List<Parameter>();
-    }
-
-    protected override float ResponseFunction(float x)
-    {
-        return x;
-    }
 }

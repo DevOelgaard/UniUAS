@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class RCExponential : ResponseCurveModel
+public class RCExponential : ResponseFunction
 {
     public RCExponential() : base("Exponential") {
     }
@@ -16,7 +16,7 @@ public class RCExponential : ResponseCurveModel
             };
     }
 
-    protected override float ResponseFunction(float x)
+    public override float CalculateResponse(float x)
     {
         return Mathf.Pow(x, Convert.ToSingle(Parameters[0].Value)) + Convert.ToSingle(Parameters[1].Value);
     }

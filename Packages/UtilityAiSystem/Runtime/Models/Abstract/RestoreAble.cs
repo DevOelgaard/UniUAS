@@ -14,7 +14,7 @@ public abstract class RestoreAble
         var type = Type.GetType(state.FileName);
         if (type == null)
         {
-            var e = AssetDatabaseService.CreateInstanceOfType<T>(state.FileName);
+            var e = AssetDatabaseService.GetInstanceOfType<T>(state.FileName);
             e.RestoreInternal(state);
             return e;
         } else
