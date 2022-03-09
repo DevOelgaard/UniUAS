@@ -11,7 +11,7 @@ public abstract class ResponseFunction: RestoreAble
     public float MinX { get; private set; } = 0.0f;
     public float MaxX { get; private set; } = 1.0f;
     public float MinY { get; private set; } = 0.0f;
-    public float MaxY { get; private set; } = 1.0f;
+    public float ResultFactor { get; private set; } = 1.0f;
     public List<Parameter> Parameters;
 
     public ResponseFunction()
@@ -36,7 +36,13 @@ public abstract class ResponseFunction: RestoreAble
         MinX = localMinX;
         MinY = localMinX / totalRange;
         MaxX = localMaxX;
-        MaxY = localMaxX / totalMaxX;
+        ResultFactor = localMaxX / totalMaxX;
+    }
+
+    public void UpdateValues(float maxFactor)
+    {
+        MinX *= maxFactor;
+        MaxX *= maxFactor;
     }
 
     protected abstract float CalculateResponse(float x);
@@ -50,7 +56,7 @@ public abstract class ResponseFunction: RestoreAble
     {
         var x = (value - MinX) / (MaxX - MinX);
         //var result = Mathf.Clamp(x, 0, 1);
-        return x * MaxY;
+        return x * ResultFactor;
        
     }
     protected override void RestoreInternal(RestoreState s)
