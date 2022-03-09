@@ -11,7 +11,6 @@ public abstract class Consideration : AiObjectModel
 
     private string namePostfix;
     public List<Parameter> Parameters;
-    private List<ResponseCurveModel> responseCurves = new List<ResponseCurveModel>();
     private ResponseCurveModel currentResponseCurve;
     public ResponseCurveModel CurrentResponseCurve
     {
@@ -57,9 +56,6 @@ public abstract class Consideration : AiObjectModel
         ScoreModels.Add(new ScoreModel("Normalized", 0f));
         namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         PerformanceTag = GetPerformanceTag();
-        responseCurves = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>();
-        
-        CurrentResponseCurve = responseCurves.FirstOrDefault();
 
         Min.OnValueChange
             .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value))
@@ -74,13 +70,8 @@ public abstract class Consideration : AiObjectModel
 
     private void SetMinMaxForCurves()
     {
-        //foreach(var curve in responseCurves)
-        //{
-        //    curve.MinX = Convert.ToSingle(Min.Value);
-        //    curve.MaxX = Convert.ToSingle(Max.Value);
-        //}
-        //CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
-        //CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
+        CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
+        CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
     }
 
     public override string GetNameFormat(string name)
@@ -99,20 +90,6 @@ public abstract class Consideration : AiObjectModel
 
     protected abstract List<Parameter> GetParameters();
     protected abstract float CalculateBaseScore(AiContext context);
-
-    internal void SetResponseCurve(Type t)
-    {
-        var newValue = responseCurves.FirstOrDefault(rC => rC.GetType() == t);
-        if (newValue == null) return;
-        CurrentResponseCurve = newValue;
-    }
-
-    internal void SetResponseCurve(string name)
-    {
-        var newValue = responseCurves.FirstOrDefault(rC => rC.Name == name);
-        if (newValue == null) return;
-        CurrentResponseCurve = newValue;
-    }
 
     public virtual float CalculateScore(AiContext context)
     {
@@ -165,25 +142,13 @@ public abstract class Consideration : AiObjectModel
         }
         PerformanceTag = (PerformanceTag)state.PerformanceTag;
 
-        if (state.ResponseCurveStates != null)
-        {
-            responseCurves = new List<ResponseCurveModel>();
-            foreach (var rC in state.ResponseCurveStates)
-            {
-                responseCurves.Add(Restore<ResponseCurveModel>(rC));
-            }
-        } else
-        {
-            responseCurves = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>();
-        }
-
         paramaterDisposables.Clear();
         Min.OnValueChange
-            .Subscribe(_ => SetMinMaxForCurves())
+            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value))
             .AddTo(paramaterDisposables);
 
         Max.OnValueChange
-            .Subscribe(_ => SetMinMaxForCurves())
+            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value))
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
@@ -198,7 +163,7 @@ public abstract class Consideration : AiObjectModel
 
     internal override RestoreState GetState()
     {
-        return new ConsiderationState(Name,Description,Parameters, CurrentResponseCurve, Min, Max, responseCurves, this);
+        return new ConsiderationState(Name,Description,Parameters, CurrentResponseCurve, Min, Max, this);
     }
 
     internal override void SaveToFile(string path, IPersister persister)
@@ -224,13 +189,12 @@ public class ConsiderationState: RestoreState
     public ParameterState Min;
     public ParameterState Max;
     public int PerformanceTag;
-    public List<ResponseCurveState> ResponseCurveStates;
 
     public ConsiderationState() : base()
     {
     }
 
-    public ConsiderationState(string name, string description, List<Parameter> parameters, ResponseCurveModel responseCurve, Parameter min, Parameter max, List<ResponseCurveModel> responseCurves, Consideration consideration): base(consideration)
+    public ConsiderationState(string name, string description, List<Parameter> parameters, ResponseCurveModel responseCurve, Parameter min, Parameter max, Consideration consideration): base(consideration)
     {
         Name = name;
         Description = description;
@@ -245,11 +209,5 @@ public class ConsiderationState: RestoreState
         }
 
         PerformanceTag = (int)consideration.PerformanceTag;
-
-        ResponseCurveStates = new List<ResponseCurveState>();
-        foreach(var rC in responseCurves)
-        {
-            ResponseCurveStates.Add(rC.GetState() as ResponseCurveState);
-        }
     }
 }
