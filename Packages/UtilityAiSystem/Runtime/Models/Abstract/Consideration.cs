@@ -62,11 +62,11 @@ public abstract class Consideration : AiObjectModel
         CurrentResponseCurve = responseCurves.FirstOrDefault();
 
         Min.OnValueChange
-            .Subscribe(_ => SetMinMaxForCurves())
+            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value))
             .AddTo(paramaterDisposables);
 
         Max.OnValueChange
-            .Subscribe(_ => SetMinMaxForCurves())
+            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value))
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
@@ -74,13 +74,13 @@ public abstract class Consideration : AiObjectModel
 
     private void SetMinMaxForCurves()
     {
-        foreach(var curve in responseCurves)
-        {
-            curve.MinX = Convert.ToSingle(Min.Value);
-            curve.MaxX = Convert.ToSingle(Max.Value);
-        }
-        CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
-        CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
+        //foreach(var curve in responseCurves)
+        //{
+        //    curve.MinX = Convert.ToSingle(Min.Value);
+        //    curve.MaxX = Convert.ToSingle(Max.Value);
+        //}
+        //CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
+        //CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
     }
 
     public override string GetNameFormat(string name)

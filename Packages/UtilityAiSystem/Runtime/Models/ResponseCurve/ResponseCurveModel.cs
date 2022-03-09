@@ -242,24 +242,39 @@ public class ResponseCurveModel: RestoreAble
     }
     public float MinX
     {
-        get => minX; set
+        get => minX; 
+        set
         {
+            var oldRange = MaxX - MinX;
             minX = value;
+            UpdateMinMax(oldRange);
             onValuesChanged.OnNext(true);
         }
+ 
     }
     public float MaxX
     {
         get => maxX;
         set
         {
-            var factor = value / maxX;
+            var oldRange = MaxX - MinX;
             maxX = value;
-            foreach(var function in ResponseFunctions)
-            {
-                function.UpdateValues(factor);
-            }
+            UpdateMinMax(oldRange);
             onValuesChanged.OnNext(true);
+        }
+    }
+
+    private void UpdateMinMax(float oldRange)
+    {
+        var factor = (MaxX-MinX) / oldRange;
+        foreach (var function in ResponseFunctions)
+        {
+            function.UpdateValues(factor);
+        }
+        foreach (var segment in Segments)
+        {
+            var v = (float)segment.Value;
+            segment.Value = v * factor;
         }
     }
 
