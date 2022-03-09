@@ -99,6 +99,11 @@ internal class ResponseCurveLCComponent : VisualElement
         foreach (var function in responseCurve.ResponseFunctions)
         {
             var functionComponent = new ResponseFunctionComponent(function);
+
+            if (responseCurve.ResponseFunctions.Count <= 1)
+            {
+                functionComponent = new ResponseFunctionComponent(function,true);
+            }
             functionComponent
                 .OnParametersChanged
                 .Subscribe(_ => ReDrawChart())

@@ -26,7 +26,7 @@ internal class ResponseFunctionComponent: VisualElement
     private Subject<bool> onParametersChanged = new Subject<bool>();
 
 
-    public ResponseFunctionComponent(ResponseFunction responseFunction)
+    public ResponseFunctionComponent(ResponseFunction responseFunction, bool disableRemoveButton = false)
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
@@ -54,6 +54,12 @@ internal class ResponseFunctionComponent: VisualElement
         {
             onRemoveClicked.OnNext(responseFunction);
         });
+
+        if (disableRemoveButton)
+        {
+            removeButton.SetEnabled(false);
+            removeButton.style.flexGrow = 0;
+        }
 
 
         UpdateUi();
