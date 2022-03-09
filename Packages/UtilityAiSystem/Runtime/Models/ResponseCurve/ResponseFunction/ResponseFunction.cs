@@ -37,7 +37,7 @@ public abstract class ResponseFunction: RestoreAble
         MinX = localMinX;
         MinY = localMinX / totalRange;
         MaxX = localMaxX;
-        ResultFactor = localMaxX / totalMaxX;
+        ResultFactor = (MaxX-MinX) / totalMaxX;
     }
 
     public void UpdateValues(float maxFactor)
@@ -55,9 +55,9 @@ public abstract class ResponseFunction: RestoreAble
 
     private float Normalize(float value)
     {
-        var x = (value - MinX) / (MaxX - MinX);
+        var x = (value - MinX) / (MaxX - MinX) * ResultFactor;
         //var result = Mathf.Clamp(x, 0, 1);
-        return x * ResultFactor;
+        return x;
        
     }
     protected override void RestoreInternal(RestoreState s)
