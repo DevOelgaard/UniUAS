@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniRx;
-using MoreLinq;
-using UnityEngine;
 
 internal class AiTicker: RestoreAble
 {
@@ -14,6 +12,9 @@ internal class AiTicker: RestoreAble
     private static AiTicker instance;
     public static AiTicker Instance => instance ??= new AiTicker();
     private AgentManager agentManager => AgentManager.Instance;
+
+    public IObservable<int> OnTickComplete => onTickComplete;
+    private Subject<int> onTickComplete = new Subject<int>();
 
     private int tickCount; 
     public int TickCount { 
@@ -61,6 +62,7 @@ internal class AiTicker: RestoreAble
         var metaData = new TickMetaData();
         metaData.TickCount = TickCount;
         Settings.TickerMode.Tick(agentManager.Model.Agents.Values, metaData);
+        onTickComplete.OnNext(TickCount);
     }
 
     internal void SetTickerMode(AiTickerMode tickerMode)
