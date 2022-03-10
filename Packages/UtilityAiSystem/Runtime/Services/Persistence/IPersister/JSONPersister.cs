@@ -35,7 +35,7 @@ internal class JSONPersister : IPersister
             {
                 TypeNameHandling = TypeNameHandling.Auto
             });
-
+            path += Consts.FileExtension_JSON;
             CreateFile(path);
             File.WriteAllText(path, toJson);
         }

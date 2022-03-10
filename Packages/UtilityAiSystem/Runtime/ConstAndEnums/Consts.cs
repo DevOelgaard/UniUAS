@@ -61,19 +61,23 @@ public static class Consts
     public const string FileExtension_Bucket = "bucket";
     public const string FileExtension_UAI = "uai";
     public const string FileExtension_UasTemplateCollection = "uaiproj";
-    public const string FileExtension_TickerSettings = "setting";
     public const string FileExtension_RestoreAbleCollection = "collection";
+
+    public const string FileExtension_JSON = ".json";
+
+    public const string FileExtension_TickerSettings = "setting";
 
     public static readonly string[] FileExtensions =
     {
-        "AgentAction", FileExtension_AgentAction,
-        "Consideration", FileExtension_Consideration,
-        "Decision", FileExtension_Decision,
-        "Bucket", FileExtension_Bucket,
-        "AI", FileExtension_UAI,
-        "Templates", FileExtension_UasTemplateCollection,
+        "Ai Objects", "*"+FileExtension_JSON,
+        //"AgentAction", FileExtension_AgentAction,
+        //"Consideration", FileExtension_Consideration,
+        //"Decision", FileExtension_Decision,
+        //"Bucket", FileExtension_Bucket,
+        //"AI", FileExtension_UAI,
+        //"Templates", FileExtension_UasTemplateCollection,
         "Ticker Settings", FileExtension_TickerSettings,
-        "All Files", "*"
+        "All Files", "*",
     };
 
     // UI Element Text
