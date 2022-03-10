@@ -23,6 +23,59 @@
   "Decisions": [],
   "Considerations": [],
   "AgentActions": [],
+  "ResponseCurves": [
+    {
+      "Name": "",
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
   "TestStrign": "",
   "InternalTestString": "",
   "FileName": "UASTemplateService"

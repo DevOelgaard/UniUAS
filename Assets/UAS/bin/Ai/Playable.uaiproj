@@ -3,152 +3,16 @@
     {
       "Name": "Default",
       "Description": null,
-      "Buckets": [
-        {
-          "Name": "Default",
-          "Description": null,
-          "Decisions": [
-            {
-              "Name": "Default (Demo_AllObjectsWithTag)",
-              "Description": null,
-              "AgentActions": [
-                {
-                  "Parameters": [
-                    {
-                      "Name": "Output",
-                      "Value": "Agent output",
-                      "FileName": "Parameter"
-                    }
-                  ],
-                  "Name": "Default (Demo_AgentActionParameter)",
-                  "Description": null,
-                  "FileName": "Demo_AgentActionParameter"
-                }
-              ],
-              "Considerations": [
-                {
-                  "Parameters": [],
-                  "ResponseCurveState": {
-                    "Name": "",
-                    "MinY": 0.0,
-                    "MaxY": 1.0,
-                    "MinX": 0.0,
-                    "MaxX": 1000.0,
-                    "Segments": [],
-                    "ResponseFunctions": [
-                      {
-                        "Name": "Exponential",
-                        "Description": null,
-                        "Parameters": [
-                          {
-                            "Name": "Power",
-                            "Value": 2.0,
-                            "FileName": "Parameter"
-                          },
-                          {
-                            "Name": "b",
-                            "Value": 0.0,
-                            "FileName": "Parameter"
-                          }
-                        ],
-                        "FileName": "RCExponential"
-                      }
-                    ],
-                    "FileName": "ResponseCurveModel"
-                  },
-                  "Name": "Default (ConsiderationNearestTarget)",
-                  "Description": null,
-                  "Min": {
-                    "Name": "Min",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  },
-                  "Max": {
-                    "Name": "Max",
-                    "Value": 1000.0,
-                    "FileName": "Parameter"
-                  },
-                  "PerformanceTag": 2,
-                  "FileName": "ConsiderationNearestTarget"
-                }
-              ],
-              "Parameters": [
-                {
-                  "Name": "Tag",
-                  "Value": "Target",
-                  "FileName": "Parameter"
-                }
-              ],
-              "FileName": "Demo_AllObjectsWithTag"
-            }
-          ],
-          "Considerations": [
-            {
-              "Parameters": [],
-              "ResponseCurveState": {
-                "Name": "",
-                "MinY": 0.0,
-                "MaxY": 1.0,
-                "MinX": 0.0,
-                "MaxX": 1000.0,
-                "Segments": [
-                  {
-                    "Name": " ",
-                    "Value": 500.0,
-                    "FileName": "Parameter"
-                  }
-                ],
-                "ResponseFunctions": [
-                  {
-                    "Name": "Linear",
-                    "Description": null,
-                    "Parameters": [
-                      {
-                        "Name": "a",
-                        "Value": 1.0,
-                        "FileName": "Parameter"
-                      },
-                      {
-                        "Name": "b",
-                        "Value": 0.0,
-                        "FileName": "Parameter"
-                      }
-                    ],
-                    "FileName": "RCLinear"
-                  },
-                  {
-                    "Name": "Logistic",
-                    "Description": null,
-                    "Parameters": [],
-                    "FileName": "RCLogistic"
-                  }
-                ],
-                "FileName": "ResponseCurveModel"
-              },
-              "Name": "Default (ConsiderationNearestTarget)",
-              "Description": null,
-              "Min": {
-                "Name": "Min",
-                "Value": 0.0,
-                "FileName": "Parameter"
-              },
-              "Max": {
-                "Name": "Max",
-                "Value": 1000.0,
-                "FileName": "Parameter"
-              },
-              "PerformanceTag": 2,
-              "FileName": "ConsiderationNearestTarget"
-            }
-          ],
-          "Weight": {
-            "Name": "Weight",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          "FileName": "Bucket"
-        }
-      ],
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
       "BucketSelectorName": "Highest Score",
       "DecisionSelectorName": "Highest Score",
       "USName": "Average",
@@ -159,6 +23,378 @@
   "Decisions": [],
   "Considerations": [],
   "AgentActions": [],
+  "ResponseCurves": [
+    {
+      "Name": "4",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.75,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.875,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "3x",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.75,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "33",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.75,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 2.18,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": -2.53,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 2.17,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCLinear"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "3",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.75,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "2",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.5,
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        },
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.0,
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "RCExponential"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
   "TestStrign": "",
   "InternalTestString": "",
   "FileName": "UASTemplateService"

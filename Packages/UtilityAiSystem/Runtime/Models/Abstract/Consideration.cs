@@ -11,14 +11,14 @@ public abstract class Consideration : AiObjectModel
 
     private string namePostfix;
     public List<Parameter> Parameters;
-    private ResponseCurveModel currentResponseCurve;
-    public ResponseCurveModel CurrentResponseCurve
+    private ResponseCurve currentResponseCurve;
+    public ResponseCurve CurrentResponseCurve
     {
         get 
         { 
             if (currentResponseCurve == null)
             {
-                currentResponseCurve = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>()
+                currentResponseCurve = AssetDatabaseService.GetInstancesOfType<ResponseCurve>()
                     .FirstOrDefault();
             }
             return currentResponseCurve; 
@@ -29,8 +29,8 @@ public abstract class Consideration : AiObjectModel
             onResponseCurveChanged.OnNext(currentResponseCurve);
         }
     }
-    public IObservable<ResponseCurveModel> OnResponseCurveChanged => onResponseCurveChanged;
-    private Subject<ResponseCurveModel> onResponseCurveChanged = new Subject<ResponseCurveModel>();
+    public IObservable<ResponseCurve> OnResponseCurveChanged => onResponseCurveChanged;
+    private Subject<ResponseCurve> onResponseCurveChanged = new Subject<ResponseCurve>();
     public PerformanceTag PerformanceTag;
     public float BaseScore
     {
@@ -131,7 +131,7 @@ public abstract class Consideration : AiObjectModel
 
         if (state.ResponseCurveState != null)
         {
-            CurrentResponseCurve = ResponseCurveModel.Restore<ResponseCurveModel>(state.ResponseCurveState);
+            CurrentResponseCurve = ResponseCurve.Restore<ResponseCurve>(state.ResponseCurveState);
         }
 
         Parameters = new List<Parameter>();
@@ -194,7 +194,7 @@ public class ConsiderationState: RestoreState
     {
     }
 
-    public ConsiderationState(string name, string description, List<Parameter> parameters, ResponseCurveModel responseCurve, Parameter min, Parameter max, Consideration consideration): base(consideration)
+    public ConsiderationState(string name, string description, List<Parameter> parameters, ResponseCurve responseCurve, Parameter min, Parameter max, Consideration consideration): base(consideration)
     {
         Name = name;
         Description = description;

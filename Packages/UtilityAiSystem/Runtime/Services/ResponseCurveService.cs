@@ -12,7 +12,7 @@ public class ResponseCurveService
     {
         if (curveNames.Count <= 0)
         {
-            var list = AssetDatabaseService.GetInstancesOfType<ResponseCurveModel>();
+            var list = AssetDatabaseService.GetInstancesOfType<ResponseCurve>();
             curveNames = list.Select(x => x.Name).ToList();
         }
         return curveNames;

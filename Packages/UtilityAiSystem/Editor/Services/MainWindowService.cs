@@ -24,6 +24,9 @@ internal class MainWindowService
         else if (type.IsSubclassOf(typeof(AgentAction)))
         {
             return new AgentActionComponent(model as AgentAction);
+        } else if (type == typeof(ResponseCurve) || type.IsSubclassOf(typeof(ResponseCurve)))
+        {
+            return new ResponseCurveMainWindowComponent(model as ResponseCurve);
         }
         throw new NotImplementedException();
     }
@@ -42,6 +45,8 @@ internal class MainWindowService
                 return typeof(Consideration);
             case Consts.Label_AgentActionModel:
                 return typeof(AgentAction);
+            case Consts.Label_ResponseCurve:
+                return typeof(ResponseCurve);
             default:
                 break;
         }

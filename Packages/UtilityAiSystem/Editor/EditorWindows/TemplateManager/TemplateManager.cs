@@ -231,7 +231,8 @@ internal class TemplateManager : EditorWindow
                 Consts.Label_BucketModel, 
                 Consts.Label_DecisionModel, 
                 Consts.Label_ConsiderationModel,
-                Consts.Label_AgentActionModel
+                Consts.Label_AgentActionModel,
+                Consts.Label_ResponseCurve
         };
 
         dropDown.label = "Categories";
@@ -269,6 +270,11 @@ internal class TemplateManager : EditorWindow
 
         LoadModels(models.Values);
         UpdateButtons();
+
+        if (SelectedModel?.GetType() != type)
+        {
+            rightPanel.Clear();
+        }
     }
 
     private void LoadModels(List<AiObjectModel> models)

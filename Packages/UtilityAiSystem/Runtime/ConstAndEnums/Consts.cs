@@ -22,6 +22,7 @@ public static class Consts
     internal const string Label_DecisionModel = "Decisions";
     internal const string Label_BucketModel = "Buckets";
     internal const string Label_UAIModel = "AIs";
+    internal const string Label_ResponseCurve = "Response Curve";
 
 
     // Scorers

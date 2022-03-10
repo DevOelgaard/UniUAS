@@ -15,20 +15,15 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     private TemplateContainer root;
 
-    //private Label tempLabel;
-    //private Button addcopyButton;
     private Button sortCollectionButton;
     private VisualElement tempHeader;
-    //private VisualElement tempBody;
     private PopupField<string> addCopyPopup;
 
     private Label elementsLabel;
     private ScrollView elementsBody;
-    //private DropdownField elementsDropdown;
 
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
-    //private List<string> dropDownChoices;
 
     public CollectionComponent(ReactiveList<T> collection, ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {

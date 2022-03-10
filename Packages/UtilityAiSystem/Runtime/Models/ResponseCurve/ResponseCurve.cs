@@ -8,11 +8,9 @@ using UnityEngine;
 using UniRx;
 
 // https://forum.unity.com/threads/draw-a-line-from-a-to-b.698618/
-public class ResponseCurveModel: RestoreAble
+public class ResponseCurve: AiObjectModel
 {
     private Dictionary<Parameter, IDisposable> segmentDisposables = new Dictionary<Parameter, IDisposable>();
-    public string Name = "";
-    
     private float minY = 0.0f;
     private float maxY = 1.0f;
     private float minX = 0.0f;
@@ -26,14 +24,14 @@ public class ResponseCurveModel: RestoreAble
     public IObservable<bool> OnSegmentsChanged => onSegmentsChanged;
     private Subject<bool> onSegmentsChanged = new Subject<bool>();
 
-    public ResponseCurveModel()
+    public ResponseCurve()
     {
         var firstFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>().First();
         ResponseFunctions = new List<ResponseFunction>();
         AddResponseFunction(firstFunction);
     }
 
-    protected ResponseCurveModel(string name, float minY = 0.0f, float maxY = 1.0f)
+    protected ResponseCurve(string name, float minY = 0.0f, float maxY = 1.0f)
     {
         Name = name;
         MinY = minY;
@@ -125,16 +123,16 @@ public class ResponseCurveModel: RestoreAble
         } else
         {
             var indexOfLastFunction = validSegments.Count;
-            var sumOfPrevious = 0f;
+            var previousMax = 0f;
             for (var i = 0; i < indexOfLastFunction; i++)
             {
-                x -= Convert.ToSingle(validSegments[i].Value);
-                sumOfPrevious += Convert.ToSingle(validSegments[i].Value);
-                normalized = Normalize(Convert.ToSingle(validSegments[i].Value));
+                var currentMax = (float)Convert.ToSingle(validSegments[i].Value);
+                normalized = Normalize(currentMax - previousMax);
+                previousMax = currentMax;
                 result += ResponseFunctions[i].CalculateResponse(normalized);
             }
 
-            normalized = Normalize(x);
+            normalized = Normalize(x-previousMax);
             result += ResponseFunctions[indexOfLastFunction].CalculateResponse(normalized);
         }
         result = Mathf.Clamp(result,minY,maxY);
@@ -151,6 +149,7 @@ public class ResponseCurveModel: RestoreAble
     {
         var state = (ResponseCurveState)s;
         Name = state.Name;
+        Description = state.Description;
         MinY = state.MinY;
         MaxY = state.MaxY;
         MinX = state.MinX;
@@ -233,7 +232,14 @@ public class ResponseCurveModel: RestoreAble
         }
     }
 
-    ~ResponseCurveModel()
+    internal override AiObjectModel Clone()
+    {
+        var state = GetState();
+        var clone = ResponseFunction.Restore<ResponseCurve>(state);
+        return clone;
+    }
+
+    ~ResponseCurve()
     {
         foreach(var disposable in segmentDisposables)
         {
@@ -246,6 +252,7 @@ public class ResponseCurveModel: RestoreAble
 public class ResponseCurveState: RestoreState
 {
     public string Name;
+    public string Description;
     public float MinY;
     public float MaxY;
     public float MinX;
@@ -257,9 +264,10 @@ public class ResponseCurveState: RestoreState
     {
     }
 
-    public ResponseCurveState(string name, float minY, float maxY, List<Parameter> segments, ResponseCurveModel responseCurveModel): base(responseCurveModel)
+    public ResponseCurveState(string name, float minY, float maxY, List<Parameter> segments, ResponseCurve responseCurveModel): base(responseCurveModel)
     {
         Name = name;
+        Description = responseCurveModel.Description;
         MinY = minY;
         MaxY = maxY;
         MinX = responseCurveModel.MinX;

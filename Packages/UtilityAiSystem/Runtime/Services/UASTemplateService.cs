@@ -16,6 +16,7 @@ internal class UASTemplateService: RestoreAble
     public ReactiveList<AiObjectModel> Decisions;
     public ReactiveList<AiObjectModel> Considerations;
     public ReactiveList<AiObjectModel> AgentActions;
+    public ReactiveList<AiObjectModel> ResponseCurves;
 
     private static UASTemplateService instance;
 
@@ -32,6 +33,7 @@ internal class UASTemplateService: RestoreAble
         Decisions = new ReactiveList<AiObjectModel>();
         Considerations = new ReactiveList<AiObjectModel>();
         AgentActions = new ReactiveList<AiObjectModel>();
+        ResponseCurves = new ReactiveList<AiObjectModel>();
 
         collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
         collectionsByLabel.Add(Consts.Label_UAIModel, AIs);
@@ -39,6 +41,7 @@ internal class UASTemplateService: RestoreAble
         collectionsByLabel.Add(Consts.Label_DecisionModel, Decisions);
         collectionsByLabel.Add(Consts.Label_ConsiderationModel, Considerations);
         collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
+        collectionsByLabel.Add(Consts.Label_ResponseCurve, ResponseCurves);
 
         if (restore)
         {
@@ -253,6 +256,9 @@ internal class UASTemplateService: RestoreAble
         } else if (TypeMatches(type, typeof(Ai)))
         {
             return AIs;
+        } else if (TypeMatches(type, typeof(ResponseCurve)))
+        {
+            return ResponseCurves;
         }
         return null;
     }
@@ -300,6 +306,12 @@ internal class UASTemplateService: RestoreAble
             var action = AgentAction.Restore<AgentAction>(a);
             AgentActions.Add(action);
         }
+
+        foreach(var r in state.ResponseCurves)
+        {
+            var responseCurve = Restore<ResponseCurve>(r);
+            ResponseCurves.Add(responseCurve);
+        }
     }
 
 }
@@ -312,6 +324,7 @@ public class UASTemplateServiceState : RestoreState
     public List<DecisionState> Decisions;
     public List<ConsiderationState> Considerations;
     public List<AgentActionState> AgentActions;
+    public List<ResponseCurveState> ResponseCurves;
     public string TestStrign = "";
     public string InternalTestString = "";
     public UASTemplateServiceState() : base()
@@ -356,6 +369,15 @@ public class UASTemplateServiceState : RestoreState
         {
             var a = action.GetState() as AgentActionState;
             AgentActions.Add(a);
+        }
+
+        ResponseCurves = new List<ResponseCurveState>();
+        {
+            foreach(ResponseCurve rc in model.ResponseCurves.Values)
+            {
+                var r = rc.GetState() as ResponseCurveState;
+                ResponseCurves.Add(r);
+            }
         }
     }
 
