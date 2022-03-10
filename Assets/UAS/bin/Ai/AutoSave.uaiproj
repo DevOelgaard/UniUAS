@@ -31,42 +31,19 @@
       "MaxY": 1.0,
       "MinX": 0.0,
       "MaxX": 1.0,
-      "Segments": [
-        {
-          "Name": " ",
-          "Value": 0.5,
-          "FileName": "Parameter"
-        }
-      ],
+      "Segments": [],
       "ResponseFunctions": [
         {
-          "Name": "Linear",
-          "Description": null,
-          "Parameters": [
-            {
-              "Name": "a",
-              "Value": 1.0,
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "b",
-              "Value": 0.0,
-              "FileName": "Parameter"
-            }
-          ],
-          "FileName": "LinearFunction"
-        },
-        {
-          "Name": "Logarithm",
+          "Name": "Inverse Logistic",
           "Description": null,
           "Parameters": [
             {
               "Name": "Base",
-              "Value": 1.08,
+              "Value": 3.17,
               "FileName": "Parameter"
             }
           ],
-          "FileName": "LogarithmicFunction"
+          "FileName": "InverseLogisticFunction"
         }
       ],
       "FileName": "ResponseCurve"
