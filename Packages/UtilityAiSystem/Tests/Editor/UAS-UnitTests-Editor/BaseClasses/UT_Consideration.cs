@@ -17,8 +17,8 @@ public class UT_Consideration
     public void SetUp()
     {
         uut = new Stub_Consideration_UT(0.5f, new List<Parameter>());
-        uut.Min.Value = 0f;
-        uut.Max.Value = 1f;
+        uut.MinFloat.Value = 0f;
+        uut.MaxFloat.Value = 1f;
     }
 
     [Test]
@@ -90,8 +90,8 @@ public class UT_Consideration
     [TestCase(-10,-5,-7.5f,0.5f)]
     public void CalculateScore_WithCustomMinMax_ReturnsExpected(float min, float max, float baseScore, float expected)
     {
-        uut.Min.Value = min;
-        uut.Max.Value = max;
+        uut.MinFloat.Value = min;
+        uut.MaxFloat.Value = max;
         uut.ReturnValue = baseScore;
 
         var result = uut.CalculateScore(default);

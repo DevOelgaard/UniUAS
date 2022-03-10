@@ -9,8 +9,8 @@ internal class ConsiderationNearestTarget : Consideration
 {
     public ConsiderationNearestTarget()
     {
-        Min.Value = 0;
-        Max.Value = 1000;
+        MinFloat.Value = 0f;
+        MaxFloat.Value = 1000f;
     }
 
     protected override float CalculateBaseScore(AiContext context)
@@ -19,7 +19,7 @@ internal class ConsiderationNearestTarget : Consideration
         var address = context.CurrentEvalutedDecision.GetContextAddress(context);
         var target = context.GetContext<GameObject>(address + AiContextKey.CurrentTargetGameObject);
         var distance = Vector3.Distance(agent.transform.position, target.transform.position);
-        return Convert.ToSingle(Max.Value) - distance;
+        return Convert.ToSingle(MaxFloat.Value) - distance;
     }
 
     protected override List<Parameter> GetParameters()

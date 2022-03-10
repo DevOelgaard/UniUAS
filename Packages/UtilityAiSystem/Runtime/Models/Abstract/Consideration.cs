@@ -45,8 +45,8 @@ public abstract class Consideration : AiObjectModel
     }
     public IObservable<float> NormalizedScoreChanged => ScoreModels[1].OnValueChanged;
 
-    public Parameter Min = new Parameter("Min", 0f);
-    public Parameter Max = new Parameter("Max", 1f);
+    public Parameter MinFloat = new Parameter("Min", 0f);
+    public Parameter MaxFloat = new Parameter("Max", 1f);
 
     protected Consideration()
     {
@@ -57,12 +57,12 @@ public abstract class Consideration : AiObjectModel
         namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         PerformanceTag = GetPerformanceTag();
 
-        Min.OnValueChange
-            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value))
+        MinFloat.OnValueChange
+            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(MinFloat.Value))
             .AddTo(paramaterDisposables);
 
-        Max.OnValueChange
-            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value))
+        MaxFloat.OnValueChange
+            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(MaxFloat.Value))
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
@@ -70,8 +70,8 @@ public abstract class Consideration : AiObjectModel
 
     private void SetMinMaxForCurves()
     {
-        CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value);
-        CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value);
+        CurrentResponseCurve.MinX = Convert.ToSingle(MinFloat.Value);
+        CurrentResponseCurve.MaxX = Convert.ToSingle(MaxFloat.Value);
     }
 
     public override string GetNameFormat(string name)
@@ -94,11 +94,11 @@ public abstract class Consideration : AiObjectModel
     public virtual float CalculateScore(AiContext context)
     {
         BaseScore = CalculateBaseScore(context);
-        if (BaseScore < Convert.ToSingle(Min.Value))
+        if (BaseScore < Convert.ToSingle(MinFloat.Value))
         {
             return BaseScoreBelowMinValue();
         }
-        else if (BaseScore > Convert.ToSingle(Max.Value))
+        else if (BaseScore > Convert.ToSingle(MaxFloat.Value))
         {
             return BaseScoreAboveMaxValue();
         }
@@ -126,8 +126,8 @@ public abstract class Consideration : AiObjectModel
         var state = (ConsiderationState)s;
         Name = state.Name;
         Description = state.Description;
-        Min = Parameter.Restore<Parameter>(state.Min);
-        Max = Parameter.Restore<Parameter>(state.Max);
+        MinFloat = Parameter.Restore<Parameter>(state.Min);
+        MaxFloat = Parameter.Restore<Parameter>(state.Max);
 
         if (state.ResponseCurveState != null)
         {
@@ -143,12 +143,12 @@ public abstract class Consideration : AiObjectModel
         PerformanceTag = (PerformanceTag)state.PerformanceTag;
 
         paramaterDisposables.Clear();
-        Min.OnValueChange
-            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(Min.Value))
+        MinFloat.OnValueChange
+            .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(MinFloat.Value))
             .AddTo(paramaterDisposables);
 
-        Max.OnValueChange
-            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(Max.Value))
+        MaxFloat.OnValueChange
+            .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(MaxFloat.Value))
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
@@ -163,7 +163,7 @@ public abstract class Consideration : AiObjectModel
 
     internal override RestoreState GetState()
     {
-        return new ConsiderationState(Name,Description,Parameters, CurrentResponseCurve, Min, Max, this);
+        return new ConsiderationState(Name,Description,Parameters, CurrentResponseCurve, MinFloat, MaxFloat, this);
     }
 
     internal override void SaveToFile(string path, IPersister persister)

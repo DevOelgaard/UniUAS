@@ -56,18 +56,18 @@ internal class ConsiderationComponent : MainWindowComponent
     private void SetParameters()
     {
         parametersContainer.Clear();
-        var minParamComp = new ParameterComponent(considerationModel.Min);
-        var maxParamComp = new ParameterComponent(considerationModel.Max);
+        var minParamComp = new ParameterComponent(considerationModel.MinFloat);
+        var maxParamComp = new ParameterComponent(considerationModel.MaxFloat);
         parametersContainer.Add(minParamComp);
         parametersContainer.Add(maxParamComp);
         minField = minParamComp.field as FloatFieldMinMax;
         maxField = maxParamComp.field as FloatFieldMinMax;
 
-        minField.Max = Convert.ToSingle(considerationModel.Max.Value);
-        maxField.Min = Convert.ToSingle(considerationModel.Min.Value);
+        minField.Max = Convert.ToSingle(considerationModel.MaxFloat.Value);
+        maxField.Min = Convert.ToSingle(considerationModel.MinFloat.Value);
 
         minMaxSubs.Clear();
-        considerationModel.Min
+        considerationModel.MinFloat
             .OnValueChange
             .Subscribe(value =>
             {
@@ -75,7 +75,7 @@ internal class ConsiderationComponent : MainWindowComponent
             })
             .AddTo(minMaxSubs);
 
-        considerationModel.Max
+        considerationModel.MaxFloat
             .OnValueChange
             .Subscribe(value =>
             {

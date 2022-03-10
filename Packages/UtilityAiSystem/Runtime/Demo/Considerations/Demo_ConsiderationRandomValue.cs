@@ -9,7 +9,7 @@ internal class Demo_ConsiderationRandomValue : Consideration
 {
     protected override float CalculateBaseScore(AiContext context)
     {
-        return UnityEngine.Random.Range(Convert.ToSingle(Min.Value), Convert.ToSingle(Max.Value));
+        return UnityEngine.Random.Range(Convert.ToSingle(MinFloat.Value), Convert.ToSingle(MaxFloat.Value));
     }
 
     protected override List<Parameter> GetParameters()

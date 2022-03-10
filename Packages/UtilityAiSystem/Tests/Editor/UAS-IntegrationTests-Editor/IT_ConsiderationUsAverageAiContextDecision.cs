@@ -70,8 +70,8 @@ public class IT_ConsiderationUsAverageAiContextDecision
             consideration.Parameters.Add(new Parameter("p2",p2));
             consideration.Parameters.Add(new Parameter("p3",p3));
 
-            consideration.Min.Value = min;
-            consideration.Max.Value = max;
+            consideration.MinFloat.Value = min;
+            consideration.MaxFloat.Value = max;
 
             decision.Considerations.Add(consideration);
         }
@@ -87,8 +87,8 @@ public class IT_ConsiderationUsAverageAiContextDecision
         for (var i = 0; i < numberOfConsiderations; i++)
         {
             var consideration = new Stub_Consideration_IT(returnValue, new List<Parameter>());
-            consideration.Min.Value = min;
-            consideration.Max.Value = max;
+            consideration.MinFloat.Value = min;
+            consideration.MaxFloat.Value = max;
             result.Add(consideration);
         }
         return result;

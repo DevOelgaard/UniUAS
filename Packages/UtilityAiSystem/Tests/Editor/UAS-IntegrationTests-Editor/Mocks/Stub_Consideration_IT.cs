@@ -13,8 +13,8 @@ public class Stub_Consideration_IT : Consideration
 
         Parameters = parameters;
         CurrentResponseCurve = new Mock_ResponseCurve_IT("Mock");
-        Min.Value = min;
-        Max.Value = max;
+        MinFloat.Value = min;
+        MaxFloat.Value = max;
     }
 
     protected override float CalculateBaseScore(AiContext context)

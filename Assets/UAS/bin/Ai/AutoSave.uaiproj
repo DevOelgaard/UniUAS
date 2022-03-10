@@ -1,5 +1,24 @@
 {
-  "AIs": [],
+  "AIs": [
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "Buckets": [],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    }
+  ],
   "Buckets": [],
   "Decisions": [],
   "Considerations": [],

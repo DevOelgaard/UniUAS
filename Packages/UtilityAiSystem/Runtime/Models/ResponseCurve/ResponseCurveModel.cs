@@ -54,7 +54,7 @@ public class ResponseCurveModel: RestoreAble
             var segmentValue = 0f;
             if (previousSegment != null)
             {
-                segmentValue = (float)(MaxX - (float)previousSegment.Value) / 2 + (float)previousSegment.Value;
+                segmentValue = (float)(MaxX - Convert.ToSingle(previousSegment.Value)) / 2 + Convert.ToSingle(previousSegment.Value);
 
             } else
             {
@@ -115,7 +115,7 @@ public class ResponseCurveModel: RestoreAble
         var result = 0f;
 
         var validSegments = Segments
-            .Where(s => (float)s.Value < x)
+            .Where(s => Convert.ToSingle(s.Value) < x)
             .ToList();
         var normalized = 0f;
         if (validSegments.Count == 0)
@@ -128,9 +128,9 @@ public class ResponseCurveModel: RestoreAble
             var sumOfPrevious = 0f;
             for (var i = 0; i < indexOfLastFunction; i++)
             {
-                x -= (float)validSegments[i].Value;
-                sumOfPrevious += (float)validSegments[i].Value;
-                normalized = Normalize((float)validSegments[i].Value);
+                x -= Convert.ToSingle(validSegments[i].Value);
+                sumOfPrevious += Convert.ToSingle(validSegments[i].Value);
+                normalized = Normalize(Convert.ToSingle(validSegments[i].Value));
                 result += ResponseFunctions[i].CalculateResponse(normalized);
             }
 
@@ -160,6 +160,13 @@ public class ResponseCurveModel: RestoreAble
         {
             var parameter = Parameter.Restore<Parameter>(p);
             Segments.Add(parameter);
+        }
+
+        ResponseFunctions = new List<ResponseFunction>();
+        foreach(var rf in state.ResponseFunctions)
+        {
+            var func = Restore<ResponseFunction>(rf);
+            ResponseFunctions.Add(func);
         }
     }
     internal override RestoreState GetState()
@@ -221,7 +228,7 @@ public class ResponseCurveModel: RestoreAble
 
         foreach (var segment in Segments)
         {
-            var v = (float)segment.Value;
+            var v = Convert.ToSingle(segment.Value);
             segment.Value = v * factor;
         }
     }
@@ -244,6 +251,7 @@ public class ResponseCurveState: RestoreState
     public float MinX;
     public float MaxX;
     public List<ParameterState> Segments;
+    public List<ResponseFunctionState> ResponseFunctions;
 
     public ResponseCurveState(): base()
     {
@@ -251,7 +259,6 @@ public class ResponseCurveState: RestoreState
 
     public ResponseCurveState(string name, float minY, float maxY, List<Parameter> segments, ResponseCurveModel responseCurveModel): base(responseCurveModel)
     {
-        throw new NotImplementedException("Needs segments");
         Name = name;
         MinY = minY;
         MaxY = maxY;
@@ -262,5 +269,11 @@ public class ResponseCurveState: RestoreState
         {
             Segments.Add(parameter.GetState() as ParameterState);
         }
+        ResponseFunctions = new List<ResponseFunctionState>();
+        foreach(var rf in responseCurveModel.ResponseFunctions)
+        {
+            ResponseFunctions.Add(rf.GetState() as ResponseFunctionState);
+        }
+
     }
 }

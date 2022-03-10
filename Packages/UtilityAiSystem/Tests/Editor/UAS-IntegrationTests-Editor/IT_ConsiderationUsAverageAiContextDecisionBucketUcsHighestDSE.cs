@@ -110,8 +110,8 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
 
             }
             var consideration = new Stub_Consideration_IT(returnValue, new List<Parameter>());
-            consideration.Min.Value = min;
-            consideration.Max.Value = max;
+            consideration.MinFloat.Value = min;
+            consideration.MaxFloat.Value = max;
             result.Add(consideration);
         }
         return result;
