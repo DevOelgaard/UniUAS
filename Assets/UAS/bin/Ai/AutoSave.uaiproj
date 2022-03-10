@@ -211,11 +211,6 @@
           "Name": " ",
           "Value": 0.75,
           "FileName": "Parameter"
-        },
-        {
-          "Name": " ",
-          "Value": 0.875,
-          "FileName": "Parameter"
         }
       ],
       "ResponseFunctions": [
@@ -269,23 +264,6 @@
             }
           ],
           "FileName": "RCLinear"
-        },
-        {
-          "Name": "Exponential",
-          "Description": null,
-          "Parameters": [
-            {
-              "Name": "Power",
-              "Value": 2.0,
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "b",
-              "Value": 0.0,
-              "FileName": "Parameter"
-            }
-          ],
-          "FileName": "RCExponential"
         }
       ],
       "FileName": "ResponseCurve"

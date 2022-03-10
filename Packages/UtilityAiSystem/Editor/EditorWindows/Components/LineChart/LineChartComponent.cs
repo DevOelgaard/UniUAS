@@ -17,8 +17,8 @@ internal class LineChartComponent: IMGUIContainer
     private float marginTextLeft = 30f;
     private float textXAxisAdjuster = -3f;
     private float textYAxisAdjuster = 5f;
-    private float screenHeight;
-    private float screenWidth;
+    public float ScreenHeight { get; private set; }
+    public float ScreenWidth { get; private set; }
     private float graphHeight;
     private float graphWidth;
     private Vector3 graphOrigon;
@@ -73,11 +73,11 @@ internal class LineChartComponent: IMGUIContainer
         onGUIHandler = () =>
         {
             // Init
-            screenHeight = resolvedStyle.height;
-            screenWidth = resolvedStyle.width;
-            graphHeight = screenHeight - marginTop - marginBottom;
-            graphWidth = screenWidth - marginLeft - marginRight;
-            graphOrigon = new Vector3(marginLeft, screenHeight - marginBottom, 0);
+            ScreenHeight = resolvedStyle.height;
+            ScreenWidth = resolvedStyle.width;
+            graphHeight = ScreenHeight - marginTop - marginBottom;
+            graphWidth = ScreenWidth - marginLeft - marginRight;
+            graphOrigon = new Vector3(marginLeft, ScreenHeight - marginBottom, 0);
 
             //#region TEST
             //var demoSteps = 150;

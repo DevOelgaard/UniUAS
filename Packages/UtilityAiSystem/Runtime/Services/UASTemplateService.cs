@@ -234,6 +234,7 @@ internal class UASTemplateService: RestoreAble
         Decisions?.Clear();
         Considerations?.Clear();
         AgentActions?.Clear();
+        ResponseCurves?.Clear();
     }
 
     private ReactiveList<AiObjectModel> GetCollection(AiObjectModel model)

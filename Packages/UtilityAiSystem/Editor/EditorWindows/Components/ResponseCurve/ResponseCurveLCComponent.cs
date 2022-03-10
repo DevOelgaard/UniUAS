@@ -34,7 +34,6 @@ internal class ResponseCurveLCComponent : VisualElement
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
         this.responseCurve = responseCurve;
-        //nameLabel = root.Q<Label>("ChartName-Label");
         header = root.Q<VisualElement>("Header");
         foldButton = root.Q<Button>("FoldButton");
         curveContainer = root.Q<VisualElement>("CurveContainer");
