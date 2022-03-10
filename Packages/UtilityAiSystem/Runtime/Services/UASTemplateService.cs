@@ -67,21 +67,12 @@ internal class UASTemplateService: RestoreAble
     }
 
 
-    // TODO Remove, only used for testing
     internal void Reset()
     {
         subscriptions.Clear();
         ClearCollections();
         Init(false);
-        //LoadCollectionsFromFile();
     }
-
-    //private void LoadCollectionsFromFile()
-    //{
-    //    Considerations = UpdateListWithFiles<Consideration>(Considerations);
-    //    AgentActions = UpdateListWithFiles<AgentAction>(AgentActions);
-    //    Decisions = UpdateListWithFiles<Decision>(Decisions);
-    //}
 
     internal static UASTemplateService Instance
     {

@@ -103,6 +103,8 @@ internal class TemplateManager : EditorWindow
         resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             uASTemplateService.Reset();
+            UpdateLeftPanel();
+
         });
 
         saveButton = root.Q<Button>("SaveButton");
@@ -157,6 +159,7 @@ internal class TemplateManager : EditorWindow
                 return;
             }
             uASTemplateService.Restore(state);
+            UpdateLeftPanel();
         });
 
         saveToPlayButton = root.Q<Button>("SaveToPlayButton");
@@ -169,6 +172,7 @@ internal class TemplateManager : EditorWindow
         playModeButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             uASTemplateService.LoadPlayMode();
+            UpdateLeftPanel();
         });
 
 
