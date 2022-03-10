@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-public class RCLinear : ResponseFunction
+internal class LogarithmicFunction : ResponseFunction
 {
-    public RCLinear() : base("Linear")
+    public LogarithmicFunction() : base("Logarithm")
     {
     }
 
@@ -14,13 +15,12 @@ public class RCLinear : ResponseFunction
     {
         return new List<Parameter>()
         {
-            new Parameter("a",1f),
-            new Parameter("b",0f)
+            new Parameter("Base", 1f),
         };
     }
 
     public override float CalculateResponse(float x)
     {
-        return Convert.ToSingle(Parameters[0].Value) * x + Convert.ToSingle(Parameters[1].Value);
+        return (float)Mathf.Log(x, Convert.ToSingle(Parameters[0].Value)/10)/10;
     }
 }

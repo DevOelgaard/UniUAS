@@ -99,12 +99,8 @@ public class ResponseCurve: AiObjectModel
         onValuesChanged.OnNext(true);
     }
 
-
-
     private void RemoveSegment(Parameter segmentToRemove)
     {
-        segmentDisposables[segmentToRemove].Dispose();
-        segmentDisposables.Remove(segmentToRemove);
         Segments.Remove(segmentToRemove);
     }
 

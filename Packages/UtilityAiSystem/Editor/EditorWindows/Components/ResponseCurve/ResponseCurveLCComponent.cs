@@ -17,7 +17,7 @@ internal class ResponseCurveLCComponent : VisualElement
 
     private float min => Convert.ToSingle(responseCurve.MinX);
     private float max => Convert.ToSingle(responseCurve.MaxX);
-    private int steps = 100;
+    private int steps = 1000;
 
     //private Label nameLabel;
     private Button foldButton;
