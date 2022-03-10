@@ -141,7 +141,7 @@ public class ResponseCurve: AiObjectModel
         return x;
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (ResponseCurveState)s;
         Name = state.Name;
@@ -153,14 +153,14 @@ public class ResponseCurve: AiObjectModel
         Segments = new List<Parameter>();
         foreach (var p in state.Segments)
         {
-            var parameter = Parameter.Restore<Parameter>(p);
+            var parameter = Parameter.Restore<Parameter>(p, restoreDebug);
             Segments.Add(parameter);
         }
 
         ResponseFunctions = new List<ResponseFunction>();
         foreach(var rf in state.ResponseFunctions)
         {
-            var func = Restore<ResponseFunction>(rf);
+            var func = Restore<ResponseFunction>(rf, restoreDebug);
             ResponseFunctions.Add(func);
         }
     }

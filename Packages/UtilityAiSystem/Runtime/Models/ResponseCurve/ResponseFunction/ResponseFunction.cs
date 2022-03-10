@@ -27,14 +27,14 @@ public abstract class ResponseFunction: AiObjectModel
 
     public abstract float CalculateResponse(float x);
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (ResponseFunctionState)s;
         Name = state.Name;
         Parameters = new List<Parameter>();
         foreach (var p in state.Parameters)
         {
-            var parameter = Parameter.Restore<Parameter>(p);
+            var parameter = Parameter.Restore<Parameter>(p, restoreDebug);
             Parameters.Add(parameter);
         }
     }

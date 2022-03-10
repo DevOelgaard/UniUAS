@@ -205,7 +205,7 @@ internal class UASTemplateService: RestoreAble
     {
         try
         {
-            RestoreInternal(state);
+            RestoreInternal(state,false);
         }
         catch (Exception ex)
         {
@@ -269,7 +269,7 @@ internal class UASTemplateService: RestoreAble
         return a.IsAssignableFrom(b) || a.IsSubclassOf(b);
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug)
     {
         ClearCollections();
         var state = (UASTemplateServiceState)s;
@@ -280,37 +280,37 @@ internal class UASTemplateService: RestoreAble
 
         foreach(var aState in state.AIs)
         {
-            var ai = Ai.Restore<Ai>(aState);
+            var ai = Ai.Restore<Ai>(aState, restoreDebug);
             AIs.Add(ai);
         }
 
         foreach (var bState in state.Buckets)
         {
-            var bucket = Bucket.Restore<Bucket>(bState);
+            var bucket = Bucket.Restore<Bucket>(bState, restoreDebug);
             Buckets.Add(bucket);
         }
 
         foreach (var d in state.Decisions)
         {
-            var decision = Decision.Restore<Decision>(d);
+            var decision = Decision.Restore<Decision>(d, restoreDebug);
             Decisions.Add(decision);
         }
 
         foreach (var c in state.Considerations)
         {
-            var consideration = Consideration.Restore<Consideration>(c);
+            var consideration = Consideration.Restore<Consideration>(c, restoreDebug);
             Considerations.Add(consideration);
         }
 
         foreach (var a in state.AgentActions)
         {
-            var action = AgentAction.Restore<AgentAction>(a);
+            var action = AgentAction.Restore<AgentAction>(a, restoreDebug);
             AgentActions.Add(action);
         }
 
         foreach(var r in state.ResponseCurves)
         {
-            var responseCurve = Restore<ResponseCurve>(r);
+            var responseCurve = Restore<ResponseCurve>(r, restoreDebug);
             ResponseCurves.Add(responseCurve);
         }
     }

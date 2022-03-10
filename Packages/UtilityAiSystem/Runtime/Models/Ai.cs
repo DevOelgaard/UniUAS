@@ -62,7 +62,7 @@ public class Ai: AiObjectModel
         return clone;
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (UAIModelState)s;
         Name = state.Name;
@@ -71,7 +71,7 @@ public class Ai: AiObjectModel
         Buckets = new ReactiveListNameSafe<Bucket>();
         foreach(var bS in state.Buckets)
         {
-            var b = Bucket.Restore<Bucket>(bS);
+            var b = Bucket.Restore<Bucket>(bS, restoreDebug);
             Buckets.Add(b);
         }
         var scorerService = ScorerService.Instance;

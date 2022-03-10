@@ -25,14 +25,14 @@ public class AiTickerSettingsModel: RestoreAble
 
 
 
-    protected override void RestoreInternal(RestoreState state)
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug = false)
     {
         var s = state as AiTickerSettingsState;
         TickerMode = Restore<TickerMode>(s.TickerMode);
         TickerModes = new List<TickerMode>();
         foreach(var t in s.TickerModes)
         {
-            var tickerM = Restore<TickerMode>(t);
+            var tickerM = Restore<TickerMode>(t, restoreDebug);
             TickerModes.Add(tickerM);
         }
     }

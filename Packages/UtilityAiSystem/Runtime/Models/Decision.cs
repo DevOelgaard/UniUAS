@@ -96,7 +96,7 @@ public class Decision: UtilityContainer
     }
 
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (DecisionState)s;
         Name = state.Name;
@@ -105,17 +105,23 @@ public class Decision: UtilityContainer
         AgentActions = new ReactiveListNameSafe<AgentAction>();
         foreach (var a in state.AgentActions)
         {
-            var action = AgentAction.Restore<AgentAction>(a);
+            var action = AgentAction.Restore<AgentAction>(a, restoreDebug);
             AgentActions.Add(action);
         }
 
         Considerations = new ReactiveListNameSafe<Consideration>();
         foreach (var c in state.Considerations)
         {
-            var consideration = Consideration.Restore<Consideration>(c);
+            var consideration = Consideration.Restore<Consideration>(c, restoreDebug);
             Considerations.Add(consideration);
         }
+
+        if (restoreDebug)
+        {
+            LastCalculatedUtility = state.LastCalculatedUtility;
+        }
     }
+
     protected override void ClearSubscriptions()
     {
         base.ClearSubscriptions();
@@ -132,12 +138,12 @@ public class DecisionState: RestoreState
     public List<AgentActionState> AgentActions;
     public List<ConsiderationState> Considerations;
     public List<ParameterState> Parameters;
-
+    public float LastCalculatedUtility;
     public DecisionState() : base()
     {
     }
 
-    public DecisionState(string name, string description, List<AgentAction> agentActions, List<Consideration> considerations, List<Parameter> parameters, RestoreAble o) : base(o)
+    public DecisionState(string name, string description, List<AgentAction> agentActions, List<Consideration> considerations, List<Parameter> parameters, Decision o) : base(o)
     {
         Name = name;
         Description = description;
@@ -161,6 +167,7 @@ public class DecisionState: RestoreState
         {
             Parameters.Add(parameter.GetState() as ParameterState);
         }
+        LastCalculatedUtility = o.LastCalculatedUtility;
     }
 
 }

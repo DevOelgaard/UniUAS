@@ -24,13 +24,13 @@ public class RestoreAbleCollection: RestoreAble
     }
 
 
-    protected override void RestoreInternal(RestoreState state)
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug = false)
     {
         var s = state as RestoreAbleCollectionState;
         Models = new List<RestoreAble>();
         s.States.ForEach(e =>
         {
-            Models.Add(Restore<RestoreAble>(e));
+            Models.Add(Restore<RestoreAble>(e, restoreDebug));
         });
         Type = Type.GetType(s.TypeString);
     }

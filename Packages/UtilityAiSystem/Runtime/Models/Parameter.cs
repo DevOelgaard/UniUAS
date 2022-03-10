@@ -38,7 +38,7 @@ public class Parameter: RestoreAble
         return new ParameterState(Name, v, this);
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (ParameterState)s;
         Name = state.Name;

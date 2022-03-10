@@ -40,7 +40,7 @@ public abstract class AgentAction: AiObjectModel
         return new AgentActionState(Parameters, Name, Description, this);
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (AgentActionState)s;
         Name = state.Name;
@@ -48,7 +48,7 @@ public abstract class AgentAction: AiObjectModel
         Parameters = new List<Parameter>();
         foreach (var p in state.Parameters)
         {
-            var parameter = Parameter.Restore<Parameter>(p);
+            var parameter = Parameter.Restore<Parameter>(p, restoreDebug);
             Parameters.Add(parameter);
         }
     }

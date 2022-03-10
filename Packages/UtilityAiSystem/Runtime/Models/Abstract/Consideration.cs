@@ -121,7 +121,7 @@ public abstract class Consideration : AiObjectModel
         return 1;
     }
 
-    protected override void RestoreInternal(RestoreState s)
+    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
         var state = (ConsiderationState)s;
         Name = state.Name;
@@ -131,13 +131,13 @@ public abstract class Consideration : AiObjectModel
 
         if (state.ResponseCurveState != null)
         {
-            CurrentResponseCurve = ResponseCurve.Restore<ResponseCurve>(state.ResponseCurveState);
+            CurrentResponseCurve = ResponseCurve.Restore<ResponseCurve>(state.ResponseCurveState, restoreDebug);
         }
 
         Parameters = new List<Parameter>();
         foreach (var pState in state.Parameters)
         {
-            var parameter = Parameter.Restore<Parameter>(pState);
+            var parameter = Parameter.Restore<Parameter>(pState, restoreDebug);
             Parameters.Add(parameter);
         }
         PerformanceTag = (PerformanceTag)state.PerformanceTag;
@@ -152,6 +152,12 @@ public abstract class Consideration : AiObjectModel
             .AddTo(paramaterDisposables);
 
         SetMinMaxForCurves();
+
+        if (restoreDebug)
+        {
+            BaseScore = state.BaseScore;
+            NormalizedScore = state.NormalizedScore;
+        }
     }
 
     internal override AiObjectModel Clone()
@@ -189,7 +195,8 @@ public class ConsiderationState: RestoreState
     public ParameterState Min;
     public ParameterState Max;
     public int PerformanceTag;
-
+    public float BaseScore;
+    public float NormalizedScore;
     public ConsiderationState() : base()
     {
     }
@@ -209,5 +216,8 @@ public class ConsiderationState: RestoreState
         }
 
         PerformanceTag = (int)consideration.PerformanceTag;
+
+        BaseScore = consideration.BaseScore;
+        NormalizedScore = consideration.NormalizedScore;
     }
 }

@@ -33,7 +33,7 @@ public abstract class TickerMode: RestoreAble
         persister.SaveObject(state, path);
     }
 
-    protected override void RestoreInternal(RestoreState state)
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug = false)
     {
         var s = state as TickerModeState;
         Name = Enum.Parse<AiTickerMode>(s.Name);
@@ -41,7 +41,7 @@ public abstract class TickerMode: RestoreAble
         Parameters = new List<Parameter>();
         foreach (var p in s.Parameters)
         {
-            var parameter = Restore<Parameter>(p);
+            var parameter = Restore<Parameter>(p, restoreDebug);
             Parameters.Add(parameter);  
         }
     }

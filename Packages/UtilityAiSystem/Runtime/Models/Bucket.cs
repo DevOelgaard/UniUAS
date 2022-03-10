@@ -68,7 +68,7 @@ public class Bucket : UtilityContainer
     {
         return new BucketState(Name, Description, Decisions.Values, Considerations.Values, Weight, this);
     }
-    protected override void RestoreInternal(RestoreState state)
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug = false)
     {
         var stateCast = (BucketState)state;
         Name = stateCast.Name;
@@ -77,17 +77,22 @@ public class Bucket : UtilityContainer
         Decisions = new ReactiveListNameSafe<Decision>();
         foreach (var d in stateCast.Decisions)
         {
-            var decision = Restore<Decision>(d);
+            var decision = Restore<Decision>(d, restoreDebug);
             Decisions.Add(decision);
         }
 
         Considerations = new ReactiveListNameSafe<Consideration>();
         foreach (var c in stateCast.Considerations)
         {
-            var consideration = Restore<Consideration>(c);
+            var consideration = Restore<Consideration>(c, restoreDebug);
             Considerations.Add(consideration);
         }
         Weight = Restore<Parameter>(stateCast.Weight);
+
+        if (restoreDebug)
+        {
+            LastCalculatedUtility = stateCast.LastCalculatedUtility;
+        }
     }
 
     protected override void ClearSubscriptions()
@@ -111,12 +116,13 @@ public class BucketState: RestoreState
     public List<DecisionState> Decisions;
     public List<ConsiderationState> Considerations;
     public ParameterState Weight;
+    public float LastCalculatedUtility;
 
     public BucketState(): base()
     {
     }
 
-    public BucketState(string name, string description, List<Decision> decisions, List<Consideration> considerations, Parameter weight,  RestoreAble o) : base(o)
+    public BucketState(string name, string description, List<Decision> decisions, List<Consideration> considerations, Parameter weight,  Bucket o) : base(o)
     {
         this.Name = name;
         this.Description = description;
@@ -135,5 +141,6 @@ public class BucketState: RestoreState
         }
 
         this.Weight = weight.GetState() as ParameterState;
+        LastCalculatedUtility = o.LastCalculatedUtility;
     }
 }

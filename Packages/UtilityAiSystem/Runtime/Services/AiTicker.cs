@@ -72,10 +72,10 @@ internal class AiTicker: RestoreAble
         Settings.TickerMode = newMode;
     }
 
-    protected override void RestoreInternal(RestoreState state)
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug)
     {
         var s = state as AiTickerState;
-        Settings = Restore<AiTickerSettingsModel>(s.Settings);
+        Settings = Restore<AiTickerSettingsModel>(s.Settings, restoreDebug);
     }
 
     internal override RestoreState GetState()
