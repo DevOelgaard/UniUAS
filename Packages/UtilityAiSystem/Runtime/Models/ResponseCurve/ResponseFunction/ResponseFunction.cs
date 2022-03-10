@@ -5,14 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class ResponseFunction: RestoreAble
+public abstract class ResponseFunction: AiObjectModel
 {
-    public string Name = "";
-    public float MinX { get; private set; } = 0.0f;
-    public float MaxX { get; private set; } = 1.0f;
-    public float MinY { get; private set; } = 0.0f;
-    private float totalMax;
-    public float ResultFactor { get; private set; } = 1.0f;
     public List<Parameter> Parameters;
 
     public ResponseFunction()
@@ -31,41 +25,12 @@ public abstract class ResponseFunction: RestoreAble
         return new List<Parameter>();
     }
 
-    public void SetMinMaxX(float localMinX, float localMaxX, float totalMinX , float totalMaxX)
-    {
-        var totalRange = totalMaxX - totalMinX;
-        MinX = localMinX;
-        MinY = localMinX / totalRange;
-        MaxX = localMaxX;
-        ResultFactor = (MaxX-MinX) / totalMaxX;
-    }
+    public abstract float CalculateResponse(float x);
 
-    public void UpdateValues(float maxFactor)
-    {
-        MinX *= maxFactor;
-        MaxX *= maxFactor;
-    }
-
-    protected abstract float CalculateResponse(float x);
-    public float GetResponseValue(float x)
-    {
-        var normalized = Normalize(x);
-        return CalculateResponse(normalized);
-    }
-
-    private float Normalize(float value)
-    {
-        var x = (value - MinX) / (MaxX - MinX) * ResultFactor;
-        //var result = Mathf.Clamp(x, 0, 1);
-        return x;
-       
-    }
     protected override void RestoreInternal(RestoreState s)
     {
         var state = (ResponseFunctionState)s;
         Name = state.Name;
-        MinX = state.MinX;
-        MaxX = state.MaxX;
         Parameters = new List<Parameter>();
         foreach (var p in state.Parameters)
         {
@@ -73,6 +38,14 @@ public abstract class ResponseFunction: RestoreAble
             Parameters.Add(parameter);
         }
     }
+
+    internal override AiObjectModel Clone()
+    {
+        var state = GetState();
+        var clone = ResponseFunction.Restore<ResponseFunction>(state);
+        return clone;
+    }
+
     internal override RestoreState GetState()
     {
         return new ResponseFunctionState(this);
@@ -89,8 +62,7 @@ public abstract class ResponseFunction: RestoreAble
 public class ResponseFunctionState : RestoreState
 {
     public string Name;
-    public float MinX;
-    public float MaxX;
+    public string Description;
     public List<ParameterState> Parameters;
 
     public ResponseFunctionState() : base()
@@ -100,8 +72,7 @@ public class ResponseFunctionState : RestoreState
     public ResponseFunctionState(ResponseFunction responseFunction) : base(responseFunction)
     {
         Name = responseFunction.Name;
-        MinX = responseFunction.MinX;
-        MaxX = responseFunction.MaxX;
+        Description = responseFunction.Description;
         Parameters = new List<ParameterState>();
         foreach (var parameter in responseFunction.Parameters)
         {

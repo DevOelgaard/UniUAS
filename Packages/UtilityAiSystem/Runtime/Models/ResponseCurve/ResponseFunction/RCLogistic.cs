@@ -15,7 +15,7 @@ public class RCLogistic : ResponseFunction
         return new List<Parameter>();
     }
 
-    protected override float CalculateResponse(float x)
+    public override float CalculateResponse(float x)
     {
         var k = Mathf.Exp(x);
         return k / (1.0f + k);

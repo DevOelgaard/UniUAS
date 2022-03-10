@@ -19,7 +19,7 @@ public class RCLinear : ResponseFunction
         };
     }
 
-    protected override float CalculateResponse(float x)
+    public override float CalculateResponse(float x)
     {
         return Convert.ToSingle(Parameters[0].Value) * x + Convert.ToSingle(Parameters[1].Value);
     }
