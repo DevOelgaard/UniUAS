@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 
 internal class DebuggerGameStopped : DebuggerState
 {
-    public DebuggerGameStopped(TemplateContainer root, DebuggerComponent debuggerComponent) : base(root, debuggerComponent)
+    public DebuggerGameStopped(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent)
+        : base(root, debuggerComponent, agent)
     {
     }
 

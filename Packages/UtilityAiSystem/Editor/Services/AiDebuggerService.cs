@@ -10,7 +10,7 @@ internal class AiDebuggerService
     private static AiDebuggerService instance;
     public static AiDebuggerService Instance => instance ??= new AiDebuggerService();
 
-    private Dictionary<IAgent, Dictionary<int,Ai>> aiModelsByAgent = new Dictionary<IAgent, Dictionary<int, Ai>>();
+    private Dictionary<IAgent, Dictionary<int,AiDebug>> aiModelsByAgent = new Dictionary<IAgent, Dictionary<int, AiDebug>>();
 
     public IObservable<bool> OnTicksChanged => onTicksChanged;
     private Subject<bool> onTicksChanged = new Subject<bool>();
@@ -32,7 +32,7 @@ internal class AiDebuggerService
 
     public void LogTick(IAgent agent, int tick)
     {
-        var aiModel = agent.Ai.Clone() as Ai;
+        var aiModel = AgentDebug.GetDebug(agent).Ai;
         if (tick < MinTick)
         {
             MinTick = tick;
@@ -55,12 +55,13 @@ internal class AiDebuggerService
             }
         } else
         {
-            aiModelsByAgent.Add(agent, new Dictionary<int,Ai>());
+            aiModelsByAgent.Add(agent, new Dictionary<int,AiDebug>());
             aiModelsByAgent[agent].Add(tick, aiModel);
         }
     }
 
-    public Ai GetAiAtTick(IAgent agent, int tick)
+
+    public AiDebug GetAiDebugLog(IAgent agent, int tick)
     {
         if (aiModelsByAgent.ContainsKey(agent) && aiModelsByAgent[agent].ContainsKey(tick))
         {

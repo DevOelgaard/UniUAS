@@ -13,7 +13,8 @@ internal class DebuggerGamePaused : DebuggerState
     private CompositeDisposable disposables = new CompositeDisposable();
     private int stepSize = 1;
     private int leapSize = 10;
-    public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent) : base(root, debuggerComponent)
+    public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent) 
+        : base(root, debuggerComponent, agent)
     {
     }
 
@@ -72,23 +73,22 @@ internal class DebuggerGamePaused : DebuggerState
 
     internal override void TickSliderChanged(int newValue)
     {
+        base.TickSliderChanged(newValue);
         InspectAi(newValue);
     }
 
     private void InspectAi(int tick)
     {
-        var ai = AiDebuggerService.Instance.GetAiAtTick(Agent,tick);
+        var ai = AiDebuggerService.Instance.GetAiDebugLog(Agent,tick);
         if (ai == null)
         {
             Debug.Log("No ai at: " + tick);
         } else
         {
-            Agent.Ai = ai;
+            //Agent.Ai = ai;
             AgentComponent.UpdateAgent(Agent);
         }
     }
-
-
 
     private void ClearSubscriptions()
     {

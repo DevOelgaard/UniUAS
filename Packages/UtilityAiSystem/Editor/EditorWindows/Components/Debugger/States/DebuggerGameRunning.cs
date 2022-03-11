@@ -10,7 +10,8 @@ using UnityEditor;
 internal class DebuggerGameRunning : DebuggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    public DebuggerGameRunning(TemplateContainer root, DebuggerComponent debuggerComponent): base(root, debuggerComponent)
+    public DebuggerGameRunning(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent)
+        : base(root, debuggerComponent, agent)
     {
 
     }

@@ -24,6 +24,7 @@ internal class DebuggerComponent : VisualElement
 
     private bool isPlaying => EditorApplication.isPlaying;
     private bool isPaused => EditorApplication.isPaused;
+    private IAgent agent => state?.Agent;
 
     public DebuggerComponent()
     {
@@ -89,15 +90,15 @@ internal class DebuggerComponent : VisualElement
     {
         if (isPlaying && !isPaused)
         {
-            SetState(new DebuggerGameRunning(root, this));
+            SetState(new DebuggerGameRunning(root, this, agent));
         }
         else if (isPlaying && isPaused)
         {
-            SetState(new DebuggerGamePaused(root, this));
+            SetState(new DebuggerGamePaused(root, this, agent));
         }
         else
         {
-            SetState(new DebuggerGameStopped(root,this));
+            SetState(new DebuggerGameStopped(root,this, agent));
         }
     }
 

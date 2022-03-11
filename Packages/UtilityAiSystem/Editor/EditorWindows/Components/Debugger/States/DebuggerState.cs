@@ -26,15 +26,16 @@ internal abstract class DebuggerState
     protected VisualElement Body;
     protected AgentComponent AgentComponent;
 
-    protected IAgent Agent;
+    public IAgent Agent { get; protected set; }
     protected Ai PlayAi;
 
     protected int CurrentTick => TickSlider.value;
 
-    protected DebuggerState(TemplateContainer root, DebuggerComponent debuggerComponent)
+    protected DebuggerState(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent)
     {
         DebuggerComponent = debuggerComponent;
         this.Root = root;
+        Agent = agent;
         Init();
     }
 
@@ -53,6 +54,13 @@ internal abstract class DebuggerState
         RecordToggle = Root.Q<Toggle>("Record-Toggle");
 
         Body = Root.Q<VisualElement>("Body");
+
+        if (AgentComponent == null)
+        {
+            Body.Clear();
+            AgentComponent = new AgentComponent(Agent);
+            Body.Add(AgentComponent);
+        }
     }
 
     internal abstract void UpdateUi();

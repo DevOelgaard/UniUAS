@@ -66,6 +66,7 @@ internal class AgentComponent: VisualElement
 
     internal void UpdateAgent(IAgent agent)
     {
+        if (agent == null) return;
         this.agent = agent;
         agentName.text = agent.Model.Name;
         InitDropdown();
