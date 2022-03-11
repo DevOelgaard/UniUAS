@@ -106,13 +106,12 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     {
         T aiObject = templates.Values.FirstOrDefault(t => t.Name == name) as T;
 
-        if (aiObject != null)
-        {
-            aiObject = (T)aiObject.Clone();
-        } else
+        if (aiObject == null)
         {
             aiObject = AssetDatabaseService.GetInstanceOfType<T>(name);
         }
+
+        aiObject = (T)aiObject.Clone();
         collection.Add(aiObject);
         
     }

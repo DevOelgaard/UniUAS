@@ -63,8 +63,13 @@ internal class AgentComponent: VisualElement
         });
         footer.Add(applyToAllButton);
 
-        agentName.text = agent.Model.Name;
+        UpdateAgent(agent);
+    }
 
+    internal void UpdateAgent(IAgent agent)
+    {
+        this.agent = agent;
+        agentName.text = agent.Model.Name;
         InitDropdown();
 
         UpdateAiComponent();
@@ -94,10 +99,12 @@ internal class AgentComponent: VisualElement
 
     private void UpdateAiComponent()
     {
-        body.Clear();
-
-        if (agent.Ai == null) return;
-        aiComponent = new UAIComponent(agent.Ai);
-        body.Add(aiComponent);
+        if(aiComponent == null)
+        {
+            aiComponent = new UAIComponent(agent.Ai);
+            body.Add(aiComponent);
+        }
+        aiComponent.UpdateAi(agent.Ai);
+        //body.Add(aiComponent);
     }
 }

@@ -55,6 +55,7 @@ internal class UASTemplateService: RestoreAble
         var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
         if (state == null)
         {
+            Debug.LogWarning("No playmode found");
             //LoadCollectionsFromFile();
         }
         else
@@ -89,8 +90,12 @@ internal class UASTemplateService: RestoreAble
         }
     }
 
-    internal Ai GetAiByName(string name)
+    internal Ai GetAiByName(string name, bool isPLayMode = false)
     {
+        if (isPLayMode)
+        {
+            LoadPlayMode();
+        }
         var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as Ai;
 
         if (aiTemplate == null)

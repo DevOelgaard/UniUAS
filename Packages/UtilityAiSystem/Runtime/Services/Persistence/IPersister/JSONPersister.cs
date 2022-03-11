@@ -14,6 +14,7 @@ internal class JSONPersister : IPersister
     {
         try
         {
+            path += Consts.FileExtension_JSON;
             if (!File.Exists(path)) return default(T);
             var json = File.ReadAllText(path);
             var deserialized = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings

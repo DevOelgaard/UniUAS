@@ -48,7 +48,7 @@ internal class DebuggerComponent : VisualElement
         this.agent = agent;
         this.aiTicker = AiTicker.Instance;
         this.aiDebuggerService = AiDebuggerService.Instance;
-        this.displayedAi = agent.Ai;
+        this.displayedAi = agent?.Ai;
         
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
@@ -64,10 +64,12 @@ internal class DebuggerComponent : VisualElement
         tickCount = root.Q<Label>("TickCount-Label");
         tickSlider = root.Q<Slider>("Tick-Slider");
 
+        recordToggle = root.Q<Toggle>("Record-Toggle");
+
         body = root.Q<VisualElement>("Body");
 
-        this.agentComponent = new AgentComponent(agent);
-        body.Add(this.agentComponent);
+        //this.agentComponent = new AgentComponent(agent);
+        //body.Add(this.agentComponent);
 
         infoLabelLeft.text = Consts.Label_DebuggerText;
 
@@ -123,9 +125,9 @@ internal class DebuggerComponent : VisualElement
                 TickChanged(tickCount);
             })
             .AddTo(disposables);
-
+        UpdateAgent(agent);
         GameStateChanged();
-        UpdateUI();
+        //UpdateUI();
     }
 
     private void InspectTick(int tickToInspect)
@@ -160,9 +162,15 @@ internal class DebuggerComponent : VisualElement
 
     internal void UpdateAgent(IAgent agent)
     {
-        this.agent = agent;
-        this.agentComponent = new AgentComponent(agent);
-        this.displayedAi = agent.Ai;
+        body.Clear();
+        if (agent != null)
+        {
+            this.agent = agent;
+            this.agentComponent = new AgentComponent(agent);
+            body.Add(this.agentComponent);
+            this.displayedAi = agent.Ai;
+        }
+
         UpdateUI();
     }
 
@@ -181,10 +189,14 @@ internal class DebuggerComponent : VisualElement
     private void GameRunning()
     {
         toggleStateButton.text = "Pause";
-        this.displayedAi = agent.Ai;
-        body.Clear();
-        body.Add(new AgentComponent(this.agent));
-
+        this.displayedAi = agent?.Ai;
+        if (agentComponent == null)
+        {
+            UpdateAgent(agent);
+        } else
+        {
+            agentComponent.UpdateAgent(agent);
+        }
         UpdateUI();
     }
 
@@ -192,9 +204,8 @@ internal class DebuggerComponent : VisualElement
     {
         toggleStateButton.text = "Play";
         body.Clear();
-        body.Add(new UAIComponent(this.displayedAi));
-
-        infoLabelLeft.text = agent.Model.Name;
+        body.Add(aiComponent);
+        aiComponent.UpdateAi(displayedAi);
 
         UpdateUI();
     }
@@ -204,6 +215,7 @@ internal class DebuggerComponent : VisualElement
         tickCount.text = currentTick.ToString();
         tickSlider.lowValue = aiDebuggerService.MinTick;
         tickSlider.highValue = aiDebuggerService.MaxTick;
+        tickSlider.value = aiDebuggerService.MaxTick;
     }
 
     ~DebuggerComponent()

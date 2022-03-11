@@ -15,6 +15,7 @@ public class RuntimeInspector : EditorWindow
     private VisualElement rightContainer;
     private VisualElement buttonContainer;
     private AgentComponent agentComponent;
+    private DebuggerComponent debuggerComponent;
     
     private DropdownField identifierDropdown;
 
@@ -40,7 +41,7 @@ public class RuntimeInspector : EditorWindow
         root = rootVisualElement;
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
-
+        
         leftContainer = root.Q<VisualElement>("LeftContainer");
         rightContainer = root.Q<VisualElement>("RightContainer");
         buttonContainer = root.Q<VisualElement>("ButtonContainer");
@@ -52,8 +53,10 @@ public class RuntimeInspector : EditorWindow
             .Subscribe(_ => InitDropDown());
 
         InitDropDown();
-
+        
         UpdateLeftPanel();
+
+        rightContainer.Add(debuggerComponent);
 
         agentCollectionUpdatedSub = agentManager
             .AgentsUpdated
@@ -133,11 +136,24 @@ public class RuntimeInspector : EditorWindow
 
     private void SelectedAgentChanged()
     {
-        rightContainer.Clear();
-        if (SelectedAgent == null) return;
+        if (SelectedAgent == null)
+        {
+            //rightContainer.Clear();
+        }
 
-        agentComponent = new AgentComponent(SelectedAgent);
-        rightContainer.Add(agentComponent);
+        if (debuggerComponent == null)
+        {
+            debuggerComponent = new DebuggerComponent(SelectedAgent);
+            rightContainer.Add(debuggerComponent);
+        }
+        else
+        {
+            debuggerComponent.UpdateAgent(SelectedAgent);
+        }
+
+        //agentComponent = new AgentComponent(SelectedAgent);
+
+        //rightContainer.Add(agentComponent);
     }
 
     private IAgent SelectedAgent
