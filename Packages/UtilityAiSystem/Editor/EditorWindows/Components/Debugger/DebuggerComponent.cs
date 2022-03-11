@@ -41,7 +41,7 @@ internal class DebuggerComponent : VisualElement
     private int stepSize = 1;
     private int leapSize = 10;
     private bool isPlaying => EditorApplication.isPlaying;
-
+    private bool isPaused => EditorApplication.isPaused;
 
     public DebuggerComponent(IAgent agent)
     {
@@ -89,9 +89,8 @@ internal class DebuggerComponent : VisualElement
         {
             if (isPlaying)
             {
-                Debug.Break();
-            }
-            else
+                EditorApplication.isPaused = !isPaused;
+            } else
             {
                 EditorApplication.isPlaying = true;
             }
@@ -181,11 +180,11 @@ internal class DebuggerComponent : VisualElement
 
     private void GameStateChanged()
     {
-        if (isPlaying)
+        if (isPlaying && !isPaused)
         {
             GameRunning();
         }
-        else
+        else if (isPlaying && isPaused)
         {
             GamePaused();
         }
