@@ -35,9 +35,7 @@ internal class AgentComponent: VisualElement
         tickAgent.text = "TEST-Tick-Agent";
         tickAgent.RegisterCallback<MouseUpEvent>(evt =>
         {
-            var metaData = new TickMetaData();
-            metaData.TickedBy = "Agent: " + agent.Model.Name;
-            agent.Tick(metaData);
+            AiTicker.Instance.TickAgent(agent);
         });
         footer.Add(tickAgent);
 
@@ -97,14 +95,16 @@ internal class AgentComponent: VisualElement
         });
     }
 
-    private void UpdateAiComponent()
+    internal void UpdateAiComponent()
     {
         if(aiComponent == null)
         {
             aiComponent = new UAIComponent(agent.Ai);
             body.Add(aiComponent);
+        } else
+        {
+            aiComponent.UpdateAi(agent.Ai);
         }
-        aiComponent.UpdateAi(agent.Ai);
         //body.Add(aiComponent);
     }
 }

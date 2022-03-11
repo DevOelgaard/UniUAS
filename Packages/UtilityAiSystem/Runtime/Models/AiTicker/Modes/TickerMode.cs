@@ -21,6 +21,10 @@ public abstract class TickerMode: RestoreAble
 
     internal abstract List<Parameter> GetParameters();
     internal abstract void Tick(List<IAgent> agents, TickMetaData metaData);
+    internal virtual void Tick(IAgent agent, TickMetaData metaData)
+    {
+        agent.Tick(metaData);
+    }
 
     internal override RestoreState GetState()
     {

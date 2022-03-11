@@ -56,6 +56,15 @@ internal class AiTicker: RestoreAble
         disposables.Clear();
     }
 
+    internal void TickAgent(IAgent agent)
+    {
+        TickCount++;
+        var metaData = new TickMetaData();
+        metaData.TickCount = TickCount;
+        Settings.TickerMode.Tick(agent, metaData);
+        onTickComplete.OnNext(TickCount);
+    }
+
     internal void TickAis()
     {
         TickCount++;

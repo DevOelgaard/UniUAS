@@ -23,7 +23,6 @@ internal class DebuggerComponent : VisualElement
     private Button forwardStepButton;
     private Button forwardLeapButton;
 
-
     private Label tickCount;
     private Slider tickSlider;
 
@@ -34,8 +33,9 @@ internal class DebuggerComponent : VisualElement
 
     private AgentComponent agentComponent;
     private IAgent agent;
-    private UAIComponent aiComponent;
+    //private UAIComponent aiComponent;
     private Ai displayedAi;
+    private Ai agentPlayAi;
 
     private int currentTick = 0;
     private int stepSize = 1;
@@ -118,7 +118,7 @@ internal class DebuggerComponent : VisualElement
         EditorApplication.pauseStateChanged += _ => GameStateChanged();
 
         aiTicker
-            .OnTickCountChanged
+            .OnTickComplete
             .Subscribe(tickCount =>
             {
                 TickChanged(tickCount);
@@ -140,7 +140,7 @@ internal class DebuggerComponent : VisualElement
             return;
         }
 
-        UpdateAi(aiAtTick);
+        //UpdateAi(aiAtTick);
         UpdateUI();
     }
 
@@ -156,26 +156,37 @@ internal class DebuggerComponent : VisualElement
         UpdateUI();
     }
 
-    private void UpdateAi(Ai ai)
-    {
-        this.displayedAi = ai;
-        body.Clear();
-        this.aiComponent = new UAIComponent(this.displayedAi);
-        body.Add(this.aiComponent);
-    }
+    //private void UpdateAi(Ai ai)
+    //{
+    //    this.displayedAi = ai;
+    //    agent.Ai = this.displayedAi;
+    //    agentComponent.UpdateAiComponent();
+    //    UpdateUI();
+    //}
 
     internal void UpdateAgent(IAgent agent)
     {
-        body.Clear();
-        if (agent != null)
+        this.agent = agent;
+        if (agent == null)
         {
-            this.agent = agent;
-            this.agentComponent = new AgentComponent(agent);
-            body.Add(this.agentComponent);
-            this.displayedAi = agent.Ai;
+            agentComponent = null;
+            body.Clear();
+        } else
+        {
+            if (agentComponent == null)
+            {
+                body.Clear();
+                agentComponent = new AgentComponent(agent);
+                body.Add(agentComponent);
+            }
+            else
+            {
+                agentComponent.UpdateAgent(agent);
+            }
         }
-
+        
         UpdateUI();
+
     }
 
     private void GameStateChanged()
@@ -194,33 +205,49 @@ internal class DebuggerComponent : VisualElement
     {
         toggleStateButton.text = "Pause";
         this.displayedAi = agent?.Ai;
-        if (agentComponent == null)
-        {
-            UpdateAgent(agent);
-        } else
-        {
-            agentComponent.UpdateAgent(agent);
-        }
-        UpdateUI();
+        UpdateAgent(agent);
+        //UpdateAi(agentPlayAi);
+        //if (agentComponent == null)
+        //{
+        //    UpdateAgent(agent);
+        //} else
+        //{
+        //    agentComponent.UpdateAgent(agent);
+        //}
+        //UpdateUI();
     }
 
     private void GamePaused()
     {
         toggleStateButton.text = "Play";
-        if (displayedAi != null)
-        {
-            UpdateAi(displayedAi);
-        }
+        agentPlayAi = agent?.Ai;
 
-        UpdateUI();
+        //if (displayedAi != null)
+        //{
+        //    UpdateAi(displayedAi);
+        //}
+
+        //UpdateUI();
     }
 
     private void UpdateUI()
     {
-        tickCount.text = currentTick.ToString();
         tickSlider.lowValue = aiDebuggerService.MinTick;
         tickSlider.highValue = aiDebuggerService.MaxTick;
         tickSlider.value = aiDebuggerService.MaxTick;
+        if (agent == null) return;
+
+        var metaData = agent.Ai.Context.GetContext<TickMetaData>(AiContextKey.TickMetaData);
+        if (metaData != null)
+        {
+            if (metaData.TickCount == AiTicker.Instance.TickCount)
+            {
+                currentTick = AiTicker.Instance.TickCount;
+            }
+        }
+        
+
+        tickCount.text = currentTick.ToString();
     }
 
     ~DebuggerComponent()
