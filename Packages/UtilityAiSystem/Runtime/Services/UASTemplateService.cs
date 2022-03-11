@@ -18,6 +18,9 @@ internal class UASTemplateService: RestoreAble
     public ReactiveList<AiObjectModel> AgentActions;
     public ReactiveList<AiObjectModel> ResponseCurves;
 
+    public IObservable<ReactiveList<AiObjectModel>> OnCollectionChanged => onCollectionChanged;
+    private Subject<ReactiveList<AiObjectModel>> onCollectionChanged = new Subject<ReactiveList<AiObjectModel>>();
+
     private static UASTemplateService instance;
 
     internal UASTemplateService()
@@ -42,6 +45,13 @@ internal class UASTemplateService: RestoreAble
         collectionsByLabel.Add(Consts.Label_ConsiderationModel, Considerations);
         collectionsByLabel.Add(Consts.Label_AgentActionModel, AgentActions);
         collectionsByLabel.Add(Consts.Label_ResponseCurve, ResponseCurves);
+
+        foreach(var collection in collectionsByLabel)
+        {
+            collection.Value.OnValueChanged
+                .Subscribe(col => onCollectionChanged.OnNext(collection.Value))
+                .AddTo(subscriptions);
+        }
 
         if (restore)
         {

@@ -47,7 +47,11 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             AddCopy(evt.newValue);
             addCopyPopup.value = null;
         });
+
         this.templates = templates;
+        this.templates.OnValueChanged
+            .Subscribe(_ => InitAddCopyPopup())
+            .AddTo(subscriptions);
 
         InitAddCopyPopup();
 
