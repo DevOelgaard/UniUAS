@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 internal class AiDebug: AiObjectDebug
 {
     internal List<BucketDebug> Buckets;
-    internal List<DecisionDebug> Decisions;
 
     internal static AiDebug GetDebug(Ai ai)
     {
