@@ -16,7 +16,7 @@ internal class BucketDebugComponent : AiObjectDebugComponent
         Body.Add(root);
 
         considerationsContainer = root.Q<VisualElement>("ConsiderationsContainer");
-        decisionsContainr = root.Q<VisualElement>("DecisionsContainr");
+        decisionsContainr = root.Q<VisualElement>("DecisionsContainer");
 
         var score = new ScoreComponent(new ScoreModel("Score", b.Score));
         ScoreContainer.Add(score);

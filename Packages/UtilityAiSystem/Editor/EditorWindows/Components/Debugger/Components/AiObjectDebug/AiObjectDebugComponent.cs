@@ -14,7 +14,7 @@ internal abstract class AiObjectDebugComponent: VisualElement
     protected VisualElement Footer;
     public AiObjectDebugComponent(AiObjectDebug aiObjectDebug)
     {
-        var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
+        var root = AssetDatabaseService.GetTemplateContainer("AiObjectDebugComponent");
         Add(root);
 
         NameLabel = root.Q<Label>("Name-Label");

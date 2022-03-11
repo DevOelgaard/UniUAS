@@ -13,6 +13,7 @@ internal class DebuggerGamePaused : DebuggerState
     private CompositeDisposable disposables = new CompositeDisposable();
     private int stepSize = 1;
     private int leapSize = 10;
+    private bool isDisplayingDebug = false;
     public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent) 
         : base(root, debuggerComponent, agent)
     {
@@ -31,6 +32,11 @@ internal class DebuggerGamePaused : DebuggerState
         if (Agent != null && PlayAi != null)
         {
             Agent.Ai = PlayAi;
+        }
+        if (isDisplayingDebug)
+        {
+            Body.Clear();
+            Body.Add(AgentComponent);
         }
     }
 
@@ -85,8 +91,9 @@ internal class DebuggerGamePaused : DebuggerState
             Debug.Log("No ai at: " + tick);
         } else
         {
-            //Agent.Ai = ai;
-            AgentComponent.UpdateAgent(Agent);
+            Body.Clear();
+            Body.Add(new AiDebugComponent(ai));
+            //AgentComponent.UpdateAgent(Agent);
         }
     }
 

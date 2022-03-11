@@ -26,6 +26,12 @@ internal class BucketDebug: AiObjectDebug
             bucketDebug.Considerations.Add(ConsiderationDebug.GetDebug(consideration));
         }
 
+        bucketDebug.Decisions = new List<DecisionDebug>();
+        foreach(var decision in bucket.Decisions.Values)
+        {
+            bucketDebug.Decisions.Add(DecisionDebug.GetDebug(decision));
+        }
+
         return bucketDebug;
     }
 }
