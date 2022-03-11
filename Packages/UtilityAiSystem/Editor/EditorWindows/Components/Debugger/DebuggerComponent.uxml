@@ -7,15 +7,9 @@
                 <ui:Button text="-1" display-tooltip-when-elided="true" name="BackStepButton" />
                 <ui:Button text="Play" display-tooltip-when-elided="true" name="ToggleButton" />
                 <ui:Button text="+1" display-tooltip-when-elided="true" name="ForwardStepButton" />
-                <ui:Button text="+10" display-tooltip-when-elided="true" name="ForwarLeapButton" />
+                <ui:Button text="+10" display-tooltip-when-elided="true" name="ForwardLeapButton" />
             </ui:VisualElement>
-            <ui:VisualElement name="SliderContainer" style="flex-grow: 0;">
-                <ui:VisualElement name="TickCountContainer" style="flex-direction: row; justify-content: center; -unity-text-align: upper-center;">
-                    <ui:Label text="Tick:" display-tooltip-when-elided="true" name="Identifier-Label" />
-                    <ui:Label text="213123" display-tooltip-when-elided="true" name="TickCount-Label" />
-                </ui:VisualElement>
-                <ui:Slider picking-mode="Ignore" value="42" high-value="100" name="Tick-Slider" style="flex-grow: 1;" />
-            </ui:VisualElement>
+            <ui:SliderInt picking-mode="Ignore" label="SliderInt" value="42" high-value="100" name="Tick-Slider" style="flex-direction: column; -unity-text-align: upper-center;" />
         </ui:VisualElement>
         <ui:Toggle label="Record" name="Record-Toggle" style="flex-direction: column; -unity-text-align: upper-center; align-items: center; justify-content: flex-end; max-height: none; max-width: 45%; width: 45px; min-width: 45px;" />
     </ui:VisualElement>

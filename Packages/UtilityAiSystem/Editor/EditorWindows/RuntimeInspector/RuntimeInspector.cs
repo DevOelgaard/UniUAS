@@ -136,24 +136,17 @@ public class RuntimeInspector : EditorWindow
 
     private void SelectedAgentChanged()
     {
-        if (SelectedAgent == null)
-        {
-            //rightContainer.Clear();
-        }
+        //if (SelectedAgent == null)
+        //{
+        //    return;
+        //}
 
         if (debuggerComponent == null)
         {
-            debuggerComponent = new DebuggerComponent(SelectedAgent);
+            debuggerComponent = new DebuggerComponent();
             rightContainer.Add(debuggerComponent);
         }
-        else
-        {
-            debuggerComponent.UpdateAgent(SelectedAgent);
-        }
-
-        //agentComponent = new AgentComponent(SelectedAgent);
-
-        //rightContainer.Add(agentComponent);
+        debuggerComponent.UpdateAgent(SelectedAgent);
     }
 
     private IAgent SelectedAgent

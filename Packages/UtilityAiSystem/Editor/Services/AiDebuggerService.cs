@@ -30,8 +30,9 @@ internal class AiDebuggerService
         onTicksChanged.OnNext(true);
     }
 
-    public void AddTick(IAgent agent, Ai aiModel, int tick)
+    public void LogTick(IAgent agent, int tick)
     {
+        var aiModel = agent.Ai.Clone() as Ai;
         if (tick < MinTick)
         {
             MinTick = tick;
@@ -61,11 +62,10 @@ internal class AiDebuggerService
 
     public Ai GetAiAtTick(IAgent agent, int tick)
     {
-        if (!aiModelsByAgent.ContainsKey(agent) || !aiModelsByAgent[agent].ContainsKey(tick))
+        if (aiModelsByAgent.ContainsKey(agent) && aiModelsByAgent[agent].ContainsKey(tick))
         {
-            return null;
+            return aiModelsByAgent[agent][tick];
         }
-
-        return aiModelsByAgent[agent][tick];
+        return null;
     }
 }
