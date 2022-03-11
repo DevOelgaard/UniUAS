@@ -20,6 +20,19 @@ internal class Demo_AgentActionParameter : AgentAction
     {
         base.OnStart(context);
 
-        Debug.Log("Agent: " + context.Agent.Model.Name + " " + (string)Parameters[0].Value);
+        Debug.Log("Agent: " + context.Agent.Model.Name + " First tick: " + (string)Parameters[0].Value);
+    }
+
+    public override void OnGoing(AiContext context)
+    {
+        base.OnGoing(context);
+        Debug.Log("Agent: " + context.Agent.Model.Name + " continious tick: " + (string)Parameters[0].Value);
+    }
+
+    public override void OnEnd(AiContext context)
+    {
+        base.OnEnd(context);
+
+        Debug.Log("Agent: " + context.Agent.Model.Name + " GoodBye tick");
     }
 }

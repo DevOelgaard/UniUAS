@@ -141,10 +141,7 @@ internal class DebuggerComponent : VisualElement
             return;
         }
 
-        this.displayedAi = aiAtTick;
-        body.Clear();
-        this.aiComponent = new UAIComponent(this.displayedAi);
-        body.Add(this.aiComponent);
+        UpdateAi(aiAtTick);
         UpdateUI();
     }
 
@@ -158,6 +155,14 @@ internal class DebuggerComponent : VisualElement
             }
         }
         UpdateUI();
+    }
+
+    private void UpdateAi(Ai ai)
+    {
+        this.displayedAi = ai;
+        body.Clear();
+        this.aiComponent = new UAIComponent(this.displayedAi);
+        body.Add(this.aiComponent);
     }
 
     internal void UpdateAgent(IAgent agent)
@@ -203,9 +208,10 @@ internal class DebuggerComponent : VisualElement
     private void GamePaused()
     {
         toggleStateButton.text = "Play";
-        body.Clear();
-        body.Add(aiComponent);
-        aiComponent.UpdateAi(displayedAi);
+        if (displayedAi != null)
+        {
+            UpdateAi(displayedAi);
+        }
 
         UpdateUI();
     }
