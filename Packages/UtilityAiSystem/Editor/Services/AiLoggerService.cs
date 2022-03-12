@@ -32,7 +32,7 @@ internal class AiLoggerService
 
     public void LogTick(IAgent agent, int tick)
     {
-        var aiModel = AgentDebug.GetDebug(agent).Ai;
+        var aiModel = AgentLog.GetDebug(agent).Ai;
         if (tick < MinTick)
         {
             MinTick = tick;
