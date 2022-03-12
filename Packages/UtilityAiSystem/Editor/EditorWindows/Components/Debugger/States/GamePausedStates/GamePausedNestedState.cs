@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine.UIElements;
 
-internal abstract class DebuggerState
+internal abstract class GamePausedNestedState
 {
     protected DebuggerComponent DebuggerComponent;
     protected TemplateContainer Root;
@@ -24,29 +23,18 @@ internal abstract class DebuggerState
     protected Toggle RecordToggle;
 
     protected VisualElement Body;
-    private AgentComponent agentComponent;
-    protected AgentComponent AgentComponent
-    {
-        get
-        {
-            if (agentComponent == null)
-            {
-                agentComponent = new AgentComponent();
-                Body.Add(agentComponent);
-            }
-            return agentComponent;
-        }
-    }
+    protected AgentComponent AgentComponent;
 
     public IAgent Agent { get; protected set; }
     protected Ai PlayAi;
 
     protected int CurrentTick => TickSlider.value;
 
-    protected DebuggerState(TemplateContainer root, DebuggerComponent debuggerComponent)
+    protected GamePausedNestedState(TemplateContainer root, DebuggerComponent debuggerComponent)
     {
+        Root = root;
         DebuggerComponent = debuggerComponent;
-        this.Root = root;
+        AgentComponent = Root.Q<AgentComponent>();
         Init();
     }
 
@@ -63,32 +51,12 @@ internal abstract class DebuggerState
         TickSlider = Root.Q<SliderInt>("Tick-Slider");
 
         RecordToggle = Root.Q<Toggle>("Record-Toggle");
+
         Body = Root.Q<VisualElement>("Body");
-
-        RecordToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
-        {
-            RecordToggleChanged(evt.newValue);
-        });
     }
 
-    internal virtual void UpdateAgent(IAgent agent)
+    internal virtual void OnEnter(IAgent agent) 
     {
-        Agent = agent;
-        if (agent == null)
-        {
-            if (AgentComponent != null)
-            {
-                AgentComponent.style.opacity = 0;
-            }
-        }
-        else
-        {
-            AgentComponent.style.opacity = 1;
-            AgentComponent.UpdateAgent(agent);
-        }
-    }
-
-    internal virtual void OnEnter(IAgent agent) { 
         UpdateAgent(agent);
     }
     internal virtual void OnExit() { }
@@ -96,17 +64,10 @@ internal abstract class DebuggerState
     internal virtual void BackLeapButtonPressed()
     {
 
-    } 
-    
-    internal virtual void BackStepButtonPressed()
-    {
     }
 
-    internal virtual void ToggleStateButtonPressed()
+    internal virtual void BackStepButtonPressed()
     {
-        EditorApplication.isPlaying = true;
-        EditorApplication.isPaused = !EditorApplication.isPaused;
-
     }
 
     internal virtual void ForwardStepButtonPressed()
@@ -117,14 +78,13 @@ internal abstract class DebuggerState
     {
     }
 
-    internal virtual void TickSliderChanged(int newValue)
+    internal virtual void TickChanged(int value)
     {
-        //TickSlider.highValue = AiTicker.Instance.TickCount;
-        TickSlider.label = newValue.ToString();
+
     }
-
-    internal virtual void RecordToggleChanged(bool value)
+    internal virtual void UpdateAgent(IAgent agent)
     {
-
+        Agent = agent;
+        AgentComponent.UpdateAgent(agent);
     }
 }

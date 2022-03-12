@@ -19,9 +19,8 @@ internal class AgentComponent: VisualElement
     private IAgent agent;
     private UASTemplateService uasTemplateService;
 
-    internal AgentComponent(IAgent agent)
+    internal AgentComponent()
     {
-        this.agent = agent;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
         body = root.Q<VisualElement>("Body");
@@ -60,8 +59,6 @@ internal class AgentComponent: VisualElement
 
         });
         footer.Add(applyToAllButton);
-
-        UpdateAgent(agent);
     }
 
     internal void UpdateAgent(IAgent agent)

@@ -14,7 +14,6 @@ public class RuntimeInspector : EditorWindow
     private VisualElement leftContainer;
     private VisualElement rightContainer;
     private VisualElement buttonContainer;
-    private AgentComponent agentComponent;
     private DebuggerComponent debuggerComponent;
     
     private DropdownField identifierDropdown;
@@ -47,6 +46,7 @@ public class RuntimeInspector : EditorWindow
         buttonContainer = root.Q<VisualElement>("ButtonContainer");
 
         identifierDropdown = root.Q<DropdownField>("AgentType-Dropdown");
+        debuggerComponent = new DebuggerComponent();
 
         agentTypesChangedSub = agentManager
             .AgentTypesUpdated
@@ -55,7 +55,6 @@ public class RuntimeInspector : EditorWindow
         InitDropDown();
         
         UpdateLeftPanel();
-
         rightContainer.Add(debuggerComponent);
 
         agentCollectionUpdatedSub = agentManager
@@ -122,6 +121,7 @@ public class RuntimeInspector : EditorWindow
             {
                 SelectedAgent = agent;
             });
+
             buttonContainer.Add(button);
             agent
                 .Model
@@ -136,16 +136,6 @@ public class RuntimeInspector : EditorWindow
 
     private void SelectedAgentChanged()
     {
-        //if (SelectedAgent == null)
-        //{
-        //    return;
-        //}
-
-        if (debuggerComponent == null)
-        {
-            debuggerComponent = new DebuggerComponent();
-            rightContainer.Add(debuggerComponent);
-        }
         debuggerComponent.UpdateAgent(SelectedAgent);
     }
 

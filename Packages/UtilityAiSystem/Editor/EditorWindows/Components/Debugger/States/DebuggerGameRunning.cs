@@ -10,15 +10,15 @@ using UnityEditor;
 internal class DebuggerGameRunning : DebuggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    public DebuggerGameRunning(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent)
-        : base(root, debuggerComponent, agent)
+    public DebuggerGameRunning(TemplateContainer root, DebuggerComponent debuggerComponent)
+        : base(root, debuggerComponent)
     {
 
     }
 
-    internal override void OnEnter()
+    internal override void OnEnter(IAgent agent)
     {
-        base.OnEnter();
+        base.OnEnter(agent);
         BackLeapButton.SetEnabled(false);
         BackStepButton.SetEnabled(false);
         ForwardStepButton.SetEnabled(false);
@@ -28,14 +28,16 @@ internal class DebuggerGameRunning : DebuggerState
         TickSlider.value = AiTicker.Instance.TickCount;
         ToggleStateButton.text = "Pause";
         InfoLabelLeft.text = "Game Running";
+        
         AiTicker.Instance
             .OnTickComplete
-            .Subscribe(tick =>
+            .Subscribe(latestTick =>
             {
-                TickSlider.value = tick;
+                TickSlider.highValue = latestTick;
+                TickSlider.value = latestTick;
                 if (RecordToggle.value)
                 {
-                    AiDebuggerService.Instance.LogTick(Agent, tick);
+                    AiLoggerService.Instance.LogTick(Agent, latestTick);
                 }
             })
             .AddTo(disposables);
@@ -53,9 +55,6 @@ internal class DebuggerGameRunning : DebuggerState
     internal override void UpdateAgent(IAgent agent)
     {
         base.UpdateAgent(agent);
-    }
-    internal override void UpdateUi()
-    {
     }
 
     private void ClearSubscriptions()

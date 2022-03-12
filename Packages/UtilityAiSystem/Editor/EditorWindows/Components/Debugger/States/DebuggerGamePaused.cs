@@ -11,20 +11,26 @@ using UnityEngine.UIElements;
 internal class DebuggerGamePaused : DebuggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    private int stepSize = 1;
-    private int leapSize = 10;
     private bool isDisplayingDebug = false;
-    public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent) 
-        : base(root, debuggerComponent, agent)
+    private GamePausedNestedState state;
+    private DebuggerGamePausedLogs logState;
+    private DebuggerGamePausedInspect inspectState;
+    public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent) 
+        : base(root, debuggerComponent)
     {
+        logState = new DebuggerGamePausedLogs(root,debuggerComponent);
+        inspectState = new DebuggerGamePausedInspect(root,debuggerComponent);
     }
 
-    internal override void OnEnter()
+    internal override void OnEnter(IAgent agent)
     {
-        base.OnEnter();
+        base.OnEnter(agent);
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
+        RecordToggle.text = "Inspect";
+        UpdateState();
     }
+
 
     internal override void OnExit()
     {
@@ -47,59 +53,68 @@ internal class DebuggerGamePaused : DebuggerState
         {
             PlayAi = agent.Ai;
         }
-    }
+        logState.UpdateAgent(agent);
+        inspectState.UpdateAgent(agent);
 
-    internal override void UpdateUi()
-    {
-        throw new NotImplementedException();
     }
 
     internal override void BackLeapButtonPressed()
     {
-        TickSlider.value -= leapSize;
+        TickSlider.value -= ConstsEditor.Debugger_LeapSize;
 
     }
 
     internal override void BackStepButtonPressed()
     {
-        TickSlider.value -= stepSize;
+        TickSlider.value -= ConstsEditor.Debugger_StepSize;
 
     }
 
     internal override void ForwardStepButtonPressed()
     {
-        TickSlider.value += stepSize;
+        TickSlider.value += ConstsEditor.Debugger_StepSize;
 
     }
 
     internal override void ForwardLeapButtonPressed()
     {
-        TickSlider.value += leapSize;
+        TickSlider.value += ConstsEditor.Debugger_LeapSize;
     }
 
     internal override void TickSliderChanged(int newValue)
     {
         base.TickSliderChanged(newValue);
-        InspectAi(newValue);
+        state.TickChanged(newValue);
     }
 
-    private void InspectAi(int tick)
+    private void SetState(GamePausedNestedState state)
     {
-        var ai = AiDebuggerService.Instance.GetAiDebugLog(Agent,tick);
-        if (ai == null)
-        {
-            Debug.Log("No ai at: " + tick);
-        } else
-        {
-            Body.Clear();
-            Body.Add(new AiDebugComponent(ai));
-            //AgentComponent.UpdateAgent(Agent);
-        }
+        this.state?.OnExit();
+        this.state = state;
+        this.state.OnEnter(Agent);
     }
 
     private void ClearSubscriptions()
     {
         disposables.Clear();
+    }
+
+    internal override void RecordToggleChanged(bool value)
+    {
+        base.RecordToggleChanged(value);
+        UpdateState();
+    }
+
+    private void UpdateState()
+    {
+        if (RecordToggle.value)
+        {
+            SetState(logState);
+        }
+        else
+        {
+            SetState(inspectState);
+        }
     }
 
     ~DebuggerGamePaused()

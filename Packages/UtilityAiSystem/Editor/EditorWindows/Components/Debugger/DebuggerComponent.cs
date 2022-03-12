@@ -19,6 +19,9 @@ internal class DebuggerComponent : VisualElement
     private Button toggleStateButton;
     private Button forwardStepButton;
     private Button forwardLeapButton;
+    private DebuggerGameRunning gameRunning;
+    private DebuggerGamePaused gamePaused;
+    private DebuggerGameStopped gameStopped;
 
     private SliderInt tickSlider;
 
@@ -39,7 +42,9 @@ internal class DebuggerComponent : VisualElement
 
         tickSlider = root.Q<SliderInt>("Tick-Slider");
 
-        UpdateGameState();
+        gameRunning = new DebuggerGameRunning(root, this);
+        gamePaused = new DebuggerGamePaused(root, this);
+        gameStopped = new DebuggerGameStopped(root, this);
 
         backLeapButton.RegisterCallback<MouseUpEvent>(evt =>
         {
@@ -70,15 +75,16 @@ internal class DebuggerComponent : VisualElement
         {
             state.TickSliderChanged(evt.newValue);
         });
-
         EditorApplication.pauseStateChanged += _ => UpdateGameState();
+        
+        UpdateGameState();
     }
 
     internal void SetState(DebuggerState state)
     {
         this.state?.OnExit();
         this.state = state;
-        this.state.OnEnter();
+        this.state.OnEnter(agent);
     }
 
     internal void UpdateAgent(IAgent agent)
@@ -90,15 +96,15 @@ internal class DebuggerComponent : VisualElement
     {
         if (isPlaying && !isPaused)
         {
-            SetState(new DebuggerGameRunning(root, this, agent));
+            SetState(gameRunning);
         }
         else if (isPlaying && isPaused)
         {
-            SetState(new DebuggerGamePaused(root, this, agent));
+            SetState(gamePaused);
         }
         else
         {
-            SetState(new DebuggerGameStopped(root,this, agent));
+            SetState(gameStopped);
         }
     }
 

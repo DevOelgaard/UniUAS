@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 internal class AgentDebug
 {
-    internal AiDebug Ai;
+    internal AiLog Ai;
     internal string Name;
     internal string Type;
 
@@ -16,7 +16,7 @@ internal class AgentDebug
         agentDebug.Name = agent.Model.Name;
         agentDebug.Type = agent.GetType().ToString();
 
-        agentDebug.Ai = AiDebug.GetDebug(agent.Ai);
+        agentDebug.Ai = AiLog.GetDebug(agent.Ai);
         return agentDebug;
     }
 }

@@ -8,14 +8,14 @@ using UnityEngine.UIElements;
 
 internal class DebuggerGameStopped : DebuggerState
 {
-    public DebuggerGameStopped(TemplateContainer root, DebuggerComponent debuggerComponent, IAgent agent)
-        : base(root, debuggerComponent, agent)
+    public DebuggerGameStopped(TemplateContainer root, DebuggerComponent debuggerComponent)
+        : base(root, debuggerComponent)
     {
     }
 
-    internal override void OnEnter()
+    internal override void OnEnter(IAgent agent)
     {
-        base.OnEnter();
+        base.OnEnter(agent);
         BackLeapButton.SetEnabled(false);
         BackStepButton.SetEnabled(false);
         ForwardStepButton.SetEnabled(false);
@@ -33,10 +33,6 @@ internal class DebuggerGameStopped : DebuggerState
         ForwardStepButton.SetEnabled(true);
         ForwardLeapButton.SetEnabled(true);
         TickSlider.SetEnabled(true);
-    }
-
-    internal override void UpdateUi()
-    {
     }
 
     internal override void ToggleStateButtonPressed()
