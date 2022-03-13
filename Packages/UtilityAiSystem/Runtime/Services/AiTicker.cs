@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniRx;
+using UnityEditor;
+using UnityEngine;
 
 internal class AiTicker: RestoreAble
 {
@@ -42,6 +44,14 @@ internal class AiTicker: RestoreAble
         {
             Reload();
         }
+
+        if (Debug.isDebugBuild)
+        {
+            if (Settings.AutoRun)
+            {
+                Start();
+            }
+        }
     }
 
     internal void Start()
@@ -58,6 +68,8 @@ internal class AiTicker: RestoreAble
 
     internal void TickAgent(IAgent agent)
     {
+        if (!EditorApplication.isPlaying) return;
+        if (EditorApplication.isPaused) return;
         TickCount++;
         var metaData = new TickMetaData();
         metaData.TickCount = TickCount;
@@ -67,6 +79,8 @@ internal class AiTicker: RestoreAble
 
     internal void TickAis()
     {
+        if (!EditorApplication.isPlaying) return;
+        if (EditorApplication.isPaused) return;
         TickCount++;
         var metaData = new TickMetaData();
         metaData.TickCount = TickCount;

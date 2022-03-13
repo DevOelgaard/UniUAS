@@ -23,6 +23,8 @@ internal class AiTickerManagerWindow: EditorWindow
     private Button stopButton;
     private Button reloadButton;
     private Label tickCount;
+    private Toggle autoRunToggle;
+
 
     private AiTicker aiTicker;
 
@@ -40,6 +42,7 @@ internal class AiTickerManagerWindow: EditorWindow
         stopButton = root.Q<Button>("StopButton");
         reloadButton = root.Q<Button>("ReloadButton");
         tickCount = root.Q<Label>("TickCountValue-Label");
+        autoRunToggle = root.Q<Toggle>("AutoRun-Toggle");
 
         description = new HelpBox("",HelpBoxMessageType.Info);
         header.Add(description);
@@ -71,6 +74,11 @@ internal class AiTickerManagerWindow: EditorWindow
         });
 
         LoadTicker(aiTicker.Settings.TickerMode);
+        autoRunToggle.value = aiTicker.Settings.AutoRun;
+        autoRunToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
+        {
+            aiTicker.Settings.AutoRun = evt.newValue;
+        });
 
         tickCount.text = aiTicker.TickCount.ToString();
 

@@ -45,10 +45,10 @@ public static class Consts
     public const string Description_DefaultDSE = "Selects the highest scored object";
 
     // Editor Windows
-    public const string Name_TemplateManager = "Template Manager";
-    public const string Name_AiInspector = "Runtime Inspector";
-    public const string Name_AiTickerManager = "Ticker Manager";
-    public const string Name_AiLogger = "Logger";
+    public const string Window_TemplateManager_Name = "Template Manager";
+    public const string Window_AiInspector_Name = "Runtime Inspector";
+    public const string Window_AiTickerManager_Name = "Ticker Settings";
+    public const string Window_Logger_Name = "Logger";
 
 
     // Ticker Modes

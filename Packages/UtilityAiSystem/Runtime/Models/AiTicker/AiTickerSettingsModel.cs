@@ -19,7 +19,7 @@ public class AiTickerSettingsModel: RestoreAble
     }
     internal IObservable<TickerMode> OnTickerModeChanged => onTickerModeChanged;
     private Subject<TickerMode> onTickerModeChanged = new Subject<TickerMode>();
-
+    public bool AutoRun = true;
 
     internal List<TickerMode> TickerModes;
 

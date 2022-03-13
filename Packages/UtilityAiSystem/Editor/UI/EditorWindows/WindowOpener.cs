@@ -9,39 +9,39 @@ using UniRxExtension;
 
 internal class WindowOpener: EditorWindow
 {
-    [MenuItem(Consts.MenuName + Consts.Name_AiInspector)]
+    [MenuItem(Consts.MenuName + Consts.Window_AiInspector_Name)]
     public static void OpenRuntimInspector()
     {
         RunTimeInspector wnd = GetWindow<RunTimeInspector>();
-        wnd.titleContent = new GUIContent(Consts.Name_AiInspector);
+        wnd.titleContent = new GUIContent(Consts.Window_AiInspector_Name);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
 
 
-    [MenuItem(Consts.MenuName + Consts.Name_AiTickerManager)]
+    [MenuItem(Consts.MenuName + Consts.Window_AiTickerManager_Name)]
     public static void OpenAiTickerManager()
     {
         AiTickerManagerWindow wnd = GetWindow<AiTickerManagerWindow>();
-        wnd.titleContent = new GUIContent(Consts.Name_AiTickerManager);
+        wnd.titleContent = new GUIContent(Consts.Window_AiTickerManager_Name);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
 
-    [MenuItem(Consts.MenuName + Consts.Name_TemplateManager)]
+    [MenuItem(Consts.MenuName + Consts.Window_TemplateManager_Name)]
     internal static void OpenTemplateManager()
     {
         TemplateManager wnd = GetWindow<TemplateManager>();
-        wnd.titleContent = new GUIContent(Consts.Name_TemplateManager);
+        wnd.titleContent = new GUIContent(Consts.Window_TemplateManager_Name);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
 
-    [MenuItem(Consts.MenuName + Consts.Name_AiLogger)]
+    [MenuItem(Consts.MenuName + Consts.Window_Logger_Name)]
     internal static void OpenAiLogger()
     {
         AiLogWindow wnd = GetWindow<AiLogWindow>();
-        wnd.titleContent = new GUIContent(Consts.Name_TemplateManager);
+        wnd.titleContent = new GUIContent(Consts.Window_Logger_Name);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
