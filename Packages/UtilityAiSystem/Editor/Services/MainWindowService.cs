@@ -7,26 +7,26 @@ internal class MainWindowService
         var type = model.GetType();
         if (type == typeof(Ai))
         {
-            return new UAIComponent(model as Ai);
+            return new UAIComponent();
         }
         else if (type == typeof(Bucket))
         {
-            return new BucketComponent(model as Bucket);
+            return new BucketComponent();
         }
         else if (type == typeof(Decision) || type.IsSubclassOf(typeof(Decision)))
         {
-            return new DecisionComponent(model as Decision);
+            return new DecisionComponent();
         }
         else if (type.IsSubclassOf(typeof(Consideration)))
         {
-            return new ConsiderationComponent(model as Consideration);
+            return new ConsiderationComponent();
         }
         else if (type.IsSubclassOf(typeof(AgentAction)))
         {
-            return new AgentActionComponent(model as AgentAction);
+            return new AgentActionComponent();
         } else if (type == typeof(ResponseCurve) || type.IsSubclassOf(typeof(ResponseCurve)))
         {
-            return new ResponseCurveMainWindowComponent(model as ResponseCurve);
+            return new ResponseCurveMainWindowComponent();
         }
         throw new NotImplementedException();
     }

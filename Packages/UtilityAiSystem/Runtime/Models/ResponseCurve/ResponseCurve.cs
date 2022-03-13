@@ -19,10 +19,10 @@ public class ResponseCurve: AiObjectModel
     public List<ResponseFunction> ResponseFunctions = new List<ResponseFunction>();
     public List<Parameter> Segments = new List<Parameter>();
 
-    public IObservable<bool> OnValuesChanged => onValuesChanged;
-    private Subject<bool> onValuesChanged = new Subject<bool>();
-    public IObservable<bool> OnSegmentsChanged => onSegmentsChanged;
-    private Subject<bool> onSegmentsChanged = new Subject<bool>();
+    public IObservable<bool> OnParametersChanged => onParametersChanged;
+    private Subject<bool> onParametersChanged = new Subject<bool>();
+    public IObservable<bool> OnFunctionsChanged => onFunctionsChanged;
+    private Subject<bool> onFunctionsChanged = new Subject<bool>();
 
     public ResponseCurve()
     {
@@ -62,7 +62,7 @@ public class ResponseCurve: AiObjectModel
             Segments.Add(newSegment);
         }
         ResponseFunctions.Add(newFunction);
-        onValuesChanged.OnNext(true);
+        onFunctionsChanged.OnNext(true);
     }
 
     internal void UpdateFunction(ResponseFunction oldFunction, ResponseFunction newFunction)
@@ -70,7 +70,7 @@ public class ResponseCurve: AiObjectModel
         var oldFunctionIndex = ResponseFunctions.IndexOf(oldFunction);
         ResponseFunctions[oldFunctionIndex] = newFunction;
 
-        onValuesChanged.OnNext(true);
+        onFunctionsChanged.OnNext(true);
     }
 
     public void RemoveResponseFunction(ResponseFunction responseFunction)
@@ -96,7 +96,7 @@ public class ResponseCurve: AiObjectModel
             RemoveSegment(Segments[removeIndex]);
             ResponseFunctions.Remove(responseFunction);
         }
-        onValuesChanged.OnNext(true);
+        onFunctionsChanged.OnNext(true);
     }
 
     private void RemoveSegment(Parameter segmentToRemove)
@@ -181,7 +181,7 @@ public class ResponseCurve: AiObjectModel
         set
         {
             minY = value;
-            onValuesChanged.OnNext(true);
+            onParametersChanged.OnNext(true);
         }
     }
     public float MaxY
@@ -190,7 +190,7 @@ public class ResponseCurve: AiObjectModel
         set
         {
             maxY = value;
-            onValuesChanged.OnNext(true);
+            onParametersChanged.OnNext(true);
         }
     }
     public float MinX
@@ -201,7 +201,7 @@ public class ResponseCurve: AiObjectModel
             var oldRange = MaxX - MinX;
             minX = value;
             UpdateMinMax(oldRange);
-            onValuesChanged.OnNext(true);
+            onParametersChanged.OnNext(true);
         }
  
     }
@@ -213,7 +213,7 @@ public class ResponseCurve: AiObjectModel
             var oldRange = MaxX - MinX;
             maxX = value;
             UpdateMinMax(oldRange);
-            onValuesChanged.OnNext(true);
+            onParametersChanged.OnNext(true);
         }
     }
 

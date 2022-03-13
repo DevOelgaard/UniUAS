@@ -14,31 +14,36 @@ internal class BucketComponent : MainWindowComponent
     private CollectionComponent<Decision> decisionCollections;
     private Bucket model;
 
-    internal BucketComponent(Bucket model) : base(model)
+    internal BucketComponent() : base()
     {
-        this.model = model;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
         var weightComponent = new ParameterComponent(model.Weight);
 
         ScoreContainer.Add(weightComponent);
 
-        considerationCollections = 
-            new CollectionComponent<Consideration>(model.Considerations, 
-            UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
+        considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
         root.Add(considerationCollections);
         
-        decisionCollections = 
-            new CollectionComponent<Decision>(model.Decisions, 
-            UASTemplateService.Instance.Decisions, "Decision", "Decisions");
+        decisionCollections = new CollectionComponent<Decision>(UASTemplateService.Instance.Decisions, "Decision", "Decisions");
         root.Add(decisionCollections);
 
         Body.Clear();
         Body.Add(root);
     }
 
+    protected override void UpdateInternal(AiObjectModel model)
+    {
+        var bucket = model as Bucket;
+        considerationCollections.SetElements(bucket.Considerations);
+        decisionCollections.SetElements(bucket.Decisions);
+
+    }
+
     ~BucketComponent()
     {
         disposables.Clear();
     }
+
+
 }

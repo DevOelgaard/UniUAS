@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UniRxExtension;
+using UnityEngine;
 
 internal class DecisionComponent : MainWindowComponent
 {
@@ -14,34 +15,42 @@ internal class DecisionComponent : MainWindowComponent
 
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<AgentAction> agentActionCollection;
-    private Decision model;
-    internal DecisionComponent(Decision model): base(model)
+    private Decision decision;
+    internal DecisionComponent(): base()
     {
-        this.model = model;
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("Parameters");
 
-        considerationCollections = new CollectionComponent<Consideration>(model.Considerations, UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
+        considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
         root.Add(considerationCollections);
 
-        agentActionCollection = new CollectionComponent<AgentAction>(model.AgentActions, UASTemplateService.Instance.AgentActions, "Action", "Actions");
+        agentActionCollection = new CollectionComponent<AgentAction>(UASTemplateService.Instance.AgentActions, "Action", "Actions");
         root.Add(agentActionCollection);
-
-        SetParameters();
 
         Body.Clear();
         Body.Add(root);
     }
+    protected override void UpdateInternal(AiObjectModel model)
+    {
+        this.decision = model as Decision;
+        considerationCollections.SetElements(decision.Considerations);
+        agentActionCollection.SetElements(decision.AgentActions);
+        SetParameters();
+
+    }
 
     private void SetParameters()
     {
+        Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
 
-        foreach (var parameter in model.Parameters)
+        foreach (var parameter in decision.Parameters)
         {
             parametersContainer.Add(new ParameterComponent(parameter));
         }
     }
+
+
 
     ~DecisionComponent()
     {

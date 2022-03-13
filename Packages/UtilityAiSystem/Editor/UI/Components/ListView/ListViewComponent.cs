@@ -24,17 +24,9 @@ public class ListViewComponent : VisualElement
     private Subject<bool> onDownClicked = new Subject<bool>();
 
     private VisualElement centerContainer;
-    private FoldableComponent foldableComponent;
-    public FoldableComponent FoldableComponent {
-        get => foldableComponent;
-        set
-        {
-            foldableComponent = value;
-            UpdateContent();
-        } 
-    }
+    private FoldableComponent FoldableComponent;
 
-    public ListViewComponent(FoldableComponent foldableComponent)
+    public ListViewComponent()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
@@ -44,8 +36,9 @@ public class ListViewComponent : VisualElement
         upButton = root.Q<Button>("Up-Button");
         downButton = root.Q<Button>("Down-Button");
 
-        FoldableComponent = foldableComponent;
-        toggleViewButton.text = FoldableComponent.IsFolded ? Consts.Text_Button_Folded : Consts.Text_Button_Expanded;
+        FoldableComponent = new FoldableComponent();
+        centerContainer.Add(FoldableComponent);
+
         toggleViewButton.RegisterCallback<MouseUpEvent>(_ => {
             FoldableComponent.Toggle();
             toggleViewButton.text = FoldableComponent.IsFolded ? Consts.Text_Button_Folded : Consts.Text_Button_Expanded;
@@ -66,9 +59,10 @@ public class ListViewComponent : VisualElement
         });
     }
 
-    private void UpdateContent()
+    internal void UpdateUi(VisualElement expanded, VisualElement folded)
     {
-        centerContainer.Clear();
-        centerContainer.Add(FoldableComponent);
+        FoldableComponent.UpdateUi(expanded, folded, FoldableComponent.IsFolded);
+        toggleViewButton.text = FoldableComponent.IsFolded ? Consts.Text_Button_Folded : Consts.Text_Button_Expanded;
+
     }
 }

@@ -19,7 +19,7 @@ internal class MainWindowFoldedComponent : VisualElement
     private AiObjectModel model;
     protected InfoComponent InfoComponent;
 
-    internal MainWindowFoldedComponent(AiObjectModel model)
+    internal MainWindowFoldedComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
@@ -31,14 +31,9 @@ internal class MainWindowFoldedComponent : VisualElement
         var identifierContaier = this.Q<VisualElement>("IdentifierContainer");
         InfoComponent = new InfoComponent();
         identifierContaier.Add(InfoComponent);
-        UpdateContent(model);
-
-        model.OnInfoChanged
-            .Subscribe(info => InfoComponent.DispalyInfo(info))
-            .AddTo(disposables);
     }
 
-    private void UpdateContent(AiObjectModel model)
+    internal void UpdateUi(AiObjectModel model)
     {
         disposables.Clear();
         this.model = model;

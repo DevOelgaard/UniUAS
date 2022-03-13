@@ -10,12 +10,18 @@ public class FoldableComponent : VisualElement
 
     public bool IsFolded;
     
-    public FoldableComponent(VisualElement expanded, VisualElement folded, bool startFolded = true)
+    public FoldableComponent()
+    {
+
+    }
+
+    internal void UpdateUi(VisualElement expanded, VisualElement folded, bool startFolded = true)
     {
         this.Expanded = expanded;
         this.Folded = folded;
         IsFolded = startFolded;
         UpdateDisplay();
+           
     }
 
     public void Toggle()
@@ -26,6 +32,7 @@ public class FoldableComponent : VisualElement
 
     private void UpdateDisplay()
     {
+        Debug.LogWarning("This may be more effective by hiding and disabling instead of swapping");
         Clear();
         Add(GetActiveElement());
     }

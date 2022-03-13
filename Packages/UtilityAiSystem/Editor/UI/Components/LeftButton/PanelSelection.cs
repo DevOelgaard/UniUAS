@@ -9,11 +9,6 @@ public class PanelSelection : VisualElement
     private VisualTreeAsset uxml;
     private TemplateContainer template;
 
-    void OnEnable()
-    {
-        
-    }
-
     public PanelSelection()
     {
         uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UAS/Scripts/UtilityAi/EditorWindow/UASManager/Components/LeftButton/PanelSelection.uxml");

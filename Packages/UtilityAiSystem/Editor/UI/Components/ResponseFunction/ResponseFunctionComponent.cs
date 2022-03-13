@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UIElements;
 using UniRx;
+using UnityEngine;
 
 internal class ResponseFunctionComponent: VisualElement
 {
@@ -26,12 +27,11 @@ internal class ResponseFunctionComponent: VisualElement
     private Subject<bool> onParametersChanged = new Subject<bool>();
 
 
-    public ResponseFunctionComponent(ResponseFunction responseFunction, bool disableRemoveButton = false)
+    public ResponseFunctionComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
 
-        this.responseFunction = responseFunction;
         typeDropdown = root.Q<DropdownField>("TypeDropdown");
         body = root.Q<VisualElement>("Body");
         removeButton = root.Q<Button>("RemoveButton");
@@ -41,32 +41,25 @@ internal class ResponseFunctionComponent: VisualElement
             .Select(rF => rF.Name)
             .ToList();
 
-        typeDropdown.value = responseFunction.Name;
-
         typeDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
         {
-            this.responseFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>()
-             .First(rF => rF.Name == evt.newValue);
-            onResponseFunctionChanged.OnNext(this.responseFunction);
+            responseFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>()
+                .First(rF => rF.Name == evt.newValue);
+            onResponseFunctionChanged.OnNext(responseFunction);
         });
 
         removeButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             onRemoveClicked.OnNext(responseFunction);
         });
-
-        if (disableRemoveButton)
-        {
-            removeButton.SetEnabled(false);
-            removeButton.style.flexGrow = 0;
-        }
-
-
-        UpdateUi();
     }
 
-    private void UpdateUi()
+    internal void UpdateUi(ResponseFunction responseFunction, bool disableRemoveButton = false)
     {
+        this.responseFunction = responseFunction;
+        typeDropdown.value = responseFunction.Name;
+
+        Debug.LogWarning("This could be more effective by using a pool");
         body.Clear();
         disposables.Clear();
         foreach(var parameter in responseFunction.Parameters)
@@ -75,6 +68,12 @@ internal class ResponseFunctionComponent: VisualElement
             parameter.OnValueChange
                 .Subscribe(_ => onParametersChanged.OnNext(true))
                 .AddTo(disposables);
+        }
+
+        if (disableRemoveButton)
+        {
+            removeButton.SetEnabled(false);
+            removeButton.style.flexGrow = 0;
         }
     }
 

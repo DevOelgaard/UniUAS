@@ -27,6 +27,8 @@ internal class AgentComponent: VisualElement
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
         footer = root.Q<VisualElement>("Footer");
+        aiComponent = new UAIComponent();
+        body.Add(aiComponent);
 
         uasTemplateService = UASTemplateService.Instance;
 
@@ -95,13 +97,6 @@ internal class AgentComponent: VisualElement
 
     internal void UpdateAiComponent()
     {
-        if(aiComponent == null)
-        {
-            aiComponent = new UAIComponent(agent.Ai);
-            body.Add(aiComponent);
-        } else
-        {
-            aiComponent.UpdateAi(agent.Ai);
-        }
+        aiComponent.UpdateUi(agent.Ai);
     }
 }

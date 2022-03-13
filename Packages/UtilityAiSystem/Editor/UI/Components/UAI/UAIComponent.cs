@@ -14,59 +14,77 @@ internal class UAIComponent : MainWindowComponent
     private DropdownDescriptionComponent<IUtilityContainerSelector> decisionDropdown;
     private DropdownDescriptionComponent<IUtilityContainerSelector> bucketDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
+    private Ai aiModel;
 
-    private CollectionComponent<Bucket> bucketCollections;
+    private CollectionComponent<Bucket> bucketCollection;
 
-    internal UAIComponent(Ai aiModel) : base(aiModel)
+    internal UAIComponent() : base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
-        var scorerContainer = root.Q<VisualElement>("ScorersContainer");
-        decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>(ScorerService.Instance.ContainerSelectors, "Decision Selector", aiModel.BucketSelector.GetName());
-        decisionDropdown
-            .OnDropdownValueChanged
-            .Subscribe(selector => aiModel.DecisionSelector = selector)
-            .AddTo(subscriptions);
-        scorerContainer.Add(decisionDropdown);
-
-        bucketDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>(ScorerService.Instance.ContainerSelectors, "Bucket Selector", aiModel.BucketSelector.GetName());
-        bucketDropdown
-            .OnDropdownValueChanged
-            .Subscribe(selector => aiModel.BucketSelector = selector)
-            .AddTo(subscriptions);
-        scorerContainer.Add(bucketDropdown);
-
-        utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>(ScorerService.Instance.UtilityScorers, "Utility Scorer", aiModel.UtilityScorer.GetName());
-        utilityScorerDropdown
-            .OnDropdownValueChanged
-            .Subscribe(uS => aiModel.UtilityScorer = uS)
-            .AddTo(subscriptions);
-        scorerContainer.Add(utilityScorerDropdown);
-
         Body.Clear();
         Body.Add(root);
 
-        UpdateAi(aiModel);
+        bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
+        var scorerContainer = root.Q<VisualElement>("ScorersContainer");
+        decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
+        scorerContainer.Add(decisionDropdown);
+        bucketDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
+        scorerContainer.Add(bucketDropdown);
+        utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
+        scorerContainer.Add(utilityScorerDropdown);
+    }
+
+    protected override void UpdateInternal(AiObjectModel model)
+    {
+        var ai = model as Ai;
+        if (ai == null)
+        {
+            bucketCollection.SetElements(new ReactiveList<Bucket>());
+        }
+        else
+        {
+            bucketCollection.SetElements(ai.Buckets);
+        }
+        subscriptions.Clear();
+
+        decisionDropdown.UpdateUi(ScorerService.Instance.ContainerSelectors, "Decision Selector", aiModel.BucketSelector.GetName());
+        decisionDropdown
+            .OnDropdownValueChanged
+            .Subscribe(selector => {
+                if (aiModel != null)
+                {
+                    aiModel.DecisionSelector = selector;
+                }
+            })
+            .AddTo(subscriptions);
+
+        bucketDropdown.UpdateUi(ScorerService.Instance.ContainerSelectors, "Bucket Selector", aiModel.BucketSelector.GetName());
+        bucketDropdown
+            .OnDropdownValueChanged
+            .Subscribe(selector =>
+            {
+                if (aiModel != null)
+                {
+                    aiModel.BucketSelector = selector;
+                }
+            })
+            .AddTo(subscriptions);
+
+        utilityScorerDropdown.UpdateUi(ScorerService.Instance.UtilityScorers, "Utility Scorer", aiModel.UtilityScorer.GetName());
+        utilityScorerDropdown
+            .OnDropdownValueChanged
+            .Subscribe(uS =>
+            {
+                if (aiModel != null)
+                {
+                    aiModel.UtilityScorer = uS;
+                }
+            })
+            .AddTo(subscriptions);
     }
 
     ~UAIComponent()
     {
         subscriptions.Clear();
-    }
-
-    internal void UpdateAi(Ai ai)
-    {
-        if (ai == null)
-        {
-            root.Clear();
-        }
-        else
-        {
-            {
-                bucketCollections =
-                    new CollectionComponent<Bucket>(ai.Buckets,
-                    UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
-                root.Add(bucketCollections);
-            }
-        }
     }
 }

@@ -9,7 +9,7 @@ using System;
 
 internal abstract class MainWindowComponent: VisualElement
 {
-    protected CompositeDisposable Disposables = new CompositeDisposable();
+    protected CompositeDisposable modelInfoChangedDisposable = new CompositeDisposable();
 
     private TextField nameTextField;
     private TextField descriptionTextField;
@@ -23,7 +23,7 @@ internal abstract class MainWindowComponent: VisualElement
 
     internal List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
 
-    protected MainWindowComponent(AiObjectModel mainWindowModel)
+    protected MainWindowComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer(typeof(MainWindowComponent).FullName);
         Add(root);
@@ -56,40 +56,40 @@ internal abstract class MainWindowComponent: VisualElement
             UASTemplateService.Instance.Add(clone);
         });
 
+        SetFooter();
+    }
 
-        Model = mainWindowModel;
+    internal void UpdateUi(AiObjectModel model)
+    {
+        Model = model;
+        nameTextField.value = model.Name;
+        descriptionTextField.value = model.Description;
+        
         ScoreContainer.Clear();
-
-        nameTextField.value = mainWindowModel.Name;
-        descriptionTextField.value = mainWindowModel.Description;
-
         ScoreComponents = new List<ScoreComponent>();
-        foreach (var scoreModel in mainWindowModel.ScoreModels)
+        foreach (var scoreModel in model.ScoreModels)
         {
             var scoreComponent = new ScoreComponent(scoreModel);
             ScoreComponents.Add(scoreComponent);
             ScoreContainer.Add(scoreComponent);
         }
 
-        SetFooter();
-
+        modelInfoChangedDisposable.Clear();
+        Model.OnInfoChanged
+            .Subscribe(info => InfoComponent.DispalyInfo(info))
+            .AddTo(modelInfoChangedDisposable);
+        InfoComponent.DispalyInfo(Model.Info);
+        UpdateInternal(model);
     }
 
-
-    protected void ClearScore()
-    {
-        ScoreContainer.Clear();
-    }
+    protected abstract void UpdateInternal(AiObjectModel model);
 
     protected virtual void SetFooter()
     {
         InfoComponent = new InfoComponent();
         Footer.Add(InfoComponent);
-        InfoComponent.DispalyInfo(Model.Info);
 
-        Model.OnInfoChanged
-            .Subscribe(info => InfoComponent.DispalyInfo(info))
-            .AddTo(Disposables);
+
     }
 
     internal void Close()
@@ -104,6 +104,6 @@ internal abstract class MainWindowComponent: VisualElement
 
     protected virtual void ClearSubscriptions()
     {
-        Disposables?.Clear();
+        modelInfoChangedDisposable?.Clear();
     }
 }

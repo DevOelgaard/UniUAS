@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 internal class ResponseCurveMainWindowComponent : MainWindowComponent
 {
-    public ResponseCurveMainWindowComponent(ResponseCurve mainWindowModel) : base(mainWindowModel)
+    private ResponseCurveLCComponent responseCurveLCComponent;
+    public ResponseCurveMainWindowComponent() : base()
     {
-        var root = new ResponseCurveLCComponent(mainWindowModel, false);
+        responseCurveLCComponent = new ResponseCurveLCComponent();
         Body.Clear();
-        Body.Add(root);
+        Body.Add(responseCurveLCComponent);
+    }
+
+    protected override void UpdateInternal(AiObjectModel model)
+    {
+        var m = model as ResponseCurve;
+        responseCurveLCComponent.UpdateUi(m);
     }
 }

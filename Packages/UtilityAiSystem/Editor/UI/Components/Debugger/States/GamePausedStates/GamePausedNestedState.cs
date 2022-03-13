@@ -92,6 +92,7 @@ internal abstract class GamePausedNestedState
     {
 
     }
+
     internal virtual void UpdateAgent(IAgent agent)
     {
         Agent = agent;

@@ -11,7 +11,7 @@ using UnityEditor.UIElements;
 internal class ResponseCurveLCComponent : VisualElement
 {
     private CompositeDisposable funcitonDisposables = new CompositeDisposable();
-    private CompositeDisposable considerationDisposables = new CompositeDisposable();
+    private CompositeDisposable responseCurveDisposables = new CompositeDisposable();
     private ResponseCurve responseCurve;
     private LineChartComponent lineChart;
 
@@ -29,11 +29,10 @@ internal class ResponseCurveLCComponent : VisualElement
     private Button addFunctionButton;
     private DropdownField curveDropdown;
 
-    public ResponseCurveLCComponent(ResponseCurve responseCurve, bool showSelection = true)
+    public ResponseCurveLCComponent(bool showSelection = true)
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
-        this.responseCurve = responseCurve;
         header = root.Q<VisualElement>("Header");
         foldButton = root.Q<Button>("FoldButton");
         curveContainer = root.Q<VisualElement>("CurveContainer");
@@ -89,24 +88,76 @@ internal class ResponseCurveLCComponent : VisualElement
             responseCurve.AddResponseFunction(function);
         });
 
-        this.responseCurve.OnSegmentsChanged
+    }
+
+    internal void UpdateUi(ResponseCurve responseCurve)
+    {
+        this.responseCurve = responseCurve;
+
+        responseCurveDisposables.Clear();
+        responseCurve.OnFunctionsChanged
             .Subscribe(_ =>
             {
-                UpdateUi();
-                ReDrawChart();
+                UpdateFunctions();
             })
-            .AddTo(considerationDisposables);
+            .AddTo(responseCurveDisposables);
 
-        this.responseCurve
-            .OnValuesChanged
+        responseCurve
+            .OnParametersChanged
             .Subscribe(_ =>
             {
-                UpdateUi();
                 ReDrawChart();
             })
-            .AddTo(considerationDisposables);
+            .AddTo(responseCurveDisposables);
 
-        UpdateUi();
+        UpdateFunctions();
+    }
+
+    private void UpdateFunctions()
+    {
+        Debug.LogWarning("This could be more effective by using a pool");
+        functionsContainer.Clear();
+        funcitonDisposables.Clear();
+        foreach (var function in responseCurve.ResponseFunctions)
+        {
+            var functionComponent = new ResponseFunctionComponent();
+            functionComponent.UpdateUi(function);
+
+            if (responseCurve.ResponseFunctions.Count <= 1)
+            {
+                functionComponent = new ResponseFunctionComponent();
+                functionComponent.UpdateUi(function, true);
+            }
+            functionsContainer.Add(functionComponent);
+
+            functionComponent
+                .OnParametersChanged
+                .Subscribe(_ => ReDrawChart())
+                .AddTo(funcitonDisposables);
+
+            functionComponent
+                .OnRemoveClicked
+                .Subscribe(f => responseCurve.RemoveResponseFunction(f))
+                .AddTo(funcitonDisposables);
+
+            functionComponent
+                .OnResponseFunctionChanged
+                .Subscribe(f => responseCurve.UpdateFunction(function, f))
+                .AddTo(funcitonDisposables);
+
+            var funcitionIndex = responseCurve.ResponseFunctions.IndexOf(function);
+            if (responseCurve.Segments.Count > funcitionIndex)
+            {
+                var segmentParam = responseCurve.Segments[funcitionIndex];
+                var paramComponent = new ParameterComponent(segmentParam);
+                segmentParam
+                    .OnValueChange
+                    .Subscribe(_ => ReDrawChart())
+                    .AddTo(funcitonDisposables);
+
+                functionsContainer.Add(paramComponent);
+            }
+        }
         ReDrawChart();
     }
 
@@ -126,62 +177,18 @@ internal class ResponseCurveLCComponent : VisualElement
 
     private void ChangeResponseCurve(string name)
     {
-        var newCurve = UASTemplateService
+        var template = UASTemplateService
             .Instance
             .ResponseCurves
             .Values
             .FirstOrDefault(e => e.Name == name);
 
-        if (newCurve != null)
+        if (template != null)
         {
-            this.responseCurve = (ResponseCurve)newCurve.Clone();
+            UpdateUi((ResponseCurve)template.Clone());
         } else
         {
-            this.responseCurve = AssetDatabaseService.GetInstanceOfType<ResponseCurve>(name);
-        }
-        UpdateUi();
-    }
-
-    private void UpdateUi()
-    {
-        functionsContainer.Clear();
-        funcitonDisposables.Clear();
-        foreach (var function in responseCurve.ResponseFunctions)
-        {
-            var functionComponent = new ResponseFunctionComponent(function);
-
-            if (responseCurve.ResponseFunctions.Count <= 1)
-            {
-                functionComponent = new ResponseFunctionComponent(function,true);
-            }
-            functionComponent
-                .OnParametersChanged
-                .Subscribe(_ => ReDrawChart())
-                .AddTo(funcitonDisposables);
-
-            functionComponent
-                .OnRemoveClicked
-                .Subscribe(f => responseCurve.RemoveResponseFunction(f))
-                .AddTo(funcitonDisposables);
-
-            functionComponent
-                .OnResponseFunctionChanged
-                .Subscribe(f => responseCurve.UpdateFunction(function, f))
-                .AddTo(funcitonDisposables);
-
-            functionsContainer.Add(functionComponent);
-            var funcitionIndex = responseCurve.ResponseFunctions.IndexOf(function);
-            if (responseCurve.Segments.Count > funcitionIndex)
-            {
-                var segmentParam = responseCurve.Segments[funcitionIndex];
-                var paramComponent = new ParameterComponent(segmentParam);
-                segmentParam
-                    .OnValueChange
-                    .Subscribe(_ => ReDrawChart())
-                    .AddTo(funcitonDisposables);
-
-                functionsContainer.Add(paramComponent);
-            }
+            UpdateUi(AssetDatabaseService.GetInstanceOfType<ResponseCurve>(name));
         }
     }
 
@@ -201,6 +208,6 @@ internal class ResponseCurveLCComponent : VisualElement
 
     ~ResponseCurveLCComponent(){
         funcitonDisposables.Clear();
-        considerationDisposables.Clear();
+        responseCurveDisposables.Clear();
     }
 }

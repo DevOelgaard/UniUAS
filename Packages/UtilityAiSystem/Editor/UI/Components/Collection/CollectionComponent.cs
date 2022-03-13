@@ -5,6 +5,7 @@ using MoreLinq;
 using UniRx;
 using UniRxExtension;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CollectionComponent<T> : VisualElement where T : AiObjectModel
@@ -25,12 +26,12 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
 
-    public CollectionComponent(ReactiveList<T> collection, ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
+    public CollectionComponent(ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType());
         Add(root);
 
-        this.collection = collection;
+        this.collection = new ReactiveList<T>();
         this.templates = templates;
 
         sortCollectionButton = root.Q<Button>("SortCollection-Button");
@@ -85,10 +86,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             sortCollectionButton.style.display = DisplayStyle.None;
         }
 
-        collectionUpdatedSub?.Dispose();
-        collectionUpdatedSub = collection.OnValueChanged
-            .Subscribe(elements => UpdateElements(elements));
-        UpdateElements(collection.Values);
+
+        //SetElements(collection.Values);
     }
 
     private void InitAddCopyPopup()
@@ -108,28 +107,46 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     private void AddCopy(string name)
     {
-        T aiObject = templates.Values.FirstOrDefault(t => t.Name == name) as T;
+        T element = templates.Values.FirstOrDefault(t => t.Name == name) as T;
 
-        if (aiObject == null)
+        if (element == null)
         {
-            aiObject = AssetDatabaseService.GetInstanceOfType<T>(name);
+            element = AssetDatabaseService.GetInstanceOfType<T>(name);
         }
 
-        aiObject = (T)aiObject.Clone();
-        collection.Add(aiObject);
-        
+        element = (T)element.Clone();
+        AddElement(element);
     }
 
-    private void UpdateElements(List<T> elements)
+    internal void AddElement(T element)
+    {
+        collection.Add(element);
+    }
+
+    internal void SetElements(ReactiveList<T> elements)
+    {
+        Debug.LogWarning("This could be more effective by using a pool");
+
+        this.collection = elements;
+        collectionUpdatedSub?.Dispose();
+        collectionUpdatedSub = collection.OnValueChanged
+            .Subscribe(_ => UpdateCollection());
+        UpdateCollection();
+    }
+
+    private void UpdateCollection()
     {
         elementsBody.Clear();
         listViewSubscriptions.Clear();
-        foreach (var element in elements)
+        foreach (var element in this.collection.Values)
         {
-            var folded = new MainWindowFoldedComponent(element);
+            var folded = new MainWindowFoldedComponent();
             var expanded = MainWindowService.GetComponent(element);
-            var foldAble = new FoldableComponent(expanded, folded);
-            var listView = new ListViewComponent(foldAble);
+            var listView = new ListViewComponent();
+
+            folded.UpdateUi(element);
+            expanded.UpdateUi(element);
+            listView.UpdateUi(expanded, folded);
 
             listView.OnRemoveClicked
                 .Subscribe(_ => collection.Remove(element))

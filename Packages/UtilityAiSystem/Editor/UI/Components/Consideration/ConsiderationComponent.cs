@@ -21,8 +21,9 @@ internal class ConsiderationComponent : MainWindowComponent
     private EnumField performanceTag;
     private FloatFieldMinMax minField;
     private FloatFieldMinMax maxField;
+    private ResponseCurveLCComponent responseCurveLCComponent;
 
-    internal ConsiderationComponent(Consideration considerationModel) : base(considerationModel)
+    internal ConsiderationComponent() : base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("Parameters");
@@ -32,14 +33,21 @@ internal class ConsiderationComponent : MainWindowComponent
         Body.Clear();
         Body.Add(root);
 
+        responseCurveLCComponent = new ResponseCurveLCComponent();
+        curveContainer.Add(responseCurveLCComponent);
+    }
+
+    protected override void UpdateInternal(AiObjectModel model)
+    {
         ClearSubscriptions();
         considerationModel.BaseScoreChanged
             .Subscribe(score => baseScore.UpdateScore(score))
-            .AddTo(Disposables);
+            .AddTo(modelInfoChangedDisposable);
 
         considerationModel.NormalizedScoreChanged
             .Subscribe(score => normalizedScore.UpdateScore(score))
-            .AddTo(Disposables);
+            .AddTo(modelInfoChangedDisposable);
+
 
         performanceTag.Init(PerformanceTag.Normal);
         performanceTag.value = considerationModel.PerformanceTag;
@@ -48,13 +56,13 @@ internal class ConsiderationComponent : MainWindowComponent
             considerationModel.PerformanceTag = (PerformanceTag)evt.newValue;
         });
 
-
         SetParameters();
-        curveContainer.Add(new ResponseCurveLCComponent(considerationModel.CurrentResponseCurve));
+        responseCurveLCComponent.UpdateUi(considerationModel.CurrentResponseCurve);
     }
 
     private void SetParameters()
     {
+        Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
         var minParamComp = new ParameterComponent(considerationModel.MinFloat);
         var maxParamComp = new ParameterComponent(considerationModel.MaxFloat);
@@ -88,6 +96,7 @@ internal class ConsiderationComponent : MainWindowComponent
             parametersContainer.Add(new ParameterComponent(parameter));
         }
     }
+
 
     ~ConsiderationComponent()
     {

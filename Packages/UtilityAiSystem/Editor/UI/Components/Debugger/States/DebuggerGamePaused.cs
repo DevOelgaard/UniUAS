@@ -45,7 +45,7 @@ internal class DebuggerGamePaused : DebuggerState
 
     internal override void UpdateAgent(IAgent agent)
     {
-        base.UpdateAgent(agent);
+        Agent = agent;
         if (agent != null)
         {
             PlayAi = agent.Ai;
