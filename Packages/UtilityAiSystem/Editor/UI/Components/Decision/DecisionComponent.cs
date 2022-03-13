@@ -46,7 +46,9 @@ internal class DecisionComponent : MainWindowComponent
 
         foreach (var parameter in decision.Parameters)
         {
-            parametersContainer.Add(new ParameterComponent(parameter));
+            var pC = new ParameterComponent();
+            pC.UpdateUi(parameter);
+            parametersContainer.Add(pC);
         }
     }
 

@@ -61,8 +61,7 @@ public class ListViewComponent : VisualElement
 
     internal void UpdateUi(VisualElement expanded, VisualElement folded)
     {
-        FoldableComponent.UpdateUi(expanded, folded, FoldableComponent.IsFolded);
+        FoldableComponent.UpdateUi(expanded, folded, true);
         toggleViewButton.text = FoldableComponent.IsFolded ? Consts.Text_Button_Folded : Consts.Text_Button_Expanded;
-
     }
 }

@@ -32,7 +32,9 @@ internal class AgentActionComponent : MainWindowComponent
         parametersContainer.Clear();
         foreach (var parameter in agentAction.Parameters)
         {
-            parametersContainer.Add(new ParameterComponent(parameter));
+            var pC = new ParameterComponent();
+            pC.UpdateUi(parameter);
+            parametersContainer.Add(pC);
         }
     }
 }

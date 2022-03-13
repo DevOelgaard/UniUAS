@@ -13,14 +13,18 @@ internal class ConsiderationComponent : MainWindowComponent
 {
     private CompositeDisposable minMaxSubs = new CompositeDisposable();
     private TemplateContainer root;
-    private Consideration considerationModel => Model as Consideration;
+    private Consideration considerationModel;
     private ScoreComponent baseScore => ScoreComponents[0];
     private ScoreComponent normalizedScore => ScoreComponents[1];
     private VisualElement parametersContainer;
     private VisualElement curveContainer;
     private EnumField performanceTag;
+
+    private ParameterComponent minParamComp;
+    private ParameterComponent maxParamComp;
     private FloatFieldMinMax minField;
     private FloatFieldMinMax maxField;
+
     private ResponseCurveLCComponent responseCurveLCComponent;
 
     internal ConsiderationComponent() : base()
@@ -35,11 +39,18 @@ internal class ConsiderationComponent : MainWindowComponent
 
         responseCurveLCComponent = new ResponseCurveLCComponent();
         curveContainer.Add(responseCurveLCComponent);
+
+        minParamComp = new ParameterComponent();
+        maxParamComp = new ParameterComponent();
+        parametersContainer.Add(minParamComp);
+        parametersContainer.Add(maxParamComp);
+
     }
 
     protected override void UpdateInternal(AiObjectModel model)
     {
         ClearSubscriptions();
+        considerationModel = model as Consideration;
         considerationModel.BaseScoreChanged
             .Subscribe(score => baseScore.UpdateScore(score))
             .AddTo(modelInfoChangedDisposable);
@@ -64,13 +75,11 @@ internal class ConsiderationComponent : MainWindowComponent
     {
         Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
-        var minParamComp = new ParameterComponent(considerationModel.MinFloat);
-        var maxParamComp = new ParameterComponent(considerationModel.MaxFloat);
-        parametersContainer.Add(minParamComp);
-        parametersContainer.Add(maxParamComp);
+
+        minParamComp.UpdateUi(considerationModel.MinFloat);
+        maxParamComp.UpdateUi(considerationModel.MaxFloat);
         minField = minParamComp.field as FloatFieldMinMax;
         maxField = maxParamComp.field as FloatFieldMinMax;
-
         minField.Max = Convert.ToSingle(considerationModel.MaxFloat.Value);
         maxField.Min = Convert.ToSingle(considerationModel.MinFloat.Value);
 
@@ -93,10 +102,11 @@ internal class ConsiderationComponent : MainWindowComponent
 
         foreach(var parameter in considerationModel.Parameters)
         {
-            parametersContainer.Add(new ParameterComponent(parameter));
+            var pC = new ParameterComponent();
+            pC.UpdateUi(parameter);
+            parametersContainer.Add(pC);
         }
     }
-
 
     ~ConsiderationComponent()
     {

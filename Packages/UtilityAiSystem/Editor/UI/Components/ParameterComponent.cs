@@ -11,8 +11,14 @@ public class ParameterComponent: VisualElement
 {
     private CompositeDisposable disposables = new CompositeDisposable();
     public VisualElement field;
-    public ParameterComponent(Parameter parameter)
+    public ParameterComponent()
     {
+
+    }
+
+    internal void UpdateUi(Parameter parameter)
+    {
+        disposables.Clear();
         var t = parameter.Value.GetType();
         if (t == typeof(double))
         {
@@ -22,7 +28,7 @@ public class ParameterComponent: VisualElement
         if (t == typeof(int) || t == typeof(Int16) || t == typeof(Int32) || t == typeof(Int64))
         {
             var field = new IntegerFieldMinMax(parameter.Name);
-            field.value =  Convert.ToInt32(parameter.Value);
+            field.value = Convert.ToInt32(parameter.Value);
             field.RegisterCallback<ChangeEvent<int>>(evt => parameter.Value = evt.newValue);
             parameter.OnValueChange
                 .Subscribe(v =>
@@ -37,7 +43,7 @@ public class ParameterComponent: VisualElement
         {
             var field = new FloatFieldMinMax(parameter.Name);
             field.value = Convert.ToSingle(parameter.Value);
-            field.RegisterCallback<ChangeEvent<float>>(evt => 
+            field.RegisterCallback<ChangeEvent<float>>(evt =>
                     parameter.Value = evt.newValue
                 );
             parameter.OnValueChange
@@ -74,7 +80,7 @@ public class ParameterComponent: VisualElement
                 {
                     field.value = (long)v;
                 })
-                .AddTo(disposables); 
+                .AddTo(disposables);
             Add(field);
             this.field = field;
         }

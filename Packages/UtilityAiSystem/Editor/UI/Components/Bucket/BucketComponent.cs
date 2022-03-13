@@ -13,15 +13,14 @@ internal class BucketComponent : MainWindowComponent
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<Decision> decisionCollections;
     private Bucket model;
+    private ParameterComponent weightComponent;
 
     internal BucketComponent() : base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
-        var weightComponent = new ParameterComponent(model.Weight);
-
+        weightComponent = new ParameterComponent();
         ScoreContainer.Add(weightComponent);
-
         considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
         root.Add(considerationCollections);
         
@@ -37,7 +36,7 @@ internal class BucketComponent : MainWindowComponent
         var bucket = model as Bucket;
         considerationCollections.SetElements(bucket.Considerations);
         decisionCollections.SetElements(bucket.Decisions);
-
+        weightComponent.UpdateUi(bucket.Weight);
     }
 
     ~BucketComponent()

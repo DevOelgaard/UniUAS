@@ -98,8 +98,9 @@ internal class AiTickerManagerWindow: EditorWindow
         tickerMode.Parameters
             .ForEach(p =>
             {
-                var parameterComponent = new ParameterComponent(p);
-                body.Add(parameterComponent);
+                var pC = new ParameterComponent();
+                pC.UpdateUi(p);
+                body.Add(pC);
             });
 
         description.text = tickerMode.Description;

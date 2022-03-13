@@ -29,7 +29,7 @@ internal class ResponseCurveLCComponent : VisualElement
     private Button addFunctionButton;
     private DropdownField curveDropdown;
 
-    public ResponseCurveLCComponent(bool showSelection = true)
+    public ResponseCurveLCComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
@@ -43,22 +43,6 @@ internal class ResponseCurveLCComponent : VisualElement
         curveContainer.Add(lineChart);
 
         curveDropdown = root.Q<DropdownField>("ResponseCurve-Dropdown");
-        if (showSelection)
-        {
-            header.Add(curveDropdown);
-            curveDropdown.value = responseCurve.Name;
-
-            InitCurveDropdown();
-            curveDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
-            {
-                if (evt.newValue == null) return;
-                ChangeResponseCurve(evt.newValue);
-            });
-        } else
-        {
-            curveDropdown.SetEnabled(false);
-            curveDropdown.style.flexGrow = 0;
-        }
 
         foldButton.RegisterCallback<MouseUpEvent>(evt =>
         {
@@ -90,9 +74,27 @@ internal class ResponseCurveLCComponent : VisualElement
 
     }
 
-    internal void UpdateUi(ResponseCurve responseCurve)
+    internal void UpdateUi(ResponseCurve responseCurve, bool showSelection = true)
     {
         this.responseCurve = responseCurve;
+
+        if (showSelection)
+        {
+            header.Add(curveDropdown);
+            curveDropdown.value = responseCurve.Name;
+
+            InitCurveDropdown();
+            curveDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
+            {
+                if (evt.newValue == null) return;
+                ChangeResponseCurve(evt.newValue);
+            });
+        }
+        else
+        {
+            curveDropdown.SetEnabled(false);
+            curveDropdown.style.flexGrow = 0;
+        }
 
         responseCurveDisposables.Clear();
         responseCurve.OnFunctionsChanged
@@ -149,7 +151,8 @@ internal class ResponseCurveLCComponent : VisualElement
             if (responseCurve.Segments.Count > funcitionIndex)
             {
                 var segmentParam = responseCurve.Segments[funcitionIndex];
-                var paramComponent = new ParameterComponent(segmentParam);
+                var paramComponent = new ParameterComponent();
+                paramComponent.UpdateUi(segmentParam);
                 segmentParam
                     .OnValueChange
                     .Subscribe(_ => ReDrawChart())

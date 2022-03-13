@@ -25,6 +25,8 @@ internal class UAIComponent : MainWindowComponent
         Body.Add(root);
 
         bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
+        Add(bucketCollection);
+        
         var scorerContainer = root.Q<VisualElement>("ScorersContainer");
         decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
         scorerContainer.Add(decisionDropdown);
@@ -36,14 +38,14 @@ internal class UAIComponent : MainWindowComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
-        var ai = model as Ai;
-        if (ai == null)
+        aiModel = model as Ai;
+        if (aiModel == null)
         {
             bucketCollection.SetElements(new ReactiveList<Bucket>());
         }
         else
         {
-            bucketCollection.SetElements(ai.Buckets);
+            bucketCollection.SetElements(aiModel.Buckets);
         }
         subscriptions.Clear();
 

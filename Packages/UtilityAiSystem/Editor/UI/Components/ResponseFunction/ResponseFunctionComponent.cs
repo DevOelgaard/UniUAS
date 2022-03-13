@@ -64,7 +64,9 @@ internal class ResponseFunctionComponent: VisualElement
         disposables.Clear();
         foreach(var parameter in responseFunction.Parameters)
         {
-            body.Add(new ParameterComponent(parameter));
+            var pC = new ParameterComponent();
+            pC.UpdateUi(parameter);
+            body.Add(pC);
             parameter.OnValueChange
                 .Subscribe(_ => onParametersChanged.OnNext(true))
                 .AddTo(disposables);

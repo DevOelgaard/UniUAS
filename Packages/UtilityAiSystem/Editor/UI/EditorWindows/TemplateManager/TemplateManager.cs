@@ -23,7 +23,7 @@ internal class TemplateManager : EditorWindow
     private Button resetButton;
     private Button saveButton;
     private Button loadButton;
-    //private Button refreshButton;
+
     private Button exportButton;
     private Button importButton;
     private Button saveToPlayButton;
@@ -389,6 +389,8 @@ internal class TemplateManager : EditorWindow
         rightPanel.Clear();
         mainWindowComponent = MainWindowService.GetComponent(model);
         SelectedModel = model;
+
+        mainWindowComponent.UpdateUi(model);
 
         rightPanel.Add(mainWindowComponent);
     }
