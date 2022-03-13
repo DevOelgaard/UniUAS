@@ -16,6 +16,9 @@ internal class TickerModeDesiredFrameRate : TickerMode
     private int allowedTicksPrFrame = int.MaxValue;
     private int lastTickIndex = -1;
     internal float LastFrameRate { get; private set; } = float.MaxValue;
+
+    internal IObservable<float> OnLastFrameRateChanged => onLastFrameRateChanged;
+    private Subject<float> onLastFrameRateChanged = new Subject<float>();
     internal float SampelTimeInSeconds => Convert.ToSingle(Parameters[1].Value);
     internal float TargetFrameRate => Convert.ToSingle(Parameters[0].Value);
     private int debugTickCount = 0;
@@ -47,7 +50,7 @@ internal class TickerModeDesiredFrameRate : TickerMode
         else
         {
             LastFrameRate = (float)framesThisSample / elapsedTime;
-
+            onLastFrameRateChanged.OnNext(LastFrameRate);
 
             if (LastFrameRate < TargetFrameRate)
             {

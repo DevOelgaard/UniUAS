@@ -9,6 +9,7 @@ internal class TickerModeTimeBudget : TickerMode
 {
     private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
     private int lastTickIndex = -1;
+    internal int TickedAgentsThisFrame { get; private set; }
     internal TickerModeTimeBudget() : base(AiTickerMode.TimeBudget, Consts.Description_TickerModeTimeBudget)
     {
     }
@@ -26,16 +27,16 @@ internal class TickerModeTimeBudget : TickerMode
     {
         stopwatch.Reset();
         stopwatch.Start();
-        var tickedAgents = 0;
+        TickedAgentsThisFrame = 0;
         foreach(var agent in agents)
         {
             if (stopwatch.ElapsedMilliseconds >= Convert.ToSingle(Parameters[0].Value))
             {
                 if ((bool)Parameters[1].Value)
                 {
-                    Debug.Log("Breaking tickedAgents: " + tickedAgents + " Elapsed Time: " + stopwatch.ElapsedMilliseconds + "ms");
+                    Debug.Log("Breaking tickedAgents: " + TickedAgentsThisFrame + " Elapsed Time: " + stopwatch.ElapsedMilliseconds + "ms");
                 }
-                if(tickedAgents <= 0)
+                if(TickedAgentsThisFrame <= 0)
                 {
                     Debug.LogWarning("No agents ticked. The time budget may be to low! Consider increasing the Time budget or the performance of the active agents!");
                 }
@@ -52,8 +53,8 @@ internal class TickerModeTimeBudget : TickerMode
             {
                 lastTickIndex++;
             }
-            tickedAgents++;
-            if(tickedAgents >= agents.Count)
+            TickedAgentsThisFrame++;
+            if(TickedAgentsThisFrame >= agents.Count)
             {
                 if ((bool)Parameters[1].Value)
                 {
@@ -61,8 +62,6 @@ internal class TickerModeTimeBudget : TickerMode
                 }
                 break;
             }
-
-
         }
         stopwatch.Stop();
     }

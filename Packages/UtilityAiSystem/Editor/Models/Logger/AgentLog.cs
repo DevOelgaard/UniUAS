@@ -12,6 +12,7 @@ internal class AgentLog
 
     internal static AgentLog GetDebug(IAgent agent)
     {
+        if (agent == null) return null;
         var agentDebug = new AgentLog();
         agentDebug.Name = agent.Model.Name;
         agentDebug.Type = agent.GetType().ToString();

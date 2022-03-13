@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class AgentActionDebug: AiObjectLog
+internal class AgentActionLog: AiObjectLog
 {
     internal List<ParameterLog> Parameters;
 
-    internal static AgentActionDebug GetActionDebug(AgentAction aa)
+    internal static AgentActionLog GetDebug(AgentAction aa)
     {
-        var result = new AgentActionDebug();
+        var result = new AgentActionLog();
+        result.Name = aa.Name;
+        result.Description = aa.Description;
+        result.Type = aa.GetType().ToString();
         result.Parameters = new List<ParameterLog>();
         foreach (var p in aa.Parameters)
         {

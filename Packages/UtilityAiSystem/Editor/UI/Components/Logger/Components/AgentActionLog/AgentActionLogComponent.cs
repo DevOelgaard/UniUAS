@@ -14,9 +14,9 @@ internal class AgentActionLogComponent : AiObjectLogComponent
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
-        var a = aiObjectDebug as AgentActionDebug;
-
+        var a = aiObjectDebug as AgentActionLog;
         var logModels = new List<ILogModel>();
+        NameLabel.text = a.Name;
         foreach (var p in a.Parameters)
         {
             logModels.Add(p);

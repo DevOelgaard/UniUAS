@@ -8,7 +8,7 @@ internal class DecisionLog: AiObjectLog
 {
     internal float Score = 0f;
     internal List<ConsiderationLog> Considerations = new List<ConsiderationLog>();
-    internal List<AgentActionDebug> AgentActions = new List<AgentActionDebug>();
+    internal List<AgentActionLog> AgentActions = new List<AgentActionLog>();
     internal List<ParameterLog> Parameters = new List<ParameterLog>();
 
     internal static DecisionLog GetDebug(Decision decision)
@@ -29,6 +29,12 @@ internal class DecisionLog: AiObjectLog
         foreach(var parameter in decision.Parameters)
         {
             result.Parameters.Add(ParameterLog.GetDebug(parameter));
+        }
+
+        result.AgentActions = new List<AgentActionLog>();
+        foreach(var agentAction in decision.AgentActions.Values)
+        {
+            result.AgentActions.Add(AgentActionLog.GetDebug(agentAction));
         }
 
         return result;

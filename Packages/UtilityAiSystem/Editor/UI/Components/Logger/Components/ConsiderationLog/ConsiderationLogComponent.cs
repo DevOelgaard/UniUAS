@@ -34,12 +34,14 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
         var c = aiObjectDebug as ConsiderationLog;
+        NameLabel.text = c.Name; // Setting it here to avoid Double type
 
         var logModels = new List<ILogModel>();
         foreach(var p in c.Parameters)
         {
             logModels.Add(p);
         }
+
         parameterPool.Display(logModels);
 
         baseScore.UpdateScore(c.BaseScore);

@@ -22,7 +22,7 @@ internal class WindowOpener: EditorWindow
     [MenuItem(Consts.MenuName + Consts.Window_AiTickerManager_Name)]
     public static void OpenAiTickerManager()
     {
-        AiTickerManagerWindow wnd = GetWindow<AiTickerManagerWindow>();
+        AiTickerSettingsWindow wnd = GetWindow<AiTickerSettingsWindow>();
         wnd.titleContent = new GUIContent(Consts.Window_AiTickerManager_Name);
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);

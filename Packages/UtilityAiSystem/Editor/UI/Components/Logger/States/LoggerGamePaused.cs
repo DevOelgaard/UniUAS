@@ -34,10 +34,6 @@ internal class LoggerGamePaused : LoggerState
     internal override void OnExit()
     {
         base.OnExit();
-        if (Agent != null && PlayAi != null)
-        {
-            Agent.Ai = PlayAi;
-        }
     }
 
     internal override void UpdateUi(IAgent agent)
@@ -45,7 +41,7 @@ internal class LoggerGamePaused : LoggerState
         Agent = agent;
         if (agent != null)
         {
-            PlayAi = agent.Ai;
+            InspectAi(CurrentTick);
         }
     }
 
