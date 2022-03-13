@@ -28,7 +28,7 @@ internal class AgentActionComponent : MainWindowComponent
 
     private void SetParameters()
     {
-        Debug.LogWarning("This could be more effective by using a pool");
+        //Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
         foreach (var parameter in agentAction.Parameters)
         {

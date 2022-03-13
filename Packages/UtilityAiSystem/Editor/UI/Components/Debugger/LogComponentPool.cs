@@ -31,11 +31,11 @@ internal class LogComponentPool<T> where T: LogComponent
             {
                 var p = (T)Activator.CreateInstance(typeof(T));
                 logComponents.Add(p);
-                p.Display(elements[i]);
+                p.UpdateUi(elements[i]);
             }
             else
             {
-                logComponents[i].Display(elements[i]);
+                logComponents[i].UpdateUi(elements[i]);
             }
         }
 

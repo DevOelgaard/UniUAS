@@ -31,7 +31,7 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
         parameterPool = new LogComponentPool<ParameterLogComponent>(parametersContianer,1);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiObjectDebug)
+    protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
         var c = aiObjectDebug as ConsiderationLog;
 
@@ -44,7 +44,7 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
 
         baseScore.UpdateScore(c.BaseScore);
         normalizedScore.UpdateScore(c.NormalizedScore);
-        responseCurve.Display(c.ResponseCurve);
+        responseCurve.UpdateUi(c.ResponseCurve);
     }
 
     internal override void Hide()

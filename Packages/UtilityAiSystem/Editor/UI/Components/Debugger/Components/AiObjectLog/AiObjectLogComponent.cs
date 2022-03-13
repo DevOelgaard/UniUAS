@@ -24,15 +24,17 @@ internal abstract class AiObjectLogComponent: LogComponent
         Footer = root.Q<VisualElement>("Footer");
     }
 
-    internal override void Display(ILogModel model)
+    internal override void UpdateUi(ILogModel model)
     {
+        if (model == null) return;
+
         var aiObjectDebug = model as AiObjectLog;
         this.style.display = DisplayStyle.Flex;
         NameLabel.text = aiObjectDebug.Name + " (" + aiObjectDebug.Type + ")";
         DescriptionLabel.text = aiObjectDebug.Description;
-        DisplayInternal(aiObjectDebug);
+        UpdateUiInternal(aiObjectDebug);
     }
-    protected abstract void DisplayInternal(AiObjectLog aiObjectDebug);
+    protected abstract void UpdateUiInternal(AiObjectLog aiObjectDebug);
 
 
 }

@@ -63,10 +63,10 @@ internal class AiLoggerService
 
     public AiLog GetAiDebugLog(IAgent agent, int tick)
     {
-        if (aiModelsByAgent.ContainsKey(agent) && aiModelsByAgent[agent].ContainsKey(tick))
-        {
-            return aiModelsByAgent[agent][tick];
-        }
-        return null;
+        if (agent == null) return null;
+        if (tick == default) return null;
+        if (!aiModelsByAgent.ContainsKey(agent)) return null;
+        if (!aiModelsByAgent[agent].ContainsKey(tick)) return null;
+        return aiModelsByAgent[agent][tick];
     }
 }

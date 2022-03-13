@@ -24,23 +24,41 @@ internal abstract class DebuggerState
     protected Toggle RecordToggle;
 
     protected VisualElement Body;
-    private AgentComponent agentComponent;
-    protected AgentComponent AgentComponent
+
+    private HelpBox helpBox;
+    protected HelpBox HelpBox
     {
         get
         {
-            if (agentComponent == null)
+            if (helpBox == null)
             {
-                agentComponent = Root.Query<AgentComponent>().First();
+                helpBox = Root.Query<HelpBox>().First();
             }
-            return agentComponent;
+            return helpBox;
+        }
+    }
+
+    private AiLogComponent aiLogComponent;
+    protected AiLogComponent AiLogComponent
+    {
+        get
+        {
+            if (aiLogComponent == null)
+            {
+                aiLogComponent = Root.Query<AiLogComponent>().First();
+            }
+            return aiLogComponent;
         }
     }
 
     public IAgent Agent { get; protected set; }
     protected Ai PlayAi;
 
-    protected int CurrentTick => TickSlider.value;
+    protected int CurrentTick
+    {
+        get => DebuggerComponent.CurrentTick;
+        set => DebuggerComponent.CurrentTick = value;
+    }
 
     protected DebuggerState(TemplateContainer root, DebuggerComponent debuggerComponent)
     {
@@ -70,28 +88,34 @@ internal abstract class DebuggerState
         });
     }
 
-    internal virtual void UpdateAgent(IAgent agent)
+    protected virtual void SetCurrentTick(int tick)
+    {
+        CurrentTick = tick;
+        if (CurrentTick > TickSlider.highValue)
+        {
+            TickSlider.highValue = CurrentTick;
+        }
+        TickSlider.SetValueWithoutNotify(tick);
+        TickSlider.label = tick.ToString();
+        InspectAi(tick);
+    }
+
+    internal virtual void UpdateUi(IAgent agent)
     {
         Agent = agent;
         if (agent == null)
         {
-            if (AgentComponent != null)
-            {
-                AgentComponent.style.display = DisplayStyle.None;
-                //AgentComponent.style.opacity = 0;
-            }
         }
         else
         {
-            AgentComponent.style.display = DisplayStyle.Flex;
-
-            //AgentComponent.style.opacity = 1;
-            AgentComponent.UpateUi(agent);
+            AiLogComponent.style.display = DisplayStyle.Flex;
+            var log = AiLoggerService.Instance.GetAiDebugLog(Agent, CurrentTick);
+            AiLogComponent.UpdateUi(log);
         }
     }
 
     internal virtual void OnEnter(IAgent agent) { 
-        UpdateAgent(agent);
+        UpdateUi(agent);
     }
     internal virtual void OnExit() { }
 
@@ -121,12 +145,26 @@ internal abstract class DebuggerState
 
     internal virtual void TickSliderChanged(int newValue)
     {
-        //TickSlider.highValue = AiTicker.Instance.TickCount;
-        TickSlider.label = newValue.ToString();
     }
 
     internal virtual void RecordToggleChanged(bool value)
     {
 
+    }
+
+    protected void InspectAi(int tick)
+    {
+        var aiLog = AiLoggerService.Instance.GetAiDebugLog(Agent, tick);
+
+        if (aiLog == null)
+        {
+            AiLogComponent.Hide();
+            HelpBox.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            HelpBox.style.display = DisplayStyle.None;
+            AiLogComponent.UpdateUi(aiLog);
+        }
     }
 }

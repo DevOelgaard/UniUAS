@@ -35,6 +35,12 @@ internal class DebuggerGameStopped : DebuggerState
         TickSlider.SetEnabled(true);
     }
 
+    internal override void TickSliderChanged(int newValue)
+    {
+        base.TickSliderChanged(newValue);
+        SetCurrentTick(newValue);
+    }
+
     internal override void ToggleStateButtonPressed()
     {
         EditorApplication.isPlaying = true;

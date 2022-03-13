@@ -31,7 +31,7 @@ internal class DecisionLogComponent : AiObjectLogComponent
         agentActionsPool = new LogComponentPool<AgentActionLogComponent>(agentActionsContainer,1);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiLog)
+    protected override void UpdateUiInternal(AiObjectLog aiLog)
     {
         var d = aiLog as DecisionLog;
         var logModels = new List<ILogModel>();

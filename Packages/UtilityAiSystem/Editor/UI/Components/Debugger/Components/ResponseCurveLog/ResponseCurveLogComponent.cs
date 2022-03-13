@@ -17,7 +17,7 @@ internal class ResponseCurveLogComponent : AiObjectLogComponent
         responseFunctionPool = new LogComponentPool<ResponseFunctionLogComponent>(root,1);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiObjectDebug)
+    protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
         var rc = aiObjectDebug as ResponseCurveLog;
         var logModels = new List<ILogModel>();

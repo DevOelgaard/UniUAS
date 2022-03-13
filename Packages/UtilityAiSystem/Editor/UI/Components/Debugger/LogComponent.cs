@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 internal abstract class LogComponent: VisualElement
 {
-    internal abstract void Display(ILogModel element);
+    internal abstract void UpdateUi(ILogModel element);
 
     internal virtual void Hide()
     {

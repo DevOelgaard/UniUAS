@@ -15,7 +15,7 @@ internal class AiLogComponent : AiObjectLogComponent
         bucketPool = new LogComponentPool<BucketLogComponent>(root,1);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiObjectDebug)
+    protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
         var a = (AiLog)aiObjectDebug;
 

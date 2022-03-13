@@ -21,7 +21,7 @@ internal class ResponseFunctionLogComponent: LogComponent
         parameterPool = new LogComponentPool<ParameterLogComponent>(body,2);
     }
 
-    internal override void Display(ILogModel element)
+    internal override void UpdateUi(ILogModel element)
     {
         var rf = element as ResponseFunctionLog;
         typeLabel.text = rf.Type.ToString();

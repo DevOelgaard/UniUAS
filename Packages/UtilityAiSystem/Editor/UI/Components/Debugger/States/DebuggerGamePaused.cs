@@ -11,8 +11,6 @@ using UnityEngine.UIElements;
 internal class DebuggerGamePaused : DebuggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    private bool isDisplayingDebug = false;
-    private GamePausedNestedState state;
     public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent) 
         : base(root, debuggerComponent)
     {
@@ -25,7 +23,6 @@ internal class DebuggerGamePaused : DebuggerState
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
         RecordToggle.text = "Inspect";
-        UpdateState();
     }
 
 
@@ -36,57 +33,42 @@ internal class DebuggerGamePaused : DebuggerState
         {
             Agent.Ai = PlayAi;
         }
-        if (isDisplayingDebug)
-        {
-            Body.Clear();
-            Body.Add(AgentComponent);
-        }
     }
 
-    internal override void UpdateAgent(IAgent agent)
+    internal override void UpdateUi(IAgent agent)
     {
         Agent = agent;
         if (agent != null)
         {
             PlayAi = agent.Ai;
         }
-        state?.UpdateAgent(agent);
     }
 
     internal override void BackLeapButtonPressed()
     {
-        TickSlider.value -= ConstsEditor.Debugger_LeapSize;
+        SetCurrentTick(CurrentTick - ConstsEditor.Debugger_LeapSize);
 
     }
 
     internal override void BackStepButtonPressed()
     {
-        TickSlider.value -= ConstsEditor.Debugger_StepSize;
-
+        SetCurrentTick(CurrentTick - ConstsEditor.Debugger_StepSize);
     }
 
     internal override void ForwardStepButtonPressed()
     {
-        TickSlider.value += ConstsEditor.Debugger_StepSize;
-
+        SetCurrentTick(CurrentTick + ConstsEditor.Debugger_StepSize);
     }
 
     internal override void ForwardLeapButtonPressed()
     {
-        TickSlider.value += ConstsEditor.Debugger_LeapSize;
+        SetCurrentTick(CurrentTick + ConstsEditor.Debugger_LeapSize);
     }
 
     internal override void TickSliderChanged(int newValue)
     {
         base.TickSliderChanged(newValue);
-        state.TickChanged(newValue);
-    }
-
-    private void SetState(GamePausedNestedState state)
-    {
-        this.state?.OnExit();
-        this.state = state;
-        this.state.OnEnter(Agent);
+        SetCurrentTick(newValue);
     }
 
     private void ClearSubscriptions()
@@ -94,23 +76,6 @@ internal class DebuggerGamePaused : DebuggerState
         disposables.Clear();
     }
 
-    internal override void RecordToggleChanged(bool value)
-    {
-        base.RecordToggleChanged(value);
-        UpdateState();
-    }
-
-    private void UpdateState()
-    {
-        if (RecordToggle.value)
-        {
-            SetState(new DebuggerGamePausedLogs(Root, DebuggerComponent));
-        }
-        else
-        {
-            SetState(new DebuggerGamePausedInspect(Root, DebuggerComponent));
-        }
-    }
 
     ~DebuggerGamePaused()
     {

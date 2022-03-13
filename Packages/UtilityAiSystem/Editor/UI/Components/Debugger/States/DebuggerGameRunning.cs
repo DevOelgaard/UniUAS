@@ -25,21 +25,21 @@ internal class DebuggerGameRunning : DebuggerState
         ForwardLeapButton.SetEnabled(false);
         TickSlider.SetEnabled(false);
 
-        TickSlider.value = AiTicker.Instance.TickCount;
         ToggleStateButton.text = "Pause";
         InfoLabelLeft.text = "Game Running";
         AiTicker.Instance
             .OnTickComplete
             .Subscribe(latestTick =>
             {
-                TickSlider.highValue = latestTick;
-                TickSlider.value = latestTick;
                 if (RecordToggle.value)
                 {
                     AiLoggerService.Instance.LogTick(Agent, latestTick);
                 }
+                SetCurrentTick(latestTick);
             })
             .AddTo(disposables);
+
+        SetCurrentTick(AiTicker.Instance.TickCount);
     }
 
     internal override void OnExit()
@@ -49,11 +49,12 @@ internal class DebuggerGameRunning : DebuggerState
         ForwardStepButton.SetEnabled(true);
         ForwardLeapButton.SetEnabled(true);
         TickSlider.SetEnabled(true);
+        disposables.Clear();
     }
 
-    internal override void UpdateAgent(IAgent agent)
+    internal override void UpdateUi(IAgent agent)
     {
-        base.UpdateAgent(agent);
+        base.UpdateUi(agent);
     }
 
     private void ClearSubscriptions()

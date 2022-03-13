@@ -41,7 +41,7 @@ internal class DecisionComponent : MainWindowComponent
 
     private void SetParameters()
     {
-        Debug.LogWarning("This could be more effective by using a pool");
+        //Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
 
         foreach (var parameter in decision.Parameters)

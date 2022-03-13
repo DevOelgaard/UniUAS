@@ -31,7 +31,7 @@ internal class BucketLogComponent : AiObjectLogComponent
         ScoreContainer.Add(score);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiLog)
+    protected override void UpdateUiInternal(AiObjectLog aiLog)
     {
         var b = aiLog as BucketLog;
 

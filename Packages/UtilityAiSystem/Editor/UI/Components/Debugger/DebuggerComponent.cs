@@ -23,14 +23,15 @@ internal class DebuggerComponent : RightPanelComponent<IAgent>
 
     private DebuggerState state;
 
-    private AgentComponent agentComponent;
     private AiLogComponent aiLogComponent;
+    private HelpBox helpBox;
 
     private SliderInt tickSlider;
 
     private bool isPlaying => EditorApplication.isPlaying;
     private bool isPaused => EditorApplication.isPaused;
     private IAgent agent;
+    internal int CurrentTick;
 
     public DebuggerComponent()
     {
@@ -45,13 +46,12 @@ internal class DebuggerComponent : RightPanelComponent<IAgent>
         Body = root.Q<VisualElement>("Body");
 
         tickSlider = root.Q<SliderInt>("Tick-Slider");
+        helpBox = new HelpBox();
+        helpBox.style.display = DisplayStyle.None;
+        Body.Add(helpBox);
 
-
-        agentComponent = new AgentComponent();
         aiLogComponent = new AiLogComponent();
-        Body.Add(agentComponent);
         Body.Add(aiLogComponent);
-        agentComponent.style.display = DisplayStyle.None;
         aiLogComponent.style.display = DisplayStyle.None;
        
 
@@ -99,7 +99,7 @@ internal class DebuggerComponent : RightPanelComponent<IAgent>
     internal override void UpateUi(IAgent element)
     {
         this.agent = element;
-        state.UpdateAgent(agent);
+        state.UpdateUi(agent);
     }
 
     private void UpdateGameState()
@@ -117,8 +117,6 @@ internal class DebuggerComponent : RightPanelComponent<IAgent>
             SetState(new DebuggerGameStopped(root, this));
         }
     }
-
-
 
     ~DebuggerComponent()
     {

@@ -19,7 +19,7 @@ internal class ParameterLogComponent : LogComponent
         parameterLabel = root.Q<Label>("Identifier-Label");
     }
 
-    internal override void Display(ILogModel element)
+    internal override void UpdateUi(ILogModel element)
     {
         var parameter = element as ParameterLog;
         this.style.display = DisplayStyle.Flex;

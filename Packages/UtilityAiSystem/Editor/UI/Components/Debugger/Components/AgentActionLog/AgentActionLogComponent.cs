@@ -12,7 +12,7 @@ internal class AgentActionLogComponent : AiObjectLogComponent
         parameterPool = new LogComponentPool<ParameterLogComponent>(Body,1);
     }
 
-    protected override void DisplayInternal(AiObjectLog aiObjectDebug)
+    protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
         var a = aiObjectDebug as AgentActionDebug;
 
