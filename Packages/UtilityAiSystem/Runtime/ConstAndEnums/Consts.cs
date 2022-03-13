@@ -48,6 +48,7 @@ public static class Consts
     public const string Name_TemplateManager = "Template Manager";
     public const string Name_AiInspector = "Runtime Inspector";
     public const string Name_AiTickerManager = "Ticker Manager";
+    public const string Name_AiLogger = "Logger";
 
 
     // Ticker Modes

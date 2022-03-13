@@ -36,4 +36,13 @@ internal class WindowOpener: EditorWindow
         wnd.Show();
         wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
     }
+
+    [MenuItem(Consts.MenuName + Consts.Name_AiLogger)]
+    internal static void OpenAiLogger()
+    {
+        AiLogWindow wnd = GetWindow<AiLogWindow>();
+        wnd.titleContent = new GUIContent(Consts.Name_TemplateManager);
+        wnd.Show();
+        wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
+    }
 }

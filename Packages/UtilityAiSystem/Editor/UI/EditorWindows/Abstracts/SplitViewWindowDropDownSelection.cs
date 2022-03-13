@@ -26,21 +26,10 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
     private T selectedElement;
 
     private AgentManager agentManager => AgentManager.Instance;
-
-
-    //[MenuItem(Consts.MenuName + Consts.Name_AiInspector)]
-    //public static void Open()
-    //{
-    //    SplitViewWindowDropDownSelection<T> wnd = GetWindow<SplitViewWindowDropDownSelection<T>>();
-    //    wnd.titleContent = new GUIContent(Consts.Name_AiInspector);
-    //    wnd.Show();
-    //    wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
-    //}
-
     public void CreateGUI()
     {
         root = rootVisualElement;
-        var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
+        var treeAsset = AssetDatabaseService.GetVisualTreeAsset("SplitViewWindowDropDownSelection");
         treeAsset.CloneTree(root);
 
         leftContainer = root.Q<VisualElement>("LeftContainer");
@@ -131,12 +120,6 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
             });
 
             buttonContainer.Add(button);
-            //e.OnNameChanged
-            //    .Subscribe(name =>
-            //    {
-            //        button.text = name;
-            //    })
-            //    .AddTo(elementNameUpdatedSub);
         }
     }
 
