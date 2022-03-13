@@ -21,6 +21,10 @@ internal class LoggerGamePaused : LoggerState
     {
         base.OnEnter(agent);
         TickAgentButton.SetEnabled(false);
+        BackLeapButton.SetEnabled(true);
+        BackStepButton.SetEnabled(true);
+        ForwardStepButton.SetEnabled(true);
+        ForwardLeapButton.SetEnabled(true);
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
         RecordToggle.text = "Inspect";
@@ -70,6 +74,15 @@ internal class LoggerGamePaused : LoggerState
     {
         base.TickSliderChanged(newValue);
         SetCurrentTick(newValue);
+    }
+
+    protected override void SetCurrentTick(int tick)
+    {
+        if (tick > CurrentTick)
+        {
+            AiTicker.Instance.TickUntilCount(tick,true);
+        }
+        base.SetCurrentTick(tick);
     }
 
     private void ClearSubscriptions()

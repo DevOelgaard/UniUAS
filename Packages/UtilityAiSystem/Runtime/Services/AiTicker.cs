@@ -10,6 +10,7 @@ using UnityEngine;
 internal class AiTicker: RestoreAble
 {
     private CompositeDisposable disposables = new CompositeDisposable();
+    private IDisposable tickUntillTargetTickSub;
 
     private static AiTicker instance;
     public static AiTicker Instance => instance ??= new AiTicker();
@@ -75,6 +76,26 @@ internal class AiTicker: RestoreAble
         metaData.TickCount = TickCount;
         Settings.TickerMode.Tick(agent, metaData);
         onTickComplete.OnNext(TickCount);
+    }
+
+    internal void TickUntilCount(int targetTickCount, bool pauseOnComplete)
+    {
+        tickUntillTargetTickSub = OnTickComplete
+            .Subscribe(tickCount =>
+            {
+                if (tickCount >= targetTickCount)
+                {
+                    if (pauseOnComplete)
+                    {
+                        EditorApplication.isPaused = true;
+                    }
+                    Stop();
+                    tickUntillTargetTickSub.Dispose();
+                }
+            });
+        Start();
+        EditorApplication.isPaused = false;
+        EditorApplication.isPlaying = true;
     }
 
     internal void TickAis()
