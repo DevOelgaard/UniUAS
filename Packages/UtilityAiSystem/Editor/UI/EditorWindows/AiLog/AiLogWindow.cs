@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 internal class AiLogWindow : SplitViewWindowDropDownSelection<IAgent>
 {
+    private LoggerComponent loggerComponent;
     protected override ReactiveList<IAgent> GetLeftPanelElements(string identifier)
     {
         return AgentManager.Instance.GetAgentsByIdentifier(identifier);
@@ -21,6 +22,13 @@ internal class AiLogWindow : SplitViewWindowDropDownSelection<IAgent>
 
     protected override RightPanelComponent<IAgent> GetRightPanelComponent()
     {
-        return new LoggerComponent();
+        loggerComponent = new LoggerComponent();
+        return loggerComponent;
+    }
+
+    protected override void KeyPressed(KeyDownEvent key)
+    {
+        base.KeyPressed(key);
+        loggerComponent.KeyPressed(key);
     }
 }

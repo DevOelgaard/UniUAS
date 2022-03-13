@@ -11,7 +11,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
 {
     private CompositeDisposable elementNameUpdatedSub = new CompositeDisposable();
 
-    private VisualElement root;
+    protected VisualElement Root;
     private VisualElement leftContainer;
     private VisualElement rightContainer;
     private VisualElement buttonContainer;
@@ -24,19 +24,20 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
     private IDisposable agentTypesChangedSub;
     private IDisposable agentCollectionUpdatedSub;
     private T selectedElement;
-
+    private ReactiveList<T> elements;
+    private int selectedIndex => elements.Values.IndexOf(selectedElement);
     private AgentManager agentManager => AgentManager.Instance;
     public void CreateGUI()
     {
-        root = rootVisualElement;
+        Root = rootVisualElement;
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset("SplitViewWindowDropDownSelection");
-        treeAsset.CloneTree(root);
+        treeAsset.CloneTree(Root);
 
-        leftContainer = root.Q<VisualElement>("LeftContainer");
-        rightContainer = root.Q<VisualElement>("RightContainer");
-        buttonContainer = root.Q<VisualElement>("ButtonContainer");
+        leftContainer = Root.Q<VisualElement>("LeftContainer");
+        rightContainer = Root.Q<VisualElement>("RightContainer");
+        buttonContainer = Root.Q<VisualElement>("ButtonContainer");
 
-        identifierDropdown = root.Q<DropdownField>("AgentType-Dropdown");
+        identifierDropdown = Root.Q<DropdownField>("AgentType-Dropdown");
         rightPanelComponent = GetRightPanelComponent();
         rightContainer.Add(rightPanelComponent);
 
@@ -58,7 +59,43 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
                 }
             });
 
+
+        Root.RegisterCallback<KeyDownEvent>(key =>
+        {
+            if (key.keyCode == KeyCode.UpArrow && key.ctrlKey)
+            {
+                SelectElementAtIndex(0);
+            }
+            else if (key.keyCode == KeyCode.UpArrow)
+            {
+                SelectElementAtIndex(selectedIndex - ConstsEditor.Logger_StepSize);
+            }
+            else if (key.keyCode == KeyCode.DownArrow && key.ctrlKey)
+            {
+                SelectElementAtIndex(selectedIndex + ConstsEditor.Debugger_LeapSize);
+            }
+            else if (key.keyCode == KeyCode.DownArrow)
+            {
+                SelectElementAtIndex(elements.Count - 1);
+            }
+
+            KeyPressed(key);
+        });
     }
+
+    private void SelectElementAtIndex(int index)
+    {
+
+        if (index < 0)
+        {
+            index = 0;
+        } else if (index >= elements.Count)
+        {
+            index = elements.Count - 1;
+        }
+        SelectedElement = elements.Values[index];
+    }
+
 
     protected abstract RightPanelComponent<T> GetRightPanelComponent();
 
@@ -90,7 +127,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
         {
             identifier = identifierDropdown.value;
         }
-        var elements = GetLeftPanelElements(identifier);
+        elements = GetLeftPanelElements(identifier);
 
         elementChangedSub?.Dispose();
         elementChangedSub = elements
@@ -123,9 +160,14 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
         }
     }
 
+    protected virtual void KeyPressed(KeyDownEvent key)
+    {
+
+    }
+
     protected abstract string GetNameFromElement(T element);
 
-    private void SelectedAgentChanged()
+    private void SelectedElementChanged()
     {
         rightPanelComponent.UpateUi(SelectedElement);
     }
@@ -136,7 +178,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
         set
         {
             selectedElement = value;
-            SelectedAgentChanged();
+            SelectedElementChanged();
         }
     }
 

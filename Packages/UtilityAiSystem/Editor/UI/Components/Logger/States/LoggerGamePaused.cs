@@ -14,7 +14,6 @@ internal class LoggerGamePaused : LoggerState
     public LoggerGamePaused(TemplateContainer root, LoggerComponent debuggerComponent) 
         : base(root, debuggerComponent)
     {
-
     }
 
     internal override void OnEnter(IAgent agent)
@@ -28,12 +27,33 @@ internal class LoggerGamePaused : LoggerState
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
         RecordToggle.text = "Inspect";
-    }
 
+    }
 
     internal override void OnExit()
     {
         base.OnExit();
+    }
+
+    internal override void KeyPressed(KeyDownEvent key)
+    {
+        if(key.keyCode == KeyCode.RightArrow && key.ctrlKey)
+        {
+            SetCurrentTick(AiTicker.Instance.TickCount);
+        }
+        else if(key.keyCode == KeyCode.RightArrow)
+        {
+            SetCurrentTick(CurrentTick + ConstsEditor.Logger_StepSize);
+        }
+        else if (key.keyCode == KeyCode.LeftArrow && key.ctrlKey)
+        {
+            SetCurrentTick(0);
+
+        }
+        else if (key.keyCode == KeyCode.LeftArrow)
+        {
+            SetCurrentTick(CurrentTick - ConstsEditor.Logger_StepSize);
+        }
     }
 
     internal override void UpdateUi(IAgent agent)
@@ -53,12 +73,12 @@ internal class LoggerGamePaused : LoggerState
 
     internal override void BackStepButtonPressed()
     {
-        SetCurrentTick(CurrentTick - ConstsEditor.Debugger_StepSize);
+        SetCurrentTick(CurrentTick - ConstsEditor.Logger_StepSize);
     }
 
     internal override void ForwardStepButtonPressed()
     {
-        SetCurrentTick(CurrentTick + ConstsEditor.Debugger_StepSize);
+        SetCurrentTick(CurrentTick + ConstsEditor.Logger_StepSize);
     }
 
     internal override void ForwardLeapButtonPressed()
@@ -74,7 +94,7 @@ internal class LoggerGamePaused : LoggerState
 
     protected override void SetCurrentTick(int tick)
     {
-        if (tick > CurrentTick)
+        if (tick > AiTicker.Instance.TickCount)
         {
             AiTicker.Instance.TickUntilCount(tick,true);
         }

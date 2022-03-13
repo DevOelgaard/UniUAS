@@ -114,6 +114,11 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         state.UpdateUi(agent);
     }
 
+    internal void KeyPressed(KeyDownEvent key)
+    {
+        state.KeyPressed(key);
+    }
+
     private void UpdateGameState()
     {
         if (isPlaying && !isPaused)

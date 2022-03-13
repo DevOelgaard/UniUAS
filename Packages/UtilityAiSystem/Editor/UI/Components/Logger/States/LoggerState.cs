@@ -165,6 +165,11 @@ internal abstract class LoggerState
 
     }
 
+    internal virtual void KeyPressed(KeyDownEvent key)
+    {
+
+    }
+
     protected void InspectAi(int tick)
     {
         var aiLog = AiLoggerService.Instance.GetAiDebugLog(Agent, tick);
