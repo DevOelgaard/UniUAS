@@ -19,6 +19,6 @@ internal class RunTimeInspector : SplitViewWindowDropDownSelection<IAgent>
 
     protected override RightPanelComponent<IAgent> GetRightPanelComponent()
     {
-        return new DebuggerComponent();
+        return new AgentComponent();
     }
 }

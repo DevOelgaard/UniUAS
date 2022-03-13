@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using System.Linq;
 using MoreLinq;
 
-internal class AgentComponent: VisualElement
+internal class AgentComponent: RightPanelComponent<IAgent>
 {
     private TemplateContainer root;
     private VisualElement body;
@@ -63,10 +63,10 @@ internal class AgentComponent: VisualElement
         footer.Add(applyToAllButton);
     }
 
-    internal void UpdateAgent(IAgent agent)
+    internal override void UpateUi(IAgent element)
     {
-        if (agent == null) return;
-        this.agent = agent;
+        if (element == null) return;
+        this.agent = element;
         agentName.text = agent.Model.Name;
         InitDropdown();
 
@@ -99,4 +99,5 @@ internal class AgentComponent: VisualElement
     {
         aiComponent.UpdateUi(agent.Ai);
     }
+
 }

@@ -86,7 +86,7 @@ internal abstract class DebuggerState
             AgentComponent.style.display = DisplayStyle.Flex;
 
             //AgentComponent.style.opacity = 1;
-            AgentComponent.UpdateAgent(agent);
+            AgentComponent.UpateUi(agent);
         }
     }
 

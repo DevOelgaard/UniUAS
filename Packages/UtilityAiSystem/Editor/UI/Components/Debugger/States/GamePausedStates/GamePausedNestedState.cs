@@ -96,6 +96,6 @@ internal abstract class GamePausedNestedState
     internal virtual void UpdateAgent(IAgent agent)
     {
         Agent = agent;
-        AgentComponent.UpdateAgent(agent);
+        AgentComponent.UpateUi(agent);
     }
 }
