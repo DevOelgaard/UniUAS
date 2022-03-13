@@ -32,7 +32,7 @@ public class FoldableComponent : VisualElement
 
     private void UpdateDisplay()
     {
-        Debug.LogWarning("This may be more effective by hiding and disabling instead of swapping");
+        //Debug.LogWarning("This may be more effective by hiding and disabling instead of swapping");
         Clear();
         Add(GetActiveElement());
     }

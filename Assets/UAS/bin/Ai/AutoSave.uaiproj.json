@@ -181,19 +181,6 @@
           },
           "LastCalculatedUtility": 0.0,
           "FileName": "Bucket"
-        },
-        {
-          "Name": "Default",
-          "Description": null,
-          "Decisions": [],
-          "Considerations": [],
-          "Weight": {
-            "Name": "Weight",
-            "Value": 1.0,
-            "FileName": "Parameter"
-          },
-          "LastCalculatedUtility": 0.0,
-          "FileName": "Bucket"
         }
       ],
       "BucketSelectorName": "Highest Score",

@@ -73,7 +73,7 @@ internal class ConsiderationComponent : MainWindowComponent
 
     private void SetParameters()
     {
-        Debug.LogWarning("This could be more effective by using a pool");
+        //Debug.LogWarning("This could be more effective by using a pool");
         parametersContainer.Clear();
 
         minParamComp.UpdateUi(considerationModel.MinFloat);

@@ -125,7 +125,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     internal void SetElements(ReactiveList<T> elements)
     {
-        Debug.LogWarning("This could be more effective by using a pool");
 
         this.collection = elements;
         collectionUpdatedSub?.Dispose();
@@ -136,6 +135,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     private void UpdateCollection()
     {
+        //Debug.LogWarning("This could be more effective by using a pool");
         elementsBody.Clear();
         listViewSubscriptions.Clear();
         foreach (var element in this.collection.Values)

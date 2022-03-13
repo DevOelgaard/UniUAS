@@ -26,16 +26,6 @@ internal class AiTickerManagerWindow: EditorWindow
 
     private AiTicker aiTicker;
 
-
-    [MenuItem(Consts.MenuName + Consts.Name_AiTickerManager)]
-    public static void Open()
-    {
-        AiTickerManagerWindow wnd = GetWindow<AiTickerManagerWindow>();
-        wnd.titleContent = new GUIContent(Consts.Name_AiTickerManager);
-        wnd.Show();
-        wnd.position = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
-    }
-
     public void CreateGUI()
     {
         root = rootVisualElement;

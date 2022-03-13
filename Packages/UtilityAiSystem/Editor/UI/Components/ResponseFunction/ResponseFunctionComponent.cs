@@ -59,7 +59,7 @@ internal class ResponseFunctionComponent: VisualElement
         this.responseFunction = responseFunction;
         typeDropdown.value = responseFunction.Name;
 
-        Debug.LogWarning("This could be more effective by using a pool");
+        //Debug.LogWarning("This could be more effective by using a pool");
         body.Clear();
         disposables.Clear();
         foreach(var parameter in responseFunction.Parameters)

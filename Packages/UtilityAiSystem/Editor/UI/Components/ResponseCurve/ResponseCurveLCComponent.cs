@@ -117,7 +117,7 @@ internal class ResponseCurveLCComponent : VisualElement
 
     private void UpdateFunctions()
     {
-        Debug.LogWarning("This could be more effective by using a pool");
+        //Debug.LogWarning("This could be more effective by using a pool");
         functionsContainer.Clear();
         funcitonDisposables.Clear();
         foreach (var function in responseCurve.ResponseFunctions)

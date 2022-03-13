@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using UniRx;
 
-internal class DebuggerComponent : VisualElement
+internal class DebuggerComponent : RightPanelComponent<IAgent>
 {
     private CompositeDisposable disposables = new CompositeDisposable();
     
@@ -96,9 +96,9 @@ internal class DebuggerComponent : VisualElement
         this.state.OnEnter(agent);
     }
 
-    internal void UpdateAgent(IAgent agent)
+    internal override void UpateUi(IAgent element)
     {
-        this.agent = agent;
+        this.agent = element;
         state.UpdateAgent(agent);
     }
 
@@ -117,6 +117,8 @@ internal class DebuggerComponent : VisualElement
             SetState(new DebuggerGameStopped(root, this));
         }
     }
+
+
 
     ~DebuggerComponent()
     {

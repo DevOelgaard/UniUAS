@@ -47,14 +47,7 @@ internal class TemplateManager : EditorWindow
         }
     }
 
-    [MenuItem(Consts.MenuName + Consts.Name_TemplateManager)]
-    internal static void ShowExample()
-    {
-        TemplateManager wnd = GetWindow<TemplateManager>();
-        wnd.titleContent = new GUIContent(Consts.Name_TemplateManager);
-        wnd.Show();
-        wnd.position = new Rect(0f, 0f, 1920/3, 1080/2);
-    }
+
 
     internal void CreateGUI()
     {
