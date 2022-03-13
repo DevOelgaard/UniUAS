@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-internal class DebuggerGameStopped : DebuggerState
+internal class LoggerGameStopped : LoggerState
 {
-    public DebuggerGameStopped(TemplateContainer root, DebuggerComponent debuggerComponent)
+    public LoggerGameStopped(TemplateContainer root, LoggerComponent debuggerComponent)
         : base(root, debuggerComponent)
     {
     }
@@ -21,6 +21,7 @@ internal class DebuggerGameStopped : DebuggerState
         ForwardStepButton.SetEnabled(false);
         ForwardLeapButton.SetEnabled(false);
         TickSlider.SetEnabled(false);
+        TickAgentButton.SetEnabled(false);
         InfoLabelLeft.text = "Game Stopped";
         ToggleStateButton.text = "Play";
     }

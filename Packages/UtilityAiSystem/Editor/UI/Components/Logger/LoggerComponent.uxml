@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between;">
+        <ui:Label text="Some info text" display-tooltip-when-elided="true" name="InfoLeft-Label" style="max-width: 45px; width: 45px; min-width: 45px; -unity-text-align: upper-left;" />
+        <ui:VisualElement name="ActionsContainer" style="flex-direction: column; flex-grow: 1; justify-content: center; align-items: stretch;">
+            <ui:VisualElement name="ButtonContainer" style="flex-direction: row; justify-content: center;">
+                <ui:Button text="-10" display-tooltip-when-elided="true" name="BackLeapButton" />
+                <ui:Button text="-1" display-tooltip-when-elided="true" name="BackStepButton" />
+                <ui:Button text="Play" display-tooltip-when-elided="true" name="ToggleButton" />
+                <ui:Button text="+1" display-tooltip-when-elided="true" name="ForwardStepButton" />
+                <ui:Button text="+10" display-tooltip-when-elided="true" name="ForwardLeapButton" />
+            </ui:VisualElement>
+            <ui:SliderInt picking-mode="Ignore" label="0" value="42" high-value="100" name="Tick-Slider" style="flex-direction: column; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
+        <ui:Toggle label="Record" name="Record-Toggle" style="flex-direction: column; -unity-text-align: upper-center; align-items: center; justify-content: flex-end; max-height: none; max-width: 45%; width: 45px; min-width: 45px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Body" style="flex-grow: 1;" />
+    <ui:VisualElement name="Footer" />
+</ui:UXML>

@@ -7,10 +7,10 @@ using UnityEngine.UIElements;
 using UniRx;
 using UnityEditor;
 
-internal class DebuggerGameRunning : DebuggerState
+internal class LoggerGameRunning : LoggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    public DebuggerGameRunning(TemplateContainer root, DebuggerComponent debuggerComponent)
+    public LoggerGameRunning(TemplateContainer root, LoggerComponent debuggerComponent)
         : base(root, debuggerComponent)
     {
 
@@ -24,6 +24,7 @@ internal class DebuggerGameRunning : DebuggerState
         ForwardStepButton.SetEnabled(false);
         ForwardLeapButton.SetEnabled(false);
         TickSlider.SetEnabled(false);
+        TickAgentButton.SetEnabled(true);
 
         ToggleStateButton.text = "Pause";
         InfoLabelLeft.text = "Game Running";
@@ -62,7 +63,7 @@ internal class DebuggerGameRunning : DebuggerState
         disposables.Clear();
     }
 
-    ~DebuggerGameRunning()
+    ~LoggerGameRunning()
     {
         ClearSubscriptions();
     }

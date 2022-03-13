@@ -21,6 +21,6 @@ internal class AiLogWindow : SplitViewWindowDropDownSelection<IAgent>
 
     protected override RightPanelComponent<IAgent> GetRightPanelComponent()
     {
-        return new DebuggerComponent();
+        return new LoggerComponent();
     }
 }

@@ -8,10 +8,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-internal class DebuggerGamePaused : DebuggerState
+internal class LoggerGamePaused : LoggerState
 {
     private CompositeDisposable disposables = new CompositeDisposable();
-    public DebuggerGamePaused(TemplateContainer root, DebuggerComponent debuggerComponent) 
+    public LoggerGamePaused(TemplateContainer root, LoggerComponent debuggerComponent) 
         : base(root, debuggerComponent)
     {
 
@@ -20,6 +20,7 @@ internal class DebuggerGamePaused : DebuggerState
     internal override void OnEnter(IAgent agent)
     {
         base.OnEnter(agent);
+        TickAgentButton.SetEnabled(false);
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
         RecordToggle.text = "Inspect";
@@ -77,7 +78,7 @@ internal class DebuggerGamePaused : DebuggerState
     }
 
 
-    ~DebuggerGamePaused()
+    ~LoggerGamePaused()
     {
         ClearSubscriptions();
     }

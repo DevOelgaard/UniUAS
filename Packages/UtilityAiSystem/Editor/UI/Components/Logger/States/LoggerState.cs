@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-internal abstract class DebuggerState
+internal abstract class LoggerState
 {
-    protected DebuggerComponent DebuggerComponent;
+    protected LoggerComponent DebuggerComponent;
     protected TemplateContainer Root;
 
     protected Label InfoLabelLeft;
@@ -18,6 +18,19 @@ internal abstract class DebuggerState
     protected Button ToggleStateButton;
     protected Button ForwardStepButton;
     protected Button ForwardLeapButton;
+
+    private Button tickAgentButton;
+    protected Button TickAgentButton
+    {
+        get
+        {
+            if (tickAgentButton == null)
+            {
+                tickAgentButton = Root.Query<Button>(ConstsEditor.Button_TickAgent_Name);
+            }
+            return tickAgentButton;
+        }
+    }
 
     protected SliderInt TickSlider;
 
@@ -60,7 +73,7 @@ internal abstract class DebuggerState
         set => DebuggerComponent.CurrentTick = value;
     }
 
-    protected DebuggerState(TemplateContainer root, DebuggerComponent debuggerComponent)
+    protected LoggerState(TemplateContainer root, LoggerComponent debuggerComponent)
     {
         DebuggerComponent = debuggerComponent;
         this.Root = root;
