@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.UIElements;
 using UniRx;
 
-internal class BucketComponent : MainWindowComponent
+internal class BucketComponent : AiObjectComponent 
 {
     private CompositeDisposable disposables = new CompositeDisposable();
     private TemplateContainer root;

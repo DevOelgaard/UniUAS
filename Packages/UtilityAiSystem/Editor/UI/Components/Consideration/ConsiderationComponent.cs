@@ -9,7 +9,7 @@ using UniRx;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-internal class ConsiderationComponent : MainWindowComponent
+internal class ConsiderationComponent : AiObjectComponent 
 {
     private CompositeDisposable minMaxSubs = new CompositeDisposable();
     private TemplateContainer root;

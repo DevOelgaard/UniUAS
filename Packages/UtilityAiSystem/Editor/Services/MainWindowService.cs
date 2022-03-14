@@ -2,7 +2,7 @@
 
 internal class MainWindowService
 {
-    internal static MainWindowComponent GetComponent(AiObjectModel model)
+    internal static AiObjectComponent  GetComponent(AiObjectModel model)
     {
         var type = model.GetType();
         if (type == typeof(Ai))

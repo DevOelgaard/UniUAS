@@ -7,7 +7,7 @@ using System.Linq;
 using UniRx;
 using System;
 
-internal abstract class MainWindowComponent: VisualElement
+internal abstract class AiObjectComponent : VisualElement
 {
     protected CompositeDisposable modelInfoChangedDisposable = new CompositeDisposable();
 
@@ -20,12 +20,14 @@ internal abstract class MainWindowComponent: VisualElement
     protected VisualElement Footer;
     protected InfoComponent InfoComponent;
     protected Button SaveToTemplate;
+    protected HelpBox HelpBox;
+    protected VisualElement HelpBoxContainer;
 
     internal List<ScoreComponent> ScoreComponents = new List<ScoreComponent>();
 
-    protected MainWindowComponent()
+    protected AiObjectComponent ()
     {
-        var root = AssetDatabaseService.GetTemplateContainer(typeof(MainWindowComponent).FullName);
+        var root = AssetDatabaseService.GetTemplateContainer(typeof(AiObjectComponent ).FullName);
         Add(root);
         nameTextField = this.Q<TextField>("Name-TextField");
         nameTextField.RegisterCallback<ChangeEvent<string>>(evt =>
@@ -35,6 +37,10 @@ internal abstract class MainWindowComponent: VisualElement
                 Model.Name = evt.newValue;
             }
         });
+        
+        HelpBoxContainer = root.Q<VisualElement>("HelpBoxContainer");
+        HelpBox = new HelpBox("", HelpBoxMessageType.Info);
+        HelpBoxContainer.Add(HelpBox);
 
         descriptionTextField = root.Q<TextField>("Description-TextField");
         descriptionTextField.RegisterCallback<ChangeEvent<string>>(evt =>
@@ -64,7 +70,16 @@ internal abstract class MainWindowComponent: VisualElement
         Model = model;
         nameTextField.value = model.Name;
         descriptionTextField.value = model.Description;
-        
+
+        if (string.IsNullOrEmpty(model.HelpText))
+        {
+            HelpBox.style.display = DisplayStyle.None;
+        } else
+        {
+            HelpBox.style.display = DisplayStyle.Flex;
+            HelpBox.text = model.HelpText;
+        }
+
         ScoreContainer.Clear();
         ScoreComponents = new List<ScoreComponent>();
         foreach (var scoreModel in model.ScoreModels)
@@ -97,7 +112,7 @@ internal abstract class MainWindowComponent: VisualElement
         AssetDatabase.SaveAssets();
     }
 
-    ~MainWindowComponent()
+    ~AiObjectComponent ()
     {
         ClearSubscriptions();
     }

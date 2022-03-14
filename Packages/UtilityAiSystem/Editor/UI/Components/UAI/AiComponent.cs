@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UniRx;
 using UniRxExtension;
 
-internal class AiComponent : MainWindowComponent
+internal class AiComponent : AiObjectComponent 
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private TemplateContainer root;

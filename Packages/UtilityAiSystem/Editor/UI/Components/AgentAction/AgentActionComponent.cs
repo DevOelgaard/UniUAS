@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-internal class AgentActionComponent : MainWindowComponent
+internal class AgentActionComponent : AiObjectComponent 
 {
     private TemplateContainer root;
     private VisualElement parametersContainer;

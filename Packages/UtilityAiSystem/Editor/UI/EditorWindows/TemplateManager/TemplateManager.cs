@@ -32,7 +32,7 @@ internal class TemplateManager : EditorWindow
     private DropdownField dropDown;
     private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
-    private MainWindowComponent mainWindowComponent;
+    private AiObjectComponent  mainWindowComponent;
     private AiObjectModel selectedModel;
     private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
     private AiObjectModel SelectedModel

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class ResponseCurveMainWindowComponent : MainWindowComponent
+internal class ResponseCurveMainWindowComponent : AiObjectComponent 
 {
     private ResponseCurveLCComponent responseCurveLCComponent;
     public ResponseCurveMainWindowComponent() : base()

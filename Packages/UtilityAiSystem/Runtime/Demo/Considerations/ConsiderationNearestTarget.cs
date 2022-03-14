@@ -11,7 +11,7 @@ internal class ConsiderationNearestTarget : Consideration
     {
         MinFloat.Value = 0f;
         MaxFloat.Value = 1000f;
-        Description = "The parent must set a " + AiContextKey.CurrentTargetGameObject + " for it to evaluate";
+        HelpText = "The parent must set a " + AiContextKey.CurrentTargetGameObject + " for it to evaluate";
     }
 
     protected override float CalculateBaseScore(AiContext context)

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UniRxExtension;
 using UnityEngine;
 
-internal class DecisionComponent : MainWindowComponent
+internal class DecisionComponent : AiObjectComponent 
 {
     private CompositeDisposable disposables = new CompositeDisposable();
 
