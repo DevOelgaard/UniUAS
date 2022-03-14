@@ -11,7 +11,7 @@ internal class AgentComponent: RightPanelComponent<IAgent>
     private VisualElement body;
     private Label agentName;
     private DropdownField aiDropdown;
-    private UAIComponent aiComponent;
+    private AiComponent aiComponent;
     private VisualElement footer;
     private Button tickAgent;
     private Button tickAllButton;
@@ -27,7 +27,7 @@ internal class AgentComponent: RightPanelComponent<IAgent>
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
         footer = root.Q<VisualElement>("Footer");
-        aiComponent = new UAIComponent();
+        aiComponent = new AiComponent();
         body.Add(aiComponent);
 
         uasTemplateService = UASTemplateService.Instance;
@@ -76,10 +76,12 @@ internal class AgentComponent: RightPanelComponent<IAgent>
     private void InitDropdown()
     {
         aiDropdown.label = "AIs";
-        uasTemplateService.LoadPlayMode();
+        uasTemplateService.LoadAutoSave();
         aiDropdown.choices = uasTemplateService
             .GetCollection(Consts.Label_UAIModel)
             .Values
+            .Cast<Ai>()
+            .Where(ai => ai.IsPLayable)
             .Select(x => x.Name)
             .ToList();
 

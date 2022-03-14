@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UniRx;
 using UniRxExtension;
 
-internal class UAIComponent : MainWindowComponent
+internal class AiComponent : MainWindowComponent
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private TemplateContainer root;
@@ -15,18 +15,25 @@ internal class UAIComponent : MainWindowComponent
     private DropdownDescriptionComponent<IUtilityContainerSelector> bucketDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
     private Ai aiModel;
+    private VisualElement collectionsContainer;
+    private VisualElement header;
+    private Toggle playableToggle;
 
     private CollectionComponent<Bucket> bucketCollection;
 
-    internal UAIComponent() : base()
+    internal AiComponent() : base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Body.Clear();
         Body.Add(root);
 
+        collectionsContainer = root.Q<VisualElement>("CollectionsContainer");
+        header = root.Q<VisualElement>("Header");
+        playableToggle = root.Q<Toggle>("Playable-Toggle");
+
         bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
-        Add(bucketCollection);
-        
+        collectionsContainer.Add(bucketCollection);
+
         var scorerContainer = root.Q<VisualElement>("ScorersContainer");
         decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
         scorerContainer.Add(decisionDropdown);
@@ -34,11 +41,19 @@ internal class UAIComponent : MainWindowComponent
         scorerContainer.Add(bucketDropdown);
         utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
         scorerContainer.Add(utilityScorerDropdown);
+
+        playableToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
+        {
+            if (aiModel == null) return;
+            aiModel.IsPLayable = evt.newValue;
+        });
     }
 
     protected override void UpdateInternal(AiObjectModel model)
     {
         aiModel = model as Ai;
+
+        playableToggle.SetValueWithoutNotify(aiModel.IsPLayable);
         if (aiModel == null)
         {
             bucketCollection.SetElements(new ReactiveList<Bucket>());
@@ -85,7 +100,7 @@ internal class UAIComponent : MainWindowComponent
             .AddTo(subscriptions);
     }
 
-    ~UAIComponent()
+    ~AiComponent()
     {
         subscriptions.Clear();
     }

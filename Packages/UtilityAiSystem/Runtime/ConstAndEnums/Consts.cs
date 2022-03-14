@@ -10,8 +10,8 @@ public static class Consts
     internal const string MenuName = "Utility Ai System/";
     internal const string Path_MainFolder = "Assets/UAS/bin/";
     internal const string File_TickerSettings = Path_MainFolder + "Settings/TickerSettings" + "." + FileExtension_TickerSettings;
-    internal const string File_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
-    internal const string File_UASTemplateServicelAutoSave = Path_MainFolder + "Ai/AutoSave" + "." + FileExtension_UasTemplateCollection;
+    //internal const string File_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
+    internal const string File_UASTemplateServicel_AutoSave = Path_MainFolder + "Ai/AutoSave" + "." + FileExtension_UasTemplateCollection;
 
     internal const string File_MainSavePath = Path_MainFolder + "Persistence/";
 

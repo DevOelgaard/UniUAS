@@ -7,7 +7,7 @@ internal class MainWindowService
         var type = model.GetType();
         if (type == typeof(Ai))
         {
-            return new UAIComponent();
+            return new AiComponent();
         }
         else if (type == typeof(Bucket))
         {

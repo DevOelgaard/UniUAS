@@ -26,9 +26,7 @@ internal class TemplateManager : EditorWindow
 
     private Button exportButton;
     private Button importButton;
-    private Button saveToPlayButton;
     private Button restoreButton;
-    private Button playModeButton;
     private PopupField<string> addElementPopup;
     private List<string> dropDownChoices;
     private DropdownField dropDown;
@@ -51,7 +49,7 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicelAutoSave);
+        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave);
         if (state != null)
         {
             uASTemplateService.Restore(state);
@@ -146,26 +144,16 @@ internal class TemplateManager : EditorWindow
         restoreButton = root.Q<Button>("RestoreButton");
         restoreButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicelAutoSave);
-            if (state == null || state == default)
+            uASTemplateService.LoadAutoSave();
+            UpdateLeftPanel();
+        });
+
+        root.RegisterCallback<KeyUpEvent>(key =>
+        {
+            if (key.keyCode == KeyCode.S && key.ctrlKey)
             {
-                return;
+                uASTemplateService.AutoSave();
             }
-            uASTemplateService.Restore(state);
-            UpdateLeftPanel();
-        });
-
-        saveToPlayButton = root.Q<Button>("SaveToPlayButton");
-        saveToPlayButton.RegisterCallback<MouseUpEvent>(evt =>
-        {
-            persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_PlayAi);
-        });
-
-        playModeButton = root.Q<Button>("PlayModeButton");
-        playModeButton.RegisterCallback<MouseUpEvent>(evt =>
-        {
-            uASTemplateService.LoadPlayMode();
-            UpdateLeftPanel();
         });
 
 
@@ -369,8 +357,6 @@ internal class TemplateManager : EditorWindow
         {
             pair.Value.style.color = Color.gray;
         }
-         
-
     }
 
     private void ModelSelected(AiObjectModel model)
@@ -390,12 +376,13 @@ internal class TemplateManager : EditorWindow
 
     ~TemplateManager()
     {
+        //uASTemplateService.AutoSave();
         ClearSubscriptions();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
-        persistenceAPI.SaveObjectPath(uASTemplateService, Consts.File_UASTemplateServicelAutoSave);
+        uASTemplateService.AutoSave();
         ClearSubscriptions();
     }
 

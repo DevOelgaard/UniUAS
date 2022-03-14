@@ -10,6 +10,7 @@ using UniRx;
 public class Ai: AiObjectModel
 {
     private IDisposable bucketSub;
+    public bool IsPLayable = false;
     private ReactiveListNameSafe<Bucket> buckets = new ReactiveListNameSafe<Bucket>();
     public ReactiveListNameSafe<Bucket> Buckets
     {

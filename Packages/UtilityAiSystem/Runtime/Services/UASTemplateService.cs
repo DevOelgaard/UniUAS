@@ -55,14 +55,14 @@ internal class UASTemplateService: RestoreAble
 
         if (restore)
         {
-            LoadPlayMode();
+            LoadAutoSave();
         }
     }
 
-    internal void LoadPlayMode()
+    internal void LoadAutoSave()
     {
         var perstistAPI = new PersistenceAPI(new JSONPersister());
-        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_PlayAi);
+        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave);
         if (state == null)
         {
             Debug.LogWarning("No playmode found");
@@ -78,6 +78,13 @@ internal class UASTemplateService: RestoreAble
                 Debug.LogWarning("UASTemplateService Restore failed: " + ex);
             }
         }
+    }
+
+    internal void AutoSave()
+    {
+        var perstistAPI = new PersistenceAPI(new JSONPersister());
+        perstistAPI.SaveObjectPath(this, Consts.File_UASTemplateServicel_AutoSave);
+        Debug.Log("Autosave complete");
     }
 
 
@@ -104,9 +111,11 @@ internal class UASTemplateService: RestoreAble
     {
         if (isPLayMode)
         {
-            LoadPlayMode();
+            LoadAutoSave();
         }
-        var aiTemplate = AIs.Values.FirstOrDefault(ai => ai.Name == name) as Ai;
+        var aiTemplate = AIs.Values
+            .Cast<Ai>()
+            .FirstOrDefault(ai => ai.Name == name && ai.IsPLayable);
 
         if (aiTemplate == null)
         {
@@ -114,11 +123,11 @@ internal class UASTemplateService: RestoreAble
             {
                 Debug.LogWarning("Ai: " + name + " not found, returning default Ai");
             }
-            aiTemplate = AIs.Values.First() as Ai;
+            aiTemplate = AIs.Values.Cast<Ai>().First(ai => ai.IsPLayable);
             if (aiTemplate == null)
             {
                 Debug.LogError("No ai found");
-                throw new Exception("AiTemplate not found AiName: " + name);
+                throw new Exception("No default Ai found AiName: " + name + " is the ai playable?");
             }
         }
         return aiTemplate.Clone() as Ai;
