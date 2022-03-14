@@ -17,6 +17,17 @@ internal class Demo_TimeIntensive : AgentAction
 
     public override void OnStart(AiContext context)
     {
+        FreezeXMs(context);
+    }
+
+
+    public override void OnGoing(AiContext context)
+    {
+        FreezeXMs(context);
+    }
+
+    private void FreezeXMs(AiContext context)
+    {
         stopwatch.Reset();
         stopwatch.Start();
         var time = stopwatch.ElapsedMilliseconds;

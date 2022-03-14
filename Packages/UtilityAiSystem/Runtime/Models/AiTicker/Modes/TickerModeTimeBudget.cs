@@ -36,6 +36,7 @@ internal class TickerModeTimeBudget : TickerMode
                 {
                     Debug.Log("Breaking tickedAgents: " + TickedAgentsThisFrame + " Elapsed Time: " + stopwatch.ElapsedMilliseconds + "ms");
                 }
+
                 if(TickedAgentsThisFrame <= 0)
                 {
                     Debug.LogWarning("No agents ticked. The time budget may be to low! Consider increasing the Time budget or the performance of the active agents!");
