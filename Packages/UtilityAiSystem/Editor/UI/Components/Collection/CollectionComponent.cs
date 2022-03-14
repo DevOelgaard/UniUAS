@@ -20,13 +20,13 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private VisualElement tempHeader;
     private PopupField<string> addCopyPopup;
 
-    private Label titleLabel;
+    //private Label titleLabel;
     private ScrollView elementsBody;
 
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
     private VisualElement dropdownContainer;
-    private string title;
+    //private string title;
 
     public CollectionComponent(ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
@@ -38,7 +38,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         this.templates = templates;
 
         sortCollectionButton = root.Q<Button>("SortCollection-Button");
-        this.titleLabel = root.Q<Label>("Elements-Label");
         elementsBody = root.Q<ScrollView>("ElementsBody");
         tempHeader = root.Q<VisualElement>("TempHeader");
         dropdownContainer = root.Q<VisualElement>("DropdownContainer");
@@ -59,8 +58,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
         InitAddCopyPopup();
 
-        title = elementsLabel;
-        this.titleLabel.text = elementsLabel;
+        //title = elementsLabel;
+        //this.titleLabel.text = elementsLabel;
 
         var t = collection.GetType();
         if (t == typeof(ReactiveList<Consideration>))
@@ -166,7 +165,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
             elementsBody.Add(listView);
         }
-        titleLabel.text = title + " (" + collection.Count + ")";
+        //titleLabel.text = title + " (" + collection.Count + ")";
 
     }
 

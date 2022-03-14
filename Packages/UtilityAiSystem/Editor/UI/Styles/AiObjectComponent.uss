@@ -14,6 +14,10 @@ CollectionComponent {
     border-color: rgb(33, 33, 33);*/
 }
 
+TabViewComponent{
+    margin-top: 8px;
+}
+
 #Left {
     width: 80px;
 }
@@ -31,4 +35,9 @@ CollectionComponent {
     border-radius: 0px;
     border-width: 1px;
     border-color: rgb(33, 33, 33);
+}
+
+#Footer {
+    margin: 8px;
+    height: 16px;
 }
