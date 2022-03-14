@@ -6,14 +6,12 @@
             <ui:VisualElement name="Buttons" style="flex-direction: row; flex-grow: 0; height: 24px; flex-wrap: wrap-reverse;">
                 <ui:Button text="Copy" display-tooltip-when-elided="true" name="CopyButton" style="flex-grow: 1;" />
                 <ui:Button text="Delete" display-tooltip-when-elided="true" name="DeleteButton" />
-                <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="flex-grow: 1;" />
-                <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
-                <ui:Button text="Load" display-tooltip-when-elided="true" name="LoadButton" />
+                <ui:Button text="Clear" display-tooltip-when-elided="true" name="ClearButton" style="flex-grow: 1;" />
+                <ui:Button text="Save Project" display-tooltip-when-elided="true" name="SaveProjectButton" />
+                <ui:Button text="Load Project" display-tooltip-when-elided="true" name="LoadProjectButton" />
                 <ui:Button text="Export" display-tooltip-when-elided="true" name="ExportButton" />
                 <ui:Button text="Import" display-tooltip-when-elided="true" name="ImportButton" enable-rich-text="true" />
-                <ui:Button text="Save To Play" display-tooltip-when-elided="true" name="SaveToPlayButton" />
                 <ui:Button text="Restore" display-tooltip-when-elided="true" name="RestoreButton" />
-                <ui:Button text="Play Mode" display-tooltip-when-elided="true" name="PlayModeButton" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="right-panel" />

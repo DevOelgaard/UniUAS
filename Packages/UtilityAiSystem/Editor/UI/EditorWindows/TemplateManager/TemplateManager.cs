@@ -20,9 +20,9 @@ internal class TemplateManager : EditorWindow
     private VisualElement buttonContainer;
     private Button copyButton;
     private Button deleteButton;
-    private Button resetButton;
-    private Button saveButton;
-    private Button loadButton;
+    private Button clearButton;
+    private Button saveProjectButton;
+    private Button loadProjectButton;
 
     private Button exportButton;
     private Button importButton;
@@ -90,24 +90,22 @@ internal class TemplateManager : EditorWindow
             DeleteSelectedElements();
         });
 
-        resetButton = root.Q<Button>("ResetButton");
-        resetButton.RegisterCallback<MouseUpEvent>(evt =>
+        clearButton = root.Q<Button>("ClearButton");
+        clearButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             uASTemplateService.Reset();
             UpdateLeftPanel();
 
         });
 
-        saveButton = root.Q<Button>("SaveButton");
-        saveButton.text = "Save project";
-        saveButton.RegisterCallback<MouseUpEvent>(evt =>
+        saveProjectButton = root.Q<Button>("SaveProjectButton");
+        saveProjectButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             persistenceAPI.SaveObjectPanel(uASTemplateService);
         });
 
-        loadButton = root.Q<Button>("LoadButton");
-        loadButton.text = "Load";
-        loadButton.RegisterCallback<MouseUpEvent>(evt =>
+        loadProjectButton = root.Q<Button>("LoadProjectButton");
+        loadProjectButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             var uasState = persistenceAPI.LoadObjectPanel<UASTemplateServiceState>();
             uASTemplateService.Restore(uasState);
