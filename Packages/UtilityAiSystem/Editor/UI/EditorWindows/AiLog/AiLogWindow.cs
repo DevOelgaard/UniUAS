@@ -10,6 +10,11 @@ using UnityEngine.UIElements;
 internal class AiLogWindow : SplitViewWindowDropDownSelection<IAgent>
 {
     private LoggerComponent loggerComponent;
+
+    public AiLogWindow()
+    {
+    }
+
     protected override ReactiveList<IAgent> GetLeftPanelElements(string identifier)
     {
         return AgentManager.Instance.GetAgentsByIdentifier(identifier);

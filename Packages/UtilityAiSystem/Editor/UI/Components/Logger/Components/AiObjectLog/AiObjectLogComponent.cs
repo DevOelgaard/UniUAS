@@ -22,6 +22,7 @@ internal abstract class AiObjectLogComponent: LogComponent
         ScoreContainer = root.Q<VisualElement>("ScoreContainer");
         Body = root.Q<VisualElement>("Body");
         Footer = root.Q<VisualElement>("Footer");
+        styleSheets.Add(StylesService.GetStyleSheet("Logger"));
     }
 
     internal override void UpdateUi(ILogModel model)

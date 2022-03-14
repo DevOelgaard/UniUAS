@@ -10,9 +10,9 @@ internal class LogComponentPool<T> where T: LogComponent
     private VisualElement root;
     private List<T> logComponents = new List<T>();
 
-    internal LogComponentPool(VisualElement root, int initialPoolSize = 1)
+    internal LogComponentPool(VisualElement r, int initialPoolSize = 1)
     {
-        this.root = root;
+        this.root = r;
         for(var i = 0; i < initialPoolSize; i++)
         {
             var component = (T)Activator.CreateInstance(typeof(T));

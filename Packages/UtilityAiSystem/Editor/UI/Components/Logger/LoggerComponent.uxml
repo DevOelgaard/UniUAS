@@ -14,7 +14,7 @@
             </ui:VisualElement>
             <ui:Toggle label="Record" name="Record-Toggle" style="flex-direction: column; -unity-text-align: upper-center; align-items: center; justify-content: flex-end; max-height: none; max-width: 45%; width: 45px; min-width: 45px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Body" style="flex-grow: 1;" />
+        <ui:ScrollView name="Body" style="flex-grow: 1;" />
         <ui:VisualElement name="Footer" />
     </ui:VisualElement>
 </ui:UXML>
