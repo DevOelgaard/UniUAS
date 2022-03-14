@@ -53,7 +53,7 @@ public abstract class Consideration : AiObjectModel
         Parameters =  new List<Parameter>(GetParameters());
         ScoreModels = new List<ScoreModel>();
         ScoreModels.Add(new ScoreModel("Base", 0f));
-        ScoreModels.Add(new ScoreModel("Normalized", 0f));
+        ScoreModels.Add(new ScoreModel("Score", 0f));
         namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         PerformanceTag = GetPerformanceTag();
 

@@ -23,7 +23,6 @@ internal class BucketComponent : AiObjectComponent
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
 
         weightComponent = new ParameterComponent();
-        ScoreContainer.Add(weightComponent);
         tabView = new TabViewComponent();
         considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
         decisionCollections = new CollectionComponent<Decision>(UASTemplateService.Instance.Decisions, "Decision", "Decisions");
@@ -43,7 +42,8 @@ internal class BucketComponent : AiObjectComponent
 
         considerationsTab.text = "Considerations (" + bucket.Considerations.Count + ")";
         decisionTab.text = "Decisions (" + bucket.Decisions.Count + ")";
-
+        
+        ScoreContainer.Add(weightComponent);
         bucket.Considerations.OnValueChanged
             .Subscribe(list => considerationsTab.text = "Considerations (" + list.Count + ")")
             .AddTo(disposables);

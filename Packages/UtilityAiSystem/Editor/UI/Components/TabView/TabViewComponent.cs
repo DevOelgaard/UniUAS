@@ -20,7 +20,7 @@ internal class TabViewComponent : VisualElement
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
         tabContainer = root.Q<VisualElement>("Tabs");
-        content = root.Q<VisualElement>("Content");
+        content = root.Q<VisualElement>("TabContent");
         selectedStyle = StylesService.GetStyleSheet("ButtonSelected");
     }
 
