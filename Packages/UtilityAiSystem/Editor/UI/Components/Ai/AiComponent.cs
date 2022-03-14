@@ -16,7 +16,6 @@ internal class AiComponent : AiObjectComponent
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
     private Ai aiModel;
     private VisualElement collectionsContainer;
-    private VisualElement header;
     private Toggle playableToggle;
 
     private CollectionComponent<Bucket> bucketCollection;
@@ -28,7 +27,6 @@ internal class AiComponent : AiObjectComponent
         Body.Add(root);
 
         collectionsContainer = root.Q<VisualElement>("CollectionsContainer");
-        header = root.Q<VisualElement>("Header");
         playableToggle = root.Q<Toggle>("Playable-Toggle");
 
         bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
