@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 internal class AgentLogComponent : AiObjectLogComponent
 {
-    private AiLogComponent aiLogComponent;
+    internal AiLogComponent AiLogComponent;
 
     public AgentLogComponent(): base()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Body.Add(root);
-        aiLogComponent = new AiLogComponent();
-        root.Add(aiLogComponent);
+        AiLogComponent = new AiLogComponent();
+        root.Add(AiLogComponent);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectLog)
     {
         var a = aiObjectLog as AgentLog;
-        aiLogComponent.UpdateUi(a.Ai);
+        AiLogComponent.UpdateUi(a.Ai);
+    }
+
+    internal override void SetColor()
+    {
+        AiLogComponent.SetColor();
     }
 }

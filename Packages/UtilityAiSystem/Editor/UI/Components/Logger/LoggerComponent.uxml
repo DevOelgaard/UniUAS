@@ -11,6 +11,7 @@
                     <ui:Button text="+10" display-tooltip-when-elided="true" name="ForwardLeapButton" />
                 </ui:VisualElement>
                 <ui:SliderInt picking-mode="Ignore" label="0" value="42" high-value="100" name="Tick-Slider" style="flex-direction: column; -unity-text-align: upper-center;" />
+                <ui:Toggle label="Color" name="Color-Toggle" value="true" />
             </ui:VisualElement>
             <ui:Toggle label="Record" name="Record-Toggle" style="flex-direction: column; -unity-text-align: upper-center; align-items: center; justify-content: flex-end; max-height: none; max-width: 45%; width: 45px; min-width: 45px;" />
         </ui:VisualElement>

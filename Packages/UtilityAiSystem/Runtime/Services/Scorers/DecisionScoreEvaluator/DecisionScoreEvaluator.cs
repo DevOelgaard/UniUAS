@@ -68,6 +68,10 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
         else
         {
             var bestBucket = BucketSelector.GetBestUtilityContainer(buckets, context);
+            if (bestBucket == null)
+            {
+                throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+            }
             var bestAction = NextActions(bestBucket.Decisions.Values, context);
             if (bestAction == null)
             {

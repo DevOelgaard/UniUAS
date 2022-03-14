@@ -18,6 +18,18 @@ internal abstract class LoggerState
     protected Button ToggleStateButton;
     protected Button ForwardStepButton;
     protected Button ForwardLeapButton;
+    private Toggle colorToggle;
+    protected Toggle ColorToggle
+    {
+        get
+        {
+            if (colorToggle == null)
+            {
+                colorToggle = Root.Q<Toggle>("Color-Toggle");
+            }
+            return colorToggle;
+        }
+    }
 
     private Button tickAgentButton;
     protected Button TickAgentButton
@@ -183,6 +195,10 @@ internal abstract class LoggerState
         {
             HelpBox.style.display = DisplayStyle.None;
             AgentLogComponent.UpdateUi(agentLog);
+            if (ColorToggle.value)
+            {
+                AgentLogComponent.SetColor();
+            }
         }
     }
 }

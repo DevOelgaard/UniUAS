@@ -9,8 +9,8 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
 {
     private VisualElement parametersContianer;
     private VisualElement responseCurveContainer;
-    private ScoreComponent baseScore;
-    private ScoreComponent normalizedScore;
+    private ScoreLogComponent baseScore;
+    private ScoreLogComponent normalizedScore;
     private ResponseCurveLogComponent responseCurve;
     private LogComponentPool<ParameterLogComponent> parameterPool;
     public ConsiderationLogComponent(): base()
@@ -20,9 +20,9 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
 
         parametersContianer = root.Q<VisualElement>("ParametersContainer");
         responseCurveContainer = root.Q<VisualElement>("ResponseCurveContainer");
-        baseScore = new ScoreComponent(new ScoreModel("BaseScore", 0f));
+        baseScore = new ScoreLogComponent("BaseScore", 0.ToString());
         ScoreContainer.Add(baseScore);
-        normalizedScore = new ScoreComponent(new ScoreModel("Normalized", 0f));
+        normalizedScore = new ScoreLogComponent("Normalized", 0.ToString());
         ScoreContainer.Add(normalizedScore);
 
         responseCurve = new ResponseCurveLogComponent();

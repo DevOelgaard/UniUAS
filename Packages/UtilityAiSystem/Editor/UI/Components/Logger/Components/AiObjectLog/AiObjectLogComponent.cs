@@ -12,6 +12,7 @@ internal abstract class AiObjectLogComponent: LogComponent
     protected VisualElement ScoreContainer;
     protected VisualElement Body;
     protected VisualElement Footer;
+    internal AiObjectLog Model;
     public AiObjectLogComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer("AiObjectLogComponent");
@@ -27,15 +28,15 @@ internal abstract class AiObjectLogComponent: LogComponent
 
     internal override void UpdateUi(ILogModel model)
     {
-        if (model == null) return;
-
-        var aiObjectDebug = model as AiObjectLog;
+        if (model == null) 
+            return;
+        Model = model as AiObjectLog;
         this.style.display = DisplayStyle.Flex;
-        NameLabel.text = aiObjectDebug.Name + " (" + aiObjectDebug.Type + ")";
-        DescriptionLabel.text = aiObjectDebug.Description;
-        UpdateUiInternal(aiObjectDebug);
+        NameLabel.text = Model.Name + " (" + Model.Type + ")";
+        DescriptionLabel.text = Model.Description;
+        UpdateUiInternal(Model);
     }
     protected abstract void UpdateUiInternal(AiObjectLog aiObjectDebug);
 
-
+    internal virtual void SetColor() { }
 }

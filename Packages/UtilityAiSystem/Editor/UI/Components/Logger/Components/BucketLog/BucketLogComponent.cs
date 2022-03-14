@@ -9,10 +9,10 @@ internal class BucketLogComponent : AiObjectLogComponent
 {
     private VisualElement considerationsContainer;
     private VisualElement decisionsContainer;
-    private LogComponentPool<ConsiderationLogComponent> considerationPool;
+    private LogComponentPool<ConsiderationLogComponent> considerationsPool;
     private LogComponentPool<DecisionLogComponent> decisionsPool;
-    private ScoreComponent weight;
-    private ScoreComponent score;
+    private ScoreLogComponent weight;
+    private ScoreLogComponent score;
 
     public BucketLogComponent() : base()
     {
@@ -22,12 +22,12 @@ internal class BucketLogComponent : AiObjectLogComponent
         considerationsContainer = root.Q<VisualElement>("ConsiderationsContainer");
         decisionsContainer = root.Q<VisualElement>("DecisionsContainer");
 
-        considerationPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer,3);
+        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer,3);
         decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer,2);
 
-        weight = new ScoreComponent(new ScoreModel("Weight", 0));
+        weight = new ScoreLogComponent("Weight", 0.ToString());
 
-        score = new ScoreComponent(new ScoreModel("Score", 0));
+        score = new ScoreLogComponent("Score", 0.ToString());
         ScoreContainer.Add(score);
     }
 
@@ -42,7 +42,7 @@ internal class BucketLogComponent : AiObjectLogComponent
         {
             logModels.Add(c);
         }
-        considerationPool.Display(logModels);
+        considerationsPool.Display(logModels);
 
         logModels.Clear();
         foreach (var d in b.Decisions)
@@ -57,7 +57,31 @@ internal class BucketLogComponent : AiObjectLogComponent
     internal override void Hide()
     {
         base.Hide();
-        considerationPool.Hide();
+        considerationsPool.Hide();
         decisionsPool.Hide();
+    }
+
+    internal override void SetColor()
+    {
+        base.SetColor();
+
+        var list = new List<KeyValuePair<VisualElement, float>>();
+        foreach (var c in considerationsPool.LogComponents)
+        {
+            if (c.Model == null) continue;
+            var cast = c.Model as ConsiderationLog;
+            list.Add(new KeyValuePair<VisualElement, float>(c, cast.NormalizedScore));
+        }
+        ColorService.SetColor(list);
+
+        list = new List<KeyValuePair<VisualElement, float>>();
+        foreach (var d in decisionsPool.LogComponents)
+        {
+            if (d.Model == null) continue;
+            var cast = d.Model as DecisionLog;
+            list.Add(new KeyValuePair<VisualElement, float>(d, cast.Score));
+            d.SetColor();
+        }
+        ColorService.SetColor(list);
     }
 }

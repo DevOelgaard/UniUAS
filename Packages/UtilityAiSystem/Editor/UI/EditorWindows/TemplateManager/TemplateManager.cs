@@ -372,7 +372,7 @@ internal class TemplateManager : EditorWindow
 
     ~TemplateManager()
     {
-        //uASTemplateService.AutoSave();
+        uASTemplateService.AutoSave();
         ClearSubscriptions();
     }
 

@@ -14,7 +14,7 @@ internal class DecisionLogComponent : AiObjectLogComponent
     private LogComponentPool<ConsiderationLogComponent> considerationsPool;
     private LogComponentPool<AgentActionLogComponent> agentActionsPool;
 
-    private ScoreComponent score;
+    private ScoreLogComponent score;
     public DecisionLogComponent() : base()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
@@ -23,7 +23,7 @@ internal class DecisionLogComponent : AiObjectLogComponent
         considerationsContainer = root.Q<VisualElement>("ConsiderationsContainer");
         agentActionsContainer = root.Q<VisualElement>("AgentActionsContainer");
 
-        score = new ScoreComponent(new ScoreModel("Score", 0));
+        score = new ScoreLogComponent("Score", 0.ToString());
         ScoreContainer.Add(score);
 
         parametersPool = new LogComponentPool<ParameterLogComponent>(parameters);
@@ -64,5 +64,19 @@ internal class DecisionLogComponent : AiObjectLogComponent
         parametersPool.Hide();
         considerationsPool.Hide();
         agentActionsPool.Hide();
+    }
+
+    internal override void SetColor()
+    {
+        base.SetColor();
+
+        var list = new List<KeyValuePair<VisualElement, float>>();
+        foreach (var c in considerationsPool.LogComponents)
+        {
+            if (c.Model == null) continue;
+            var cast = c.Model as ConsiderationLog;
+            list.Add(new KeyValuePair<VisualElement, float>(c, cast.NormalizedScore));
+        }
+        ColorService.SetColor(list);
     }
 }

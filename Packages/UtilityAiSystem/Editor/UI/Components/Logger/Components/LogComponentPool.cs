@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 internal class LogComponentPool<T> where T: LogComponent
 {
     private VisualElement root;
-    private List<T> logComponents = new List<T>();
+    internal List<T> LogComponents = new List<T>();
 
     internal LogComponentPool(VisualElement r, int initialPoolSize = 1)
     {
@@ -16,7 +16,7 @@ internal class LogComponentPool<T> where T: LogComponent
         for(var i = 0; i < initialPoolSize; i++)
         {
             var component = (T)Activator.CreateInstance(typeof(T));
-            logComponents.Add(component);
+            LogComponents.Add(component);
             root.Add(component);
             component.Hide();
         }
@@ -27,21 +27,21 @@ internal class LogComponentPool<T> where T: LogComponent
         root.style.display = DisplayStyle.Flex;
         for (var i = 0; i < elements.Count; i++)
         {
-            if (i >= logComponents.Count)
+            if (i >= LogComponents.Count)
             {
                 var p = (T)Activator.CreateInstance(typeof(T));
-                logComponents.Add(p);
+                LogComponents.Add(p);
                 p.UpdateUi(elements[i]);
             }
             else
             {
-                logComponents[i].UpdateUi(elements[i]);
+                LogComponents[i].UpdateUi(elements[i]);
             }
         }
 
-        for (var i = elements.Count; i < logComponents.Count; i++)
+        for (var i = elements.Count; i < LogComponents.Count; i++)
         {
-            logComponents[i].Hide();
+            LogComponents[i].Hide();
         }
     }
 

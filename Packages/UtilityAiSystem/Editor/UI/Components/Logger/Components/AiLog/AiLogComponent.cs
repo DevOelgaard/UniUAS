@@ -32,4 +32,19 @@ internal class AiLogComponent : AiObjectLogComponent
         base.Hide();
         bucketPool.Hide();
     }
+
+    internal override void SetColor()
+    {
+        base.SetColor();
+
+        var list = new List<KeyValuePair<VisualElement,float>>();
+        foreach(var b in bucketPool.LogComponents)
+        {
+            if (b.Model == null) continue;
+            var cast = b.Model as BucketLog;
+            list.Add(new KeyValuePair<VisualElement, float>(b, cast.Score));
+            b.SetColor();
+        }
+        ColorService.SetColor(list);
+    }
 }

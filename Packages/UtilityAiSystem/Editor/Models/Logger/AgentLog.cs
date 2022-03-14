@@ -13,6 +13,7 @@ internal class AgentLog: AiObjectLog
         if (agent == null) return null;
         var agentDebug = new AgentLog();
         agentDebug.Name = agent.Model.Name;
+        agentDebug.Description = "";
         agentDebug.Type = agent.GetType().ToString();
 
         agentDebug.Ai = AiLog.GetDebug(agent.Ai);
