@@ -3,6 +3,7 @@
     {
       "Name": "Simple Ai With Idle",
       "Description": null,
+      "IsPLayable": true,
       "Buckets": [
         {
           "Name": "Idle",

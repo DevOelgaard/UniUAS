@@ -68,6 +68,7 @@ public class Ai: AiObjectModel
         var state = (UAIModelState)s;
         Name = state.Name;
         Description = state.Description;
+        IsPLayable = state.IsPLayable;
 
         Buckets = new ReactiveListNameSafe<Bucket>();
         foreach(var bS in state.Buckets)
@@ -178,6 +179,7 @@ public class UAIModelState: RestoreState
 {
     public string Name;
     public string Description;
+    public bool IsPLayable;
     public List<BucketState> Buckets = new List<BucketState>();
     public string BucketSelectorName;
     public string DecisionSelectorName;
@@ -191,6 +193,7 @@ public class UAIModelState: RestoreState
     {
         Name = name;
         Description = description;
+        IsPLayable = model.IsPLayable;
         Buckets = new List<BucketState>();
         foreach(var b in buckets)
         {
