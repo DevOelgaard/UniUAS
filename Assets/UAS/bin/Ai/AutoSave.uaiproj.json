@@ -521,16 +521,21 @@
                 "Segments": [],
                 "ResponseFunctions": [
                   {
-                    "Name": "Fixed Value",
+                    "Name": "Linear",
                     "Description": null,
                     "Parameters": [
                       {
-                        "Name": "Return",
-                        "Value": 0.1,
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
                         "FileName": "Parameter"
                       }
                     ],
-                    "FileName": "FixedValueFunction"
+                    "FileName": "LinearFunction"
                   }
                 ],
                 "FileName": "ResponseCurve"
@@ -1100,8 +1105,14 @@
         "MinY": 0.0,
         "MaxY": 1.0,
         "MinX": 0.0,
-        "MaxX": 1.0,
-        "Segments": [],
+        "MaxX": 1000.0,
+        "Segments": [
+          {
+            "Name": " ",
+            "Value": 250.000015,
+            "FileName": "Parameter"
+          }
+        ],
         "ResponseFunctions": [
           {
             "Name": "Linear",
@@ -1119,6 +1130,28 @@
               }
             ],
             "FileName": "LinearFunction"
+          },
+          {
+            "Name": "Logistic",
+            "Description": null,
+            "Parameters": [
+              {
+                "Name": "Max Value",
+                "Value": 0.95,
+                "FileName": "Parameter"
+              },
+              {
+                "Name": "Growth Rate",
+                "Value": 10.0,
+                "FileName": "Parameter"
+              },
+              {
+                "Name": "Midpoint",
+                "Value": 0.5,
+                "FileName": "Parameter"
+              }
+            ],
+            "FileName": "LogisticFunction"
           }
         ],
         "FileName": "ResponseCurve"
@@ -1132,7 +1165,7 @@
       },
       "Max": {
         "Name": "Max",
-        "Value": 1.0,
+        "Value": 1000.0,
         "FileName": "Parameter"
       },
       "PerformanceTag": 2,
@@ -1155,7 +1188,32 @@
       "FileName": "Demo_AgentActionParameter"
     }
   ],
-  "ResponseCurves": [],
+  "ResponseCurves": [
+    {
+      "Name": "Some other",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [],
+      "ResponseFunctions": [
+        {
+          "Name": "Logarithm",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Base",
+              "Value": 4.47,
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LogarithmicFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
   "TestStrign": "",
   "InternalTestString": "",
   "FileName": "UASTemplateService"
