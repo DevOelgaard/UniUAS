@@ -27,6 +27,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
     private ReactiveList<T> elements;
     private int selectedIndex => elements.Values.IndexOf(selectedElement);
     private AgentManager agentManager => AgentManager.Instance;
+    private StyleSheet buttonSelectedStyle;
     public void CreateGUI()
     {
         Root = rootVisualElement;
@@ -38,6 +39,8 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
         buttonContainer = Root.Q<VisualElement>("ButtonContainer");
 
         identifierDropdown = Root.Q<DropdownField>("AgentType-Dropdown");
+        buttonSelectedStyle = StylesService.GetStyleSheet("ButtonSelected");
+
         rightPanelComponent = GetRightPanelComponent();
         rightContainer.Add(rightPanelComponent);
 
@@ -72,11 +75,11 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
             }
             else if (key.keyCode == KeyCode.DownArrow && key.ctrlKey)
             {
-                SelectElementAtIndex(selectedIndex + ConstsEditor.Debugger_LeapSize);
+                SelectElementAtIndex(elements.Count - 1);
             }
             else if (key.keyCode == KeyCode.DownArrow)
             {
-                SelectElementAtIndex(elements.Count - 1);
+                SelectElementAtIndex(selectedIndex + ConstsEditor.Logger_StepSize);
             }
 
             KeyPressed(key);
@@ -170,6 +173,13 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
     private void SelectedElementChanged()
     {
         rightPanelComponent.UpateUi(SelectedElement);
+        if (elements.Count <= 0) return;
+        var buttons = buttonContainer.Query<Button>().ToList();
+        buttons.ForEach(b => b.styleSheets.Remove(buttonSelectedStyle));
+
+        var button = buttonContainer.Query<Button>().AtIndex(selectedIndex);
+        if (button == null) return;
+        button.styleSheets.Add(buttonSelectedStyle);
     }
 
     private T SelectedElement
