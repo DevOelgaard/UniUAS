@@ -14,6 +14,6 @@
                 <ui:Button text="Restore" display-tooltip-when-elided="true" name="RestoreButton" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="right-panel" />
+        <ui:VisualElement name="right-panel" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" />
     </SplitView>
 </ui:UXML>

@@ -16,23 +16,41 @@ internal class DecisionComponent : AiObjectComponent
     private CollectionComponent<Consideration> considerationCollections;
     private CollectionComponent<AgentAction> agentActionCollection;
     private Decision decision;
+
+    private TabViewComponent tabView;
+    private Button considerationsTab;
+    private Button actionsTab;
     internal DecisionComponent(): base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         parametersContainer = root.Q<VisualElement>("Parameters");
 
         considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
-        root.Add(considerationCollections);
-
         agentActionCollection = new CollectionComponent<AgentAction>(UASTemplateService.Instance.AgentActions, "Action", "Actions");
-        root.Add(agentActionCollection);
 
+        tabView = new TabViewComponent();
+        root.Add(tabView);
+        considerationsTab = tabView.AddTabGroup("Considerations", considerationCollections);
+        actionsTab = tabView.AddTabGroup("Actions", agentActionCollection);
         Body.Clear();
         Body.Add(root);
     }
     protected override void UpdateInternal(AiObjectModel model)
     {
-        this.decision = model as Decision;
+        disposables.Clear();
+        decision = model as Decision;
+
+        considerationsTab.text = "Considerations (" + decision.Considerations.Count + ")";
+        actionsTab.text = "Actions (" + decision.AgentActions.Count + ")";
+
+        decision.Considerations.OnValueChanged
+            .Subscribe(list => considerationsTab.text = "Considerations (" + list.Count + ")")
+            .AddTo(disposables);
+
+        decision.AgentActions.OnValueChanged
+            .Subscribe(list => actionsTab.text = "Actions (" + list.Count + ")")
+            .AddTo(disposables);
+
         considerationCollections.SetElements(decision.Considerations);
         agentActionCollection.SetElements(decision.AgentActions);
         SetParameters();

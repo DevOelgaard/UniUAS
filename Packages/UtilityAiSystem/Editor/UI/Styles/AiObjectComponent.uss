@@ -1,0 +1,25 @@
+AiComponent {
+
+}
+
+DropdownDescriptionComponent {
+    margin-right: 8px;
+}
+
+CollectionComponent {
+    margin-top: 8px;
+    margin-left: 12px;
+/*    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgb(33, 33, 33);*/
+}
+
+ListViewComponent {
+    /*color:rebeccapurple;*/
+    margin: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: rgb(33, 33, 33);
+}

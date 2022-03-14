@@ -9,7 +9,7 @@ using UniRxExtension;
 
 internal class WindowOpener: EditorWindow
 {
-    public static Rect WindowPosition = new Rect(0f, 0f, 1920 / 3, 1080 / 2);
+    public static Rect WindowPosition = new Rect(0f, 0f, 1920 / 2, 1080 / 2);
 
     [MenuItem(Consts.MenuName + Consts.Window_AiInspector_Name)]
     public static void OpenRuntimInspector()

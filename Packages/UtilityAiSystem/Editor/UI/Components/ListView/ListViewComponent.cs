@@ -36,6 +36,7 @@ public class ListViewComponent : VisualElement
         upButton = root.Q<Button>("Up-Button");
         downButton = root.Q<Button>("Down-Button");
 
+        root.styleSheets.Add(StylesService.GetStyleSheet("ListViewComponent"));
         FoldableComponent = new FoldableComponent();
         centerContainer.Add(FoldableComponent);
 

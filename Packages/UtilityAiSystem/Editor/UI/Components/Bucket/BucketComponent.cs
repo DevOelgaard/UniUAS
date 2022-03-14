@@ -14,6 +14,9 @@ internal class BucketComponent : AiObjectComponent
     private CollectionComponent<Decision> decisionCollections;
     private Bucket model;
     private ParameterComponent weightComponent;
+    private TabViewComponent tabView;
+    private Button considerationsTab;
+    private Button decisionTab;
 
     internal BucketComponent() : base()
     {
@@ -21,11 +24,13 @@ internal class BucketComponent : AiObjectComponent
 
         weightComponent = new ParameterComponent();
         ScoreContainer.Add(weightComponent);
+        tabView = new TabViewComponent();
         considerationCollections = new CollectionComponent<Consideration>(UASTemplateService.Instance.Considerations, "Consideration", "Considerations");
-        root.Add(considerationCollections);
-        
         decisionCollections = new CollectionComponent<Decision>(UASTemplateService.Instance.Decisions, "Decision", "Decisions");
-        root.Add(decisionCollections);
+
+        considerationsTab = tabView.AddTabGroup("Considerations", considerationCollections);
+        decisionTab = tabView.AddTabGroup("Decisions", decisionCollections);
+        root.Add(tabView);
 
         Body.Clear();
         Body.Add(root);
@@ -34,6 +39,19 @@ internal class BucketComponent : AiObjectComponent
     protected override void UpdateInternal(AiObjectModel model)
     {
         var bucket = model as Bucket;
+        disposables.Clear();
+
+        considerationsTab.text = "Considerations (" + bucket.Considerations.Count + ")";
+        decisionTab.text = "Decisions (" + bucket.Decisions.Count + ")";
+
+        bucket.Considerations.OnValueChanged
+            .Subscribe(list => considerationsTab.text = "Considerations (" + list.Count + ")")
+            .AddTo(disposables);
+
+        bucket.Decisions.OnValueChanged
+            .Subscribe(list => decisionTab.text = "Decisions (" + list.Count + ")")
+            .AddTo(disposables);
+
         considerationCollections.SetElements(bucket.Considerations);
         decisionCollections.SetElements(bucket.Decisions);
         weightComponent.UpdateUi(bucket.Weight);

@@ -20,27 +20,30 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private VisualElement tempHeader;
     private PopupField<string> addCopyPopup;
 
-    private Label elementsLabel;
+    private Label titleLabel;
     private ScrollView elementsBody;
 
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
+    private VisualElement dropdownContainer;
+    private string title;
 
     public CollectionComponent(ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType());
         Add(root);
+        root.styleSheets.Add(StylesService.GetStyleSheet("CollectionComponent"));
 
         this.collection = new ReactiveList<T>();
         this.templates = templates;
 
         sortCollectionButton = root.Q<Button>("SortCollection-Button");
-        this.elementsLabel = root.Q<Label>("Elements-Label");
+        this.titleLabel = root.Q<Label>("Elements-Label");
         elementsBody = root.Q<ScrollView>("ElementsBody");
-        
         tempHeader = root.Q<VisualElement>("TempHeader");
+        dropdownContainer = root.Q<VisualElement>("DropdownContainer");
         addCopyPopup = new PopupField<string>("Add " + tempLabel);
-        tempHeader.Add(addCopyPopup);
+        dropdownContainer.Add(addCopyPopup);
 
         addCopyPopup.RegisterCallback<ChangeEvent<string>>(evt =>
         {
@@ -56,7 +59,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
         InitAddCopyPopup();
 
-        this.elementsLabel.text = elementsLabel;
+        title = elementsLabel;
+        this.titleLabel.text = elementsLabel;
 
         var t = collection.GetType();
         if (t == typeof(ReactiveList<Consideration>))
@@ -162,6 +166,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
             elementsBody.Add(listView);
         }
+        titleLabel.text = title + " (" + collection.Count + ")";
+
     }
 
     private void ClearSubscriptions()

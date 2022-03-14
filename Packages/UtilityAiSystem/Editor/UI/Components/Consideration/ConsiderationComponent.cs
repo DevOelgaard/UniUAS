@@ -27,18 +27,28 @@ internal class ConsiderationComponent : AiObjectComponent
 
     private ResponseCurveLCComponent responseCurveLCComponent;
 
+    private TabViewComponent tabView;
+    private Button responseCurveTab;
+    private Button parametersTab;
+
     internal ConsiderationComponent() : base()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
-        parametersContainer = root.Q<VisualElement>("Parameters");
+        //parametersContainer = root.Q<VisualElement>("Parameters");
+        parametersContainer = new VisualElement();
         curveContainer = root.Q<VisualElement>("Curve");
-        performanceTag = root.Q<EnumField>("PerformanceTag");
-
+        //performanceTag = root.Q<EnumField>("PerformanceTag");
+        performanceTag = new EnumField("Performance");
+        parametersContainer.Add(performanceTag);
         Body.Clear();
         Body.Add(root);
 
+        tabView = new TabViewComponent();
+        root.Add(tabView);
         responseCurveLCComponent = new ResponseCurveLCComponent();
-        curveContainer.Add(responseCurveLCComponent);
+        //curveContainer.Add(responseCurveLCComponent);
+        tabView.AddTabGroup("Parameters", parametersContainer);
+        tabView.AddTabGroup("Response Curve", responseCurveLCComponent);
 
         minParamComp = new ParameterComponent();
         maxParamComp = new ParameterComponent();
@@ -74,7 +84,7 @@ internal class ConsiderationComponent : AiObjectComponent
     private void SetParameters()
     {
         //Debug.LogWarning("This could be more effective by using a pool");
-        parametersContainer.Clear();
+        //parametersContainer.Clear();
 
         minParamComp.UpdateUi(considerationModel.MinFloat);
         maxParamComp.UpdateUi(considerationModel.MaxFloat);
@@ -82,7 +92,11 @@ internal class ConsiderationComponent : AiObjectComponent
         maxField = maxParamComp.field as FloatFieldMinMax;
         minField.Max = Convert.ToSingle(considerationModel.MaxFloat.Value);
         maxField.Min = Convert.ToSingle(considerationModel.MinFloat.Value);
-
+        
+        parametersContainer.Add(performanceTag);
+        parametersContainer.Add(minParamComp);
+        parametersContainer.Add(maxParamComp);
+        
         minMaxSubs.Clear();
         considerationModel.MinFloat
             .OnValueChange

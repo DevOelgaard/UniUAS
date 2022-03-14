@@ -10,6 +10,7 @@ using UniRxExtension;
 internal class AiComponent : AiObjectComponent 
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
+    private IDisposable bucketTabSub;
     private TemplateContainer root;
     private DropdownDescriptionComponent<IUtilityContainerSelector> decisionDropdown;
     private DropdownDescriptionComponent<IUtilityContainerSelector> bucketDropdown;
@@ -18,6 +19,10 @@ internal class AiComponent : AiObjectComponent
     private VisualElement collectionsContainer;
     private Toggle playableToggle;
 
+    private TabViewComponent tabView;
+    private Button bucketTab;
+    private Button settingsTab;
+
     private CollectionComponent<Bucket> bucketCollection;
 
     internal AiComponent() : base()
@@ -25,20 +30,29 @@ internal class AiComponent : AiObjectComponent
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Body.Clear();
         Body.Add(root);
-
+        styleSheets.Add(StylesService.GetStyleSheet("AiObjectComponent"));
         collectionsContainer = root.Q<VisualElement>("CollectionsContainer");
-        playableToggle = root.Q<Toggle>("Playable-Toggle");
+
+        tabView = new TabViewComponent();
+        collectionsContainer.Add(tabView);
 
         bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
-        collectionsContainer.Add(bucketCollection);
 
-        var scorerContainer = root.Q<VisualElement>("ScorersContainer");
+        var settingsContainer = new VisualElement();
+        settingsContainer.style.alignItems = Align.Center;
+        settingsContainer.style.flexDirection = FlexDirection.Row;
+
+        playableToggle = new Toggle("Playable");
+        settingsContainer.Add(playableToggle);
         decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
-        scorerContainer.Add(decisionDropdown);
+        settingsContainer.Add(decisionDropdown);
         bucketDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
-        scorerContainer.Add(bucketDropdown);
+        settingsContainer.Add(bucketDropdown);
         utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
-        scorerContainer.Add(utilityScorerDropdown);
+        settingsContainer.Add(utilityScorerDropdown);
+
+        bucketTab = tabView.AddTabGroup("Buckets", bucketCollection);
+        settingsTab = tabView.AddTabGroup("Settings", settingsContainer);
 
         playableToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
         {
@@ -51,6 +65,12 @@ internal class AiComponent : AiObjectComponent
     {
         aiModel = model as Ai;
 
+        bucketTab.text = "Buckets (" + aiModel.Buckets.Count + ")";
+        bucketTabSub?.Dispose();
+        bucketTabSub = aiModel.Buckets.OnValueChanged
+            .Subscribe(list => bucketTab.text = "Buckets (" + list.Count + ")");
+        
+        
         playableToggle.SetValueWithoutNotify(aiModel.IsPLayable);
         if (aiModel == null)
         {
@@ -100,6 +120,7 @@ internal class AiComponent : AiObjectComponent
 
     ~AiComponent()
     {
+        bucketTabSub?.Dispose();
         subscriptions.Clear();
     }
 }
