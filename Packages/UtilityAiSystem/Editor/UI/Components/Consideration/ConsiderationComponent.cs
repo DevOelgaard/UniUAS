@@ -30,6 +30,8 @@ internal class ConsiderationComponent : AiObjectComponent
     private TabViewComponent tabView;
     private Button responseCurveTab;
     private Button parametersTab;
+    private LineChartButton responseCurveButton;
+    private ResponseCurveWindow responseCurveWindow;
 
     internal ConsiderationComponent() : base()
     {
@@ -45,10 +47,21 @@ internal class ConsiderationComponent : AiObjectComponent
 
         tabView = new TabViewComponent();
         root.Add(tabView);
+
+        responseCurveButton = new LineChartButton();
+        responseCurveButton.RegisterCallback<MouseUpEvent>(evt =>
+        {
+            responseCurveWindow = WindowOpener.OpenResponseCurve();
+            if (considerationModel != null)
+            {
+                responseCurveWindow.UpdateUi(considerationModel.CurrentResponseCurve);
+            }
+        });
+
         responseCurveLCComponent = new ResponseCurveLCComponent();
         //curveContainer.Add(responseCurveLCComponent);
         tabView.AddTabGroup("Parameters", parametersContainer);
-        tabView.AddTabGroup("Response Curve", responseCurveLCComponent);
+        tabView.AddTabGroup("Response Curve", responseCurveButton);
 
         minParamComp = new ParameterComponent();
         maxParamComp = new ParameterComponent();
@@ -78,7 +91,9 @@ internal class ConsiderationComponent : AiObjectComponent
         });
 
         SetParameters();
-        responseCurveLCComponent.UpdateUi(considerationModel.CurrentResponseCurve);
+        responseCurveWindow?.UpdateUi(considerationModel.CurrentResponseCurve);
+        responseCurveButton.UpdateUi(considerationModel.CurrentResponseCurve);
+        //responseCurveLCComponent.UpdateUi(considerationModel.CurrentResponseCurve);
     }
 
     private void SetParameters()

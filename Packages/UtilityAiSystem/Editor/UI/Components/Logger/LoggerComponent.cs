@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEngine;
 using UniRx;
+using UnityEditor.UIElements;
 
 internal class LoggerComponent : RightPanelComponent<IAgent>
 {
@@ -140,3 +141,4 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         disposables.Clear();
     }
 }
+

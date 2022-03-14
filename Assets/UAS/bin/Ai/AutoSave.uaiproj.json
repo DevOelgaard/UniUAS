@@ -89,16 +89,16 @@
                 "Segments": [],
                 "ResponseFunctions": [
                   {
-                    "Name": "Fixed Value",
+                    "Name": "Exponential",
                     "Description": null,
                     "Parameters": [
                       {
-                        "Name": "Return",
-                        "Value": 0.1,
+                        "Name": "Power",
+                        "Value": 1.04,
                         "FileName": "Parameter"
                       }
                     ],
-                    "FileName": "FixedValueFunction"
+                    "FileName": "ExponentialFunction"
                   }
                 ],
                 "FileName": "ResponseCurve"
@@ -1109,7 +1109,7 @@
             "Parameters": [
               {
                 "Name": "a",
-                "Value": 1.0,
+                "Value": 0.91,
                 "FileName": "Parameter"
               },
               {

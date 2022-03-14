@@ -45,8 +45,6 @@ internal class TemplateManager : EditorWindow
         }
     }
 
-
-
     internal void CreateGUI()
     {
         var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave);

@@ -90,6 +90,9 @@ internal class AiTickerSettingsWindow: EditorWindow
         aiTicker.OnTickCountChanged
             .Subscribe(value => tickCount.text = value.ToString())
             .AddTo(disposables);
+
+
+
     }
 
     private void LoadTicker(TickerMode tickerMode)

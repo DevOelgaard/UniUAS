@@ -17,7 +17,7 @@ internal class ResponseCurveLCComponent : VisualElement
 
     private float min => Convert.ToSingle(responseCurve.MinX);
     private float max => Convert.ToSingle(responseCurve.MaxX);
-    private int steps = 1000;
+    private int steps = ConstsEditor.ResponseCurve_Steps;
 
     //private Label nameLabel;
     private Button foldButton;
@@ -39,30 +39,11 @@ internal class ResponseCurveLCComponent : VisualElement
         functionsContainer = root.Q<VisualElement>("FunctionsContainer");
         footer = root.Q<VisualElement>("Footer");
         addFunctionButton = root.Q<Button>("AddFunctionButton");
+
         lineChart = new LineChartComponent();
         curveContainer.Add(lineChart);
 
         curveDropdown = root.Q<DropdownField>("ResponseCurve-Dropdown");
-
-        foldButton.RegisterCallback<MouseUpEvent>(evt =>
-        {
-            lineChart.ToggleSize();
-            if (lineChart.isMinimized)
-            {
-                foldButton.text = "Expand";
-            } else
-            {
-                foldButton.text = "Minimiza";
-            }
-        });
-        if (lineChart.isMinimized)
-        {
-            foldButton.text = "Expand";
-        }
-        else
-        {
-            foldButton.text = "Minimiza";
-        }
 
         addFunctionButton.RegisterCallback<MouseUpEvent>(evt =>
         {
@@ -81,12 +62,12 @@ internal class ResponseCurveLCComponent : VisualElement
         if (showSelection)
         {
             header.Add(curveDropdown);
-            curveDropdown.value = responseCurve.Name;
+            curveDropdown.SetValueWithoutNotify(responseCurve.Name);
 
             InitCurveDropdown();
             curveDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
             {
-                if (evt.newValue == null) return;
+                if (evt.newValue == null || evt.newValue == default) return;
                 ChangeResponseCurve(evt.newValue);
             });
         }

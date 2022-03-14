@@ -7,7 +7,7 @@ using UniRxExtension;
 
 internal class LineChartComponent: IMGUIContainer
 {
-    internal bool isMinimized { get; private set; } = true;
+    internal const bool isMinimized = false;
 
     private float marginLeft = 50f;
     private float marginRight = 50f;
@@ -34,13 +34,6 @@ internal class LineChartComponent: IMGUIContainer
     private float stepCountX = 10f;
     private float stepCountY = 10f;
     private List<Vector2> points = new List<Vector2>();
-
-    private float TESTCalculateY(float x)
-    {
-        var xNormalized = (x - graphMinX) / graphRangeX;
-        var y = 1 * xNormalized + 0;
-        return y;
-    }
 
     public void DrawCurve(List<Vector2> points, float min = 0, float max = 1, int steps = 100, int stepCountX = 10)
     {
@@ -79,27 +72,10 @@ internal class LineChartComponent: IMGUIContainer
             graphWidth = ScreenWidth - marginLeft - marginRight;
             graphOrigon = new Vector3(marginLeft, ScreenHeight - marginBottom, 0);
 
-            //#region TEST
-            //var demoSteps = 150;
-            //var stepSize = graphRangeX / demoSteps;
-            //points = new List<Vector2>();
-            //for (var i = 0; i <= demoSteps; i++)
-            //{
-            //    var x = i * stepSize + graphMinX;
-            //    points.Add(new Vector2(x, TESTCalculateY(x)));
-            //}
-            //#endregion
             DrawBaseGraph();
             
             DrawCurve();
         };
-    }
-
-    public void ToggleSize()
-    {
-        isMinimized = !isMinimized;
-
-        SetSize();
     }
 
     private void SetSize()
@@ -179,3 +155,5 @@ internal class LineChartComponent: IMGUIContainer
         return new Vector3(x,y,0);
     }
 }
+
+

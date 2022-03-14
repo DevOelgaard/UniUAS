@@ -47,4 +47,13 @@ internal class WindowOpener: EditorWindow
         wnd.Show();
         wnd.position = WindowPosition;
     }
+
+    public static ResponseCurveWindow OpenResponseCurve()
+    {
+        ResponseCurveWindow wnd = GetWindow<ResponseCurveWindow>();
+        wnd.titleContent = new GUIContent("Response Curve");
+        wnd.Show();
+        wnd.position = WindowPosition;
+        return wnd;
+    }
 }
