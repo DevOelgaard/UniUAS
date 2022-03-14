@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class AgentLog
+internal class AgentLog: AiObjectLog
 {
     internal AiLog Ai;
-    internal string Name;
-    internal string Type;
 
     internal static AgentLog GetDebug(IAgent agent)
     {

@@ -10,7 +10,7 @@ internal class AiLoggerService
     private static AiLoggerService instance;
     public static AiLoggerService Instance => instance ??= new AiLoggerService();
 
-    private Dictionary<IAgent, Dictionary<int,AiLog>> aiModelsByAgent = new Dictionary<IAgent, Dictionary<int, AiLog>>();
+    private Dictionary<IAgent, Dictionary<int,AgentLog>> agentLogByAgent = new Dictionary<IAgent, Dictionary<int, AgentLog>>();
 
     public IObservable<bool> OnTicksChanged => onTicksChanged;
     private Subject<bool> onTicksChanged = new Subject<bool>();
@@ -24,7 +24,7 @@ internal class AiLoggerService
 
     public void Clear()
     {
-        aiModelsByAgent.Clear();
+        agentLogByAgent.Clear();
         MinTick = int.MaxValue;
         MaxTick = int.MinValue;
         onTicksChanged.OnNext(true);
@@ -32,8 +32,8 @@ internal class AiLoggerService
 
     public void LogTick(IAgent agent, int tick)
     {
-        var aiModel = AgentLog.GetDebug(agent).Ai;
-        if (aiModel == null) return;
+        var agentLog = AgentLog.GetDebug(agent);
+        if (agentLog == null) return;
         if (tick < MinTick)
         {
             MinTick = tick;
@@ -45,29 +45,29 @@ internal class AiLoggerService
             onTicksChanged.OnNext(true);
         }
 
-        if (aiModelsByAgent.ContainsKey(agent))
+        if (agentLogByAgent.ContainsKey(agent))
         {
-            if (aiModelsByAgent[agent].ContainsKey(tick))
+            if (agentLogByAgent[agent].ContainsKey(tick))
             {
-                aiModelsByAgent[agent][tick] = aiModel;
+                agentLogByAgent[agent][tick] = agentLog;
             } else
             {
-                aiModelsByAgent[agent].Add(tick, aiModel);
+                agentLogByAgent[agent].Add(tick, agentLog);
             }
         } else
         {
-            aiModelsByAgent.Add(agent, new Dictionary<int,AiLog>());
-            aiModelsByAgent[agent].Add(tick, aiModel);
+            agentLogByAgent.Add(agent, new Dictionary<int,AgentLog>());
+            agentLogByAgent[agent].Add(tick, agentLog);
         }
     }
 
 
-    public AiLog GetAiDebugLog(IAgent agent, int tick)
+    public AgentLog GetAiDebugLog(IAgent agent, int tick)
     {
         if (agent == null) return null;
         if (tick == default) return null;
-        if (!aiModelsByAgent.ContainsKey(agent)) return null;
-        if (!aiModelsByAgent[agent].ContainsKey(tick)) return null;
-        return aiModelsByAgent[agent][tick];
+        if (!agentLogByAgent.ContainsKey(agent)) return null;
+        if (!agentLogByAgent[agent].ContainsKey(tick)) return null;
+        return agentLogByAgent[agent][tick];
     }
 }

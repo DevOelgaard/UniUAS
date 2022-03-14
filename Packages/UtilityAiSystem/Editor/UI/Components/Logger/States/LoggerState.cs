@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 internal abstract class LoggerState
 {
-    protected LoggerComponent DebuggerComponent;
+    protected LoggerComponent LoggerComponent;
     protected TemplateContainer Root;
 
     protected Label InfoLabelLeft;
@@ -51,16 +51,16 @@ internal abstract class LoggerState
         }
     }
 
-    private AiLogComponent aiLogComponent;
-    protected AiLogComponent AiLogComponent
+    private AgentLogComponent agentLogComponent;
+    protected AgentLogComponent AgentLogComponent
     {
         get
         {
-            if (aiLogComponent == null)
+            if (agentLogComponent == null)
             {
-                aiLogComponent = Root.Query<AiLogComponent>().First();
+                agentLogComponent = Root.Query<AgentLogComponent>().First();
             }
-            return aiLogComponent;
+            return agentLogComponent;
         }
     }
 
@@ -69,13 +69,13 @@ internal abstract class LoggerState
 
     protected int CurrentTick
     {
-        get => DebuggerComponent.CurrentTick;
-        set => DebuggerComponent.CurrentTick = value;
+        get => LoggerComponent.CurrentTick;
+        set => LoggerComponent.CurrentTick = value;
     }
 
     protected LoggerState(TemplateContainer root, LoggerComponent debuggerComponent)
     {
-        DebuggerComponent = debuggerComponent;
+        LoggerComponent = debuggerComponent;
         this.Root = root;
         Init();
     }
@@ -121,9 +121,9 @@ internal abstract class LoggerState
         }
         else
         {
-            AiLogComponent.style.display = DisplayStyle.Flex;
+            AgentLogComponent.style.display = DisplayStyle.Flex;
             var log = AiLoggerService.Instance.GetAiDebugLog(Agent, CurrentTick);
-            AiLogComponent.UpdateUi(log);
+            AgentLogComponent.UpdateUi(log);
         }
     }
 
@@ -172,17 +172,17 @@ internal abstract class LoggerState
 
     protected void InspectAi(int tick)
     {
-        var aiLog = AiLoggerService.Instance.GetAiDebugLog(Agent, tick);
+        var agentLog = AiLoggerService.Instance.GetAiDebugLog(Agent, tick);
 
-        if (aiLog == null)
+        if (agentLog == null)
         {
-            AiLogComponent.Hide();
+            AgentLogComponent.Hide();
             HelpBox.style.display = DisplayStyle.Flex;
         }
         else
         {
             HelpBox.style.display = DisplayStyle.None;
-            AiLogComponent.UpdateUi(aiLog);
+            AgentLogComponent.UpdateUi(agentLog);
         }
     }
 }

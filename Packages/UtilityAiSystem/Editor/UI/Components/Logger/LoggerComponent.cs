@@ -24,7 +24,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
 
     private LoggerState state;
 
-    private AiLogComponent aiLogComponent;
+    private AgentLogComponent agentLogComponent;
     private HelpBox helpBox;
 
     private SliderInt tickSlider;
@@ -52,9 +52,9 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         helpBox.style.display = DisplayStyle.None;
         Body.Add(helpBox);
 
-        aiLogComponent = new AiLogComponent();
-        Body.Add(aiLogComponent);
-        aiLogComponent.style.display = DisplayStyle.None;
+        agentLogComponent = new AgentLogComponent();
+        Body.Add(agentLogComponent);
+        agentLogComponent.style.display = DisplayStyle.None;
 
         tickAgent = new Button();
         tickAgent.text = ConstsEditor.Button_TickAgent_Text;
