@@ -39,17 +39,17 @@ internal class AiComponent : AiObjectComponent
         bucketCollection = new CollectionComponent<Bucket>(UASTemplateService.Instance.Buckets, "Bucket", "Buckets");
 
         var settingsContainer = new VisualElement();
-        settingsContainer.style.alignItems = Align.Center;
-        settingsContainer.style.flexDirection = FlexDirection.Row;
 
         playableToggle = new Toggle("Playable");
-        settingsContainer.Add(playableToggle);
+        playableToggle.name = "Playable-Toggle";
         decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
         settingsContainer.Add(decisionDropdown);
         bucketDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
         settingsContainer.Add(bucketDropdown);
         utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
         settingsContainer.Add(utilityScorerDropdown);
+
+        settingsContainer.name = "SettingsContainer";
 
         bucketTab = tabView.AddTabGroup("Buckets", bucketCollection);
         settingsTab = tabView.AddTabGroup("Settings", settingsContainer);
@@ -64,6 +64,7 @@ internal class AiComponent : AiObjectComponent
     protected override void UpdateInternal(AiObjectModel model)
     {
         aiModel = model as Ai;
+        ScoreContainer.Add(playableToggle);
 
         bucketTab.text = "Buckets (" + aiModel.Buckets.Count + ")";
         bucketTabSub?.Dispose();

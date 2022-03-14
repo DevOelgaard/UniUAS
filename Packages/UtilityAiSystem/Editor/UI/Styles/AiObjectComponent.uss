@@ -17,6 +17,18 @@ CollectionComponent {
 TabViewComponent {
 }
 
+#SettingsContainer {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#SettingsContainer > DropdownDescriptionComponent {
+    margin: 8px;
+    flex-grow: 1;
+    align-items: center;
+}
+
 #Tabs {
     margin-top: 8px;
     margin-bottom: 8px;
