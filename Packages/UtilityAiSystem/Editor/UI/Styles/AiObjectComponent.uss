@@ -14,11 +14,20 @@ CollectionComponent {
     border-color: rgb(33, 33, 33);*/
 }
 
-ListViewComponent {
+#Left {
+    width: 80px;
+}
+
+#Right {
+    width: 35px;
+}
+
+#Center {
     /*color:rebeccapurple;*/
     margin: 2px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 8px;
+    /*padding-top: 8px;
+    padding-bottom: 8px;*/
     border-radius: 0px;
     border-width: 1px;
     border-color: rgb(33, 33, 33);

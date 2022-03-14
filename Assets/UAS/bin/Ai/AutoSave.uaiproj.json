@@ -307,7 +307,13 @@
                 "MaxY": 1.0,
                 "MinX": 0.0,
                 "MaxX": 1000.0,
-                "Segments": [],
+                "Segments": [
+                  {
+                    "Name": " ",
+                    "Value": 500.0,
+                    "FileName": "Parameter"
+                  }
+                ],
                 "ResponseFunctions": [
                   {
                     "Name": "Bool",
@@ -325,6 +331,23 @@
                       }
                     ],
                     "FileName": "BoolFunction"
+                  },
+                  {
+                    "Name": "Linear",
+                    "Description": null,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.8,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "LinearFunction"
                   }
                 ],
                 "FileName": "ResponseCurve"
