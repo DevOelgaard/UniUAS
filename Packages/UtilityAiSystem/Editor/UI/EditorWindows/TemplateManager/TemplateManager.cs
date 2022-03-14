@@ -380,6 +380,7 @@ internal class TemplateManager : EditorWindow
 
     void OnDestroy()
     {
+        WindowOpener.WindowPosition = this.position;
         uASTemplateService.AutoSave();
         ClearSubscriptions();
     }

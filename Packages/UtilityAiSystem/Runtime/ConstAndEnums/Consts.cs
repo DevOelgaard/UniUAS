@@ -47,7 +47,7 @@ public static class Consts
     // Editor Windows
     public const string Window_TemplateManager_Name = "Template Manager";
     public const string Window_AiInspector_Name = "Runtime Inspector";
-    public const string Window_AiTickerManager_Name = "Ticker Settings";
+    public const string Window_AiTickerManager_Name = "Settings";
     public const string Window_Logger_Name = "Logger";
 
 
