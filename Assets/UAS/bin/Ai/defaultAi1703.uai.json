@@ -1,7 +1,8 @@
 {
-  "AIs": [
+  "States": [
     {
-      "Name": "adsfasdfsadfsadf",
+      "$type": "UAIModelState, Devoe.UAS.Runtime",
+      "Name": "Default",
       "Description": null,
       "IsPLayable": true,
       "Buckets": [
@@ -39,21 +40,21 @@
                     "Segments": [],
                     "ResponseFunctions": [
                       {
-                        "Name": "Linear",
+                        "Name": "Bool",
                         "Description": null,
                         "Parameters": [
                           {
-                            "Name": "a",
-                            "Value": 1.0,
+                            "Name": "First Value",
+                            "Value": true,
                             "FileName": "Parameter"
                           },
                           {
-                            "Name": "b",
-                            "Value": 0.0,
+                            "Name": "CutOff",
+                            "Value": 0.5,
                             "FileName": "Parameter"
                           }
                         ],
-                        "FileName": "LinearFunction"
+                        "FileName": "BoolFunction"
                       }
                     ],
                     "FileName": "ResponseCurve"
@@ -94,21 +95,21 @@
                 "Segments": [],
                 "ResponseFunctions": [
                   {
-                    "Name": "Linear",
+                    "Name": "Bool",
                     "Description": null,
                     "Parameters": [
                       {
-                        "Name": "a",
-                        "Value": 1.0,
+                        "Name": "First Value",
+                        "Value": true,
                         "FileName": "Parameter"
                       },
                       {
-                        "Name": "b",
-                        "Value": 0.0,
+                        "Name": "CutOff",
+                        "Value": 0.5,
                         "FileName": "Parameter"
                       }
                     ],
-                    "FileName": "LinearFunction"
+                    "FileName": "BoolFunction"
                   }
                 ],
                 "FileName": "ResponseCurve"
@@ -198,12 +199,6 @@
       "FileName": "Ai"
     }
   ],
-  "Buckets": [],
-  "Decisions": [],
-  "Considerations": [],
-  "AgentActions": [],
-  "ResponseCurves": [],
-  "TestStrign": "",
-  "InternalTestString": "",
-  "FileName": "UASTemplateService"
+  "TypeString": "Ai",
+  "FileName": "RestoreAbleCollection"
 }

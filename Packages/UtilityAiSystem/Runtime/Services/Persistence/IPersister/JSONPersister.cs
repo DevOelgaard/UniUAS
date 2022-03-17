@@ -14,8 +14,14 @@ internal class JSONPersister : IPersister
     {
         try
         {
-            path += Consts.FileExtension_JSON;
+            if (!path.Contains(Consts.FileExtension_JSON))
+            {
+                path += Consts.FileExtension_JSON;
+            }
+
             if (!File.Exists(path)) return default(T);
+
+            
             var json = File.ReadAllText(path);
             var deserialized = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
             {
@@ -25,8 +31,9 @@ internal class JSONPersister : IPersister
         } catch(Exception ex)
         {
             Debug.LogWarning("Loading failed: " + ex.ToString());
+            throw new Exception("Loading failed: ", ex);
+
             return default(T);
-            //throw new Exception("Loading failed: ", ex);
         }
     }
 

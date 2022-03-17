@@ -14,6 +14,8 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
 
     public DecisionScoreEvaluator(UtilityContainerSelector decisionSelector, UtilityContainerSelector bucketSelector)
     {
+        DecisionSelector = decisionSelector;
+        BucketSelector = bucketSelector;
         //if (decisionSelector == null)
         //{
         //    decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_DecisionSelector);

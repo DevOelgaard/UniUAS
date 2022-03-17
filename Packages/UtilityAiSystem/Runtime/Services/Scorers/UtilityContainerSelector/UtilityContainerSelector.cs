@@ -43,6 +43,10 @@ public class UCSState: RestoreState
 {
     public List<ParameterState> Parameters;
 
+    public UCSState()
+    {
+    }
+
     public UCSState(List<Parameter> parameters, UtilityContainerSelector ucs): base(ucs)
     {
         Parameters = new List<ParameterState>();

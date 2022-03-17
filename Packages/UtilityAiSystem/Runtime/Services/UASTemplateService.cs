@@ -62,7 +62,7 @@ internal class UASTemplateService: RestoreAble
     internal void LoadAutoSave()
     {
         var perstistAPI = new PersistenceAPI(new JSONPersister());
-        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave);
+        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave + Consts.FileExtension_JSON);
         if (state == null)
         {
             Debug.LogWarning("No playmode found");
