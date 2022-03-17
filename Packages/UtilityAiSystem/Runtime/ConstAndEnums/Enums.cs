@@ -19,3 +19,9 @@ public enum PerformanceTag
     High = 3,
     Highest = 4,
 }
+
+public enum ParameterEnum
+{
+    None,
+    Tag,
+}

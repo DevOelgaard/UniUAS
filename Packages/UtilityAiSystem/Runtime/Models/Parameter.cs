@@ -19,6 +19,8 @@ public class Parameter: RestoreAble
         }
     }
 
+    public ParameterEnum ParameterEnum;
+
     public IObservable<object> OnValueChange => valueChanged;
     private Subject<object> valueChanged = new Subject<object>();
 
@@ -27,10 +29,11 @@ public class Parameter: RestoreAble
         Name = "";
     }
 
-    public Parameter(string name, object value)
+    public Parameter(string name, object value, ParameterEnum pEnum)
     {
         Name = name;
         Value = value;
+        ParameterEnum = pEnum;
     }
 
     internal override RestoreState GetState()

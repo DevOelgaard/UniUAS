@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UniRx;
+using UnityEngine;
 
 public class ParameterComponent: VisualElement
 {
@@ -55,7 +56,7 @@ public class ParameterComponent: VisualElement
             Add(field);
             this.field = field;
         }
-        else if (t == typeof(string))
+        else if (t == typeof(string) && parameter.ParameterEnum == ParameterEnum.None)
         {
             var field = new TextField(parameter.Name);
             field.value = (string)parameter.Value;
@@ -69,6 +70,20 @@ public class ParameterComponent: VisualElement
             Add(field);
             this.field = field;
 
+        }
+        else if (parameter.ParameterEnum == ParameterEnum.Tag)
+        {
+            var field = new TagField(parameter.Name);
+            field.value = (string)parameter.Value;
+            field.RegisterCallback<ChangeEvent<ParameterEnum>>(evt => parameter.Value = evt.newValue);
+            parameter.OnValueChange
+                .Subscribe(v =>
+                {
+                    field.value = (string)v;
+                })
+                .AddTo(disposables);
+            Add(field);
+            this.field = field;
         }
         else if (t == typeof(long))
         {
@@ -93,6 +108,19 @@ public class ParameterComponent: VisualElement
                 .Subscribe(v =>
                 {
                     field.value = (bool)v;
+                })
+                .AddTo(disposables);
+            Add(field);
+            this.field = field;
+        } else if (t == typeof(Color))
+        {
+            var field = new ColorField(parameter.Name);
+            field.value = (Color)parameter.Value;
+            field.RegisterCallback<ChangeEvent<Color>>(evt => parameter.Value = evt.newValue);
+            parameter.OnValueChange
+                .Subscribe(v =>
+                {
+                    field.value = (Color)v;
                 })
                 .AddTo(disposables);
             Add(field);
