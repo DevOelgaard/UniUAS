@@ -20,12 +20,15 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         }
     }
     private bool PercentageChance => (bool)Parameters[1].Value;
+
+    private float MaxDeviationFromHighest => Convert.ToSingle(Parameters[2].Value);
     public override List<Parameter> GetParameters()
     {
         return new List<Parameter>()
         {
             new Parameter("Number Of Items", 1),
-            new Parameter("Percentage chance", true)
+            new Parameter("Percentage chance", true),
+            new Parameter("Max deviation from highest", 0f)
         };
     }
     public override Bucket GetBestUtilityContainer(List<Bucket> buckets, AiContext context)
@@ -71,26 +74,41 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
 
     private void UpdateList(SortedList<float, UtilityContainer> list, UtilityContainer container)
     {
-        if (container.LastCalculatedUtility <= 0)
+        if (container.LastCalculatedUtility <= 0 )
         {
             return;
         }
+
+        // Return if score is to far from highest score.
+        var highestValid = list.FirstOrDefault().Value;
+        if (highestValid != null)
+        {
+            var minimumAllowedScore = highestValid.LastCalculatedUtility - MaxDeviationFromHighest;
+            if (container.LastCalculatedUtility < minimumAllowedScore)
+            {
+                return;
+            }
+        }
+
         var evaluateIndex = NumberOfItemsToEvaluate - 1;
 
         if (list.Count < NumberOfItemsToEvaluate)
         {
             list.Add(container.LastCalculatedUtility, container);
-        } else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
+        } 
+        else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
             return;
-        } else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
+        } 
+        else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
             var rand = UnityEngine.Random.Range(0, 2);
             if (rand == 0) // Swapping two equally scored containers at random
             {
                 list[evaluateIndex] = container;
             }
-        } else
+        } 
+        else
         {
             list.Add(container.LastCalculatedUtility, container);
         }
