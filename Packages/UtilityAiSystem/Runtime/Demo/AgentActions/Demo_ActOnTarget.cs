@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-internal class ActOnTarget : AgentAction
+internal class Demo_ActOnTarget : AgentAction
 {
     protected override List<Parameter> GetParameters()
     {

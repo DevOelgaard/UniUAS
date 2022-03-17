@@ -29,7 +29,7 @@ public class Parameter: RestoreAble
         Name = "";
     }
 
-    public Parameter(string name, object value, ParameterEnum pEnum)
+    public Parameter(string name, object value, ParameterEnum pEnum = ParameterEnum.None)
     {
         Name = name;
         Value = value;
@@ -45,7 +45,13 @@ public class Parameter: RestoreAble
     {
         var state = (ParameterState)s;
         Name = state.Name;
-        v = state.Value;
+        if(state.ValueType == "UnityEngine.Color")
+        {
+            v = new Color(state.RGBA[0],state.RGBA[1],state.RGBA[2],state.RGBA[3]);
+        } else
+        {
+            v = state.Value;
+        }
     }
 
     internal override void SaveToFile(string path, IPersister persister)
@@ -60,6 +66,8 @@ public class ParameterState: RestoreState
 {
     public string Name;
     public object Value;
+    public string ValueType;
+    public float[] RGBA = new float[4];
 
     public ParameterState(): base()
     {
@@ -68,6 +76,18 @@ public class ParameterState: RestoreState
     public ParameterState(string name, object v, Parameter p): base(p)
     {
         Name = name;
-        this.Value = v;
+        ValueType = v.GetType().ToString();
+        if (v.GetType() == typeof(Color))
+        {
+            var color = (Color)v;
+            RGBA = new float[4];
+            RGBA[0] = color.r;
+            RGBA[1] = color.g;
+            RGBA[2] = color.b;
+            RGBA[3] = color.a;
+        } else
+        {
+            this.Value = v;
+        }
     }
 }

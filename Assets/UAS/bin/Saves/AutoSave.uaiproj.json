@@ -1,86 +1,14 @@
 {
   "AIs": [
     {
-      "Name": "Random Vaule and debug.log",
+      "Name": "Default",
       "Description": null,
-      "IsPLayable": true,
+      "IsPLayable": false,
       "Buckets": [
         {
           "Name": "Default",
           "Description": null,
-          "Decisions": [
-            {
-              "Name": "Default (Decision)",
-              "Description": null,
-              "AgentActions": [
-                {
-                  "Parameters": [
-                    {
-                      "Name": "Output",
-                      "Value": "Agent output",
-                      "FileName": "Parameter"
-                    }
-                  ],
-                  "Name": "Default (Demo_AgentActionParameter)",
-                  "Description": null,
-                  "FileName": "Demo_AgentActionParameter"
-                }
-              ],
-              "Considerations": [
-                {
-                  "Parameters": [],
-                  "ResponseCurveState": {
-                    "Name": "Default",
-                    "Description": null,
-                    "MinY": 0.0,
-                    "MaxY": 1.0,
-                    "MinX": 0.0,
-                    "MaxX": 1.0,
-                    "Segments": [],
-                    "ResponseFunctions": [
-                      {
-                        "Name": "Bool",
-                        "Description": null,
-                        "Parameters": [
-                          {
-                            "Name": "First Value",
-                            "Value": true,
-                            "FileName": "Parameter"
-                          },
-                          {
-                            "Name": "CutOff",
-                            "Value": 0.5,
-                            "FileName": "Parameter"
-                          }
-                        ],
-                        "FileName": "BoolFunction"
-                      }
-                    ],
-                    "FileName": "ResponseCurve"
-                  },
-                  "Name": "Default (Demo_ConsiderationRandomValue)",
-                  "Description": null,
-                  "Min": {
-                    "Name": "Min",
-                    "Value": 0.0,
-                    "FileName": "Parameter"
-                  },
-                  "Max": {
-                    "Name": "Max",
-                    "Value": 1.0,
-                    "FileName": "Parameter"
-                  },
-                  "PerformanceTag": 2,
-                  "BaseScore": 0.0,
-                  "NormalizedScore": 0.0,
-                  "FileName": "Demo_ConsiderationRandomValue"
-                }
-              ],
-              "Parameters": [],
-              "LastCalculatedUtility": 0.0,
-              "FileName": "Decision"
-            }
-          ],
+          "Decisions": [],
           "Considerations": [
             {
               "Parameters": [],
@@ -100,11 +28,25 @@
                       {
                         "Name": "First Value",
                         "Value": true,
+                        "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
                         "FileName": "Parameter"
                       },
                       {
                         "Name": "CutOff",
                         "Value": 0.5,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
                         "FileName": "Parameter"
                       }
                     ],
@@ -118,11 +60,25 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
+                "ValueType": "System.Single",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
                 "FileName": "Parameter"
               },
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
+                "ValueType": "System.Single",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
@@ -134,14 +90,21 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
+            "ValueType": "System.Single",
+            "RGBA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
             "FileName": "Parameter"
           },
           "LastCalculatedUtility": 0.0,
           "FileName": "Bucket"
         }
       ],
-      "CurrentBucketSelectorName": "Random X Highest",
-      "CurrentDecisionSelectorName": "Random X Highest",
+      "CurrentBucketSelectorName": "Highest Score",
+      "CurrentDecisionSelectorName": "Highest Score",
       "BucketSelectors": [
         {
           "Parameters": [],
@@ -151,17 +114,38 @@
           "Parameters": [
             {
               "Name": "Number Of Items",
-              "Value": 4,
+              "Value": 1,
+              "ValueType": "System.Int32",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             },
             {
               "Name": "Percentage chance",
-              "Value": false,
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             },
             {
               "Name": "Max deviation from highest",
-              "Value": -0.14,
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             }
           ],
@@ -178,16 +162,37 @@
             {
               "Name": "Number Of Items",
               "Value": 1,
+              "ValueType": "System.Int32",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             },
             {
               "Name": "Percentage chance",
               "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             },
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
               "FileName": "Parameter"
             }
           ],

@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-internal class Demo_AgentActionParameter : AgentAction
+internal class Demo_DebugLogParameter : AgentAction
 {
     protected override List<Parameter> GetParameters()
     {
-        var result = new List<Parameter>();
-        var p1 = new Parameter("Output", "Agent output");
-        result.Add(p1);
+        return new List<Parameter>()
+        {
+             new Parameter("OnStart", "Agent output"),
+             new Parameter("OnGoing", "Agent output"),
+             new Parameter("OnEnd", "Agent output"),
 
-        return result;
+        };
     }
 
     public override void OnStart(AiContext context)
@@ -26,13 +28,13 @@ internal class Demo_AgentActionParameter : AgentAction
     public override void OnGoing(AiContext context)
     {
         base.OnGoing(context);
-        Debug.Log("Agent: " + context.Agent.Model.Name + " continious tick: " + (string)Parameters[0].Value);
+        Debug.Log("Agent: " + context.Agent.Model.Name + " continious tick: " + (string)Parameters[1].Value);
     }
 
     public override void OnEnd(AiContext context)
     {
         base.OnEnd(context);
 
-        Debug.Log("Agent: " + context.Agent.Model.Name + " GoodBye tick");
+        Debug.Log("Agent: " + context.Agent.Model.Name + " continious tick: " + (string)Parameters[2].Value);
     }
 }

@@ -41,11 +41,14 @@ internal class JSONPersister : IPersister
     {
         try
         {
+            if (!path.Contains(Consts.FileExtension_JSON))
+            {
+                path += Consts.FileExtension_JSON;
+            }
             var toJson = JsonConvert.SerializeObject(o, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             });
-            path += Consts.FileExtension_JSON;
             CreateFile(path);
             File.WriteAllText(path, toJson);
         }
@@ -57,6 +60,10 @@ internal class JSONPersister : IPersister
 
     private void CreateFile(string path)
     {
+        if (!path.Contains(Consts.FileExtension_JSON))
+        {
+            path += Consts.FileExtension_JSON;
+        }
         var directory = Path.GetDirectoryName(path);
         var fileName = Path.GetFileName(path);
         if (!File.Exists(directory))

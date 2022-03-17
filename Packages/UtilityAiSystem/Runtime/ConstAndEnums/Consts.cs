@@ -11,7 +11,7 @@ public static class Consts
     internal const string Path_MainFolder = "Assets/UAS/bin/";
     internal const string File_TickerSettings = Path_MainFolder + "Settings/TickerSettings" + "." + FileExtension_TickerSettings;
     //internal const string File_PlayAi = Path_MainFolder + "Ai/Playable" + "." + FileExtension_UasTemplateCollection;
-    internal const string File_UASTemplateServicel_AutoSave = Path_MainFolder + "Ai/AutoSave" + "." + FileExtension_UasTemplateCollection;
+    internal const string File_UASTemplateServicel_AutoSave = Path_MainFolder + "Saves/AutoSave" + "." + FileExtension_UasTemplateCollection;
 
     internal const string File_MainSavePath = Path_MainFolder + "Persistence/";
 
@@ -76,13 +76,7 @@ public static class Consts
 
     public static readonly string[] FileExtensions =
     {
-        "Ai Objects", "*"+FileExtension_JSON,
-        //"AgentAction", FileExtension_AgentAction,
-        //"Consideration", FileExtension_Consideration,
-        //"Decision", FileExtension_Decision,
-        //"Bucket", FileExtension_Bucket,
-        //"AI", FileExtension_UAI,
-        //"Templates", FileExtension_UasTemplateCollection,
+        "Ai Objects", "*" + FileExtension_JSON,
         "Ticker Settings", FileExtension_TickerSettings,
         "All Files", "*",
     };
