@@ -35,6 +35,10 @@ public static class Consts
     public const string UCS_HighestScore_Name = "Highest Score";
     public const string UCS_HighestScore_Description = "Selects the highest scored object";
 
+    public const string UCS_RandomXHighest_Name = "Random X Highest";
+    public const string UCS_RandomXHighest_Description = "Returns random element among X highest. If X < 1, all valid AiObjects are considered. Can be completely random or relative to score.";
+
+
     public const string Name_USAverageScore = "Average";
     public const string Description_USAverageScore = "Returns the average score of all considerations. Returns 0 if one consideration is 0";
 

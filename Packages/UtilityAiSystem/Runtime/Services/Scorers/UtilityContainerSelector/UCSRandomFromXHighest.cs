@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 internal class UCSRandomFromXHighest : UtilityContainerSelector
 {
-    private int NumberOfItemsToEvaluate => (int)Parameters[0].Value;
+    private int NumberOfItemsToEvaluate
+    {
+        get
+        {
+            if ((int)Parameters[0].Value > 0)
+            {
+                return (int)Parameters[0].Value;
+            } else
+            {
+                return int.MaxValue;
+            }       
+        }
+    }
     private bool PercentageChance => (bool)Parameters[1].Value;
     public override List<Parameter> GetParameters()
     {
