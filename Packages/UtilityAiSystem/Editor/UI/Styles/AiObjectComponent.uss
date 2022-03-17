@@ -40,9 +40,6 @@ TabViewComponent {
     border-radius: 0px;
     border-width: 1px;
     border-color: rgb(90, 90, 90);
-
-    flex-direction: row;
-    align-items: flex-start;
 }
 
 #Left {

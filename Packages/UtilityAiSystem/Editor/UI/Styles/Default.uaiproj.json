@@ -3,7 +3,7 @@
     {
       "Name": "Random Vaule and debug.log",
       "Description": null,
-      "IsPLayable": true,
+      "IsPLayable": false,
       "Buckets": [
         {
           "Name": "Default",
