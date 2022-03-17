@@ -12,11 +12,27 @@ AgentLogComponent {
     margin: 8px;
 }
 
-#Header {
-    margin-top: 4px;
+LoggerComponent > TemplateContainer > VisualElement > #Header {
+    /*margin-top: 4px;*/
+    min-height: 64px;
+    margin: 8px;
+}
+
+LoggerComponent > TemplateContainer > VisualElement > #Body > VisualElement > VisualElement > #unity-content-container {
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*background-color: red;*/
 }
 
 #Body {
     margin-left: 8px;
 
+}
+
+#ActionsContainer{
+    min-height: 64px;
+}
+
+#ActionsContainer > #ButtonContainer{
+    min-height: 24px;
 }

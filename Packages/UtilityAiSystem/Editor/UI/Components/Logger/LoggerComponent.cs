@@ -40,7 +40,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
-
+        root.styleSheets.Add(StylesService.GetStyleSheet("Logger"));
         backLeapButton = root.Q<Button>("BackLeapButton");
         backStepButton = root.Q<Button>("BackStepButton");
         toggleStateButton = root.Q<Button>("ToggleButton");

@@ -32,10 +32,13 @@ internal class LogComponentPool<T> where T: LogComponent
                 var p = (T)Activator.CreateInstance(typeof(T));
                 LogComponents.Add(p);
                 p.UpdateUi(elements[i]);
+                p.style.display = DisplayStyle.Flex;
+                root.Add(p);
             }
             else
             {
                 LogComponents[i].UpdateUi(elements[i]);
+                LogComponents[i].style.display = DisplayStyle.Flex;
             }
         }
 
