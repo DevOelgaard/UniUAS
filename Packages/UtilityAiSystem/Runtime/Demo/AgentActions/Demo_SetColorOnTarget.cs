@@ -16,42 +16,42 @@ internal class Demo_SetColorOnTarget : AgentAction
     {
         return new List<Parameter>()
         {
-            new Parameter("Color OnStart", Color.white),
             new Parameter("Set OnStart", true),
-            new Parameter("Color OnGoing", Color.blue),
+            new Parameter("Color OnStart", Color.white),
             new Parameter("Set OnGoing", true),
-            new Parameter("Color OnEnd", Color.black),
+            new Parameter("Color OnGoing", Color.blue),
             new Parameter("Set OnEnd", true),
+            new Parameter("Color OnEnd", Color.black),
         };
     }
 
     public override void OnStart(AiContext context)
     {
         base.OnGoing(context);
-        if ((bool)Parameters[1].Value)
+        if ((bool)Parameters[0].Value)
         {
             var targetRenderer = GetTargetRenderer(context);
-            targetRenderer.material.SetColor("_Color", (Color)Parameters[0].Value);
+            targetRenderer.material.SetColor("_Color", (Color)Parameters[1].Value);
         }
     }
 
     public override void OnGoing(AiContext context)
     {
         base.OnGoing(context);
-        if ((bool)Parameters[3].Value)
+        if ((bool)Parameters[2].Value)
         {
             var targetRenderer = GetTargetRenderer(context);
-            targetRenderer.material.SetColor("_Color", (Color)Parameters[4].Value);
+            targetRenderer.material.SetColor("_Color", (Color)Parameters[3].Value);
         }
     }
 
     public override void OnEnd(AiContext context)
     {
         base.OnGoing(context);
-        if ((bool)Parameters[5].Value)
+        if ((bool)Parameters[4].Value)
         {
             var targetRenderer = GetTargetRenderer(context);
-            targetRenderer.material.SetColor("_Color", (Color)Parameters[6].Value);
+            targetRenderer.material.SetColor("_Color", (Color)Parameters[5].Value);
         }
     }
 

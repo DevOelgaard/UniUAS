@@ -1,9 +1,10 @@
 {
-  "AIs": [
+  "States": [
     {
+      "$type": "UAIModelState, Devoe.UAS.Runtime",
       "Name": "Set Color on Nearest Target",
       "Description": null,
-      "IsPLayable": true,
+      "IsPLayable": false,
       "Buckets": [
         {
           "Name": "Default",
@@ -15,6 +16,18 @@
               "AgentActions": [
                 {
                   "Parameters": [
+                    {
+                      "Name": "Color OnStart",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        0.0484603122,
+                        0.9339623,
+                        0.178219378,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    },
                     {
                       "Name": "Set OnStart",
                       "Value": true,
@@ -28,13 +41,13 @@
                       "FileName": "Parameter"
                     },
                     {
-                      "Name": "Color OnStart",
+                      "Name": "Color OnGoing",
                       "Value": null,
                       "ValueType": "UnityEngine.Color",
                       "RGBA": [
+                        0.9866247,
                         1.0,
-                        1.0,
-                        1.0,
+                        0.0,
                         1.0
                       ],
                       "FileName": "Parameter"
@@ -52,13 +65,13 @@
                       "FileName": "Parameter"
                     },
                     {
-                      "Name": "Color OnGoing",
+                      "Name": "Color OnEnd",
                       "Value": null,
                       "ValueType": "UnityEngine.Color",
                       "RGBA": [
-                        0.0,
-                        0.0,
                         1.0,
+                        0.00471699238,
+                        0.00471699238,
                         1.0
                       ],
                       "FileName": "Parameter"
@@ -72,18 +85,6 @@
                         0.0,
                         0.0,
                         0.0
-                      ],
-                      "FileName": "Parameter"
-                    },
-                    {
-                      "Name": "Color OnEnd",
-                      "Value": null,
-                      "ValueType": "UnityEngine.Color",
-                      "RGBA": [
-                        0.0,
-                        0.0,
-                        0.0,
-                        1.0
                       ],
                       "FileName": "Parameter"
                     }
@@ -112,7 +113,7 @@
                           {
                             "Name": "a",
                             "Value": 1.0,
-                            "ValueType": "System.Double",
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -124,7 +125,7 @@
                           {
                             "Name": "b",
                             "Value": 0.0,
-                            "ValueType": "System.Double",
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -383,12 +384,6 @@
       "FileName": "Ai"
     }
   ],
-  "Buckets": [],
-  "Decisions": [],
-  "Considerations": [],
-  "AgentActions": [],
-  "ResponseCurves": [],
-  "TestStrign": "",
-  "InternalTestString": "",
-  "FileName": "UASTemplateService"
+  "TypeString": "Ai",
+  "FileName": "RestoreAbleCollection"
 }

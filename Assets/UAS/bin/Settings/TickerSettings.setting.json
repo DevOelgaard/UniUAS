@@ -6,21 +6,49 @@
       {
         "Name": "Target Framerate",
         "Value": 60,
+        "ValueType": "System.Int64",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
         "FileName": "Parameter"
       },
       {
         "Name": "Sample Time Seconds",
         "Value": 1.0,
+        "ValueType": "System.Double",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
         "FileName": "Parameter"
       },
       {
         "Name": "Debug",
         "Value": false,
+        "ValueType": "System.Boolean",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
         "FileName": "Parameter"
       },
       {
         "Name": "DebugTickCount",
         "Value": 0,
+        "ValueType": "System.Int64",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
         "FileName": "Parameter"
       }
     ],
@@ -34,21 +62,49 @@
         {
           "Name": "Target Framerate",
           "Value": 60,
+          "ValueType": "System.Int64",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         },
         {
           "Name": "Sample Time Seconds",
           "Value": 1.0,
+          "ValueType": "System.Double",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         },
         {
           "Name": "Debug",
           "Value": false,
+          "ValueType": "System.Boolean",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         },
         {
           "Name": "DebugTickCount",
           "Value": 0,
+          "ValueType": "System.Int64",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         }
       ],
@@ -61,11 +117,25 @@
         {
           "Name": "Time Budget MS",
           "Value": 4,
+          "ValueType": "System.Int64",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         },
         {
           "Name": "Debug",
           "Value": true,
+          "ValueType": "System.Boolean",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
           "FileName": "Parameter"
         }
       ],
