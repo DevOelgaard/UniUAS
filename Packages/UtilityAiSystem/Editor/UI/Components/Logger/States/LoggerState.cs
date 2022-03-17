@@ -90,6 +90,10 @@ internal abstract class LoggerState
         LoggerComponent = debuggerComponent;
         this.Root = root;
         Init();
+        ColorToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
+        {
+            InspectAi(CurrentTick);
+        });
     }
 
     protected virtual void Init()
