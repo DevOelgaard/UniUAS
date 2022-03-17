@@ -12,18 +12,18 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     public UtilityContainerSelector DecisionSelector;
     public UtilityContainerSelector BucketSelector;
 
-    public DecisionScoreEvaluator(UtilityContainerSelector decisionSelector = null, UtilityContainerSelector bucketSelector = null)
+    public DecisionScoreEvaluator(UtilityContainerSelector decisionSelector, UtilityContainerSelector bucketSelector)
     {
-        if (decisionSelector == null)
-        {
-            decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_DecisionSelector);
-        }
-        DecisionSelector = decisionSelector;
-        if (bucketSelector == null)
-        {
-            bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_BucketSelector);
-        }
-        BucketSelector = bucketSelector;
+        //if (decisionSelector == null)
+        //{
+        //    decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_DecisionSelector);
+        //}
+        //DecisionSelector = decisionSelector;
+        //if (bucketSelector == null)
+        //{
+        //    bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_BucketSelector);
+        //}
+        //BucketSelector = bucketSelector;
     }
 
     public string GetDescription()

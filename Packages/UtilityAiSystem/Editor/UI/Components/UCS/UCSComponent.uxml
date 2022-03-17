@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="DescriptionContainer" style="flex-direction: row; flex-wrap: wrap;">
+        <ui:Label text="Description: " display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+        <ui:Label text="Some long descriptopn about athesal jsdf laksd lllasdf ia dasje head " display-tooltip-when-elided="true" name="Description-Label" style="flex-wrap: wrap; white-space: normal;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ParametersContainer" style="flex-grow: 1;" />
+</ui:UXML>

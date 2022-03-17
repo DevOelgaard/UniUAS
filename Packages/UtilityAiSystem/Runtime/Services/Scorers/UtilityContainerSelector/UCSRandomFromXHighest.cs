@@ -22,7 +22,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
     private bool PercentageChance => (bool)Parameters[1].Value;
 
     private float MaxDeviationFromHighest => Convert.ToSingle(Parameters[2].Value);
-    public override List<Parameter> GetParameters()
+    protected override List<Parameter> GetParameters()
     {
         return new List<Parameter>()
         {

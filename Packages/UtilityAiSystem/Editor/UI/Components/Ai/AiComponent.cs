@@ -12,8 +12,10 @@ internal class AiComponent : AiObjectComponent
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private IDisposable bucketTabSub;
     private TemplateContainer root;
-    private DropdownDescriptionComponent<UtilityContainerSelector> decisionDropdown;
-    private DropdownDescriptionComponent<UtilityContainerSelector> bucketDropdown;
+    //private DropdownDescriptionComponent<UtilityContainerSelector> decisionDropdown;
+    //private DropdownDescriptionComponent<UtilityContainerSelector> bucketDropdown;
+    private DropdownContainerComponent<UtilityContainerSelector> bucketDropdown;
+    private DropdownContainerComponent<UtilityContainerSelector> decisionDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
     private Ai aiModel;
     private VisualElement collectionsContainer;
@@ -42,14 +44,19 @@ internal class AiComponent : AiObjectComponent
 
         playableToggle = new Toggle("Playable");
         playableToggle.name = "Playable-Toggle";
-        decisionDropdown = new DropdownDescriptionComponent<UtilityContainerSelector>();
-        settingsContainer.Add(decisionDropdown);
-        bucketDropdown = new DropdownDescriptionComponent<UtilityContainerSelector>();
+        
+        bucketDropdown = new DropdownContainerComponent<UtilityContainerSelector>("Bucket Selector");
         settingsContainer.Add(bucketDropdown);
+        decisionDropdown = new DropdownContainerComponent<UtilityContainerSelector>("Decision Selector");
+        settingsContainer.Add(decisionDropdown);
+
         utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
         settingsContainer.Add(utilityScorerDropdown);
-
         settingsContainer.name = "SettingsContainer";
+
+        bucketDropdown.name = "DropdownScorerCollection";
+        decisionDropdown.name = "DropdownScorerCollection";
+        utilityScorerDropdown.name = "DropdownScorerCollection";
 
         bucketTab = tabView.AddTabGroup("Buckets", bucketCollection);
         settingsTab = tabView.AddTabGroup("Settings", settingsContainer);
@@ -83,25 +90,28 @@ internal class AiComponent : AiObjectComponent
         }
         subscriptions.Clear();
 
-        decisionDropdown.UpdateUi(ScorerService.Instance.ContainerSelectors, "Decision Selector", aiModel.BucketSelector.GetName());
+        var currentDecisionIndex = aiModel.DecisionSelectors.IndexOf(aiModel.CurrentDecisionSelector);
+        decisionDropdown.UpdateUi(aiModel.DecisionSelectors, currentDecisionIndex);
+
         decisionDropdown
-            .OnDropdownValueChanged
+            .OnSelectedObjectChanged
             .Subscribe(selector => {
                 if (aiModel != null)
                 {
-                    aiModel.DecisionSelector = selector;
+                    aiModel.CurrentDecisionSelector = selector;
                 }
             })
             .AddTo(subscriptions);
 
-        bucketDropdown.UpdateUi(ScorerService.Instance.ContainerSelectors, "Bucket Selector", aiModel.BucketSelector.GetName());
+        var currentBucketindex = aiModel.BucketSelectors.IndexOf(aiModel.CurrentBucketSelector);
+        bucketDropdown.UpdateUi(aiModel.BucketSelectors,currentDecisionIndex);
         bucketDropdown
-            .OnDropdownValueChanged
+            .OnSelectedObjectChanged
             .Subscribe(selector =>
             {
                 if (aiModel != null)
                 {
-                    aiModel.BucketSelector = selector;
+                    aiModel.CurrentBucketSelector = selector;
                 }
             })
             .AddTo(subscriptions);

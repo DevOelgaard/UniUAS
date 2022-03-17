@@ -18,27 +18,27 @@ public class UT_ScorerService
         uut = ScorerService.Instance;
     }
 
-    [TestCase("UCSHighestScore")]
-    public void LoadContainerSelectors_Constructor_CorrectClassLoaded(string className)
-    {
-        var result = uut.ContainerSelectors.Values
-            .FirstOrDefault(e=>e.GetType().ToString() == className);
+    //[TestCase("UCSHighestScore")]
+    //public void LoadContainerSelectors_Constructor_CorrectClassLoaded(string className)
+    //{
+    //    var result = uut.ContainerSelectors.Values
+    //        .FirstOrDefault(e=>e.GetType().ToString() == className);
         
-        Assert.That(result != null);
-    }
+    //    Assert.That(result != null);
+    //}
 
 
-    [Test]
-    public void LoadContainerSelectors_Constructor_NoDuplicates()
-    {
-        var result = uut.ContainerSelectors.Values
-            .GroupBy(uS => uS.GetType())
-            .Where(group => group.Count() > 1)
-            .ToList()
-            .Count();
+    //[Test]
+    //public void LoadContainerSelectors_Constructor_NoDuplicates()
+    //{
+    //    var result = uut.ContainerSelectors.Values
+    //        .GroupBy(uS => uS.GetType())
+    //        .Where(group => group.Count() > 1)
+    //        .ToList()
+    //        .Count();
 
-        Assert.That(result == 0);
-    }
+    //    Assert.That(result == 0);
+    //}
 
     [Test]
     public void LoadUtilityScorers_Constructor_MoreThanZeroLoaded()

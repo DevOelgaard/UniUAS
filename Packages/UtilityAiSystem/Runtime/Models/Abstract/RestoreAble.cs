@@ -25,7 +25,11 @@ public abstract class RestoreAble
         }
     }
 
-    internal abstract void SaveToFile(string path, IPersister persister);
+    internal virtual void SaveToFile(string path, IPersister persister)
+    {
+        var state = GetState();
+        persister.SaveObject(state, path);
+    }
 
     internal abstract RestoreState GetState();
 }

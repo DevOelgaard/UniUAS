@@ -20,7 +20,7 @@ public class UCSHighestScore : UtilityContainerSelector
         return name;
     }
 
-    public override List<Parameter> GetParameters()
+    protected override List<Parameter> GetParameters()
     {
         return new List<Parameter>();
     }

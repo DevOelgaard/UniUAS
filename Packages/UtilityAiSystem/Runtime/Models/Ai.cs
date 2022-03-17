@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UniRxExtension;
 using UniRx;
+using UnityEngine;
 
 public class Ai: AiObjectModel
 {
@@ -63,7 +64,7 @@ public class Ai: AiObjectModel
         return clone;
     }
 
-    protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
+    protected override void RestoreInternal(RestoreState s, bool restoreLog = false)
     {
         var state = (UAIModelState)s;
         Name = state.Name;
@@ -73,36 +74,47 @@ public class Ai: AiObjectModel
         Buckets = new ReactiveListNameSafe<Bucket>();
         foreach(var bS in state.Buckets)
         {
-            var b = Bucket.Restore<Bucket>(bS, restoreDebug);
+            var b = Bucket.Restore<Bucket>(bS, restoreLog);
             Buckets.Add(b);
         }
-        var scorerService = ScorerService.Instance;
-
-        BucketSelector = scorerService
-            .ContainerSelectors
-            .Values
-            .FirstOrDefault(d => d.GetName() == state.BucketSelectorName);
-        if (BucketSelector == null)
+        
+        BucketSelectors = new List<UtilityContainerSelector>();
+        foreach(var bS in state.BucketSelectors)
         {
-            BucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault();
+            var ucs = Restore<UtilityContainerSelector>(bS, restoreLog);
+            BucketSelectors.Add(ucs);
         }
 
-        DecisionSelector = scorerService
-            .ContainerSelectors
-            .Values
-            .FirstOrDefault(d => d.GetName() == state.DecisionSelectorName);
-        if (DecisionSelector == null)
+        CurrentBucketSelector = BucketSelectors
+            .FirstOrDefault(d => d.GetName() == state.CurrentBucketSelectorName);
+
+        if (CurrentBucketSelector == null)
         {
-            DecisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault();
+            CurrentBucketSelector = BucketSelectors.FirstOrDefault();
         }
 
-        UtilityScorer = scorerService
-            .UtilityScorers
-            .Values
+        DecisionSelectors = new List<UtilityContainerSelector>();
+        foreach(var ds in state.DecisionSelectors)
+        {
+            var ucs = Restore<UtilityContainerSelector>(ds, restoreLog);
+            DecisionSelectors.Add(ucs);
+        }
+        CurrentDecisionSelector = DecisionSelectors
+            .FirstOrDefault(d => d.GetName() == state.CurrentDecisionSelectorName);
+
+        if (CurrentDecisionSelector == null)
+        {
+            CurrentDecisionSelector = DecisionSelectors.FirstOrDefault();
+        }
+
+        var utilityScorers = AssetDatabaseService.GetInstancesOfType<IUtilityScorer>();
+        UtilityScorer = utilityScorers
             .FirstOrDefault(u => u.GetName() == state.USName);
+
         if (UtilityScorer == null)
         {
-            UtilityScorer = scorerService.UtilityScorers.Values.FirstOrDefault();
+            //Debug.LogWarning("No Utility Scorer found");
+            UtilityScorer = utilityScorers.FirstOrDefault();
         }
     }
 
@@ -111,39 +123,65 @@ public class Ai: AiObjectModel
         var state = GetState();
         persister.SaveObject(state, path);
     }
-    private UtilityContainerSelector bucketSelector;
-    public UtilityContainerSelector BucketSelector
+
+    private UtilityContainerSelector currentBucketSelector;
+    public UtilityContainerSelector CurrentBucketSelector
     {
         get
         {
-            if (bucketSelector == null)
+            if(currentBucketSelector == null)
             {
-                bucketSelector = ScorerService.Instance.ContainerSelectors.Values
-                    .FirstOrDefault(bS => bS.GetName() == Consts.Default_BucketSelector);
+                currentBucketSelector = BucketSelectors.FirstOrDefault();
             }
-            return bucketSelector;
+            return currentBucketSelector;
         }
         set
         {
-            bucketSelector = value;
+            currentBucketSelector = value;
         }
     }
-
-    private UtilityContainerSelector decisionSelector;
-    public UtilityContainerSelector DecisionSelector
+    private List<UtilityContainerSelector> bucketSelectors;
+    internal List<UtilityContainerSelector> BucketSelectors
     {
-        get {
-            if (decisionSelector == null)
+        get
+        {
+            if (bucketSelectors == null)
             {
-                decisionSelector = ScorerService.Instance.ContainerSelectors.Values
-                    .FirstOrDefault(bS => bS.GetName() == Consts.Default_DecisionSelector);
+                bucketSelectors = new List<UtilityContainerSelector>(AssetDatabaseService.GetInstancesOfType<UtilityContainerSelector>());
             }
-            return decisionSelector;
+            return bucketSelectors;
+        }
+        set { bucketSelectors = value; }
+    }
+
+    private UtilityContainerSelector currentDecisionSelector;
+    public UtilityContainerSelector CurrentDecisionSelector
+    {
+        get
+        {
+            if(currentDecisionSelector == null)
+            {
+                currentDecisionSelector = DecisionSelectors.FirstOrDefault();
+            }
+            return currentDecisionSelector;
         }
         set
         {
-            decisionSelector = value;
+            currentDecisionSelector = value;
         }
+    }
+    private List<UtilityContainerSelector> decisionSelectors;
+    internal List<UtilityContainerSelector> DecisionSelectors
+    {
+        get
+        {
+            if (decisionSelectors == null)
+            {
+                decisionSelectors = new List<UtilityContainerSelector>(AssetDatabaseService.GetInstancesOfType<UtilityContainerSelector>());
+            }
+            return decisionSelectors;
+        }
+        set { decisionSelectors = value; }
     }
 
     private IUtilityScorer utilityScorer;
@@ -153,10 +191,7 @@ public class Ai: AiObjectModel
         {
             if (utilityScorer == null)
             {
-                utilityScorer = ScorerService
-                    .Instance
-                    .UtilityScorers
-                    .Values
+                utilityScorer = AssetDatabaseService.GetInstancesOfType<IUtilityScorer>()
                     .FirstOrDefault(e => e.GetName() == Consts.Default_UtilityScorer);
             }
             return utilityScorer;
@@ -181,8 +216,10 @@ public class UAIModelState: RestoreState
     public string Description;
     public bool IsPLayable;
     public List<BucketState> Buckets = new List<BucketState>();
-    public string BucketSelectorName;
-    public string DecisionSelectorName;
+    public string CurrentBucketSelectorName;
+    public string CurrentDecisionSelectorName;
+    public List<UCSState> BucketSelectors;
+    public List<UCSState> DecisionSelectors;
     public string USName;
 
     public UAIModelState() : base()
@@ -201,8 +238,23 @@ public class UAIModelState: RestoreState
             Buckets.Add(bS);
         }
 
-        BucketSelectorName = model.BucketSelector.GetName();
-        DecisionSelectorName = model.DecisionSelector.GetName();
+        CurrentBucketSelectorName = model.CurrentBucketSelector.GetName();
+        CurrentDecisionSelectorName = model.CurrentDecisionSelector.GetName();
+
+        BucketSelectors = new List<UCSState>();
+        foreach(var ucs in model.BucketSelectors)
+        {
+            var bS = ucs.GetState() as UCSState;
+            BucketSelectors.Add(bS);
+        }
+
+        DecisionSelectors = new List<UCSState>();
+        foreach(var ucs in model.DecisionSelectors)
+        {
+            var dS = ucs.GetState() as UCSState;
+            DecisionSelectors.Add(dS);
+        }
+
         USName = model.UtilityScorer.GetName();
     }
 }

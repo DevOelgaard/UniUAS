@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract class UtilityContainerSelector: IIdentifier
+public abstract class UtilityContainerSelector: RestoreAble, IIdentifier
 {
     internal List<Parameter> Parameters;
     protected UtilityContainerSelector()
@@ -19,5 +19,36 @@ public abstract class UtilityContainerSelector: IIdentifier
 
     public abstract string GetName();
 
-    public abstract List<Parameter> GetParameters();
+    protected abstract List<Parameter> GetParameters();
+
+    internal override RestoreState GetState()
+    {
+        return new UCSState(Parameters, this);
+    }
+
+    protected override void RestoreInternal(RestoreState state, bool restoreDebug = false)
+    {
+        var s = state as UCSState;
+        Parameters = new List<Parameter>();
+        foreach(var pS in s.Parameters)
+        {
+            var p = Restore<Parameter>(pS);
+            Parameters.Add(p);
+        }
+    }
+}
+
+[Serializable]
+public class UCSState: RestoreState
+{
+    public List<ParameterState> Parameters;
+
+    public UCSState(List<Parameter> parameters, UtilityContainerSelector ucs): base(ucs)
+    {
+        Parameters = new List<ParameterState>();
+        foreach(var p in parameters)
+        {
+            Parameters.Add((ParameterState)p.GetState());
+        }
+    }
 }

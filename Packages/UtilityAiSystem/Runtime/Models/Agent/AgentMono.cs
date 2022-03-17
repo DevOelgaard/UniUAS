@@ -33,7 +33,7 @@ public class AgentMono : MonoBehaviour, IAgent
         AgentManager.Instance.Register(this);
         var ai = UASTemplateService.Instance.GetAiByName(DefaultAiName,true);
         SetAi(ai);
-        decisionScoreEvaluator = new DecisionScoreEvaluator();
+        decisionScoreEvaluator = new DecisionScoreEvaluator(ai.CurrentDecisionSelector, ai.CurrentBucketSelector);
     }
 
     public void SetAi(Ai model)

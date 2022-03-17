@@ -24,7 +24,9 @@ internal class JSONPersister : IPersister
             return deserialized;
         } catch(Exception ex)
         {
-            throw new Exception("Loading failed: ", ex);
+            Debug.LogWarning("Loading failed: " + ex.ToString());
+            return default(T);
+            //throw new Exception("Loading failed: ", ex);
         }
     }
 
