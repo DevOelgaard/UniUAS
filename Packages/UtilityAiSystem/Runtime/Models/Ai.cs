@@ -111,8 +111,8 @@ public class Ai: AiObjectModel
         var state = GetState();
         persister.SaveObject(state, path);
     }
-    private IUtilityContainerSelector bucketSelector;
-    public IUtilityContainerSelector BucketSelector
+    private UtilityContainerSelector bucketSelector;
+    public UtilityContainerSelector BucketSelector
     {
         get
         {
@@ -129,8 +129,8 @@ public class Ai: AiObjectModel
         }
     }
 
-    private IUtilityContainerSelector decisionSelector;
-    public IUtilityContainerSelector DecisionSelector
+    private UtilityContainerSelector decisionSelector;
+    public UtilityContainerSelector DecisionSelector
     {
         get {
             if (decisionSelector == null)

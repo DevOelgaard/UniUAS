@@ -5,47 +5,52 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class UCSHighestScore : IUtilityContainerSelector
+public class UCSHighestScore : UtilityContainerSelector
 {
-    private string name = Consts.Name_UCSHighestScore;
-    private string description = Consts.Description_UCSHighestScore;
+    private string name = Consts.UCS_HighestScore_Name;
+    private string description = Consts.UCS_HighestScore_Description;
 
-    public string GetDescription()
+    public override string GetDescription()
     {
         return description;
     }
 
-    public string GetName()
+    public override string GetName()
     {
         return name;
     }
 
-    public Bucket GetBestUtilityContainer(List<Bucket> containers, AiContext context)
+    public override List<Parameter> GetParameters()
+    {
+        return new List<Parameter>();
+    }
+
+    public override Bucket GetBestUtilityContainer(List<Bucket> buckets, AiContext context)
     {
         UtilityContainer bestContainer = null;
-        foreach(Bucket container in containers)
+        foreach(Bucket bucket in buckets)
         {
-            var weight = Convert.ToSingle(container.Weight.Value);
+            var weight = Convert.ToSingle(bucket.Weight.Value);
 
             // Only evaluate if the bucket has a chance of winning
             if (bestContainer != null && weight < bestContainer.LastCalculatedUtility)
             {
                 continue;
             }
-            context.CurrentEvaluatedBucket = container;
-            bestContainer = CheckBestContainer(container, context, bestContainer);
+            context.CurrentEvaluatedBucket = bucket;
+            bestContainer = CheckBestContainer(bucket, context, bestContainer);
         }
         context.LastSelectedBucket = bestContainer as Bucket;
         return bestContainer as Bucket;
     }
 
-    public Decision GetBestUtilityContainer(List<Decision> containers, AiContext context)
+    public override Decision GetBestUtilityContainer(List<Decision> decisions, AiContext context)
     {
         UtilityContainer bestContainer = null;
-        foreach (var container in containers)
+        foreach (var decision in decisions)
         {
-            context.CurrentEvalutedDecision = container;
-            bestContainer = CheckBestContainer(container, context, bestContainer);
+            context.CurrentEvalutedDecision = decision;
+            bestContainer = CheckBestContainer(decision, context, bestContainer);
         }
         context.LastSelectedDecision = bestContainer as Decision;
         return bestContainer as Decision;

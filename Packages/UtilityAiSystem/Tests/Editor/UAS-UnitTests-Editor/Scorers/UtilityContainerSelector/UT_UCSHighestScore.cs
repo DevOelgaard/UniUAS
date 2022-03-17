@@ -62,13 +62,13 @@ public class UT_UCSHighestScore
     [Test]
     public void GetName_Default_ReturnsCorrectName()
     {
-        Assert.AreEqual(Consts.Name_UCSHighestScore, uut.GetName());
+        Assert.AreEqual(Consts.UCS_HighestScore_Name, uut.GetName());
     }
 
     [Test]
     public void GetDescription_Default_ReturnsCorrectDescription()
     {
-        Assert.AreEqual(Consts.Description_UCSHighestScore, uut.GetDescription());
+        Assert.AreEqual(Consts.UCS_HighestScore_Description, uut.GetDescription());
     }
 
 

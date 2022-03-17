@@ -12,8 +12,8 @@ internal class AiComponent : AiObjectComponent
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private IDisposable bucketTabSub;
     private TemplateContainer root;
-    private DropdownDescriptionComponent<IUtilityContainerSelector> decisionDropdown;
-    private DropdownDescriptionComponent<IUtilityContainerSelector> bucketDropdown;
+    private DropdownDescriptionComponent<UtilityContainerSelector> decisionDropdown;
+    private DropdownDescriptionComponent<UtilityContainerSelector> bucketDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;
     private Ai aiModel;
     private VisualElement collectionsContainer;
@@ -42,9 +42,9 @@ internal class AiComponent : AiObjectComponent
 
         playableToggle = new Toggle("Playable");
         playableToggle.name = "Playable-Toggle";
-        decisionDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
+        decisionDropdown = new DropdownDescriptionComponent<UtilityContainerSelector>();
         settingsContainer.Add(decisionDropdown);
-        bucketDropdown = new DropdownDescriptionComponent<IUtilityContainerSelector>();
+        bucketDropdown = new DropdownDescriptionComponent<UtilityContainerSelector>();
         settingsContainer.Add(bucketDropdown);
         utilityScorerDropdown = new DropdownDescriptionComponent<IUtilityScorer>();
         settingsContainer.Add(utilityScorerDropdown);

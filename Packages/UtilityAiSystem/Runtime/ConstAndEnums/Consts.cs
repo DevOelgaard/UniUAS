@@ -29,11 +29,11 @@ public static class Consts
 
     // Scorers
     public const string Default_UtilityScorer = Name_USAverageScore;
-    public const string Default_BucketSelector = Name_UCSHighestScore;
-    public const string Default_DecisionSelector = Name_UCSHighestScore;
+    public const string Default_BucketSelector = UCS_HighestScore_Name;
+    public const string Default_DecisionSelector = UCS_HighestScore_Name;
 
-    public const string Name_UCSHighestScore = "Highest Score";
-    public const string Description_UCSHighestScore = "Selects the highest scored object";
+    public const string UCS_HighestScore_Name = "Highest Score";
+    public const string UCS_HighestScore_Description = "Selects the highest scored object";
 
     public const string Name_USAverageScore = "Average";
     public const string Description_USAverageScore = "Returns the average score of all considerations. Returns 0 if one consideration is 0";

@@ -9,7 +9,7 @@ using UniRxExtension;
 
 public class ScorerService
 {
-    public ReactiveList<IUtilityContainerSelector> ContainerSelectors;
+    public ReactiveList<UtilityContainerSelector> ContainerSelectors;
     public ReactiveList<IUtilityScorer> UtilityScorers;
     
     private ScorerService()
@@ -20,8 +20,8 @@ public class ScorerService
 
     private void LoadContainerSelectors()
     {
-        ContainerSelectors = new ReactiveList<IUtilityContainerSelector>();
-        var elements = AssetDatabaseService.GetInstancesOfType<IUtilityContainerSelector>();
+        ContainerSelectors = new ReactiveList<UtilityContainerSelector>();
+        var elements = AssetDatabaseService.GetInstancesOfType<UtilityContainerSelector>();
         elements = elements
             .Where(e => 
             ContainerSelectors

@@ -14,8 +14,8 @@ public class UT_DecisionScoreEvaluator
     private DecisionScoreEvaluator uut;
     private List<Decision> mock_Decisions;
     private List<Bucket> mock_Buckets;
-    private IUtilityContainerSelector sub_DecisionSelector;
-    private IUtilityContainerSelector sub_BucketSelector;
+    private UtilityContainerSelector sub_DecisionSelector;
+    private UtilityContainerSelector sub_BucketSelector;
 
     [SetUp]
     public void SetUp()
@@ -60,8 +60,8 @@ public class UT_DecisionScoreEvaluator
         }
         #endregion
 
-        sub_DecisionSelector = Substitute.For<IUtilityContainerSelector>();
-        sub_BucketSelector = Substitute.For<IUtilityContainerSelector>();
+        sub_DecisionSelector = Substitute.For<UtilityContainerSelector>();
+        sub_BucketSelector = Substitute.For<UtilityContainerSelector>();
 
         sub_DecisionSelector.GetBestUtilityContainer(Arg.Any<List<Decision>>(), default)
             .ReturnsForAnyArgs(mock_Decisions

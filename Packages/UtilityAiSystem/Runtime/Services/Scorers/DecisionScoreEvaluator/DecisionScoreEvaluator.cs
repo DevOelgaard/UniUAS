@@ -9,10 +9,10 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
 {
     private string name = Consts.Name_DefaultDSE;
     private string description = Consts.Description_DefaultDSE; 
-    public IUtilityContainerSelector DecisionSelector;
-    public IUtilityContainerSelector BucketSelector;
+    public UtilityContainerSelector DecisionSelector;
+    public UtilityContainerSelector BucketSelector;
 
-    public DecisionScoreEvaluator(IUtilityContainerSelector decisionSelector = null, IUtilityContainerSelector bucketSelector = null)
+    public DecisionScoreEvaluator(UtilityContainerSelector decisionSelector = null, UtilityContainerSelector bucketSelector = null)
     {
         if (decisionSelector == null)
         {
