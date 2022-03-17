@@ -79,4 +79,15 @@ internal class DecisionLogComponent : AiObjectLogComponent
         }
         ColorService.SetColor(list);
     }
+
+    internal override void ResetColor()
+    {
+
+        foreach (var c in considerationsPool.LogComponents)
+        {
+            if (c.Model == null) continue;
+            c.ResetColor();
+        }
+        base.ResetColor();
+    }
 }

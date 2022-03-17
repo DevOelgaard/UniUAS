@@ -198,6 +198,9 @@ internal abstract class LoggerState
             if (ColorToggle.value)
             {
                 AgentLogComponent.SetColor();
+            } else
+            {
+                AgentLogComponent.ResetColor();
             }
         }
     }

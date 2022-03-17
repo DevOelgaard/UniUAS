@@ -84,4 +84,22 @@ internal class BucketLogComponent : AiObjectLogComponent
         }
         ColorService.SetColor(list);
     }
+
+    internal override void ResetColor()
+    {
+        foreach (var c in considerationsPool.LogComponents)
+        {
+            if (c.Model == null) continue;
+            var cast = c.Model as ConsiderationLog;
+            c.ResetColor();
+        }
+
+        foreach (var d in decisionsPool.LogComponents)
+        {
+            if (d.Model == null) continue;
+            var cast = d.Model as DecisionLog;
+            d.ResetColor();
+        }
+        base.ResetColor();
+    }
 }

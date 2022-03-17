@@ -39,4 +39,9 @@ internal abstract class AiObjectLogComponent: LogComponent
     protected abstract void UpdateUiInternal(AiObjectLog aiObjectDebug);
 
     internal virtual void SetColor() { }
+
+    internal virtual void ResetColor()
+    {
+        ColorService.ResetColor(this);
+    }
 }

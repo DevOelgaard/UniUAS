@@ -26,4 +26,9 @@ internal class AgentLogComponent : AiObjectLogComponent
     {
         AiLogComponent.SetColor();
     }
+
+    internal override void ResetColor()
+    {
+        AiLogComponent.ResetColor();
+    }
 }

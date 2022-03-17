@@ -54,4 +54,9 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
         base.Hide();
         parameterPool.Hide();
     }
+
+    internal override void ResetColor()
+    {
+        base.ResetColor();
+    }
 }
