@@ -47,7 +47,9 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             var bestDecision = DecisionSelector.GetBestUtilityContainer(decisions, context);
             if (bestDecision == null || bestDecision.LastCalculatedUtility <= 0)
             {
-                throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+                Debug.LogWarning("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+
+                //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
 
             return bestDecision.AgentActions.Values;
@@ -70,7 +72,8 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             var bestBucket = BucketSelector.GetBestUtilityContainer(buckets, context);
             if (bestBucket == null)
             {
-                throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+                Debug.LogWarning("No valid bucket. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+                //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
             var bestAction = NextActions(bestBucket.Decisions.Values, context);
             if (bestAction == null)

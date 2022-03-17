@@ -74,6 +74,15 @@
               "Parameters": [],
               "LastCalculatedUtility": 0.0,
               "FileName": "Decision"
+            },
+            {
+              "Name": "Default (Decision)",
+              "Description": null,
+              "AgentActions": [],
+              "Considerations": [],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
             }
           ],
           "Considerations": [
@@ -115,7 +124,7 @@
                 "Value": 1.0,
                 "FileName": "Parameter"
               },
-              "PerformanceTag": 2,
+              "PerformanceTag": 0,
               "BaseScore": 0.0,
               "NormalizedScore": 0.0,
               "FileName": "Demo_ConsiderationRandomValue"
@@ -128,20 +137,20 @@
                 "MinY": 0.0,
                 "MaxY": 1.0,
                 "MinX": 0.0,
-                "MaxX": 1.0,
+                "MaxX": 1000.0,
                 "Segments": [],
                 "ResponseFunctions": [
                   {
-                    "Name": "Fixed Value",
+                    "Name": "Exponential",
                     "Description": null,
                     "Parameters": [
                       {
-                        "Name": "Return",
-                        "Value": 0.1,
+                        "Name": "Power",
+                        "Value": 3.62,
                         "FileName": "Parameter"
                       }
                     ],
-                    "FileName": "FixedValueFunction"
+                    "FileName": "ExponentialFunction"
                   }
                 ],
                 "FileName": "ResponseCurve"
@@ -155,7 +164,7 @@
               },
               "Max": {
                 "Name": "Max",
-                "Value": 1.0,
+                "Value": 1000.0,
                 "FileName": "Parameter"
               },
               "PerformanceTag": 2,
@@ -507,6 +516,157 @@
               "BaseScore": 0.0,
               "NormalizedScore": 0.0,
               "FileName": "Demo_ConsiderationRandomValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "FileName": "Parameter"
+          },
+          "LastCalculatedUtility": 0.0,
+          "FileName": "Bucket"
+        }
+      ],
+      "BucketSelectorName": "Highest Score",
+      "DecisionSelectorName": "Highest Score",
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "Default",
+      "Description": null,
+      "IsPLayable": true,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "Default (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Output",
+                      "Value": "Target selected",
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Debug.log parameter (Demo_AgentActionParameter)",
+                  "Description": null,
+                  "FileName": "Demo_AgentActionParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1000.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Bool",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "First Value",
+                            "Value": true,
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "CutOff",
+                            "Value": 0.5,
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "BoolFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (ConsiderationNearestTarget)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1000.0,
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "ConsiderationNearestTarget"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 0.5,
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Default",
+                "Description": null,
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 1.0,
+                "Segments": [],
+                "ResponseFunctions": [
+                  {
+                    "Name": "Bool",
+                    "Description": null,
+                    "Parameters": [
+                      {
+                        "Name": "First Value",
+                        "Value": true,
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "CutOff",
+                        "Value": 0.5,
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "BoolFunction"
+                  }
+                ],
+                "FileName": "ResponseCurve"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "BaseScore": 0.0,
+              "NormalizedScore": 0.0,
+              "FileName": "Demo_ConsiderationFixedValue"
             }
           ],
           "Weight": {
