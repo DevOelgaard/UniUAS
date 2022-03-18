@@ -57,7 +57,8 @@ public class UCSHighestScore : UtilityContainerSelector
     private UtilityContainer CheckBestContainer(UtilityContainer container, AiContext context, UtilityContainer bestContainer = null)
     {
         var utility = container.GetUtility(context);
-        if (utility <= 0)
+        
+        if (utility <= 0 || float.IsNaN(utility))
         {
             return bestContainer;
         }
