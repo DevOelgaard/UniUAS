@@ -2602,6 +2602,110 @@
       ],
       "USName": "Average",
       "FileName": "Ai"
+    },
+    {
+      "Name": "Default(1)",
+      "Description": null,
+      "IsPLayable": false,
+      "Buckets": [],
+      "CurrentBucketSelectorName": "Highest Score",
+      "CurrentDecisionSelectorName": "Highest Score",
+      "BucketSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 1,
+              "ValueType": "System.Int32",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "DecisionSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 1,
+              "ValueType": "System.Int32",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "USName": "Average",
+      "FileName": "Ai"
     }
   ],
   "Buckets": [

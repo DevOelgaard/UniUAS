@@ -11,12 +11,12 @@ internal class UASTemplateService: RestoreAble
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private Dictionary<string, ReactiveList<AiObjectModel>> collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
 
-    public ReactiveList<AiObjectModel> AIs;
-    public ReactiveList<AiObjectModel> Buckets;
-    public ReactiveList<AiObjectModel> Decisions;
-    public ReactiveList<AiObjectModel> Considerations;
-    public ReactiveList<AiObjectModel> AgentActions;
-    public ReactiveList<AiObjectModel> ResponseCurves;
+    public ReactiveListNameSafe<AiObjectModel> AIs;
+    public ReactiveListNameSafe<AiObjectModel> Buckets;
+    public ReactiveListNameSafe<AiObjectModel> Decisions;
+    public ReactiveListNameSafe<AiObjectModel> Considerations;
+    public ReactiveListNameSafe<AiObjectModel> AgentActions;
+    public ReactiveListNameSafe<AiObjectModel> ResponseCurves;
 
     public IObservable<ReactiveList<AiObjectModel>> OnCollectionChanged => onCollectionChanged;
     private Subject<ReactiveList<AiObjectModel>> onCollectionChanged = new Subject<ReactiveList<AiObjectModel>>();
@@ -31,12 +31,12 @@ internal class UASTemplateService: RestoreAble
 
     private void Init(bool restore)
     {
-        AIs = new ReactiveList<AiObjectModel>();
-        Buckets = new ReactiveList<AiObjectModel>();
-        Decisions = new ReactiveList<AiObjectModel>();
-        Considerations = new ReactiveList<AiObjectModel>();
-        AgentActions = new ReactiveList<AiObjectModel>();
-        ResponseCurves = new ReactiveList<AiObjectModel>();
+        AIs = new ReactiveListNameSafe<AiObjectModel>();
+        Buckets = new ReactiveListNameSafe<AiObjectModel>();
+        Decisions = new ReactiveListNameSafe<AiObjectModel>();
+        Considerations = new ReactiveListNameSafe<AiObjectModel>();
+        AgentActions = new ReactiveListNameSafe<AiObjectModel>();
+        ResponseCurves = new ReactiveListNameSafe<AiObjectModel>();
 
         collectionsByLabel = new Dictionary<string, ReactiveList<AiObjectModel>>();
         collectionsByLabel.Add(Consts.Label_UAIModel, AIs);
