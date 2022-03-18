@@ -2562,7 +2562,7 @@
           "Parameters": [
             {
               "Name": "Number Of Items",
-              "Value": 5,
+              "Value": 3,
               "ValueType": "System.Int64",
               "RGBA": [
                 0.0,

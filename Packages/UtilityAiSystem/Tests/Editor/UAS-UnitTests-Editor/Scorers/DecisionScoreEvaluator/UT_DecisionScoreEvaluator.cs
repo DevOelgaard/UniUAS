@@ -71,7 +71,9 @@ public class UT_DecisionScoreEvaluator
             .ReturnsForAnyArgs(mock_Buckets
                 .MaxBy(b => b.LastCalculatedUtility));
 
-        uut = new DecisionScoreEvaluator(sub_DecisionSelector,sub_BucketSelector);
+        throw new NotImplementedException("NextActions should accept Ai");
+
+        //uut = new DecisionScoreEvaluator(sub_DecisionSelector,sub_BucketSelector);
     }
 
     [Test]
@@ -98,19 +100,23 @@ public class UT_DecisionScoreEvaluator
         sub_DecisionSelector.GetBestUtilityContainer(mock_Decisions, default)
             .ReturnsForAnyArgs(highest);
 
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        var result = uut.NextActions(mock_Decisions, default);
+        //var result = uut.NextActions(mock_Decisions, default);
 
-        Assert.AreEqual(highest.AgentActions.Values, result);
+        //Assert.AreEqual(highest.AgentActions.Values, result);
     }
 
     [Test]
     public void NextActions_DecisionsNoElements_ReturnsNull()
     {
         mock_Decisions = new List<Decision>();
-        var result = uut.NextActions(mock_Decisions, default);
+        
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        Assert.AreEqual(null, result);
+        //var result = uut.NextActions(mock_Decisions, default);
+
+        //Assert.AreEqual(null, result);
     }
 
     [TestCase(0)]
@@ -123,19 +129,23 @@ public class UT_DecisionScoreEvaluator
         sub_DecisionSelector.GetBestUtilityContainer(mock_Decisions, default)
             .ReturnsForAnyArgs(failDecision);
 
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        var result = uut.NextActions(mock_Decisions, default);
+        //var result = uut.NextActions(mock_Decisions, default);
 
-        Assert.AreEqual(null, result);
+        //Assert.AreEqual(null, result);
     }
 
     [Test]
     public void NextActions_BucketsNoElements_ReturnsNull()
     {
         mock_Buckets = new List<Bucket>();
-        var result = uut.NextActions(mock_Buckets, default);
 
-        Assert.AreEqual(null, result);
+        throw new NotImplementedException("NextActions should accept Ai");
+
+        //var result = uut.NextActions(mock_Buckets, default);
+
+        //Assert.AreEqual(null, result);
     }
 
     [Test]
@@ -158,10 +168,11 @@ public class UT_DecisionScoreEvaluator
         sub_BucketSelector
             .GetBestUtilityContainer(mock_Buckets, default)
             .Returns(highest);
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        var result = uut.NextActions(mock_Buckets, default);
+        //var result = uut.NextActions(mock_Buckets, default);
 
-        Assert.AreEqual(highDecision.AgentActions.Values, result);
+        //Assert.AreEqual(highDecision.AgentActions.Values, result);
     }
 
     [Test]
@@ -183,10 +194,11 @@ public class UT_DecisionScoreEvaluator
         sub_BucketSelector
             .GetBestUtilityContainer(mock_Buckets, default)
             .Returns(highest);
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        var result = uut.NextActions(mock_Buckets, default);
+        //var result = uut.NextActions(mock_Buckets, default);
 
-        Assert.AreEqual(highDecision.AgentActions.Values, result);
+        //Assert.AreEqual(highDecision.AgentActions.Values, result);
     }
 
     [Test]
@@ -224,9 +236,10 @@ public class UT_DecisionScoreEvaluator
         sub_BucketSelector
             .GetBestUtilityContainer(mock_Buckets, default)
             .Returns(highBucket);
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        var result = uut.NextActions(mock_Buckets, default);
+        //var result = uut.NextActions(mock_Buckets, default);
 
-        Assert.AreEqual(validDecision.AgentActions.Values, result);
+        //Assert.AreEqual(validDecision.AgentActions.Values, result);
     }
 }

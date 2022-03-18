@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public interface IDecisionScoreEvaluator: IIdentifier
 {
-    public List<AgentAction> NextActions(List<Decision> decisions, AiContext context);
-    public List<AgentAction> NextActions(List<Bucket> buckets, AiContext context);
+    public List<AgentAction> NextActions(List<Decision> decisions, AiContext context, Ai ai);
+    public List<AgentAction> NextActions(List<Bucket> buckets, AiContext context, Ai ai);
 
 }

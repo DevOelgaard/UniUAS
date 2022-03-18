@@ -20,7 +20,7 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
     public void SetUp()
     {
         ucsHighestScore = new UCSHighestScore();
-        dSE = new DecisionScoreEvaluator(ucsHighestScore, ucsHighestScore);
+        dSE = new DecisionScoreEvaluator();
         uSAverage = new USAverageScorer();
         aIContext = new AiContext();
         aIContext.UtilityScorer = uSAverage;
@@ -53,9 +53,10 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
             buckets.Add(b);
         }
 
-        var result = dSE.NextActions(buckets, aIContext);
+        throw new NotImplementedException("NextActions should accept Ai");
+        //var result = dSE.NextActions(buckets, aIContext);
 
-        Assert.AreEqual(highestAction, result[0]);
+        //Assert.AreEqual(highestAction, result[0]);
     }
 
     [Test]
@@ -92,9 +93,11 @@ public class IT_ConsiderationUsAverageAiContextDecisionBucketUcsHighestDSE
         buckets.Add(highWeightBucket);
         buckets.Add(highConsiderationBucket);
 
-        var result = dSE.NextActions(buckets, aIContext);
+        throw new NotImplementedException("NextActions should accept Ai");
 
-        Assert.AreEqual(highestAction, result[0]);
+        //var result = dSE.NextActions(buckets, aIContext);
+
+        //Assert.AreEqual(highestAction, result[0]);
     }
 
 

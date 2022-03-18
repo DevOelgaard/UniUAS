@@ -33,7 +33,7 @@ public class AgentMono : MonoBehaviour, IAgent
         AgentManager.Instance.Register(this);
         var ai = UASTemplateService.Instance.GetAiByName(DefaultAiName,true);
         SetAi(ai);
-        decisionScoreEvaluator = new DecisionScoreEvaluator(ai.CurrentDecisionSelector, ai.CurrentBucketSelector);
+        decisionScoreEvaluator = new DecisionScoreEvaluator();
     }
 
     public void SetAi(Ai model)
@@ -60,7 +60,7 @@ public class AgentMono : MonoBehaviour, IAgent
     {
         Ai.Context.TickMetaData = metaData;
         Model.TickMetaData = metaData;
-        var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context);
+        var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context, Ai);
         var oldActions = Ai.Context.LastActions;
         foreach(var action in actions)
         {

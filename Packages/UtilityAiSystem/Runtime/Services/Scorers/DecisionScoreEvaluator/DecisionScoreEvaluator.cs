@@ -12,10 +12,8 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     public UtilityContainerSelector DecisionSelector;
     public UtilityContainerSelector BucketSelector;
 
-    public DecisionScoreEvaluator(UtilityContainerSelector decisionSelector, UtilityContainerSelector bucketSelector)
+    public DecisionScoreEvaluator()
     {
-        DecisionSelector = decisionSelector;
-        BucketSelector = bucketSelector;
     }
 
     public string GetDescription()
@@ -28,7 +26,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
         return name;
     }
 
-    public List<AgentAction> NextActions(List<Decision> decisions, AiContext context)
+    public List<AgentAction> NextActions(List<Decision> decisions, AiContext context, Ai ai)
     {
         if (decisions.Count == 0)
         {
@@ -36,7 +34,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             return null;
         } else 
         {
-            var bestDecision = DecisionSelector.GetBestUtilityContainer(decisions, context);
+            var bestDecision = ai.CurrentDecisionSelector.GetBestUtilityContainer(decisions, context);
             if (bestDecision == null || bestDecision.LastCalculatedUtility <= 0)
             {
                 Debug.LogWarning("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
@@ -49,7 +47,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
         }
     }
 
-    public List<AgentAction> NextActions(List<Bucket> buckets, AiContext context)
+    public List<AgentAction> NextActions(List<Bucket> buckets, AiContext context,  Ai ai)
     {
         if (buckets.Count == 0)
         {
@@ -62,19 +60,19 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
         //}
         else
         {
-            var bestBucket = BucketSelector.GetBestUtilityContainer(buckets, context);
+            var bestBucket = ai.CurrentBucketSelector.GetBestUtilityContainer(buckets, context);
             if (bestBucket == null)
             {
                 Debug.LogWarning("No valid bucket. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
                 return new List<AgentAction>();
                 //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
-            var bestAction = NextActions(bestBucket.Decisions.Values, context);
+            var bestAction = NextActions(bestBucket.Decisions.Values, context, ai);
             if (bestAction == null)
             {
                 // No valid decision in most valid bucket
                 // Recursive selection to find valid decision in next most valid bucket
-                return NextActions(buckets.Where(bucket => bucket != bestBucket).ToList(), context);
+                return NextActions(buckets.Where(bucket => bucket != bestBucket).ToList(), context, ai);
             }
             else
             {
