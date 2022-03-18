@@ -7,18 +7,18 @@ namespace UniRxExtension
     [Serializable]
     public class ReactiveList<T>
     {
-        private List<T> list;
+        protected List<T> List;
         public IObservable<List<T>> OnValueChanged => onValueChanged;
-        private Subject<List<T>> onValueChanged;
+        protected Subject<List<T>> onValueChanged;
 
         public ReactiveList()
         {
-            list = new List<T>();
+            List = new List<T>();
             onValueChanged = new Subject<List<T>>();
         }
 
         public ReactiveList(List<T> list){
-            this.list = list;
+            this.List = list;
             onValueChanged = new Subject<List<T>>();
         }
 
@@ -27,24 +27,24 @@ namespace UniRxExtension
 
         private List<T> CopyList()
         {
-            return new List<T>(list);
+            return new List<T>(List);
         }
 
         public virtual void Add(T element)
         {
-            list.Add(element);
+            List.Add(element);
             onValueChanged.OnNext(Values);
         }
 
         public virtual void Remove(T element)
         {
-            list.Remove(element);
+            List.Remove(element);
             onValueChanged.OnNext(Values);
         }
 
         public void Clear()
         {
-            var copyList = new List<T>(list);
+            var copyList = new List<T>(List);
             foreach(var element in copyList)
             {
                 Remove(element);
@@ -53,23 +53,23 @@ namespace UniRxExtension
 
         public void IncreaIndex(T element)
         {
-            var index = list.IndexOf(element);
-            if (index >= list.Count-1) return;
-            var itemToReplace = list[index+1];
-            list[index + 1] = element;
-            list[index] = itemToReplace;
-            onValueChanged.OnNext(list);
+            var index = List.IndexOf(element);
+            if (index >= List.Count-1) return;
+            var itemToReplace = List[index+1];
+            List[index + 1] = element;
+            List[index] = itemToReplace;
+            onValueChanged.OnNext(List);
         }
 
         public void DecreaseIndex(T element)
         {
-            var index = list.IndexOf(element);
+            var index = List.IndexOf(element);
             if (index <= 0) return;
-            var itemToReplace = list[index - 1];
-            list[index - 1] = element;
-            list[index] = itemToReplace;
-            onValueChanged.OnNext(list);
+            var itemToReplace = List[index - 1];
+            List[index - 1] = element;
+            List[index] = itemToReplace;
+            onValueChanged.OnNext(List);
         }
-        public int Count => list.Count;
+        public int Count => List.Count;
     }
 }

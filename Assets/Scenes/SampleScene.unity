@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afbc4680a0757c438f422c80679e69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultAiName: Default
+  DefaultAiName: DecisionSelector
 --- !u!65 &596149551
 BoxCollider:
   m_ObjectHideFlags: 0

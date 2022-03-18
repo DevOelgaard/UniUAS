@@ -34,10 +34,15 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
     }
     public override Bucket GetBestUtilityContainer(List<Bucket> buckets, AiContext context)
     {
-        var sortedList = new SortedList<float, UtilityContainer>();
+        buckets = buckets
+            .OrderByDescending(b => b.Weight)
+            .ToList();
+
+        var result = new List<UtilityContainer>();
+
         foreach(Bucket bucket in buckets)
         {
-            var lowestValidValue = GetLowestValidValue(sortedList);
+            var lowestValidValue = GetLowestValidValue(result);
             if (Convert.ToSingle(bucket.Weight.Value) < lowestValidValue)
             {
                 continue;
@@ -45,23 +50,23 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
             {
                 context.CurrentEvaluatedBucket = bucket;
                 bucket.GetUtility(context);
-                UpdateList(sortedList, bucket);
+                UpdateList(result, bucket);
             }
         }
-        return (Bucket)GetRandomContainer(sortedList);
+        return (Bucket)GetRandomContainer(result);
 
     }
 
     public override Decision GetBestUtilityContainer(List<Decision> decisions, AiContext context)
     {
-        var sortedList = new SortedList<float, UtilityContainer>();
+        var result = new List<UtilityContainer>();
         foreach (Decision decision in decisions)
         {
             context.CurrentEvalutedDecision = decision;
             decision.GetUtility(context);
-            UpdateList(sortedList, decision);
+            UpdateList(result, decision);
         }
-        return (Decision)GetRandomContainer(sortedList);
+        return (Decision)GetRandomContainer(result);
     }
 
     public override string GetDescription()
@@ -74,7 +79,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         return Consts.UCS_RandomXHighest_Name;
     }
 
-    private void UpdateList(SortedList<float, UtilityContainer> list, UtilityContainer container)
+    private void UpdateList(List<UtilityContainer> list, UtilityContainer container)
     {
         if (container.LastCalculatedUtility <= 0 )
         {
@@ -82,9 +87,14 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         }
 
         // Return if score is to far from highest score.
-        var highestValid = list.FirstOrDefault().Value;
+        var highestValid = list.LastOrDefault();
+        
         if (highestValid != null)
         {
+            if (list.IndexOf(highestValid) > NumberOfItemsToEvaluate - 1)
+            {
+                highestValid = list[NumberOfItemsToEvaluate - 1];
+            }
             var minimumAllowedScore = highestValid.LastCalculatedUtility - MaxDeviationFromHighest;
             if (container.LastCalculatedUtility < minimumAllowedScore)
             {
@@ -96,13 +106,13 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
 
         if (list.Count < NumberOfItemsToEvaluate)
         {
-            list.Add(container.LastCalculatedUtility, container);
+            list.Add(container);
         } 
-        else if (container.LastCalculatedUtility < list.Values[evaluateIndex].LastCalculatedUtility)
+        else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
             return;
         } 
-        else if (container.LastCalculatedUtility < list.Values[evaluateIndex].LastCalculatedUtility)
+        else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
             var rand = UnityEngine.Random.Range(0, 2);
             if (rand == 0) // Swapping two equally scored containers at random
@@ -112,44 +122,49 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         } 
         else
         {
-            list.Add(container.LastCalculatedUtility, container);
+            list.Add(container);
         }
+        list = list
+            .OrderByDescending(uc => uc.LastCalculatedUtility)
+            .ToList();
+
     }
 
-    private UtilityContainer GetRandomContainer(SortedList<float, UtilityContainer> list)
+    private UtilityContainer GetRandomContainer(List<UtilityContainer> list)
     {
         if (list.Count == 0)
         {
             throw new Exception("No items to chose from, list.Count must be > 0");
         }
+        var numberOfItems = NumberOfItemsToEvaluate < list.Count ? NumberOfItemsToEvaluate : list.Count;
+
         if (PercentageChance)
         {
             var sum = list
-                .Values
-                .Take(NumberOfItemsToEvaluate)
+                .Take(numberOfItems)
                 .Where(uc => uc != null)
                 .Sum(uc => uc.LastCalculatedUtility);
             
 
             var resultNumber = UnityEngine.Random.Range(0, sum);
-            for(var i = 0; i < NumberOfItemsToEvaluate; i++)
+            for(var i = 0; i < numberOfItems; i++)
             {
-                resultNumber -= list.Values[i].LastCalculatedUtility;
+                resultNumber -= list[i].LastCalculatedUtility;
                 if(resultNumber <= 0)
                 {
-                    return list.Values[i];
+                    return list[i];
                 }
             }
         }
         else
         {
-            var rand = UnityEngine.Random.Range(0, NumberOfItemsToEvaluate);
-            return list.Values[rand];
+            var rand = UnityEngine.Random.Range(0, numberOfItems);
+            return list[rand];
         }
 
         throw new Exception("Something should have been chosen at this point");
     }
-    private float GetLowestValidValue(SortedList<float, UtilityContainer> list)
+    private float GetLowestValidValue(List<UtilityContainer> list)
     {
         if (list.Count() == 0)
         {
@@ -157,11 +172,11 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         }
         else if (list.Count() < NumberOfItemsToEvaluate)
         {
-            return list.Last().Key;
+            return list.Last().LastCalculatedUtility;
         }
         else
         {
-            return list.Values[NumberOfItemsToEvaluate - 1].LastCalculatedUtility;
+            return list[NumberOfItemsToEvaluate - 1].LastCalculatedUtility;
         }
     }
 }

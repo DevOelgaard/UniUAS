@@ -19,9 +19,10 @@ public class Ai: AiObjectModel
         set
         {
             buckets = value;
+            bucketSub?.Dispose();
+
             if (buckets != null)
             {
-                bucketSub?.Dispose();
                 UpdateInfo();
                 bucketSub = buckets.OnValueChanged
                     .Subscribe(_ => UpdateInfo());
