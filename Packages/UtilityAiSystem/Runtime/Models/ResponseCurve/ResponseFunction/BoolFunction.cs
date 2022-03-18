@@ -19,7 +19,7 @@ internal class BoolFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         if (x < Convert.ToSingle(Parameters[1].Value)){
             return (bool)Parameters[0].Value == true ? 1f : 0f;

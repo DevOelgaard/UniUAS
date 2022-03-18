@@ -15,7 +15,7 @@ public class ExponentialFunction : ResponseFunction
             };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         return Mathf.Pow(x, Convert.ToSingle(Parameters[0].Value));
     }

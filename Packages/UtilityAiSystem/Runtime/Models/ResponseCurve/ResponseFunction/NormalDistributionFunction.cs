@@ -21,7 +21,7 @@ internal class NormalDistributionFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         var mean = Convert.ToSingle(Parameters[0].Value);
         var stdDeviation = Convert.ToSingle(Parameters[1].Value);

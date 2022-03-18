@@ -8,6 +8,9 @@ using UnityEngine;
 public abstract class ResponseFunction: AiObjectModel
 {
     public List<Parameter> Parameters;
+    private bool Inverse => (bool)Parameters
+        .FirstOrDefault(p => p.Name == "Inverse" && p.Value.GetType() == typeof(bool))
+        .Value; 
 
     public ResponseFunction()
     {
@@ -17,7 +20,9 @@ public abstract class ResponseFunction: AiObjectModel
     protected ResponseFunction(string name)
     {
         Name = name;
+        Parameters = new List<Parameter>();
         Parameters = GetParameters();
+        Parameters.Add(new Parameter("Inverse", false ));
     }
 
     protected virtual List<Parameter> GetParameters()
@@ -25,7 +30,18 @@ public abstract class ResponseFunction: AiObjectModel
         return new List<Parameter>();
     }
 
-    public abstract float CalculateResponse(float x);
+    public float CalculateResponse(float x)
+    {
+        if (Inverse)
+        {
+            return 1-CalculateResponseInternal(x);
+        } else
+        {
+            return CalculateResponseInternal(x);
+        }
+    }
+
+    protected abstract float CalculateResponseInternal(float x);
 
     protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {

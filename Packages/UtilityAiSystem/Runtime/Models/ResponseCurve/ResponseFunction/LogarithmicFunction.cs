@@ -19,7 +19,7 @@ internal class LogarithmicFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         return (float)Mathf.Log(x, Convert.ToSingle(Parameters[0].Value)/10)/10;
     }

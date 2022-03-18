@@ -21,7 +21,7 @@ public class LogisticFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         // L / 1 + e^-k(x-x0)
         return Convert.ToSingle(Parameters[0].Value) / (1.0f + (float)Mathf.Exp(-Convert.ToSingle(Parameters[1].Value) * (x - Convert.ToSingle(Parameters[2].Value))));

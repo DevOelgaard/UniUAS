@@ -144,7 +144,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -156,7 +156,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -240,7 +240,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -252,7 +252,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -270,7 +270,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -387,7 +387,260 @@
   "Decisions": [],
   "Considerations": [],
   "AgentActions": [],
-  "ResponseCurves": [],
+  "ResponseCurves": [
+    {
+      "Name": "Default",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [],
+      "ResponseFunctions": [
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "Baby sleep",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.7,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.8,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.9,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 1.66,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "ExponentialFunction"
+        },
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 0.3,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": -8.74,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 21.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
   "TestStrign": "",
   "InternalTestString": "",
   "FileName": "UASTemplateService"

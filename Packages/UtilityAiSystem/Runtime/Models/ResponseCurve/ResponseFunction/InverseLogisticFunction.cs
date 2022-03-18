@@ -17,7 +17,7 @@ public class InverseLogisticFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         var baseLn = Convert.ToSingle(Parameters[0].Value);
         return (((float)Math.Log(x,baseLn) - (float)Math.Log(1-x,baseLn))/10) + 0.5f;

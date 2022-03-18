@@ -18,7 +18,7 @@ internal class FixedValueFunction : ResponseFunction
         };
     }
 
-    public override float CalculateResponse(float x)
+    protected override float CalculateResponseInternal(float x)
     {
         return Convert.ToSingle(Parameters[0].Value);
     }
