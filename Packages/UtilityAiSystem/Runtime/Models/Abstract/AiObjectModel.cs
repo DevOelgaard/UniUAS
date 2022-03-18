@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public abstract class AiObjectModel: RestoreAble
 {
+    internal AiObjectMetaData MetaData = new AiObjectMetaData();
     protected CompositeDisposable Disposables = new CompositeDisposable();
     public string HelpText { get; protected set; }
     public IObservable<string> OnNameChanged => onNameChanged;

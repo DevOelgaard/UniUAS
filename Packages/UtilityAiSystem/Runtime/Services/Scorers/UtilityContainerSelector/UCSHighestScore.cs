@@ -40,7 +40,6 @@ public class UCSHighestScore : UtilityContainerSelector
             context.CurrentEvaluatedBucket = bucket;
             bestContainer = CheckBestContainer(bucket, context, bestContainer);
         }
-        context.LastSelectedBucket = bestContainer as Bucket;
         return bestContainer as Bucket;
     }
 
@@ -52,7 +51,6 @@ public class UCSHighestScore : UtilityContainerSelector
             context.CurrentEvalutedDecision = decision;
             bestContainer = CheckBestContainer(decision, context, bestContainer);
         }
-        context.LastSelectedDecision = bestContainer as Decision;
         return bestContainer as Decision;
     }
 

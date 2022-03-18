@@ -73,3 +73,7 @@ UCSComponent > TemplateContainer > #DescriptionContainer {
 UCSComponent > TemplateContainer > #ParametersContainer {
     align-items: flex-start;
 }
+
+ListViewComponent > TemplateContainer > VisualElement > #Center:hover {
+    
+}

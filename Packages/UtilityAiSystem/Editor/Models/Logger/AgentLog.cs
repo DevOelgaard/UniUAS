@@ -8,15 +8,12 @@ internal class AgentLog: AiObjectLog
 {
     internal AiLog Ai;
 
-    internal static AgentLog GetDebug(IAgent agent)
+    internal static AgentLog GetDebug(IAgent agent, int tick)
     {
         if (agent == null) return null;
-        var agentDebug = new AgentLog();
-        agentDebug.Name = agent.Model.Name;
-        agentDebug.Description = "";
-        agentDebug.Type = agent.GetType().ToString();
-
-        agentDebug.Ai = AiLog.GetDebug(agent.Ai);
-        return agentDebug;
+        var result = new AgentLog();
+        result = SetBasics(result, agent, tick) as AgentLog;
+        result.Ai = AiLog.GetDebug(agent.Ai, tick);
+        return result;
     }
 }

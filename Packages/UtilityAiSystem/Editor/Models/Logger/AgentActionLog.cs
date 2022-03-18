@@ -8,16 +8,14 @@ internal class AgentActionLog: AiObjectLog
 {
     internal List<ParameterLog> Parameters;
 
-    internal static AgentActionLog GetDebug(AgentAction aa)
+    internal static AgentActionLog GetDebug(AgentAction aa, int tick)
     {
         var result = new AgentActionLog();
-        result.Name = aa.Name;
-        result.Description = aa.Description;
-        result.Type = aa.GetType().ToString();
+        result = SetBasics(result, aa, tick) as AgentActionLog;
         result.Parameters = new List<ParameterLog>();
         foreach (var p in aa.Parameters)
         {
-            result.Parameters.Add(ParameterLog.GetDebug(p));
+            result.Parameters.Add(ParameterLog.GetDebug(p, tick));
         }
         return result;
     }

@@ -8,16 +8,14 @@ internal class ResponseCurveLog: AiObjectLog
 {
     public List<ResponseFunctionLog> ResponseFunctions;
 
-    internal static ResponseCurveLog GetDebug(ResponseCurve responseCurve)
+    internal static ResponseCurveLog GetDebug(ResponseCurve responseCurve, int tick)
     {
         var result = new ResponseCurveLog();
-        result.Name = responseCurve.Name;
-        result.Description = responseCurve.Description;
-        result.Type = responseCurve.GetType().ToString();
+        result = SetBasics(result, responseCurve, tick) as ResponseCurveLog;
         result.ResponseFunctions = new List<ResponseFunctionLog>();
         foreach(var rF in responseCurve.ResponseFunctions)
         {
-            result.ResponseFunctions.Add(ResponseFunctionLog.GetDebug(rF));
+            result.ResponseFunctions.Add(ResponseFunctionLog.GetDebug(rF, tick));
         }
 
         return result;

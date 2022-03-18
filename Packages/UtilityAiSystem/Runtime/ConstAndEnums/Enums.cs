@@ -1,6 +1,5 @@
 ﻿public enum AiContextKey
 {
-    TickMetaData,
     CurrentTargetGameObject,
 }
 

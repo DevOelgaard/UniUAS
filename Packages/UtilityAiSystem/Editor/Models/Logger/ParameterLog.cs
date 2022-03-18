@@ -9,7 +9,7 @@ internal class ParameterLog: ILogModel
     public string Name;
     public string Value;
 
-    internal static ParameterLog GetDebug(Parameter p)
+    internal static ParameterLog GetDebug(Parameter p, int tick)
     {
         var result = new ParameterLog();
         result.Name = p.Name;

@@ -10,14 +10,14 @@ internal class ResponseFunctionLog: ILogModel
     public string Type = "";
     public List<ParameterLog> Parameters;
 
-    internal static ResponseFunctionLog GetDebug(ResponseFunction rF)
+    internal static ResponseFunctionLog GetDebug(ResponseFunction rF, int tick)
     {
         var result = new ResponseFunctionLog();
         result.Type = rF.GetType().ToString();
         result.Parameters = new List<ParameterLog>();
         foreach(var p in rF.Parameters)
         {
-            result.Parameters.Add(ParameterLog.GetDebug(p));
+            result.Parameters.Add(ParameterLog.GetDebug(p, tick));
         }
         return result;
     }

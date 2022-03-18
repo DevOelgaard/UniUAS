@@ -11,21 +11,19 @@ internal class ConsiderationLog : AiObjectLog
     internal List<ParameterLog> Parameters;
     internal ResponseCurveLog ResponseCurve;
 
-    internal static ConsiderationLog GetDebug(Consideration consideration)
+    internal static ConsiderationLog GetDebug(Consideration consideration, int tick)
     {
         var result = new ConsiderationLog();
-        result.Name = consideration.Name;
-        result.Description = consideration.Description;
-        result.Type = consideration.GetType().ToString();
+        result = SetBasics(result, consideration, tick) as ConsiderationLog;
         result.BaseScore = consideration.BaseScore;
         result.NormalizedScore = consideration.NormalizedScore;
         result.Parameters = new List<ParameterLog>();
         foreach(var p in consideration.Parameters)
         {
-            result.Parameters.Add(ParameterLog.GetDebug(p));
+            result.Parameters.Add(ParameterLog.GetDebug(p, tick));
         }
 
-        result.ResponseCurve = ResponseCurveLog.GetDebug(consideration.CurrentResponseCurve);
+        result.ResponseCurve = ResponseCurveLog.GetDebug(consideration.CurrentResponseCurve, tick);
         return result;
     }
 }

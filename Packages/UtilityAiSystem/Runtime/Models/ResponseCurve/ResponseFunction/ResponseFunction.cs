@@ -53,6 +53,10 @@ public abstract class ResponseFunction: AiObjectModel
             var parameter = Parameter.Restore<Parameter>(p, restoreDebug);
             Parameters.Add(parameter);
         }
+        if (Parameters.FirstOrDefault(p => p.Name == "Inverse") == null)
+        {
+            Parameters.Add(new Parameter("Inverse", false));
+        }
     }
 
     internal override AiObjectModel Clone()

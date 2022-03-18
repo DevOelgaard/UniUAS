@@ -16,16 +16,6 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     {
         DecisionSelector = decisionSelector;
         BucketSelector = bucketSelector;
-        //if (decisionSelector == null)
-        //{
-        //    decisionSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_DecisionSelector);
-        //}
-        //DecisionSelector = decisionSelector;
-        //if (bucketSelector == null)
-        //{
-        //    bucketSelector = ScorerService.Instance.ContainerSelectors.Values.FirstOrDefault(cS => cS.GetName() == Consts.Default_BucketSelector);
-        //}
-        //BucketSelector = bucketSelector;
     }
 
     public string GetDescription()
@@ -53,7 +43,8 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
 
                 //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
-
+            context.LastSelectedDecision = bestDecision;
+            bestDecision.MetaData.LastTickSelected = context.TickMetaData.TickCount;
             return bestDecision.AgentActions.Values;
         }
     }
@@ -86,6 +77,8 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             }
             else
             {
+                context.LastSelectedBucket = bestBucket;
+                bestBucket.MetaData.LastTickSelected = context.TickMetaData.TickCount;
                 return bestAction;
             }
         }

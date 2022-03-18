@@ -11,27 +11,25 @@ internal class BucketLog: AiObjectLog
     internal float Score;
     internal float Weight;
 
-    internal static BucketLog GetDebug(Bucket bucket)
+    internal static BucketLog GetDebug(Bucket bucket, int tick)
     {
-        var bucketDebug = new BucketLog();
-        bucketDebug.Name = bucket.Name;
-        bucketDebug.Description = bucket.Description;
-        bucketDebug.Type = bucket.GetType().ToString();
-        bucketDebug.Score = bucket.ScoreModels.First().Value;
-        bucketDebug.Weight = Convert.ToSingle(bucket.Weight.Value);
+        var result = new BucketLog();
+        result = SetBasics(result, bucket, tick) as BucketLog;
+        result.Score = bucket.ScoreModels.First().Value;
+        result.Weight = Convert.ToSingle(bucket.Weight.Value);
 
-        bucketDebug.Considerations = new List<ConsiderationLog>();
+        result.Considerations = new List<ConsiderationLog>();
         foreach (var consideration in bucket.Considerations.Values)
         {
-            bucketDebug.Considerations.Add(ConsiderationLog.GetDebug(consideration));
+            result.Considerations.Add(ConsiderationLog.GetDebug(consideration, tick));
         }
 
-        bucketDebug.Decisions = new List<DecisionLog>();
+        result.Decisions = new List<DecisionLog>();
         foreach(var decision in bucket.Decisions.Values)
         {
-            bucketDebug.Decisions.Add(DecisionLog.GetDebug(decision));
+            result.Decisions.Add(DecisionLog.GetDebug(decision, tick));
         }
 
-        return bucketDebug;
+        return result;
     }
 }

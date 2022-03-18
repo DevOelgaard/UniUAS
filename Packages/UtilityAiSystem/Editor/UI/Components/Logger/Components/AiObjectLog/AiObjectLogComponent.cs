@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 internal abstract class AiObjectLogComponent: LogComponent
 {
+    protected Label TypeLabel;
     protected Label NameLabel;
     protected Label DescriptionLabel;
     protected VisualElement ScoreContainer;
@@ -18,6 +19,7 @@ internal abstract class AiObjectLogComponent: LogComponent
         var root = AssetDatabaseService.GetTemplateContainer("AiObjectLogComponent");
         Add(root);
 
+        TypeLabel = root.Q<Label>("Type-Label");
         NameLabel = root.Q<Label>("Name-Label");
         DescriptionLabel = root.Q<Label>("Description-Label");
         ScoreContainer = root.Q<VisualElement>("ScoreContainer");
@@ -32,7 +34,22 @@ internal abstract class AiObjectLogComponent: LogComponent
             return;
         Model = model as AiObjectLog;
         this.style.display = DisplayStyle.Flex;
-        NameLabel.text = Model.Name + " (" + Model.Type + ")";
+
+        TypeLabel.text = Model.Type;
+        if (Model.CurrentTick == Model.LastSelectedTick)
+        {
+            NameLabel.text = Model.Name + "***Selected***";
+        } 
+        else if (Model.CurrentTick != Model.LastEvaluatedTick && 
+            Model.GetType() != typeof(ResponseCurveLog) &&
+            Model.GetType() != typeof(AiLog))
+        {
+            NameLabel.text = Model.Name + "***NotEvaluated***";
+        }
+        else
+        {
+            NameLabel.text = Model.Name;
+        }
         DescriptionLabel.text = Model.Description;
         UpdateUiInternal(Model);
     }

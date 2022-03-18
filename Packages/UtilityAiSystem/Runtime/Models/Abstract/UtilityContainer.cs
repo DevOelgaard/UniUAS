@@ -58,6 +58,7 @@ public abstract class UtilityContainer : AiObjectModel
 
     internal float GetUtility(AiContext context)
     {
+        MetaData.LastTickEvaluated = context.TickMetaData.TickCount;
         LastCalculatedUtility = CalculateUtility(context);
         return LastCalculatedUtility;
     }

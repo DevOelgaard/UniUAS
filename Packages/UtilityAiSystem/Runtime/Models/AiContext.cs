@@ -17,6 +17,7 @@ public class AiContext
     internal Decision CurrentEvalutedDecision;
     internal Bucket LastSelectedBucket;
     internal Bucket CurrentEvaluatedBucket;
+    internal TickMetaData TickMetaData;
          
     public AiContext()
     {

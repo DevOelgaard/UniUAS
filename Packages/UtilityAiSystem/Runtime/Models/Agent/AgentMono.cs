@@ -58,7 +58,8 @@ public class AgentMono : MonoBehaviour, IAgent
 
     public void Tick(TickMetaData metaData)
     {
-        Ai.Context.SetContext(AiContextKey.TickMetaData, metaData);
+        Ai.Context.TickMetaData = metaData;
+        Model.TickMetaData = metaData;
         var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context);
 
         var oldActions = Ai.Context.LastActions;

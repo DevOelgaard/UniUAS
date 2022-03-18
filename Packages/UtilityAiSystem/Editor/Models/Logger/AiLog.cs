@@ -8,16 +8,14 @@ internal class AiLog: AiObjectLog
 {
     internal List<BucketLog> Buckets;
 
-    internal static AiLog GetDebug(Ai ai)
+    internal static AiLog GetDebug(Ai ai, int tick)
     {
         var result = new AiLog();
-        result.Name = ai.Name;
-        result.Description = ai.Description;
-        result.Type = ai.GetType().ToString();
+        result = SetBasics(result, ai, tick) as AiLog;
         result.Buckets = new List<BucketLog>();
         foreach (var bucket in ai.Buckets.Values)
         {
-            result.Buckets.Add(BucketLog.GetDebug(bucket));
+            result.Buckets.Add(BucketLog.GetDebug(bucket, tick));
         }
         return result;
     }
