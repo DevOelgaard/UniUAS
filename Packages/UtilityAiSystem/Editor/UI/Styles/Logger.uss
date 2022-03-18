@@ -12,44 +12,58 @@ AiLogComponent {
     padding: 3px;
 }
 
-AiLogComponent:hover {
-    border-radius: 0px;
-    border-width: 1px;
-    border-color: rgb(90, 90, 90);
+    AiLogComponent:hover {
+/*        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(200, 200, 200);*/
+    }
+
+AiLogComponent > TemplateContainer > #Body > TemplateContainer {
+    flex-direction: row;
 }
 
 BucketLogComponent {
     margin: 8px;
     padding: 3px;
-}
-
-BucketLogComponent:hover {
+    max-width: 500px;
     border-radius: 0px;
     border-width: 1px;
-    border-color: rgb(90, 90, 90);
+    border-color: rgb(70, 70, 70);
 }
+
+    BucketLogComponent:hover {
+        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(170, 170, 170);
+    }
 
 DecisionLogComponent {
     margin: 8px;
     padding: 3px;
-}
-
-DecisionLogComponent:hover {
     border-radius: 0px;
     border-width: 1px;
-    border-color: rgb(90, 90, 90);
+    border-color: rgb(70, 70, 70);
 }
+
+    DecisionLogComponent:hover {
+        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(140, 140, 140);
+    }
 
 ConsiderationLogComponent {
     margin: 8px;
-    padding:3px;
-}
-
-ConsiderationLogComponent:hover {
+    padding: 3px;
     border-radius: 0px;
     border-width: 1px;
-    border-color: rgb(90, 90, 90);
+    border-color: rgb(70, 70, 70);
 }
+
+    ConsiderationLogComponent:hover {
+        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(110, 110, 110);
+    }
 
 ResponseCurveLogComponent {
     margin: 8px;
@@ -65,13 +79,16 @@ ResponseCurveLogComponent:hover {
 AgentActionLogComponent {
     margin: 8px;
     padding: 3px;
-}
-
-AgentActionLogComponent:hover {
     border-radius: 0px;
     border-width: 1px;
-    border-color: rgb(90, 90, 90);
+    border-color: rgb(70, 70, 70);
 }
+
+    AgentActionLogComponent:hover {
+        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(110, 110, 110);
+    }
 
 AgentActionLogComponent > TemplateContainer > #Body{
     flex-grow: 0;
@@ -118,7 +135,7 @@ LoggerComponent > TemplateContainer > VisualElement > #Body > VisualElement > Vi
 #IdentifierContainer{
     -unity-font-style: bold;
     padding-bottom: 3px;
-
+    white-space: pre;
 }
 
 #TypeContainer {
