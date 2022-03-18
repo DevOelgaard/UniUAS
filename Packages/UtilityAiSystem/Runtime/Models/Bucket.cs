@@ -44,7 +44,7 @@ public class Bucket : UtilityContainer
         return clone;
     }
 
-    internal override float CalculateUtility(AiContext context)
+    protected override float CalculateUtility(AiContext context)
     {
         return context.UtilityScorer.CalculateUtility(Considerations.Values, context) * Convert.ToSingle(Weight.Value);
     }

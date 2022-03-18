@@ -957,6 +957,18 @@
                         0.0
                       ],
                       "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
                     }
                   ],
                   "Name": "Default (Demo_DebugLogParameter)",
@@ -1027,7 +1039,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1039,7 +1051,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1078,7 +1090,7 @@
                       {
                         "Name": "a",
                         "Value": 1.0,
-                        "ValueType": "System.Single",
+                        "ValueType": "System.Double",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -1090,7 +1102,7 @@
                       {
                         "Name": "b",
                         "Value": 0.0,
-                        "ValueType": "System.Single",
+                        "ValueType": "System.Double",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -1122,7 +1134,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1134,7 +1146,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1152,7 +1164,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 9.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -1209,6 +1221,18 @@
                         0.0
                       ],
                       "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
                     }
                   ],
                   "Name": "Default (Demo_DebugLogParameter)",
@@ -1279,7 +1303,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1291,7 +1315,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1374,7 +1398,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1386,7 +1410,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1404,7 +1428,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -1501,6 +1525,1069 @@
               "Name": "Max deviation from highest",
               "Value": 0.0,
               "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "USName": "Average",
+      "FileName": "Ai"
+    },
+    {
+      "Name": "DecisionSelector",
+      "Description": "Selecting 1 of 4 highest scored decisions",
+      "IsPLayable": true,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "1 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "OnStart",
+                      "Value": "1",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnGoing",
+                      "Value": "1",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnEnd",
+                      "Value": "1",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_DebugLogParameter)",
+                  "Description": null,
+                  "FileName": "Demo_DebugLogParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 1.0,
+                      "ValueType": "System.Single",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            },
+            {
+              "Name": "2 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "OnStart",
+                      "Value": "2",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnGoing",
+                      "Value": "2",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnEnd",
+                      "Value": "2",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_DebugLogParameter)",
+                  "Description": null,
+                  "FileName": "Demo_DebugLogParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 0.5,
+                      "ValueType": "System.Single",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            },
+            {
+              "Name": "3 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "OnStart",
+                      "Value": "3",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnGoing",
+                      "Value": "3",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnEnd",
+                      "Value": "3",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_DebugLogParameter)",
+                  "Description": null,
+                  "FileName": "Demo_DebugLogParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 0.25,
+                      "ValueType": "System.Single",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            },
+            {
+              "Name": "4 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "OnStart",
+                      "Value": "4",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnGoing",
+                      "Value": "4",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnEnd",
+                      "Value": "4",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_DebugLogParameter)",
+                  "Description": null,
+                  "FileName": "Demo_DebugLogParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 0.125,
+                      "ValueType": "System.Single",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            },
+            {
+              "Name": "5 (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "OnStart",
+                      "Value": "5",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnGoing",
+                      "Value": "5",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "OnEnd",
+                      "Value": "5",
+                      "ValueType": "System.String",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Only OnGoing",
+                      "Value": true,
+                      "ValueType": "System.Boolean",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_DebugLogParameter)",
+                  "Description": null,
+                  "FileName": "Demo_DebugLogParameter"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 0.0,
+                      "ValueType": "System.Single",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 0.5,
+                  "ValueType": "System.Single",
+                  "RGBA": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Default",
+                "Description": null,
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 1.0,
+                "Segments": [],
+                "ResponseFunctions": [
+                  {
+                    "Name": "Linear",
+                    "Description": null,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "ValueType": "System.Double",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "ValueType": "System.Double",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Inverse",
+                        "Value": false,
+                        "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "LinearFunction"
+                  }
+                ],
+                "FileName": "ResponseCurve"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "ValueType": "System.Single",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "ValueType": "System.Single",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "BaseScore": 0.0,
+              "NormalizedScore": 0.0,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "ValueType": "System.Single",
+            "RGBA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "FileName": "Parameter"
+          },
+          "LastCalculatedUtility": 0.0,
+          "FileName": "Bucket"
+        }
+      ],
+      "CurrentBucketSelectorName": "Highest Score",
+      "CurrentDecisionSelectorName": "Random X Highest",
+      "BucketSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 1,
+              "ValueType": "System.Int64",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "DecisionSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 5,
+              "ValueType": "System.Int32",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 1.0,
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -2064,6 +3151,18 @@
                     0.0
                   ],
                   "FileName": "Parameter"
+                },
+                {
+                  "Name": "Only OnGoing",
+                  "Value": true,
+                  "ValueType": "System.Boolean",
+                  "RGBA": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "FileName": "Parameter"
                 }
               ],
               "Name": "Default (Demo_DebugLogParameter)",
@@ -2476,6 +3575,173 @@
       ],
       "LastCalculatedUtility": 0.0,
       "FileName": "Demo_AllObjectsWithTag"
+    },
+    {
+      "Name": "Debug.LogOutput (Decision)",
+      "Description": null,
+      "AgentActions": [
+        {
+          "Parameters": [
+            {
+              "Name": "OnStart",
+              "Value": "Agent output",
+              "ValueType": "System.String",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "OnGoing",
+              "Value": "Agent output",
+              "ValueType": "System.String",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "OnEnd",
+              "Value": "Agent output",
+              "ValueType": "System.String",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Only OnGoing",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "Name": "Default (Demo_DebugLogParameter)",
+          "Description": null,
+          "FileName": "Demo_DebugLogParameter"
+        }
+      ],
+      "Considerations": [
+        {
+          "Parameters": [
+            {
+              "Name": "Return value",
+              "Value": 0.5,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "ResponseCurveState": {
+            "Name": "Default",
+            "Description": null,
+            "MinY": 0.0,
+            "MaxY": 1.0,
+            "MinX": 0.0,
+            "MaxX": 1.0,
+            "Segments": [],
+            "ResponseFunctions": [
+              {
+                "Name": "Linear",
+                "Description": null,
+                "Parameters": [
+                  {
+                    "Name": "a",
+                    "Value": 1.0,
+                    "ValueType": "System.Double",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "b",
+                    "Value": 0.0,
+                    "ValueType": "System.Double",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Inverse",
+                    "Value": false,
+                    "ValueType": "System.Boolean",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  }
+                ],
+                "FileName": "LinearFunction"
+              }
+            ],
+            "FileName": "ResponseCurve"
+          },
+          "Name": "Default (Demo_ConsiderationFixedValue)",
+          "Description": null,
+          "Min": {
+            "Name": "Min",
+            "Value": 0.0,
+            "ValueType": "System.Double",
+            "RGBA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "FileName": "Parameter"
+          },
+          "Max": {
+            "Name": "Max",
+            "Value": 1.0,
+            "ValueType": "System.Double",
+            "RGBA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "FileName": "Parameter"
+          },
+          "PerformanceTag": 2,
+          "BaseScore": 0.0,
+          "NormalizedScore": 0.0,
+          "FileName": "Demo_ConsiderationFixedValue"
+        }
+      ],
+      "Parameters": [],
+      "LastCalculatedUtility": 0.0,
+      "FileName": "Decision"
     }
   ],
   "Considerations": [

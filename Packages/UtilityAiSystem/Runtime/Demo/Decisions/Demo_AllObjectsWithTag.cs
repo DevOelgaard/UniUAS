@@ -19,7 +19,7 @@ internal class Demo_AllObjectsWithTag : Decision
         };
     }
 
-    internal override float CalculateUtility(AiContext context)
+    protected override float CalculateUtility(AiContext context)
     {
         var targets = GameObject.FindGameObjectsWithTag((string)Parameters[0].Value);
         GameObject selectedTarget = null;

@@ -18,7 +18,7 @@
       {
         "Name": "Sample Time Seconds",
         "Value": 1.0,
-        "ValueType": "System.Double",
+        "ValueType": "System.Single",
         "RGBA": [
           0.0,
           0.0,

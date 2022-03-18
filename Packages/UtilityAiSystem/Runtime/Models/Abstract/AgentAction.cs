@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 public abstract class AgentAction: AiObjectModel
 {
@@ -51,6 +52,15 @@ public abstract class AgentAction: AiObjectModel
             var parameter = Parameter.Restore<Parameter>(p, restoreDebug);
             Parameters.Add(parameter);
         }
+        if (this.GetType() == typeof(Demo_DebugLogParameter))
+        {
+            var p = Parameters.FirstOrDefault(p => p.Name == "Only OnGoing");
+            if (p == null)
+            {
+                Parameters.Add(new Parameter("Only OnGoing", true));
+            }
+        }
+        
     }
 
     internal override void SaveToFile(string path, IPersister persister)

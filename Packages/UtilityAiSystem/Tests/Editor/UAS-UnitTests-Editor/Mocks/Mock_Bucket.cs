@@ -15,7 +15,7 @@ public class Mock_Bucket: Bucket
     }
 
 
-    internal override float CalculateUtility(AiContext context)
+    protected override float CalculateUtility(AiContext context)
     {
         return ReturnValue;
     }

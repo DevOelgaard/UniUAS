@@ -51,7 +51,7 @@ public abstract class UtilityContainer : AiObjectModel
             .Subscribe(_ => UpdateInfo());
     }
 
-    internal virtual float CalculateUtility(AiContext context)
+    protected virtual float CalculateUtility(AiContext context)
     {
         return context.UtilityScorer.CalculateUtility(Considerations.Values, context);
     }
