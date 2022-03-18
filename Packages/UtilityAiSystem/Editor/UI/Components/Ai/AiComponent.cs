@@ -24,6 +24,7 @@ internal class AiComponent : AiObjectComponent
     private TabViewComponent tabView;
     private Button bucketTab;
     private Button settingsTab;
+    private HelpBox playAbleHelpBox;
 
     private CollectionComponent<Bucket> bucketCollection;
 
@@ -34,7 +35,7 @@ internal class AiComponent : AiObjectComponent
         Body.Add(root);
         styleSheets.Add(StylesService.GetStyleSheet("AiObjectComponent"));
         collectionsContainer = root.Q<VisualElement>("CollectionsContainer");
-
+        playAbleHelpBox = new HelpBox("Not set to playable!", HelpBoxMessageType.Warning);
         tabView = new TabViewComponent();
         collectionsContainer.Add(tabView);
 
@@ -60,18 +61,34 @@ internal class AiComponent : AiObjectComponent
 
         bucketTab = tabView.AddTabGroup("Buckets", bucketCollection);
         settingsTab = tabView.AddTabGroup("Settings", settingsContainer);
-
+         
         playableToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
         {
             if (aiModel == null) return;
             aiModel.IsPLayable = evt.newValue;
+
+            UpdateHelpBox(evt.newValue);
         });
+
+    }
+
+    private void UpdateHelpBox(bool hide)
+    {
+        if (hide)
+        {
+            playAbleHelpBox.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            playAbleHelpBox.style.display = DisplayStyle.Flex;
+        }
     }
 
     protected override void UpdateInternal(AiObjectModel model)
     {
         aiModel = model as Ai;
         ScoreContainer.Add(playableToggle);
+        ScoreContainer.Add(playAbleHelpBox);
 
         bucketTab.text = "Buckets (" + aiModel.Buckets.Count + ")";
         bucketTabSub?.Dispose();
@@ -80,6 +97,8 @@ internal class AiComponent : AiObjectComponent
         
         
         playableToggle.SetValueWithoutNotify(aiModel.IsPLayable);
+        UpdateHelpBox(playableToggle.value);
+
         if (aiModel == null)
         {
             bucketCollection.SetElements(new ReactiveList<Bucket>());
@@ -127,6 +146,7 @@ internal class AiComponent : AiObjectComponent
                 }
             })
             .AddTo(subscriptions);
+
     }
 
     ~AiComponent()

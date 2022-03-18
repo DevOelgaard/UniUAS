@@ -2620,7 +2620,7 @@
             {
               "Name": "Number Of Items",
               "Value": 1,
-              "ValueType": "System.Int32",
+              "ValueType": "System.Int64",
               "RGBA": [
                 0.0,
                 0.0,
@@ -2644,7 +2644,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -2667,7 +2667,7 @@
             {
               "Name": "Number Of Items",
               "Value": 1,
-              "ValueType": "System.Int32",
+              "ValueType": "System.Int64",
               "RGBA": [
                 0.0,
                 0.0,
@@ -2691,7 +2691,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
