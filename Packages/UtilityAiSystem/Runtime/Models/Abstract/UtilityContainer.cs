@@ -60,6 +60,10 @@ public abstract class UtilityContainer : AiObjectModel
     {
         MetaData.LastTickEvaluated = context.TickMetaData.TickCount;
         LastCalculatedUtility = CalculateUtility(context);
+        if (float.IsNaN(LastCalculatedUtility))
+        {
+            LastCalculatedUtility = -1;
+        }
         return LastCalculatedUtility;
     }
 

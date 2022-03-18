@@ -58,7 +58,7 @@ public class UCSHighestScore : UtilityContainerSelector
     {
         var utility = container.GetUtility(context);
         
-        if (utility <= 0 || float.IsNaN(utility))
+        if (utility <= 0)
         {
             return bestContainer;
         }

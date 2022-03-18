@@ -46,7 +46,6 @@ public class Bucket : UtilityContainer
 
     internal override float CalculateUtility(AiContext context)
     {
-        MetaData.LastTickEvaluated = context.TickMetaData.TickCount;
         return context.UtilityScorer.CalculateUtility(Considerations.Values, context) * Convert.ToSingle(Weight.Value);
     }
 
