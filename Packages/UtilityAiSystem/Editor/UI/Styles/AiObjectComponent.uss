@@ -1,6 +1,6 @@
-/*AiComponent {
-    flex-grow: 1;
-}*/
+AiComponent > TemplateContainer > VisualElement > #Header {
+    min-height: 64px;
+}
 
 DropdownDescriptionComponent {
     margin-right: 8px;
@@ -33,6 +33,7 @@ TabViewComponent {
 #Tabs {
     margin-top: 8px;
     margin-bottom: 8px;
+    min-height: 16px;
 }
 
 #TabContent {
