@@ -5,7 +5,7 @@
     "Parameters": [
       {
         "Name": "Time Budget MS",
-        "Value": 100,
+        "Value": 8,
         "ValueType": "System.Int64",
         "RGBA": [
           0.0,

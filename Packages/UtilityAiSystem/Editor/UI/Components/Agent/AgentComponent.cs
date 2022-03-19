@@ -31,7 +31,7 @@ internal class AgentComponent: RightPanelComponent<IAgent>
         body.Add(aiComponent);
 
         uasTemplateService = UASTemplateService.Instance;
-
+        aiDropdown.label = "AIs";
         tickAgent = new Button();
         tickAgent.text = "TEST-Tick-Agent";
         tickAgent.RegisterCallback<MouseUpEvent>(evt =>
@@ -64,6 +64,15 @@ internal class AgentComponent: RightPanelComponent<IAgent>
 
         });
         footer.Add(applyToAllButton);
+
+        aiDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
+        {
+            if (agent.Ai.Name != evt.newValue)
+            {
+                agent.Ai = UASTemplateService.Instance.GetAiByName(evt.newValue);
+                UpdateAiComponent();
+            }
+        });
     }
 
     internal override void UpateUi(IAgent element)
@@ -78,7 +87,6 @@ internal class AgentComponent: RightPanelComponent<IAgent>
 
     private void InitDropdown()
     {
-        aiDropdown.label = "AIs";
         uasTemplateService.LoadAutoSave();
         aiDropdown.choices = uasTemplateService
             .GetCollection(Consts.Label_UAIModel)
@@ -90,14 +98,8 @@ internal class AgentComponent: RightPanelComponent<IAgent>
 
         if (agent.Ai != null && aiDropdown.choices.Contains(agent.Ai.Name))
         {
-            aiDropdown.value = agent.Ai?.Name;
+            aiDropdown.SetValueWithoutNotify(agent.Ai.Name);
         }
-
-        aiDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
-        {
-            agent.Ai = UASTemplateService.Instance.GetAiByName(evt.newValue);
-            UpdateAiComponent();
-        });
     }
 
     internal void UpdateAiComponent()
