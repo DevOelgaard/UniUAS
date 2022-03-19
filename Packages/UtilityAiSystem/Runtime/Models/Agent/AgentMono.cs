@@ -13,6 +13,7 @@ public class AgentMono : MonoBehaviour, IAgent
 
     public string TypeIdentifier => GetType().FullName;
 
+    [HideInInspector]
     public string DefaultAiName = "";
 
     private DecisionScoreEvaluator decisionScoreEvaluator;
