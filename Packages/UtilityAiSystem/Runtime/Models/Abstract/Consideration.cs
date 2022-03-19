@@ -9,7 +9,6 @@ public abstract class Consideration : AiObjectModel
 {
     private CompositeDisposable paramaterDisposables = new CompositeDisposable();
 
-    private string namePostfix;
     public List<Parameter> Parameters;
     private ResponseCurve currentResponseCurve;
     public ResponseCurve CurrentResponseCurve
@@ -54,7 +53,6 @@ public abstract class Consideration : AiObjectModel
         ScoreModels = new List<ScoreModel>();
         ScoreModels.Add(new ScoreModel("Base", 0f));
         ScoreModels.Add(new ScoreModel("Score", 0f));
-        namePostfix = " (" + TypeDescriptor.GetClassName(this) + ")";
         PerformanceTag = GetPerformanceTag();
 
         MinFloat.OnValueChange
@@ -76,10 +74,6 @@ public abstract class Consideration : AiObjectModel
 
     public override string GetNameFormat(string name)
     {
-        if (!name.Contains(namePostfix))
-        {
-            return name + namePostfix;
-        }
         return name;
     }
 

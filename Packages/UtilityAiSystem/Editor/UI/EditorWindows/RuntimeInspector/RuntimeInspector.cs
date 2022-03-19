@@ -21,6 +21,4 @@ internal class RunTimeInspector : SplitViewWindowDropDownSelection<IAgent>
     {
         return new AgentComponent();
     }
-
-    
 }

@@ -11,6 +11,8 @@ public abstract class RestoreAble
     protected abstract void RestoreInternal(RestoreState state, bool restoreDebug = false);
     public static T Restore<T>(RestoreState state, bool restoreDebug = false) where T:RestoreAble
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var type = Type.GetType(state.FileName);
         if (type == null)
         {
@@ -20,6 +22,7 @@ public abstract class RestoreAble
         } else
         {
             var element = (T)Activator.CreateInstance(type, true);
+            sw.Restart();
             element.RestoreInternal(state, restoreDebug);
             return element;
         }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MoreLinq;
+using UnityEditor;
 
 internal class UASTemplateService: RestoreAble
 {
@@ -61,6 +62,8 @@ internal class UASTemplateService: RestoreAble
 
     internal void LoadAutoSave()
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var perstistAPI = new PersistenceAPI(new JSONPersister());
         var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave + Consts.FileExtension_JSON);
         if (state == null)
@@ -78,13 +81,16 @@ internal class UASTemplateService: RestoreAble
                 Debug.LogWarning("UASTemplateService Restore failed: " + ex);
             }
         }
+        Debug.Log("Load Autosave completed in: " + sw.ElapsedMilliseconds + "ms");
     }
 
     internal void AutoSave()
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var perstistAPI = new PersistenceAPI(new JSONPersister());
         perstistAPI.SaveObjectPath(this, Consts.File_UASTemplateServicel_AutoSave);
-        Debug.Log("Autosave complete");
+        Debug.Log("Autosave completed in: " + sw.ElapsedMilliseconds + "ms");
     }
 
 

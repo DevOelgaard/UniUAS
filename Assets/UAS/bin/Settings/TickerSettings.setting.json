@@ -17,7 +17,7 @@
       },
       {
         "Name": "Debug",
-        "Value": true,
+        "Value": false,
         "ValueType": "System.Boolean",
         "RGBA": [
           0.0,

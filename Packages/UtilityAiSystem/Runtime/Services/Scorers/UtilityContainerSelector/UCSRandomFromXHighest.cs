@@ -50,7 +50,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
             {
                 context.CurrentEvaluatedBucket = bucket;
                 bucket.GetUtility(context);
-                UpdateList(result, bucket);
+                result = UpdateList(result, bucket);
             }
         }
         return (Bucket)GetRandomContainer(result);
@@ -64,7 +64,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         {
             context.CurrentEvalutedDecision = decision;
             decision.GetUtility(context);
-            UpdateList(result, decision);
+            result = UpdateList(result, decision);
         }
         return (Decision)GetRandomContainer(result);
     }
@@ -79,11 +79,11 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         return Consts.UCS_RandomXHighest_Name;
     }
 
-    private void UpdateList(List<UtilityContainer> list, UtilityContainer container)
+    private List<UtilityContainer> UpdateList(List<UtilityContainer> list, UtilityContainer container)
     {
         if (container.LastCalculatedUtility <= 0 )
         {
-            return;
+            return list;
         }
 
         // Return if score is to far from highest score.
@@ -98,7 +98,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
             var minimumAllowedScore = highestValid.LastCalculatedUtility - MaxDeviationFromHighest;
             if (container.LastCalculatedUtility < minimumAllowedScore)
             {
-                return;
+                return list;
             }
         }
 
@@ -110,7 +110,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         } 
         else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
-            return;
+            return list;
         } 
         else if (container.LastCalculatedUtility < list[evaluateIndex].LastCalculatedUtility)
         {
@@ -127,7 +127,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         list = list
             .OrderByDescending(uc => uc.LastCalculatedUtility)
             .ToList();
-
+        return list;
     }
 
     private UtilityContainer GetRandomContainer(List<UtilityContainer> list)
