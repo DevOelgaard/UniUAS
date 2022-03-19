@@ -156,7 +156,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -168,7 +168,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -264,7 +264,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -276,7 +276,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -364,7 +364,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -376,7 +376,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -394,7 +394,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -557,7 +557,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -569,7 +569,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -665,7 +665,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -677,7 +677,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -765,7 +765,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -777,7 +777,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -795,7 +795,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -908,7 +908,7 @@
       "FileName": "Ai"
     },
     {
-      "Name": "Default",
+      "Name": "2 buckets only evaluate 1",
       "Description": null,
       "IsPLayable": true,
       "Buckets": [
@@ -917,7 +917,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "Default (Decision)",
+              "Name": "Debug.Log.Output (Decision)",
               "Description": null,
               "AgentActions": [
                 {
@@ -1541,7 +1541,7 @@
       "FileName": "Ai"
     },
     {
-      "Name": "DecisionSelector",
+      "Name": "5 Decisions",
       "Description": "Selecting 1 of 4 highest scored decisions",
       "IsPLayable": true,
       "Buckets": [
@@ -1615,7 +1615,7 @@
                     {
                       "Name": "Return value",
                       "Value": 1.0,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1685,7 +1685,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1697,7 +1697,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1782,7 +1782,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.5,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1852,7 +1852,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1864,7 +1864,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1949,7 +1949,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2019,7 +2019,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2031,7 +2031,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2116,7 +2116,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2186,7 +2186,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2198,7 +2198,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2283,7 +2283,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.0,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2353,7 +2353,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2365,7 +2365,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2391,7 +2391,7 @@
                 {
                   "Name": "Return value",
                   "Value": 0.5,
-                  "ValueType": "System.Single",
+                  "ValueType": "System.Double",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -2461,7 +2461,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2473,7 +2473,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2491,7 +2491,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -2540,7 +2540,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -2575,110 +2575,6 @@
             {
               "Name": "Percentage chance",
               "Value": false,
-              "ValueType": "System.Boolean",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "Max deviation from highest",
-              "Value": 1.0,
-              "ValueType": "System.Single",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            }
-          ],
-          "FileName": "UCSRandomFromXHighest"
-        }
-      ],
-      "USName": "Average",
-      "FileName": "Ai"
-    },
-    {
-      "Name": "Default(1)",
-      "Description": null,
-      "IsPLayable": false,
-      "Buckets": [],
-      "CurrentBucketSelectorName": "Highest Score",
-      "CurrentDecisionSelectorName": "Highest Score",
-      "BucketSelectors": [
-        {
-          "Parameters": [],
-          "FileName": "UCSHighestScore"
-        },
-        {
-          "Parameters": [
-            {
-              "Name": "Number Of Items",
-              "Value": 1,
-              "ValueType": "System.Int64",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "Percentage chance",
-              "Value": true,
-              "ValueType": "System.Boolean",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "Max deviation from highest",
-              "Value": 1.0,
-              "ValueType": "System.Double",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            }
-          ],
-          "FileName": "UCSRandomFromXHighest"
-        }
-      ],
-      "DecisionSelectors": [
-        {
-          "Parameters": [],
-          "FileName": "UCSHighestScore"
-        },
-        {
-          "Parameters": [
-            {
-              "Name": "Number Of Items",
-              "Value": 1,
-              "ValueType": "System.Int64",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "Percentage chance",
-              "Value": true,
               "ValueType": "System.Boolean",
               "RGBA": [
                 0.0,
@@ -4039,7 +3935,186 @@
     }
   ],
   "AgentActions": [],
-  "ResponseCurves": [],
+  "ResponseCurves": [
+    {
+      "Name": "Default",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.4,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.6,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 0.5,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        },
+        {
+          "Name": "Normal Distribution",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Mean",
+              "Value": 0.5,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Std Deviation",
+              "Value": 0.2,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max Value",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "NormalDistributionFunction"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
   "TestStrign": "",
   "InternalTestString": "",
   "FileName": "UASTemplateService"

@@ -112,32 +112,37 @@ public class ResponseCurve: AiObjectModel
             .Where(s => Convert.ToSingle(s.Value) < x)
             .ToList();
         var normalized = 0f;
+        var min = GetSegmentMin(x);
+        var max = GetSegmentMax(x);
+
         if (validSegments.Count == 0)
         {
-            normalized = Normalize(x);
-            result = ResponseFunctions[0].CalculateResponse(normalized);
+            normalized = Normalize(x, min, max);
+            result = ResponseFunctions[0].CalculateResponse(normalized,minY, maxY);
         } else
         {
             var indexOfLastFunction = validSegments.Count;
             var previousMax = 0f;
             for (var i = 0; i < indexOfLastFunction; i++)
             {
+                // Getting max of previous functions
                 var currentMax = (float)Convert.ToSingle(validSegments[i].Value);
-                normalized = Normalize(currentMax - previousMax);
+                normalized = Normalize(x, previousMax, currentMax);
                 previousMax = currentMax;
-                result += ResponseFunctions[i].CalculateResponse(normalized);
+                result = ResponseFunctions[i].CalculateResponse(normalized, result,maxY);
             }
 
-            normalized = Normalize(x-previousMax);
-            result += ResponseFunctions[indexOfLastFunction].CalculateResponse(normalized);
+            normalized = Normalize(x, min, max);
+            result = ResponseFunctions[indexOfLastFunction].CalculateResponse(normalized, result, maxY);
         }
         result = Mathf.Clamp(result,minY,maxY);
         return result;
     }
 
-    private float Normalize(float value)
+    private float Normalize(float value, float min, float max)
     {
-        var x = (value - MinX) / (MaxX - MinX);// * ResultFactor;
+        var x = (value - min) / (max - min);// * ResultFactor;
+        x = Mathf.Clamp(x, 0, 1);
         return x;
     }
 
@@ -173,6 +178,34 @@ public class ResponseCurve: AiObjectModel
     {
         var state = GetState();
         persister.SaveObject(state, path);
+    }
+
+    private float GetSegmentMin(float x)
+    {
+        var segmentWithLowerValue = Segments
+            .LastOrDefault(s => Convert.ToSingle(s.Value) < x);
+
+        if (segmentWithLowerValue == null)
+        {
+            return MinY;
+        } else
+        {
+            return Convert.ToSingle(segmentWithLowerValue.Value);
+        }
+    }
+
+    private float GetSegmentMax(float x)
+    {
+        var segmentWithHigherValue = Segments
+            .FirstOrDefault(s => Convert.ToSingle(s.Value) >= x);
+
+        if (segmentWithHigherValue == null)
+        {
+            return maxX;
+        } else
+        {
+            return Convert.ToSingle(segmentWithHigherValue.Value);
+        }
     }
 
     public float MinY

@@ -16,8 +16,8 @@ internal class NormalDistributionFunction : ResponseFunction
         return new List<Parameter>()
         {
             new Parameter("Mean", 0.5f),
-            new Parameter("Std Deviation", 0.5f),
-            new Parameter("Max Value", 0.7f),
+            new Parameter("Std Deviation", 0.1f),
+            new Parameter("Max Value", 0.1f),
         };
     }
 

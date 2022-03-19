@@ -30,15 +30,26 @@ public abstract class ResponseFunction: AiObjectModel
         return new List<Parameter>();
     }
 
-    public float CalculateResponse(float x)
+    public float CalculateResponse(float x, float prevResult, float maxY)
     {
+        var result = 0f;
         if (Inverse)
         {
-            return 1-CalculateResponseInternal(x);
+            result = 1-CalculateResponseInternal(x);
         } else
         {
-            return CalculateResponseInternal(x);
+            result = CalculateResponseInternal(x);
         }
+        result = Normalize(result, prevResult,maxY);
+        return result + prevResult;
+        //return Normalize(result,minY,maxY);
+    }
+
+    private float Normalize(float value, float min, float max)
+    {
+        var factor = (max - min) / max;
+        var x = value * factor;// * ResultFactor;
+        return x;
     }
 
     protected abstract float CalculateResponseInternal(float x);
