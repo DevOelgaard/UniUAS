@@ -55,8 +55,11 @@ internal class AgentComponent: RightPanelComponent<IAgent>
             AgentManager.Instance.GetAgentsByIdentifier(agent.TypeIdentifier).Values
                 .ForEach(a =>
                 {
-                    var aiClone = agent.Ai.Clone() as Ai;
-                    a.SetAi(aiClone);
+                    if (a != agent)
+                    {
+                        var aiClone = agent.Ai.Clone() as Ai;
+                        a.SetAi(aiClone);
+                    }
                 });
 
         });
