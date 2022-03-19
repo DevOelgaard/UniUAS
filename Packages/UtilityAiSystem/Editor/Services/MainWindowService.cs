@@ -4,12 +4,14 @@ internal class MainWindowService
 {
     internal static AiObjectComponent  GetComponent(AiObjectModel model)
     {
+
+
         var type = model.GetType();
-        if (type == typeof(Ai))
+        if (type == typeof(Ai) || type.IsSubclassOf(typeof(Ai)))
         {
             return new AiComponent();
         }
-        else if (type == typeof(Bucket))
+        else if (type == typeof(Bucket) || type.IsSubclassOf(typeof(Bucket)))
         {
             return new BucketComponent();
         }

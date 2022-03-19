@@ -109,13 +109,24 @@ internal class UASTemplateService: RestoreAble
 
     internal Ai GetAiByName(string name, bool isPLayMode = false)
     {
-        if (isPLayMode)
-        {
-            LoadAutoSave();
-        }
+        //var sw = new System.Diagnostics.Stopwatch();
+        //sw.Reset();
+        //sw.Start();
+        ////if (isPLayMode)
+        ////{
+        ////    LoadAutoSave();
+        ////}
+        //Debug.Log("Loaded Autosave in: " + sw.ElapsedMilliseconds + "ms");
+        //sw.Reset();
+        //sw.Start();
+
         var aiTemplate = AIs.Values
             .Cast<Ai>()
             .FirstOrDefault(ai => ai.Name == name && ai.IsPLayable);
+
+        //Debug.Log("Sound templates in: " + sw.ElapsedMilliseconds + "ms");
+        //sw.Reset();
+        //sw.Start();
 
         if (aiTemplate == null)
         {
@@ -130,7 +141,18 @@ internal class UASTemplateService: RestoreAble
                 throw new Exception("No default Ai found AiName: " + name + " is the ai playable?");
             }
         }
-        return aiTemplate.Clone() as Ai;
+        //Debug.Log("Found default Ai in: " + sw.ElapsedMilliseconds + "ms");
+        //sw.Reset();
+        //sw.Start();
+
+        var clone = aiTemplate.Clone() as Ai;
+
+        //Debug.Log("Cloned Ai in: " + sw.ElapsedMilliseconds + "ms");
+        //sw.Reset();
+        //sw.Start();
+
+        //sw.Stop();
+        return clone;
     }
 
     internal ReactiveList<AiObjectModel> GetCollection(string label)

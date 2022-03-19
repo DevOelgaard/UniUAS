@@ -8,13 +8,14 @@ using UnityEngine.UIElements;
 using UniRx;
 using MoreLinq;
 
-[CustomEditor(typeof(AgentMono))]
+[CustomEditor(typeof(AgentMono)), CanEditMultipleObjects]
 internal class AgentMonoInspector: Editor
 {
     private CompositeDisposable disposables = new CompositeDisposable();
     private DropdownField aiField;
     private VisualElement root;
-    private AgentMono agent;
+    //private AgentMono agent;
+    private List<AgentMono> agents;
     public override VisualElement CreateInspectorGUI()
     {
         root = new VisualElement();
@@ -23,10 +24,11 @@ internal class AgentMonoInspector: Editor
         defaultInspector.onGUIHandler = () => DrawDefaultInspector();
         root.Add(defaultInspector);
 
-        aiField = new DropdownField("Ai");
+        aiField = new DropdownField("Default Ai");
         root.Add(aiField);
 
-        agent = (AgentMono)target;
+        //agent = (AgentMono)target;
+        agents = targets.Cast<AgentMono>().ToList();
         //serializedObject.Update();
 
         SetAiFieldChoices(UASTemplateService.Instance.AIs.Values);
@@ -37,10 +39,13 @@ internal class AgentMonoInspector: Editor
 
         aiField.RegisterCallback<ChangeEvent<string>>(evt =>
         {
-            agent.DefaultAiName = evt.newValue;
+            foreach(var agent in agents)
+            {
+                agent.DefaultAiName = evt.newValue;
+                EditorUtility.SetDirty(agent);
+                //serializedObject.ApplyModifiedProperties();
+            }
         });
-
-
 
         return root;
     }
@@ -61,6 +66,8 @@ internal class AgentMonoInspector: Editor
         {
             aiField.choices.Add(ai.Name);
         }
+
+        var agent = agents.FirstOrDefault();
 
         var currentAiName = playableAis.FirstOrDefault(c => c.Name == agent.DefaultAiName)?.Name;
         if (string.IsNullOrEmpty(currentAiName))

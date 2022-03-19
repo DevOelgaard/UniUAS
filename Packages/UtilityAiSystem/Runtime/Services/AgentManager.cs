@@ -42,7 +42,8 @@ internal class AgentManager
 
         }
 
-        agent.Model.Name = Model.AgentsByIdentifier[identifier].Count + " - " + agent.Model.Name;
+        //agent.Model.Name = Model.AgentsByIdentifier[identifier].Count + " - " + agent.Model.GameObjectName;
+        
 
         Model.AgentsByIdentifier[identifier].Add(agent);
         Model.Agents.Add(agent);

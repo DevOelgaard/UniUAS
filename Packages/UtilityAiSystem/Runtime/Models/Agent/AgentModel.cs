@@ -17,6 +17,7 @@ public class AgentModel
         }
     }
 
+
     public IObservable<string> OnNameChanged => onNameChanged;
     private Subject<string> onNameChanged = new Subject<string> ();
     public TickMetaData TickMetaData;

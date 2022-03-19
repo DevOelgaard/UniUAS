@@ -2602,6 +2602,432 @@
       ],
       "USName": "Average",
       "FileName": "Ai"
+    },
+    {
+      "Name": "CycleColor",
+      "Description": null,
+      "IsPLayable": true,
+      "Buckets": [
+        {
+          "Name": "Default",
+          "Description": null,
+          "Decisions": [
+            {
+              "Name": "Default (Decision)",
+              "Description": null,
+              "AgentActions": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Color 1",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        0.9622642,
+                        0.05900679,
+                        0.05900679,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Color 2",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        0.9578328,
+                        0.9622642,
+                        0.0499288067,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Color 3",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        0.0141509175,
+                        1.0,
+                        0.100111477,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Color 4",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        0.0141509175,
+                        0.2497929,
+                        1.0,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    },
+                    {
+                      "Name": "Color 5",
+                      "Value": null,
+                      "ValueType": "UnityEngine.Color",
+                      "RGBA": [
+                        1.0,
+                        0.0,
+                        0.8503313,
+                        1.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_AgentCycleColors)",
+                  "Description": null,
+                  "FileName": "Demo_AgentCycleColors"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "ExecutionTime ms",
+                      "Value": 0,
+                      "ValueType": "System.Int64",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "Name": "Default (Demo_TimeIntensive)",
+                  "Description": null,
+                  "FileName": "Demo_TimeIntensive"
+                }
+              ],
+              "Considerations": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Return value",
+                      "Value": 0.5,
+                      "ValueType": "System.Double",
+                      "RGBA": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "FileName": "Parameter"
+                    }
+                  ],
+                  "ResponseCurveState": {
+                    "Name": "Default",
+                    "Description": null,
+                    "MinY": 0.0,
+                    "MaxY": 1.0,
+                    "MinX": 0.0,
+                    "MaxX": 1.0,
+                    "Segments": [],
+                    "ResponseFunctions": [
+                      {
+                        "Name": "Linear",
+                        "Description": null,
+                        "Parameters": [
+                          {
+                            "Name": "a",
+                            "Value": 1.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "b",
+                            "Value": 0.0,
+                            "ValueType": "System.Double",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Inverse",
+                            "Value": false,
+                            "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          }
+                        ],
+                        "FileName": "LinearFunction"
+                      }
+                    ],
+                    "FileName": "ResponseCurve"
+                  },
+                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Description": null,
+                  "Min": {
+                    "Name": "Min",
+                    "Value": 0.0,
+                    "ValueType": "System.Double",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "Max": {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Double",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  "PerformanceTag": 2,
+                  "BaseScore": 0.0,
+                  "NormalizedScore": 0.0,
+                  "FileName": "Demo_ConsiderationFixedValue"
+                }
+              ],
+              "Parameters": [],
+              "LastCalculatedUtility": 0.0,
+              "FileName": "Decision"
+            }
+          ],
+          "Considerations": [
+            {
+              "Parameters": [
+                {
+                  "Name": "Return value",
+                  "Value": 1.0,
+                  "ValueType": "System.Double",
+                  "RGBA": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "FileName": "Parameter"
+                }
+              ],
+              "ResponseCurveState": {
+                "Name": "Default",
+                "Description": null,
+                "MinY": 0.0,
+                "MaxY": 1.0,
+                "MinX": 0.0,
+                "MaxX": 1.0,
+                "Segments": [],
+                "ResponseFunctions": [
+                  {
+                    "Name": "Linear",
+                    "Description": null,
+                    "Parameters": [
+                      {
+                        "Name": "a",
+                        "Value": 1.0,
+                        "ValueType": "System.Double",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "b",
+                        "Value": 0.0,
+                        "ValueType": "System.Double",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Inverse",
+                        "Value": false,
+                        "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      }
+                    ],
+                    "FileName": "LinearFunction"
+                  }
+                ],
+                "FileName": "ResponseCurve"
+              },
+              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Description": null,
+              "Min": {
+                "Name": "Min",
+                "Value": 0.0,
+                "ValueType": "System.Double",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
+              },
+              "Max": {
+                "Name": "Max",
+                "Value": 1.0,
+                "ValueType": "System.Double",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
+              },
+              "PerformanceTag": 2,
+              "BaseScore": 0.0,
+              "NormalizedScore": 0.0,
+              "FileName": "Demo_ConsiderationFixedValue"
+            }
+          ],
+          "Weight": {
+            "Name": "Weight",
+            "Value": 1.0,
+            "ValueType": "System.Double",
+            "RGBA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "FileName": "Parameter"
+          },
+          "LastCalculatedUtility": 0.0,
+          "FileName": "Bucket"
+        }
+      ],
+      "CurrentBucketSelectorName": "Highest Score",
+      "CurrentDecisionSelectorName": "Highest Score",
+      "BucketSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 1,
+              "ValueType": "System.Int64",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 1.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "DecisionSelectors": [
+        {
+          "Parameters": [],
+          "FileName": "UCSHighestScore"
+        },
+        {
+          "Parameters": [
+            {
+              "Name": "Number Of Items",
+              "Value": 1,
+              "ValueType": "System.Int64",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Percentage chance",
+              "Value": true,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max deviation from highest",
+              "Value": 1.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "UCSRandomFromXHighest"
+        }
+      ],
+      "USName": "Average",
+      "FileName": "Ai"
     }
   ],
   "Buckets": [
@@ -3947,7 +4373,7 @@
         {
           "Name": " ",
           "Value": 0.4,
-          "ValueType": "System.Single",
+          "ValueType": "System.Double",
           "RGBA": [
             0.0,
             0.0,
@@ -3959,7 +4385,7 @@
         {
           "Name": " ",
           "Value": 0.6,
-          "ValueType": "System.Single",
+          "ValueType": "System.Double",
           "RGBA": [
             0.0,
             0.0,
@@ -3977,7 +4403,7 @@
             {
               "Name": "a",
               "Value": 0.5,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -3989,7 +4415,7 @@
             {
               "Name": "b",
               "Value": 0.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -4020,7 +4446,7 @@
             {
               "Name": "Mean",
               "Value": 0.5,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -4032,7 +4458,7 @@
             {
               "Name": "Std Deviation",
               "Value": 0.2,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -4044,7 +4470,7 @@
             {
               "Name": "Max Value",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -4075,7 +4501,7 @@
             {
               "Name": "a",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -4087,7 +4513,7 @@
             {
               "Name": "b",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
