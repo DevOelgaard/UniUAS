@@ -10,7 +10,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "Color Closest Target Red (Demo_AllObjectsWithTag)",
+              "Name": "Color Closest Target Red",
               "Description": null,
               "AgentActions": [
                 {
@@ -88,7 +88,7 @@
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default (Demo_SetColorOnTarget)",
+                  "Name": "Default",
                   "Description": null,
                   "FileName": "Demo_SetColorOnTarget"
                 }
@@ -151,12 +151,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (ConsiderationNearestTarget)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -168,7 +168,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -259,12 +259,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Rnd Linear (Demo_ConsiderationRandomValue)",
+              "Name": "Rnd Linear",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -276,7 +276,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -359,12 +359,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Rnd Std Deviation (Demo_ConsiderationRandomValue)",
+              "Name": "Rnd Std Deviation",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -376,7 +376,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -394,7 +394,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -411,7 +411,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "Color Closest Target Blue (Demo_AllObjectsWithTag)",
+              "Name": "Color Closest Target Blue",
               "Description": null,
               "AgentActions": [
                 {
@@ -489,7 +489,7 @@
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default (Demo_SetColorOnTarget)",
+                  "Name": "Default",
                   "Description": null,
                   "FileName": "Demo_SetColorOnTarget"
                 }
@@ -552,12 +552,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (ConsiderationNearestTarget)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -569,7 +569,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -660,12 +660,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Rnd Linear (Demo_ConsiderationRandomValue)",
+              "Name": "Rnd Linear",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -677,7 +677,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -760,12 +760,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Rnd Std Deviation (Demo_ConsiderationRandomValue)",
+              "Name": "Rnd Std Deviation",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -777,7 +777,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -795,7 +795,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -844,7 +844,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -891,7 +891,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -917,7 +917,7 @@
           "Description": null,
           "Decisions": [
             {
-              "Name": "Default (Decision)",
+              "Name": "Default",
               "Description": null,
               "AgentActions": [
                 {
@@ -983,7 +983,7 @@
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default (Demo_AgentCycleColors)",
+                  "Name": "Default",
                   "Description": null,
                   "FileName": "Demo_AgentCycleColors"
                 },
@@ -1002,7 +1002,7 @@
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default (Demo_TimeIntensive)",
+                  "Name": "Default",
                   "Description": null,
                   "FileName": "Demo_TimeIntensive"
                 }
@@ -1013,7 +1013,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.5,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1078,12 +1078,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1095,7 +1095,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1121,7 +1121,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Double",
+                  "ValueType": "System.Single",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -1186,12 +1186,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Name": "Default",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1203,7 +1203,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1221,7 +1221,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -1343,12 +1343,12 @@
           "Description": "Returns a random value between 0-1",
           "Decisions": [
             {
-              "Name": "D1 (Decision)",
+              "Name": "D1",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -1359,7 +1359,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1424,12 +1424,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1441,7 +1441,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1461,12 +1461,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D2 (Decision)",
+              "Name": "D2",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -1477,7 +1477,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1542,12 +1542,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1559,7 +1559,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1579,12 +1579,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D3 (Decision)",
+              "Name": "D3",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -1595,7 +1595,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1660,12 +1660,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1677,7 +1677,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1697,12 +1697,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D4 (Decision)",
+              "Name": "D4",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -1713,7 +1713,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1778,12 +1778,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1795,7 +1795,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1815,12 +1815,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D5 (Decision)",
+              "Name": "D5",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -1831,7 +1831,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1896,12 +1896,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default ",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1913,7 +1913,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1996,7 +1996,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2008,7 +2008,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2026,7 +2026,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 9.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -2043,12 +2043,12 @@
           "Description": "Returns a fixed value of 1",
           "Decisions": [
             {
-              "Name": "D1 (Decision)",
+              "Name": "D1",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2059,7 +2059,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2124,12 +2124,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2141,7 +2141,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2161,12 +2161,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D2 (Decision)",
+              "Name": "D2",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2177,7 +2177,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2242,12 +2242,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2259,7 +2259,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2279,12 +2279,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D3 (Decision)",
+              "Name": "D3",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2295,7 +2295,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2360,12 +2360,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2377,7 +2377,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2397,12 +2397,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D4 (Decision)",
+              "Name": "D4",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2413,7 +2413,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2478,12 +2478,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2495,7 +2495,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2515,12 +2515,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D5 (Decision)",
+              "Name": "D5",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2531,7 +2531,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2596,12 +2596,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2613,7 +2613,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2639,7 +2639,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Double",
+                  "ValueType": "System.Single",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -2704,12 +2704,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Name": "Default",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2721,7 +2721,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2739,7 +2739,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 4.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -2756,12 +2756,12 @@
           "Description": "Returns a fixed value of 1",
           "Decisions": [
             {
-              "Name": "D1 (Decision)",
+              "Name": "D1",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2772,7 +2772,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2837,12 +2837,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2854,7 +2854,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2874,12 +2874,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D2 (Decision)",
+              "Name": "D2",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -2890,7 +2890,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2955,12 +2955,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2972,7 +2972,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2992,12 +2992,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D3 (Decision)",
+              "Name": "D3",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -3008,7 +3008,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3073,12 +3073,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3090,7 +3090,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3110,12 +3110,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D4 (Decision)",
+              "Name": "D4",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -3126,7 +3126,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3191,12 +3191,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3208,7 +3208,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3228,12 +3228,12 @@
               "FileName": "Decision"
             },
             {
-              "Name": "D5 (Decision)",
+              "Name": "D5",
               "Description": null,
               "AgentActions": [
                 {
                   "Parameters": [],
-                  "Name": "A (Demo_DebugLogContextAddress)",
+                  "Name": "A",
                   "Description": null,
                   "FileName": "Demo_DebugLogContextAddress"
                 }
@@ -3244,7 +3244,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3309,12 +3309,12 @@
                     ],
                     "FileName": "ResponseCurve"
                   },
-                  "Name": "Default (Demo_ConsiderationFixedValue)",
+                  "Name": "Default",
                   "Description": null,
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3326,7 +3326,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3352,7 +3352,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Double",
+                  "ValueType": "System.Single",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -3417,12 +3417,12 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Default (Demo_ConsiderationFixedValue)",
+              "Name": "Default",
               "Description": null,
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -3434,7 +3434,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -3452,7 +3452,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -3501,7 +3501,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -3548,7 +3548,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
