@@ -15,6 +15,10 @@ CollectionComponent {
     border-color: rgb(33, 33, 33);*/
 }
 
+#Type-Label {
+    margin-left: 3px;
+}
+
 TabViewComponent {
 }
 

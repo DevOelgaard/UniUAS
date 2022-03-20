@@ -11,6 +11,7 @@ internal abstract class AiObjectComponent : VisualElement
 {
     protected CompositeDisposable modelInfoChangedDisposable = new CompositeDisposable();
 
+    private Label typeLabel;
     private TextField nameTextField;
     private TextField descriptionTextField;
     protected AiObjectModel Model;
@@ -29,6 +30,8 @@ internal abstract class AiObjectComponent : VisualElement
     {
         var root = AssetDatabaseService.GetTemplateContainer(typeof(AiObjectComponent ).FullName);
         Add(root);
+
+        typeLabel = root.Q<Label>("Type-Label");
         nameTextField = this.Q<TextField>("Name-TextField");
         nameTextField.RegisterCallback<ChangeEvent<string>>(evt =>
         {
@@ -68,6 +71,7 @@ internal abstract class AiObjectComponent : VisualElement
     internal void UpdateUi(AiObjectModel model)
     {
         Model = model;
+        typeLabel.text = Model.GetType().ToString();
         nameTextField.value = model.Name;
         descriptionTextField.value = model.Description;
 
