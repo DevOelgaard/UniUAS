@@ -12,7 +12,7 @@ internal class AiLogComponent : AiObjectLogComponent
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Body.Add(root);
-        bucketPool = new LogComponentPool<BucketLogComponent>(root,1);
+        bucketPool = new LogComponentPool<BucketLogComponent>(root, true ,1);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)

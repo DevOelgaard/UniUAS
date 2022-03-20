@@ -9,6 +9,7 @@ internal class ResponseFunctionLogComponent: LogComponent
 {
     private Label typeLabel;
     private VisualElement body;
+    private ResponseFunctionLog rf;
     //private ParameterLogComponentPool pool;
     private LogComponentPool<ParameterLogComponent> parameterPool;
     public ResponseFunctionLogComponent()
@@ -18,12 +19,17 @@ internal class ResponseFunctionLogComponent: LogComponent
 
         typeLabel = root.Q<Label>("Type-Label");
         body = root.Q<VisualElement>("Body");
-        parameterPool = new LogComponentPool<ParameterLogComponent>(body,2);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(body, false, 2);
+    }
+
+    internal override string GetUiName()
+    {
+        return rf.Type;
     }
 
     internal override void UpdateUi(ILogModel element)
     {
-        var rf = element as ResponseFunctionLog;
+        rf = element as ResponseFunctionLog;
         typeLabel.text = rf.Type.ToString();
         var logModels = new List<ILogModel>();
         foreach(var p in rf.Parameters)

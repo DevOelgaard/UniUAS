@@ -13,6 +13,7 @@ internal class BucketLogComponent : AiObjectLogComponent
     private LogComponentPool<DecisionLogComponent> decisionsPool;
     private ScoreLogComponent weight;
     private ScoreLogComponent score;
+    private BucketLog bucketLog;
 
     public BucketLogComponent() : base()
     {
@@ -22,8 +23,8 @@ internal class BucketLogComponent : AiObjectLogComponent
         considerationsContainer = root.Q<VisualElement>("ConsiderationsContainer");
         decisionsContainer = root.Q<VisualElement>("DecisionsContainer");
 
-        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer,3);
-        decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer,2);
+        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true, 3);
+        decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer, true, 2);
 
         weight = new ScoreLogComponent("Weight", 0.ToString());
         ScoreContainer.Add(weight);
@@ -32,27 +33,32 @@ internal class BucketLogComponent : AiObjectLogComponent
         ScoreContainer.Add(score);
     }
 
+    internal override string GetUiName()
+    {
+        return base.GetUiName() + " W: " + bucketLog.Weight.ToString("0.00") + " S: " + bucketLog.Score.ToString("0.00");
+    }
+
     protected override void UpdateUiInternal(AiObjectLog aiLog)
     {
-        var b = aiLog as BucketLog;
+        bucketLog = aiLog as BucketLog;
 
-        score.UpdateScore(b.Score);
+        score.UpdateScore(bucketLog.Score);
 
         var logModels = new List<ILogModel>();
-        foreach (var c in b.Considerations)
+        foreach (var c in bucketLog.Considerations)
         {
             logModels.Add(c);
         }
         considerationsPool.Display(logModels);
 
         logModels.Clear();
-        foreach (var d in b.Decisions)
+        foreach (var d in bucketLog.Decisions)
         {
             logModels.Add(d);
         }
         decisionsPool.Display(logModels);
 
-        weight.UpdateScore(b.Weight);
+        weight.UpdateScore(bucketLog.Weight);
     }
 
     internal override void Hide()

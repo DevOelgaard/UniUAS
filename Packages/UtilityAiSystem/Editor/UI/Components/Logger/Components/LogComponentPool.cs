@@ -9,15 +9,28 @@ internal class LogComponentPool<T> where T: LogComponent
 {
     private VisualElement root;
     internal List<T> LogComponents = new List<T>();
-
-    internal LogComponentPool(VisualElement r, int initialPoolSize = 1)
+    private List<Foldout> foldouts = new List<Foldout>();
+    private bool isFoldout;
+    internal LogComponentPool(VisualElement r, bool addToFoldout, int initialPoolSize = 1)
     {
         this.root = r;
+        this.isFoldout = addToFoldout;
         for(var i = 0; i < initialPoolSize; i++)
         {
             var component = (T)Activator.CreateInstance(typeof(T));
             LogComponents.Add(component);
-            root.Add(component);
+            if (addToFoldout)
+            {
+                var foldout = new Foldout();
+                foldout.name = "LoggerFoldout";
+                root.Add(foldout);
+                foldouts.Add(foldout);
+                foldout.Add(component);
+            } else
+            {
+                root.Add(component);
+            }
+            
             component.Hide();
         }
     }
@@ -30,21 +43,42 @@ internal class LogComponentPool<T> where T: LogComponent
             if (i >= LogComponents.Count)
             {
                 var p = (T)Activator.CreateInstance(typeof(T));
-                LogComponents.Add(p);
                 p.UpdateUi(elements[i]);
                 p.style.display = DisplayStyle.Flex;
-                root.Add(p);
+
+                LogComponents.Add(p);
+                if (isFoldout)
+                {
+                    var foldout = new Foldout();
+                    foldout.name = "LoggerFoldout";
+                    foldout.Add(p);
+                    foldout.text = p.GetUiName();
+                    foldouts.Add(foldout);
+                    root.Add(foldout);
+                } else
+                {
+                    root.Add(p);
+                }
             }
             else
             {
                 LogComponents[i].UpdateUi(elements[i]);
                 LogComponents[i].style.display = DisplayStyle.Flex;
+                if (isFoldout)
+                {
+                    foldouts[i].style.display = DisplayStyle.Flex;
+                    foldouts[i].text = LogComponents[i].GetUiName();
+                }
             }
         }
 
         for (var i = elements.Count; i < LogComponents.Count; i++)
         {
             LogComponents[i].Hide();
+            if (isFoldout)
+            {
+                foldouts[i].style.display = DisplayStyle.None;
+            }
         }
     }
 

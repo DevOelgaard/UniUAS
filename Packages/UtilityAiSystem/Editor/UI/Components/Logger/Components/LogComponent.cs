@@ -13,4 +13,6 @@ internal abstract class LogComponent: VisualElement
     {
         this.style.display = DisplayStyle.None;
     }
+
+    internal abstract string GetUiName();
 }

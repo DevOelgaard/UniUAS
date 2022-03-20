@@ -13,6 +13,7 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
     private ScoreLogComponent normalizedScore;
     private ResponseCurveLogComponent responseCurve;
     private LogComponentPool<ParameterLogComponent> parameterPool;
+    private ConsiderationLog considerationLog;
     public ConsiderationLogComponent(): base()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
@@ -28,25 +29,30 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
         responseCurve = new ResponseCurveLogComponent();
         responseCurveContainer.Add(responseCurve);
 
-        parameterPool = new LogComponentPool<ParameterLogComponent>(parametersContianer,1);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(parametersContianer, false,1);
+    }
+
+    internal override string GetUiName()
+    {
+        return base.GetUiName() + " S: " + considerationLog.NormalizedScore.ToString("0.00");
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
     {
-        var c = aiObjectDebug as ConsiderationLog;
-        NameLabel.text = c.Name; // Setting it here to avoid Double type
+        considerationLog = aiObjectDebug as ConsiderationLog;
+        NameLabel.text = considerationLog.Name; // Setting it here to avoid Double type
 
         var logModels = new List<ILogModel>();
-        foreach(var p in c.Parameters)
+        foreach(var p in considerationLog.Parameters)
         {
             logModels.Add(p);
         }
 
         parameterPool.Display(logModels);
 
-        baseScore.UpdateScore(c.BaseScore);
-        normalizedScore.UpdateScore(c.NormalizedScore);
-        responseCurve.UpdateUi(c.ResponseCurve);
+        baseScore.UpdateScore(considerationLog.BaseScore);
+        normalizedScore.UpdateScore(considerationLog.NormalizedScore);
+        responseCurve.UpdateUi(considerationLog.ResponseCurve);
     }
 
     internal override void Hide()

@@ -9,7 +9,7 @@ internal class AgentActionLogComponent : AiObjectLogComponent
     private LogComponentPool<ParameterLogComponent> parameterPool;
     public AgentActionLogComponent() : base()
     {
-        parameterPool = new LogComponentPool<ParameterLogComponent>(Body,1);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(Body, false,1);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)

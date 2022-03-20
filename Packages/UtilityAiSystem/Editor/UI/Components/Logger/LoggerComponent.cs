@@ -35,6 +35,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     private IAgent agent;
     internal int CurrentTick;
     private Button tickAgent;
+    private Toggle foldToggle;
 
     public LoggerComponent()
     {
@@ -49,6 +50,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         Body = root.Q<VisualElement>("Body");
         Footer = root.Q<VisualElement>("Footer");
         tickSlider = root.Q<SliderInt>("Tick-Slider");
+        foldToggle = root.Q<Toggle>("Fold-Toggle");
         helpBox = new HelpBox();
         helpBox.style.display = DisplayStyle.None;
         Body.Add(helpBox);
@@ -97,9 +99,23 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         {
             state.TickSliderChanged(evt.newValue);
         });
+
+        foldToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
+        {
+            FoldAll(evt.newValue);
+        });
+
         EditorApplication.pauseStateChanged += _ => UpdateGameState();
         
         UpdateGameState();
+    }
+
+    private void FoldAll(bool fold)
+    {
+        root
+            //.Query<BucketLogComponent>()
+            .Query<Foldout>("LoggerFoldout")
+            .ForEach(foldout => foldout.value = fold);
     }
 
     internal void SetState(LoggerState state)
@@ -113,6 +129,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     {
         this.agent = element;
         state.UpdateUi(agent);
+        FoldAll(foldToggle.value);
     }
 
     internal void KeyPressed(KeyDownEvent key)

@@ -3,6 +3,7 @@
 internal abstract class AiObjectLog : ILogModel
 {
     public string Name = "";
+    public string UiName = "";
     public string Description = "";
     public string Type = "";
     public int LastSelectedTick;
@@ -12,6 +13,7 @@ internal abstract class AiObjectLog : ILogModel
     internal static AiObjectLog SetBasics(AiObjectLog log, AiObjectModel model, int tick)
     {
         log.Name = model.Name;
+        log.UiName = model.GetUiName();
         log.Description = model.Description;
         log.Type = model.GetType().ToString();
         log.LastSelectedTick = model.MetaData.LastTickSelected;
@@ -26,6 +28,7 @@ internal abstract class AiObjectLog : ILogModel
         {
             log.Name = agent.Model.Name;
             log.Description = "";
+            log.UiName = log.Name;
             log.Type = agent.GetType().ToString();
             if(agent.Model.TickMetaData == null)
             {

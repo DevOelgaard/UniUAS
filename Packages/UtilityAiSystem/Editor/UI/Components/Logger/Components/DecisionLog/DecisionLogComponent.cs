@@ -13,6 +13,7 @@ internal class DecisionLogComponent : AiObjectLogComponent
     private LogComponentPool<ParameterLogComponent> parametersPool;
     private LogComponentPool<ConsiderationLogComponent> considerationsPool;
     private LogComponentPool<AgentActionLogComponent> agentActionsPool;
+    private DecisionLog decisionLog;
 
     private ScoreLogComponent score;
     public DecisionLogComponent() : base()
@@ -26,36 +27,41 @@ internal class DecisionLogComponent : AiObjectLogComponent
         score = new ScoreLogComponent("Score", 0.ToString());
         ScoreContainer.Add(score);
 
-        parametersPool = new LogComponentPool<ParameterLogComponent>(parameters);
-        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer,3);
-        agentActionsPool = new LogComponentPool<AgentActionLogComponent>(agentActionsContainer,1);
+        parametersPool = new LogComponentPool<ParameterLogComponent>(parameters, false);
+        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true,3);
+        agentActionsPool = new LogComponentPool<AgentActionLogComponent>(agentActionsContainer, true,1);
+    }
+
+    internal override string GetUiName()
+    {
+        return base.GetUiName() + " S: " + decisionLog.Score.ToString("0.00");
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiLog)
     {
-        var d = aiLog as DecisionLog;
+        decisionLog = aiLog as DecisionLog;
         var logModels = new List<ILogModel>();
-        foreach (var p in d.Parameters)
+        foreach (var p in decisionLog.Parameters)
         {
             logModels.Add(p);
         }
         parametersPool.Display(logModels);
 
         logModels.Clear();
-        foreach (var c in d.Considerations)
+        foreach (var c in decisionLog.Considerations)
         {
             logModels.Add(c);
         }
         considerationsPool.Display(logModels);
 
         logModels.Clear();
-        foreach (var a in d.AgentActions)
+        foreach (var a in decisionLog.AgentActions)
         {
             logModels.Add(a);
         }
         agentActionsPool.Display(logModels);
 
-        score.UpdateScore(d.Score);
+        score.UpdateScore(decisionLog.Score);
     }
 
     internal override void Hide()

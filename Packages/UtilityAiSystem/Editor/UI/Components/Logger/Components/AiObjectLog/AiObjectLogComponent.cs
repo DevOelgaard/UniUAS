@@ -28,6 +28,11 @@ internal abstract class AiObjectLogComponent: LogComponent
         styleSheets.Add(StylesService.GetStyleSheet("Logger"));
     }
 
+    internal override string GetUiName()
+    {
+        return Model.UiName;
+    }
+
     internal override void UpdateUi(ILogModel model)
     {
         if (model == null) 
