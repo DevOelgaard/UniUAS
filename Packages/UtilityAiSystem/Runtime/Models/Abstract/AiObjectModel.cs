@@ -27,7 +27,10 @@ public abstract class AiObjectModel: RestoreAble
 
     internal abstract AiObjectModel Clone();
 
-
+    internal virtual string GetUiName()
+    {
+        return Name + " (" + this.GetType().ToString() + ")";
+    }
     internal virtual string GetContextAddress(AiContext context)
     {
         return Name;

@@ -156,7 +156,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -168,7 +168,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -264,7 +264,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -276,7 +276,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -364,7 +364,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -376,7 +376,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -394,7 +394,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -557,7 +557,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -569,7 +569,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -665,7 +665,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -677,7 +677,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -765,7 +765,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -777,7 +777,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -795,7 +795,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -1991,7 +1991,7 @@
                 ],
                 "FileName": "ResponseCurve"
               },
-              "Name": "Default (Demo_ConsiderationRandomValue)",
+              "Name": "Default",
               "Description": null,
               "Min": {
                 "Name": "Min",
@@ -5060,7 +5060,7 @@
   ],
   "Decisions": [
     {
-      "Name": "Color Closest Target (Demo_AllObjectsWithTag)",
+      "Name": "Color Closest Target",
       "Description": null,
       "AgentActions": [
         {
@@ -5206,7 +5206,7 @@
           "Min": {
             "Name": "Min",
             "Value": 0.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -5218,7 +5218,7 @@
           "Max": {
             "Name": "Max",
             "Value": 1000.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -5251,7 +5251,7 @@
       "FileName": "Demo_AllObjectsWithTag"
     },
     {
-      "Name": "Debug.LogOutput (Decision)",
+      "Name": "Debug.LogOutput",
       "Description": null,
       "AgentActions": [
         {
@@ -5724,12 +5724,12 @@
         ],
         "FileName": "ResponseCurve"
       },
-      "Name": "Rnd Std Deviation (Demo_ConsiderationRandomValue)",
+      "Name": "Rnd Std Deviation",
       "Description": null,
       "Min": {
         "Name": "Min",
         "Value": 0.0,
-        "ValueType": "System.Double",
+        "ValueType": "System.Single",
         "RGBA": [
           0.0,
           0.0,
@@ -5741,7 +5741,7 @@
       "Max": {
         "Name": "Max",
         "Value": 1.0,
-        "ValueType": "System.Double",
+        "ValueType": "System.Single",
         "RGBA": [
           0.0,
           0.0,
@@ -5812,7 +5812,7 @@
         ],
         "FileName": "ResponseCurve"
       },
-      "Name": "Rnd Linear (Demo_ConsiderationRandomValue)",
+      "Name": "Rnd Linear",
       "Description": null,
       "Min": {
         "Name": "Min",
@@ -5844,7 +5844,63 @@
       "FileName": "Demo_ConsiderationRandomValue"
     }
   ],
-  "AgentActions": [],
+  "AgentActions": [
+    {
+      "Parameters": [
+        {
+          "Name": "OnStart",
+          "Value": "Agent output",
+          "ValueType": "System.String",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "OnGoing",
+          "Value": "Agent output",
+          "ValueType": "System.String",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "OnEnd",
+          "Value": "Agent output",
+          "ValueType": "System.String",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": "Only OnGoing",
+          "Value": true,
+          "ValueType": "System.Boolean",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "Name": "Default   (Demo_DebugLogParameter)",
+      "Description": null,
+      "FileName": "Demo_DebugLogParameter"
+    }
+  ],
   "ResponseCurves": [
     {
       "Name": "Default",

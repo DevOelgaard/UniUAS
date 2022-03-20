@@ -265,7 +265,7 @@ internal class TemplateManager : EditorWindow
         foreach (var model in models)
         {
             var button = new Button();
-            button.text = model.Name;
+            button.text = model.GetUiName();
             button.style.unityTextAlign = TextAnchor.MiddleLeft;
             button.RegisterCallback<MouseUpEvent>(evt =>
             {
@@ -274,7 +274,7 @@ internal class TemplateManager : EditorWindow
             elementsContainer.Add(button);
             buttons.Add(button);
             model.OnNameChanged
-                .Subscribe(newName => button.text = newName)
+                .Subscribe(newName => button.text = model.GetUiName())
                 .AddTo(modelsChangedSubsciptions);
         }
 

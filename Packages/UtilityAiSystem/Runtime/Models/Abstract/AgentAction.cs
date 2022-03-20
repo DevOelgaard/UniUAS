@@ -22,10 +22,6 @@ public abstract class AgentAction: AiObjectModel
 
     public override string GetNameFormat(string name)
     {
-        if (!name.Contains(namePostfix))
-        {
-            return name + namePostfix;
-        }
         return name;
     }
 
