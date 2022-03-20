@@ -12,6 +12,7 @@ internal class MainWindowFoldedComponent : VisualElement
 {
     private CompositeDisposable disposables = new CompositeDisposable();
 
+    private Label typeLabel;
     private Label nameLabel;
     private Label descriptionLabel;
     private VisualElement scoreContainer;
@@ -25,6 +26,7 @@ internal class MainWindowFoldedComponent : VisualElement
 
         Add(root);
 
+        typeLabel = this.Q<Label>("Type-Label-Folded");
         nameLabel = this.Q<VisualElement>("NameIdentifier").Q<Label>("Value-Label");
         descriptionLabel = this.Q<VisualElement>("DescriptionIdentifier").Q<Label>("Value-Label");
         scoreContainer = this.Q<VisualElement>("ScoreContainer");
@@ -38,6 +40,7 @@ internal class MainWindowFoldedComponent : VisualElement
         disposables.Clear();
         this.model = model;
 
+        typeLabel.text = model.GetType().ToString();
         nameLabel.text = model.Name;
         descriptionLabel.text = model.Description;
 

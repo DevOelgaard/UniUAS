@@ -19,6 +19,10 @@ CollectionComponent {
     margin-left: 3px;
 }
 
+#TType-Label-Folded {
+    margin-left: 0px;
+}
+
 TabViewComponent {
 }
 
