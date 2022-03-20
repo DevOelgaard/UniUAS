@@ -26,6 +26,7 @@ internal class BucketLogComponent : AiObjectLogComponent
         decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer,2);
 
         weight = new ScoreLogComponent("Weight", 0.ToString());
+        ScoreContainer.Add(weight);
 
         score = new ScoreLogComponent("Score", 0.ToString());
         ScoreContainer.Add(score);

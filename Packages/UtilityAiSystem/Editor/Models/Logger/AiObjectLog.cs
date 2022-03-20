@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-internal abstract class AiObjectLog: ILogModel
+internal abstract class AiObjectLog : ILogModel
 {
     public string Name = "";
     public string Description = "";
@@ -26,11 +22,30 @@ internal abstract class AiObjectLog: ILogModel
 
     internal static AiObjectLog SetBasics(AiObjectLog log, IAgent agent, int tick)
     {
-        log.Name = agent.Model.Name;
-        log.Description = "";
-        log.Type = agent.GetType().ToString();
-        log.LastSelectedTick = agent.Model.TickMetaData.TickCount;
-        log.CurrentTick = tick;
-        return log;
+        try
+        {
+            log.Name = agent.Model.Name;
+            log.Description = "";
+            log.Type = agent.GetType().ToString();
+            if(agent.Model.TickMetaData == null)
+            {
+                log.LastSelectedTick = -1;
+            }
+            else
+            {
+                log.LastSelectedTick = agent.Model.TickMetaData.TickCount;
+            }
+            log.CurrentTick = tick;
+            return log;
+        }
+        catch (Exception ex)
+        {
+            var msg = "Model: " + agent.Model.Name;
+            msg += " TickMetaData: " + agent.Model.TickMetaData;
+            msg += " TickCount: " + agent.Model.TickMetaData.TickCount;
+
+            throw new Exception(msg, ex);
+        }
+
     }
 }

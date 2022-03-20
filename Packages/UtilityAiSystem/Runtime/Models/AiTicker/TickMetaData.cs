@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class TickMetaData
 {
-    public int TickCount;
+    public int TickCount = -1;
     public string TickedBy;
+    public string TickerMessage = "";
 }
