@@ -7,12 +7,32 @@ using UnityEngine.UIElements;
 
 internal class AiLogComponent : AiObjectLogComponent
 {
+    private VisualElement bucketContainer;
     private LogComponentPool<BucketLogComponent> bucketPool;
+    private VisualElement ucsContainer;
+    private UCSLogComponent bucketSelctorComponent;
+    private UCSLogComponent decisionSelctorComponent;
+    
     public AiLogComponent(): base()
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Body.Add(root);
-        bucketPool = new LogComponentPool<BucketLogComponent>(root, true ,1);
+        ucsContainer = new VisualElement();
+        ucsContainer.name = "UCSContainer";
+        var settingsFoldout = new Foldout();
+        settingsFoldout.text = "Settings";
+        settingsFoldout.Add(ucsContainer);
+        settingsFoldout.value = false;
+        root.Add(settingsFoldout);
+        bucketContainer = new VisualElement();
+        bucketContainer.name = "BucketContainer";
+        root.Add(bucketContainer);
+
+        bucketSelctorComponent = new UCSLogComponent("Bucket Selector");
+        decisionSelctorComponent = new UCSLogComponent("Decision Selector");
+        ucsContainer.Add(bucketSelctorComponent);
+        ucsContainer.Add(decisionSelctorComponent);
+        bucketPool = new LogComponentPool<BucketLogComponent>(bucketContainer, true ,1);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)
@@ -25,6 +45,8 @@ internal class AiLogComponent : AiObjectLogComponent
             logModels.Add(b);
         }
         bucketPool.Display(logModels);
+        bucketSelctorComponent.UpdateUi(a.BucketSelector);
+        decisionSelctorComponent.UpdateUi(a.DecisionSelector);
     }
 
     internal override void Hide()

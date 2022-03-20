@@ -129,7 +129,6 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     {
         this.agent = element;
         state.UpdateUi(agent);
-        FoldAll(foldToggle.value);
     }
 
     internal void KeyPressed(KeyDownEvent key)

@@ -25,8 +25,36 @@ AiLogComponent {
     }
 
 AiLogComponent > TemplateContainer > #Body > TemplateContainer {
+    flex-direction: column;
+}
+
+#UCSContainer {
     flex-direction: row;
 }
+
+#BucketContainer {
+    flex-direction: row;
+}
+
+UCSLogComponent {
+    margin: 8px;
+    padding: 3px;
+    max-width: 500px;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: rgb(70, 70, 70);
+}
+
+    UCSLogComponent:hover {
+        border-radius: 0px;
+        border-width: 1px;
+        border-color: rgb(170, 170, 170);
+    }
+
+    UCSLogComponent > #Title-Label {
+        -unity-font-style: bold;
+        margin-bottom: 3px;
+    }
 
 BucketLogComponent {
     margin: 8px;

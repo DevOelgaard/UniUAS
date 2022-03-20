@@ -12,8 +12,6 @@ internal class AiComponent : AiObjectComponent
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private IDisposable bucketTabSub;
     private TemplateContainer root;
-    //private DropdownDescriptionComponent<UtilityContainerSelector> decisionDropdown;
-    //private DropdownDescriptionComponent<UtilityContainerSelector> bucketDropdown;
     private DropdownContainerComponent<UtilityContainerSelector> bucketDropdown;
     private DropdownContainerComponent<UtilityContainerSelector> decisionDropdown;
     private DropdownDescriptionComponent<IUtilityScorer> utilityScorerDropdown;

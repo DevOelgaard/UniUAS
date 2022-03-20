@@ -28,9 +28,9 @@ internal class DecisionLogComponent : AiObjectLogComponent
         ScoreContainer.Add(score);
 
         parametersPool = new LogComponentPool<ParameterLogComponent>(parameters, false);
-        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true,3);
-        agentActionsPool = new LogComponentPool<AgentActionLogComponent>(agentActionsContainer, true,1);
-    }
+        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true,3, false);
+        agentActionsPool = new LogComponentPool<AgentActionLogComponent>(agentActionsContainer, true, 1, false);
+    } 
 
     internal override string GetUiName()
     {

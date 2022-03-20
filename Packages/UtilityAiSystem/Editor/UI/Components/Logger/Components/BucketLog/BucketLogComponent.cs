@@ -23,8 +23,8 @@ internal class BucketLogComponent : AiObjectLogComponent
         considerationsContainer = root.Q<VisualElement>("ConsiderationsContainer");
         decisionsContainer = root.Q<VisualElement>("DecisionsContainer");
 
-        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true, 3);
-        decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer, true, 2);
+        considerationsPool = new LogComponentPool<ConsiderationLogComponent>(considerationsContainer, true, 3, false);
+        decisionsPool = new LogComponentPool<DecisionLogComponent>(decisionsContainer, true, 2, false);
 
         weight = new ScoreLogComponent("Weight", 0.ToString());
         ScoreContainer.Add(weight);

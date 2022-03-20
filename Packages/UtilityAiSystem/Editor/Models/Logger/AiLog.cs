@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 internal class AiLog: AiObjectLog
 {
     internal List<BucketLog> Buckets;
+    internal UCSLog BucketSelector;
+    internal UCSLog DecisionSelector;
 
     internal static AiLog GetDebug(Ai ai, int tick)
     {
@@ -17,6 +19,9 @@ internal class AiLog: AiObjectLog
         {
             result.Buckets.Add(BucketLog.GetDebug(bucket, tick));
         }
+
+        result.BucketSelector = UCSLog.GetDebug(ai.CurrentBucketSelector, tick);
+        result.DecisionSelector = UCSLog.GetDebug(ai.CurrentDecisionSelector, tick);
         return result;
     }
 }

@@ -11,10 +11,12 @@ internal class LogComponentPool<T> where T: LogComponent
     internal List<T> LogComponents = new List<T>();
     private List<Foldout> foldouts = new List<Foldout>();
     private bool isFoldout;
-    internal LogComponentPool(VisualElement r, bool addToFoldout, int initialPoolSize = 1)
+    private bool startExpanded;
+    internal LogComponentPool(VisualElement r, bool addToFoldout, int initialPoolSize = 1, bool startExpanded = true)
     {
         this.root = r;
         this.isFoldout = addToFoldout;
+        this.startExpanded = startExpanded;
         for(var i = 0; i < initialPoolSize; i++)
         {
             var component = (T)Activator.CreateInstance(typeof(T));
@@ -23,6 +25,7 @@ internal class LogComponentPool<T> where T: LogComponent
             {
                 var foldout = new Foldout();
                 foldout.name = "LoggerFoldout";
+                foldout.value = startExpanded;
                 root.Add(foldout);
                 foldouts.Add(foldout);
                 foldout.Add(component);
@@ -51,6 +54,7 @@ internal class LogComponentPool<T> where T: LogComponent
                 {
                     var foldout = new Foldout();
                     foldout.name = "LoggerFoldout";
+                    foldout.value = startExpanded;
                     foldout.Add(p);
                     foldout.text = p.GetUiName();
                     foldouts.Add(foldout);
