@@ -26,7 +26,6 @@ internal class LoggerGamePaused : LoggerState
         ForwardLeapButton.SetEnabled(true);
         ToggleStateButton.text = "Resume";
         InfoLabelLeft.text = "Game Paused";
-        RecordToggle.text = "Inspect";
 
     }
 

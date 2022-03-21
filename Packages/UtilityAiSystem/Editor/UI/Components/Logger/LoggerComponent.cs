@@ -35,7 +35,10 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     private IAgent agent;
     internal int CurrentTick;
     private Button tickAgent;
-    private Toggle foldToggle;
+
+    private Button foldoutButton;
+
+    private bool isExpanded = false;
 
     public LoggerComponent()
     {
@@ -50,7 +53,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
         Body = root.Q<VisualElement>("Body");
         Footer = root.Q<VisualElement>("Footer");
         tickSlider = root.Q<SliderInt>("Tick-Slider");
-        foldToggle = root.Q<Toggle>("Fold-Toggle");
+        foldoutButton = root.Q<Button>("Foldout-Button");
         helpBox = new HelpBox();
         helpBox.style.display = DisplayStyle.None;
         Body.Add(helpBox);
@@ -100,22 +103,38 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
             state.TickSliderChanged(evt.newValue);
         });
 
-        foldToggle.RegisterCallback<ChangeEvent<bool>>(evt =>
+        foldoutButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            FoldAll(evt.newValue);
+            ToggleFoldStatus(isExpanded);
         });
+
+        SetFoldButtonText();
 
         EditorApplication.pauseStateChanged += _ => UpdateGameState();
         
         UpdateGameState();
     }
 
-    private void FoldAll(bool fold)
+    private void ToggleFoldStatus(bool fold)
     {
+        isExpanded = !fold;
         root
             //.Query<BucketLogComponent>()
             .Query<Foldout>("LoggerFoldout")
-            .ForEach(foldout => foldout.value = fold);
+            .ForEach(foldout => foldout.value = isExpanded);
+        SetFoldButtonText();
+    }
+
+    private void SetFoldButtonText()
+    {
+        if (isExpanded)
+        {
+            foldoutButton.text = "Collapse All";
+        }
+        else
+        {
+            foldoutButton.text = "Expand All";
+        }
     }
 
     internal void SetState(LoggerState state)

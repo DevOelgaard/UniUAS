@@ -156,7 +156,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -168,7 +168,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -264,7 +264,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -276,7 +276,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -364,7 +364,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -376,7 +376,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -394,7 +394,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -557,7 +557,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -569,7 +569,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -665,7 +665,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -677,7 +677,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -765,7 +765,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -777,7 +777,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -795,7 +795,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -844,7 +844,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -891,7 +891,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -1002,7 +1002,7 @@
                       "FileName": "Parameter"
                     }
                   ],
-                  "Name": "Default",
+                  "Name": "Default(1)",
                   "Description": null,
                   "FileName": "Demo_TimeIntensive"
                 }
@@ -1013,7 +1013,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.5,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1083,7 +1083,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1095,7 +1095,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1121,7 +1121,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Single",
+                  "ValueType": "System.Double",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -1191,7 +1191,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1203,7 +1203,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1221,7 +1221,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -1359,7 +1359,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1429,7 +1429,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1441,7 +1441,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1477,7 +1477,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1547,7 +1547,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1559,7 +1559,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1595,7 +1595,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1665,7 +1665,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1677,7 +1677,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1713,7 +1713,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1783,7 +1783,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1795,7 +1795,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1831,7 +1831,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1901,7 +1901,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1913,7 +1913,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1996,7 +1996,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2008,7 +2008,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2026,7 +2026,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 9.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -2059,7 +2059,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2129,7 +2129,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2141,7 +2141,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2177,7 +2177,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2247,7 +2247,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2259,7 +2259,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2295,7 +2295,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2365,7 +2365,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2377,7 +2377,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2413,7 +2413,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2483,7 +2483,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2495,7 +2495,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2531,7 +2531,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2601,7 +2601,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2613,7 +2613,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2639,7 +2639,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Single",
+                  "ValueType": "System.Double",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -2709,7 +2709,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2721,7 +2721,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -2739,7 +2739,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 4.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -2772,7 +2772,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.4,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2842,7 +2842,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2854,7 +2854,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2890,7 +2890,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.25,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -2960,7 +2960,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -2972,7 +2972,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3008,7 +3008,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.15,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3078,7 +3078,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3090,7 +3090,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3126,7 +3126,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.125,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3196,7 +3196,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3208,7 +3208,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3244,7 +3244,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.075,
-                      "ValueType": "System.Single",
+                      "ValueType": "System.Double",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -3314,7 +3314,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3326,7 +3326,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Single",
+                    "ValueType": "System.Double",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -3352,7 +3352,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Single",
+                  "ValueType": "System.Double",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -3422,7 +3422,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -3434,7 +3434,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Single",
+                "ValueType": "System.Double",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -3452,7 +3452,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Single",
+            "ValueType": "System.Double",
             "RGBA": [
               0.0,
               0.0,
@@ -3501,7 +3501,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,
@@ -3548,7 +3548,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 1.0,
-              "ValueType": "System.Single",
+              "ValueType": "System.Double",
               "RGBA": [
                 0.0,
                 0.0,

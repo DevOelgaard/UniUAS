@@ -25,8 +25,8 @@ internal class LoggerGameRunning : LoggerState
         ForwardLeapButton.SetEnabled(false);
         TickSlider.SetEnabled(false);
         TickAgentButton.SetEnabled(true);
-        RecordToggle.SetEnabled(true);
-        RecordToggle.value = true;
+        //RecordToggle.SetEnabled(true);
+        //RecordToggle.value = true;
         ToggleStateButton.text = "Pause";
         InfoLabelLeft.text = "Game Running";
         AiTicker.Instance
