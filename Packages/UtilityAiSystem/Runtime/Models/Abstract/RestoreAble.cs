@@ -17,15 +17,19 @@ public abstract class RestoreAble
         if (type == null)
         {
             var e = AssetDatabaseService.GetInstanceOfType<T>(state.FileName);
+            sw.Restart();
+
             e.RestoreInternal(state, restoreDebug);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Restore Type = null");
+
             return e;
         } else
         {
             var element = (T)InstantiaterService.Instance.CreateInstance(type,true);
-
-            //var element = (T)Activator.CreateInstance(type, true);
             sw.Restart();
+            //var element = (T)Activator.CreateInstance(type, true);
             element.RestoreInternal(state, restoreDebug);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Restore Type != null");
             return element;
         }
     }

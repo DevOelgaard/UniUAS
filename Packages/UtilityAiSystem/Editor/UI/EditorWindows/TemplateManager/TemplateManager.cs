@@ -129,7 +129,11 @@ internal class TemplateManager : EditorWindow
                 return;
             }
             var loadedCollection = RestoreAbleCollection.Restore<RestoreAbleCollection>(state);
-            var toCollection = uASTemplateService.GetCollection(loadedCollection.Type);
+            var toCollection = uASTemplateService
+                .GetCollection(loadedCollection.Type);
+            var castlist = loadedCollection.Models.Cast<AiObjectModel>();
+            toCollection.Add(castlist);
+
             loadedCollection.Models.ForEach(m =>
             {
                 toCollection.Add(m as AiObjectModel);

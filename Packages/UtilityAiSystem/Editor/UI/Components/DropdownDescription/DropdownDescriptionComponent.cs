@@ -42,10 +42,11 @@ public class DropdownDescriptionComponent<T> : VisualElement where T : IIdentifi
 
     internal void AddElements(List<T> elements)
     {
-        foreach(var e in elements)
-        {
-            this.elements.Add(e);
-        }
+        this.elements.Add(elements);
+        //foreach(var e in elements)
+        //{
+        //    this.elements.Add(e);
+        //}
 
         UpdateDropdown();
     }

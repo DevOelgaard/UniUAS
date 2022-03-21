@@ -97,18 +97,22 @@ public class Decision: UtilityContainer
         Description = state.Description;
 
         AgentActions = new ReactiveListNameSafe<AgentAction>();
+        var agentActions = new List<AgentAction>();
         foreach (var a in state.AgentActions)
         {
             var action = AgentAction.Restore<AgentAction>(a, restoreDebug);
-            AgentActions.Add(action);
+            agentActions.Add(action);
         }
+        AgentActions.Add(agentActions);
 
         Considerations = new ReactiveListNameSafe<Consideration>();
+        var considerations = new List<Consideration>();
         foreach (var c in state.Considerations)
         {
             var consideration = Consideration.Restore<Consideration>(c, restoreDebug);
-            Considerations.Add(consideration);
+            considerations.Add(consideration);
         }
+        Considerations.Add(considerations);
 
         if (restoreDebug)
         {

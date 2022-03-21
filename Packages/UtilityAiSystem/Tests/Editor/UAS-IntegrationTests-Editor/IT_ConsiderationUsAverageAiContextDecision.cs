@@ -25,10 +25,11 @@ public class IT_ConsiderationUsAverageAiContextDecision
     {
         var considerations = CreateUniformConsiderations(numberOfConsiderations, calculatedScore);
         
-        foreach(var c in considerations)
-        {
-            decision.Considerations.Add(c);
-        }
+        decision.Considerations.Add(considerations);
+        //foreach(var c in considerations)
+        //{
+        //    decision.Considerations.Add(c);
+        //}
 
         var result = decision.GetUtility(aIContext);
 

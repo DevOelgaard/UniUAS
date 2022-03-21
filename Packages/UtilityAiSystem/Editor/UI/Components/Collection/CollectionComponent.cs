@@ -70,7 +70,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
                 var cast = collection as ReactiveList<Consideration>;
                 var sortedList = cast.Values.OrderBy(c => c.PerformanceTag).ToList();
                 cast.Clear();
-                sortedList.ForEach(c => cast.Add(c));
+                cast.Add(sortedList);
+                //sortedList.ForEach(c => cast.Add(c));
             });
         }
         else if (t == typeof(ReactiveList<Bucket>))
@@ -81,7 +82,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
                 var cast = collection as ReactiveList<Bucket>;
                 var sortedList = cast.Values.OrderByDescending(b => b.Weight.Value).ToList();
                 cast.Clear();
-                sortedList.ForEach(c => cast.Add(c));
+                cast.Add(sortedList);
+                //sortedList.ForEach(c => cast.Add(c));
             });
         }
         else

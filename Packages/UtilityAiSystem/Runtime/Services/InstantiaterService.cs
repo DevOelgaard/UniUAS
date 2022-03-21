@@ -46,7 +46,7 @@ internal class InstantiaterService
             sw2.Start();
             instance = activator();
             TimerService.Instance.LogCall(sw2.ElapsedMilliseconds, "Activator");
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Complete");
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Total Create Instance");
         }
         TimerService.Instance.LogCall(sw.ElapsedMilliseconds, t.ToString());
         return instance;
@@ -94,7 +94,6 @@ internal class InstantiaterService
 
     ~InstantiaterService()
     {
-        Debug.Log("Destroying Instantiater Service");
     }
 }
 

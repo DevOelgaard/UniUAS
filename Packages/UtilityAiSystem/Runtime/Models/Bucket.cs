@@ -75,18 +75,23 @@ public class Bucket : UtilityContainer
         Description = stateCast.Description;
 
         Decisions = new ReactiveListNameSafe<Decision>();
+        var decisions = new List<Decision>();
         foreach (var d in stateCast.Decisions)
         {
             var decision = Restore<Decision>(d, restoreDebug);
-            Decisions.Add(decision);
+            decisions.Add(decision);
         }
+        Decisions.Add(decisions);
 
         Considerations = new ReactiveListNameSafe<Consideration>();
+        var considerations = new List<Consideration>();
         foreach (var c in stateCast.Considerations)
         {
             var consideration = Restore<Consideration>(c, restoreDebug);
-            Considerations.Add(consideration);
+            considerations.Add(consideration);
         }
+        Considerations.Add(considerations);
+
         Weight = Restore<Parameter>(stateCast.Weight);
 
         if (restoreDebug)

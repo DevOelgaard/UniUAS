@@ -48,7 +48,6 @@ internal class TimerService
             v.Value[0] = 0;
             v.Value[1] = 0;
         }
-        Debug.Log("Timer Reset");
     }
 
     internal void DebugLogTime()
@@ -63,7 +62,7 @@ internal class TimerService
         var msg = "";
         foreach (var kv in ordered)
         {
-            msg += kv.Key + ": Time" + kv.Value + " Count: " + values[kv.Key][1] + " | ";
+            msg += kv.Key + ": Time " + kv.Value + " Count: " + values[kv.Key][0] + " | ";
         }
         Debug.Log("TimerService: " + msg);
     }

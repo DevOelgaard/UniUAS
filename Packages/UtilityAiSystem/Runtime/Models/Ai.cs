@@ -73,12 +73,14 @@ public class Ai: AiObjectModel
         IsPLayable = state.IsPLayable;
 
         Buckets = new ReactiveListNameSafe<Bucket>();
+        var buckets = new List<Bucket>();
         foreach(var bS in state.Buckets)
         {
             var b = Bucket.Restore<Bucket>(bS, restoreLog);
-            Buckets.Add(b);
+            buckets.Add(b);
         }
-        
+        Buckets.Add(buckets);
+
         BucketSelectors = new List<UtilityContainerSelector>();
         foreach(var bS in state.BucketSelectors)
         {

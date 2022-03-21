@@ -118,41 +118,73 @@ public abstract class Consideration : AiObjectModel
 
     protected override void RestoreInternal(RestoreState s, bool restoreDebug = false)
     {
+
+        var sw = new System.Diagnostics.Stopwatch();
+        var swTotal = new System.Diagnostics.Stopwatch();
+        sw.Start();
+        swTotal.Start();
         var state = (ConsiderationState)s;
         Name = state.Name;
         Description = state.Description;
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Cast state");
+        sw.Restart();
+
         MinFloat = Parameter.Restore<Parameter>(state.Min);
         MaxFloat = Parameter.Restore<Parameter>(state.Max);
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Set MinMax");
+        sw.Restart();
         if (state.ResponseCurveState != null)
         {
+            sw.Restart();
             CurrentResponseCurve = ResponseCurve.Restore<ResponseCurve>(state.ResponseCurveState, restoreDebug);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "ResponseCurves");
+
         }
 
         Parameters = new List<Parameter>();
         foreach (var pState in state.Parameters)
         {
+            sw.Restart();
             var parameter = Parameter.Restore<Parameter>(pState, restoreDebug);
             Parameters.Add(parameter);
-        }
-        PerformanceTag = (PerformanceTag)state.PerformanceTag;
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Parameters");
 
+        }
+        sw.Restart();
+        PerformanceTag = (PerformanceTag)state.PerformanceTag;
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "PerformanceTag");
+
+        sw.Restart();
         paramaterDisposables.Clear();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Clear disposables");
+
+        sw.Restart();
+
         MinFloat.OnValueChange
             .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(MinFloat.Value))
             .AddTo(paramaterDisposables);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Subscribe");
+        sw.Restart();
 
         MaxFloat.OnValueChange
             .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(MaxFloat.Value))
             .AddTo(paramaterDisposables);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Subscribe");
+        sw.Restart();
 
         SetMinMaxForCurves();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SetMinMaxCurves");
+
+        sw.Restart();
 
         if (restoreDebug)
         {
             BaseScore = state.BaseScore;
             NormalizedScore = state.NormalizedScore;
         }
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "IfRestoreDebug");
+        TimerService.Instance.LogCall(swTotal.ElapsedMilliseconds, "Consideration Total");
+
     }
 
     internal override AiObjectModel Clone()

@@ -62,10 +62,7 @@ public class ScorerService
                 .FirstOrDefault(element => element.GetType() == e.GetType()) == null) // Avoids Duplicates
             .ToList();
 
-        foreach(var e in elements)
-        {
-            UtilityScorers.Add(e);
-        }
+        UtilityScorers.Add(elements);
     }
 
     private static ScorerService instance;

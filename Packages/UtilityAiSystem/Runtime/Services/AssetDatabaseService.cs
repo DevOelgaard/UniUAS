@@ -77,8 +77,6 @@ public static class AssetDatabaseService
 
     public static List<Type> GetAssignableTypes<T>()
     {
-        var sw = new System.Diagnostics.Stopwatch();
-        sw.Start();
         var result = new List<Type>();
         var assemblies = GetAssemblies();
 
@@ -99,14 +97,11 @@ public static class AssetDatabaseService
                 }
             }
         }
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "GetAssignableTypes");
         return result;
     }
 
     public static List<T> GetInstancesOfType<T>()
     {
-        var sw = new System.Diagnostics.Stopwatch();
-        sw.Start();
         var result = new List<T>();
         var assemblies = GetAssemblies();
 
@@ -128,8 +123,6 @@ public static class AssetDatabaseService
                 }
             }
         }
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "GetInstancesOfType");
-
         return result;
     }
 

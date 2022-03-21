@@ -36,6 +36,15 @@ namespace UniRxExtension
             onValueChanged.OnNext(Values);
         }
 
+        public virtual void Add(IEnumerable<T> elements)
+        {
+            foreach(var e in elements)
+            {
+                List.Add(e);
+            }
+            onValueChanged.OnNext(Values);
+        }
+
         public virtual void Remove(T element)
         {
             List.Remove(element);
@@ -44,11 +53,13 @@ namespace UniRxExtension
 
         public void Clear()
         {
-            var copyList = new List<T>(List);
-            foreach(var element in copyList)
-            {
-                Remove(element);
-            }
+            List = new List<T>();
+            onValueChanged.OnNext(Values);
+        }
+
+        public void ClearNoNotify()
+        {
+            List = new List<T>();
         }
 
         public void IncreaIndex(T element)
