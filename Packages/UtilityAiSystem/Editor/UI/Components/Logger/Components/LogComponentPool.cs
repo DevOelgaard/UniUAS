@@ -19,7 +19,9 @@ internal class LogComponentPool<T> where T: LogComponent
         this.startExpanded = startExpanded;
         for(var i = 0; i < initialPoolSize; i++)
         {
-            var component = (T)Activator.CreateInstance(typeof(T));
+            var component = (T)InstantiaterService.Instance.CreateInstance(typeof(T));
+
+            //var component = (T)Activator.CreateInstance(typeof(T));
             LogComponents.Add(component);
             if (addToFoldout)
             {
@@ -38,6 +40,7 @@ internal class LogComponentPool<T> where T: LogComponent
         }
     }
 
+
     internal void Display(List<ILogModel> elements)
     {
         root.style.display = DisplayStyle.Flex;
@@ -45,7 +48,9 @@ internal class LogComponentPool<T> where T: LogComponent
         {
             if (i >= LogComponents.Count)
             {
-                var p = (T)Activator.CreateInstance(typeof(T));
+                var p = (T)InstantiaterService.Instance.CreateInstance(typeof(T));
+
+                //var p = (T)Activator.CreateInstance(typeof(T));
                 p.UpdateUi(elements[i]);
                 p.style.display = DisplayStyle.Flex;
 

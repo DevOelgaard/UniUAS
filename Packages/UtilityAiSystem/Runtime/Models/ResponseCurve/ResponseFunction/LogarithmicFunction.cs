@@ -7,7 +7,7 @@ using UnityEngine;
 
 internal class LogarithmicFunction : ResponseFunction
 {
-    public LogarithmicFunction() : base("Logarithm")
+    public LogarithmicFunction() : base(TypeToName.RF_Logarithmic)
     {
     }
 

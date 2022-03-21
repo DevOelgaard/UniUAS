@@ -12,7 +12,7 @@ internal class TickerModeDesiredFrameRate : TickerMode
     private int framesThisSample = 0;
     private float elapsedTime = 0f;
     private int tickedItemsLastSample = 0;
-    private int tickedItemsLastSampleStored = 0;
+    //private int tickedItemsLastSampleStored = 0;
     private int allowedTicksPrFrame = int.MaxValue;
     private int lastTickIndex = -1;
     internal float LastFrameRate { get; private set; } = float.MaxValue;

@@ -48,8 +48,7 @@ internal class ResponseCurveLCComponent : VisualElement
         addFunctionButton.RegisterCallback<MouseUpEvent>(evt =>
         {
             var function = AssetDatabaseService
-                .GetInstancesOfType<ResponseFunction>()
-                .First();
+                .GetFirstInstanceOfType<ResponseFunction>();
             responseCurve.AddResponseFunction(function);
         });
 

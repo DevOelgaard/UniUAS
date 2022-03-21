@@ -10,7 +10,7 @@ internal class TickerModeTimeBudget : TickerMode
     private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
     private int lastTickIndex = -1;
     internal int TickedAgentsThisFrame { get; private set; }
-    internal TickerModeTimeBudget() : base(AiTickerMode.TimeBudget, Consts.Description_TickerModeTimeBudget)
+    public TickerModeTimeBudget() : base(AiTickerMode.TimeBudget, Consts.Description_TickerModeTimeBudget)
     {
     }
 

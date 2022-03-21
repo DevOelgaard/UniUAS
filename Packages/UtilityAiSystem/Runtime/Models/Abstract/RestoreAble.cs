@@ -21,7 +21,9 @@ public abstract class RestoreAble
             return e;
         } else
         {
-            var element = (T)Activator.CreateInstance(type, true);
+            var element = (T)InstantiaterService.Instance.CreateInstance(type,true);
+
+            //var element = (T)Activator.CreateInstance(type, true);
             sw.Restart();
             element.RestoreInternal(state, restoreDebug);
             return element;

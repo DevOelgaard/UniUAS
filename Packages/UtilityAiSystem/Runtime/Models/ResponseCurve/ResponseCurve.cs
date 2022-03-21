@@ -26,7 +26,8 @@ public class ResponseCurve: AiObjectModel
 
     public ResponseCurve()
     {
-        var firstFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>().First(r => r.Name.Contains("Linear"));
+        var firstFunction = new LinearFunction();
+        //var firstFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>().First(r => r.Name.Contains("Linear"));
         ResponseFunctions = new List<ResponseFunction>();
         AddResponseFunction(firstFunction);
     }
@@ -36,7 +37,9 @@ public class ResponseCurve: AiObjectModel
         Name = name;
         MinY = minY;
         MaxY = maxY;
-        var firstFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>().First();
+        var firstFunction = new LinearFunction();
+
+        //var firstFunction = AssetDatabaseService.GetInstancesOfType<ResponseFunction>().First();
         ResponseFunctions = new List<ResponseFunction>();
         AddResponseFunction(firstFunction);
     }

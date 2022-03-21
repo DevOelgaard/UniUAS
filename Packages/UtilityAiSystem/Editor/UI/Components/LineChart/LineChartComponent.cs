@@ -82,7 +82,7 @@ internal class LineChartComponent: IMGUIContainer
     {
         if (isMinimized)
         {
-            SetMinimized();
+            //SetMinimized();
         }
         else
         {

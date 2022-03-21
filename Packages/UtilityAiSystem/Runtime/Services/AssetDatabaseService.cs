@@ -50,10 +50,10 @@ public static class AssetDatabaseService
         return template.CloneTree();
     }
 
-    public static List<T> GetInstancesOfType<T>()
+    public static T GetFirstInstanceOfType<T>()
     {
-        var result = new List<T>();
-        var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+        var assemblies = GetAssemblies();
+
         foreach (var assemblie in assemblies)
         {
             var types = assemblie.GetTypes();
@@ -66,19 +66,78 @@ public static class AssetDatabaseService
                     if (!type.ToString().Contains("Mock") &&
                         !type.ToString().Contains("Stub"))
                     {
-                        var instance = (T)Activator.CreateInstance(type);
+                        return (T)InstantiaterService.Instance.CreateInstance(type);
+                        //var instance = (T)Activator.CreateInstance(type);
+                    }
+                }
+            }
+        }
+        return default(T);
+    }
+
+    public static List<Type> GetAssignableTypes<T>()
+    {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+        var result = new List<Type>();
+        var assemblies = GetAssemblies();
+
+        foreach (var assemblie in assemblies)
+        {
+            var types = assemblie.GetTypes();
+            foreach (var type in types)
+            {
+                if (typeof(T).IsAssignableFrom(type) &&
+                    !type.IsAbstract)
+                {
+                    // Guarding against Test files
+                    if (!type.ToString().Contains("Mock") &&
+                        !type.ToString().Contains("Stub"))
+                    {
+                        result.Add(type);
+                    }
+                }
+            }
+        }
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "GetAssignableTypes");
+        return result;
+    }
+
+    public static List<T> GetInstancesOfType<T>()
+    {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+        var result = new List<T>();
+        var assemblies = GetAssemblies();
+
+        foreach (var assemblie in assemblies)
+        {
+            var types = assemblie.GetTypes();
+            foreach (var type in types)
+            {
+                if (typeof(T).IsAssignableFrom(type) &&
+                    !type.IsAbstract)
+                {
+                    // Guarding against Test files
+                    if (!type.ToString().Contains("Mock") &&
+                        !type.ToString().Contains("Stub"))
+                    {
+                        var instance = (T)InstantiaterService.Instance.CreateInstance(type);
                         result.Add(instance);
                     }
                 }
             }
         }
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "GetInstancesOfType");
+
         return result;
     }
 
     public static List<Type> GetActivateableTypes(Type t)
     {
         var restult = new List<Type>();
-        var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+        var assemblies = GetAssemblies();
+
         foreach (var assemblie in assemblies)
         {
             var types = assemblie.GetTypes();
@@ -98,7 +157,7 @@ public static class AssetDatabaseService
     public static T GetInstanceOfType<T>(string typeName)
     {
         var result = new List<T>();
-        var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+        var assemblies = GetAssemblies();
         foreach (var assemblie in assemblies)
         {
             var types = assemblie.GetTypes();
@@ -106,10 +165,22 @@ public static class AssetDatabaseService
             var type = types.FirstOrDefault(t => t.ToString() == typeName);
             if (type != null)
             {
-                var instance = (T)Activator.CreateInstance(type);
+                var instance = (T)InstantiaterService.Instance.CreateInstance(type);
+
                 return instance;
             }
         }
         return default(T);
+    }
+
+    private static System.Reflection.Assembly[] GetAssemblies()
+    {
+        //var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().ToList();
+        //var newAssemblies = assemblies.Where(a => !a.GetName().ToString().Contains("UnityEngine")).ToList();
+        //var newAssemblies2 = newAssemblies.Where(a => !a.GetName().ToString().Contains("UnityEditor")).ToArray();
+
+        //return newAssemblies2;
+       return System.AppDomain.CurrentDomain.GetAssemblies();
+
     }
 }

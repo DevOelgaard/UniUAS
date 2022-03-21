@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class LinearFunction : ResponseFunction
 {
-    public LinearFunction() : base("Linear")
+    public LinearFunction() : base(TypeToName.RF_Linear)
     {
     }
 

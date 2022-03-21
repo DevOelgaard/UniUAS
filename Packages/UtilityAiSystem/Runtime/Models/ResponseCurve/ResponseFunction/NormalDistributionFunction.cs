@@ -7,7 +7,7 @@ using UnityEngine;
 
 internal class NormalDistributionFunction : ResponseFunction
 {
-    public NormalDistributionFunction() : base("Normal Distribution")
+    public NormalDistributionFunction() : base(TypeToName.RF_NormalDistribution)
     {
     }
 

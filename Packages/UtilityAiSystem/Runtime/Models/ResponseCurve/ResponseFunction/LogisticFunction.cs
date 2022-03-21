@@ -7,7 +7,7 @@ using UnityEngine;
 // https://en.wikipedia.org/wiki/Logistic_function
 public class LogisticFunction : ResponseFunction
 {
-    public LogisticFunction() : base("Logistic")
+    public LogisticFunction() : base(TypeToName.RF_Logistic)
     {
     }
 

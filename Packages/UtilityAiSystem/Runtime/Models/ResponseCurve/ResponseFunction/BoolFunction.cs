@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 internal class BoolFunction : ResponseFunction
 {
-    public BoolFunction() : base("Bool")
+    public BoolFunction() : base(TypeToName.RF_Bool)
     {
     }
 

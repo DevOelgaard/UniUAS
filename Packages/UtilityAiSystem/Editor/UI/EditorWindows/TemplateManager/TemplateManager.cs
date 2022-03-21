@@ -47,7 +47,7 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave);
+        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave);
         if (state != null)
         {
             uASTemplateService.Restore(state);
@@ -151,6 +151,44 @@ internal class TemplateManager : EditorWindow
                 uASTemplateService.AutoSave();
             }
         });
+
+        // TEST
+
+        var timerButton = new Button();
+        timerButton.text = "Timer";
+        timerButton.RegisterCallback<MouseUpEvent>(key =>
+        {
+            TimerService.Instance.DebugLogTime();
+            InstantiaterService.Instance.DebugStuff();
+        });
+        buttonContainer.Add(timerButton);
+
+        var resetButton = new Button();
+        resetButton.text = "Reset timer";
+        resetButton.RegisterCallback<MouseUpEvent>(key =>
+        {
+            TimerService.Instance.Reset();
+            InstantiaterService.Instance.Reset();
+
+        });
+        buttonContainer.Add(resetButton);
+
+        var backupButton = new Button();
+        backupButton.text = "Backup";
+        backupButton.RegisterCallback<MouseUpEvent>(key =>
+        {
+            uASTemplateService.AutoSave(true);
+        });
+        buttonContainer.Add(backupButton);
+
+        var loadBackup = new Button();
+        loadBackup.text = "Load Backup";
+        loadBackup.RegisterCallback<MouseUpEvent>(key =>
+        {
+            uASTemplateService.LoadAutoSave(true);
+        });
+        buttonContainer.Add(loadBackup);
+        // TEST-END
 
 
         InitDropdown();

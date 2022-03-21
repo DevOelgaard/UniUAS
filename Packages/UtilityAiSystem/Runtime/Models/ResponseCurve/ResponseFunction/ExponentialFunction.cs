@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ExponentialFunction : ResponseFunction
 {
-    public ExponentialFunction() : base("Exponential") {
+    public ExponentialFunction() : base(TypeToName.RF_Exponential) {
     }
 
     protected override List<Parameter> GetParameters()

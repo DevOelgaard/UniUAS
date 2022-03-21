@@ -15,13 +15,13 @@ internal class FileExtensionService
     internal static string GetFileExtension(Type type, object o)
     {
         var start = "";
-        var end = "";
+        //var end = "";
 
         if (type.IsAssignableFrom(typeof(RestoreAbleCollection)))
         {
             var cast = o as RestoreAbleCollection;
             type = cast.Type;
-            end = Consts.FileExtension_RestoreAbleCollection;
+            //end = Consts.FileExtension_RestoreAbleCollection;
         }
 
         if (type.IsAssignableFrom(typeof(AgentAction)))

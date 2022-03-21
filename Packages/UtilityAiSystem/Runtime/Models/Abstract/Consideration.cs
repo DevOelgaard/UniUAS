@@ -17,8 +17,9 @@ public abstract class Consideration : AiObjectModel
         { 
             if (currentResponseCurve == null)
             {
-                currentResponseCurve = AssetDatabaseService.GetInstancesOfType<ResponseCurve>()
-                    .FirstOrDefault();
+                currentResponseCurve = new ResponseCurve();
+                //currentResponseCurve = AssetDatabaseService.GetInstancesOfType<ResponseCurve>()
+                //    .FirstOrDefault();
             }
             return currentResponseCurve; 
         }

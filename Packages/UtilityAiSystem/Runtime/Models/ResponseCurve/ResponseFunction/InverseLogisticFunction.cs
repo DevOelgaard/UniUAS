@@ -5,7 +5,7 @@ using UnityEngine;
 // https://stackoverflow.com/questions/10097891/inverse-logistic-function-reverse-sigmoid-function
 public class InverseLogisticFunction : ResponseFunction
 {
-    public InverseLogisticFunction() : base("Inverse Logistic")
+    public InverseLogisticFunction() : base(TypeToName.RF_InverseLogistic)
     {
     }
 

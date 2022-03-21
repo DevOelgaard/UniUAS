@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 internal class FixedValueFunction : ResponseFunction
 {
-    public FixedValueFunction() : base("Fixed Value")
+    public FixedValueFunction() : base(TypeToName.RF_FixedValue)
     {
     }
 

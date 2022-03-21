@@ -14,7 +14,7 @@
                 <ui:VisualElement name="Toggles" style="flex-direction: row; flex-grow: 1; justify-content: space-around; align-items: stretch;">
                     <ui:Toggle label="Color" name="Color-Toggle" value="true" style="flex-direction: column; width: 48px; flex-shrink: 1; align-items: flex-start;" />
                     <ui:Toggle label="Record" name="Record-Toggle" value="true" style="flex-direction: column; flex-shrink: 1; width: 48px;" />
-                    <ui:Button text="Collapse All" display-tooltip-when-elided="true" />
+                    <ui:Button text="Collapse All" display-tooltip-when-elided="true" name="Foldout-Button" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

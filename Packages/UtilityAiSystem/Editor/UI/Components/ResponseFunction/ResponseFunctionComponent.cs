@@ -36,10 +36,17 @@ internal class ResponseFunctionComponent: VisualElement
         body = root.Q<VisualElement>("Body");
         removeButton = root.Q<Button>("RemoveButton");
 
+        //typeDropdown.choices = AssetDatabaseService
+        //    .GetInstancesOfType<ResponseFunction>()
+        //    .Select(rF => rF.Name)
+        //    .ToList();
         typeDropdown.choices = AssetDatabaseService
-            .GetInstancesOfType<ResponseFunction>()
-            .Select(rF => rF.Name)
+            .GetAssignableTypes<ResponseFunction>()
+            .Select(t => TypeToName.ResponseFunctionToName(t))
             .ToList();
+            //.GetInstancesOfType<ResponseFunction>()
+            //.Select(rF => rF.Name)
+            //.ToList();
 
         typeDropdown.RegisterCallback<ChangeEvent<string>>(evt =>
         {

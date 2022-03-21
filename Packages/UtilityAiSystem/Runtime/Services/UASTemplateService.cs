@@ -60,12 +60,19 @@ internal class UASTemplateService: RestoreAble
         }
     }
 
-    internal void LoadAutoSave()
+    internal void LoadAutoSave(bool backup = false)
     {
         var sw = new System.Diagnostics.Stopwatch();
         sw.Start();
         var perstistAPI = new PersistenceAPI(new JSONPersister());
-        var state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateServicel_AutoSave + Consts.FileExtension_JSON);
+        UASTemplateServiceState state;
+        if (!backup)
+        {
+            state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave + Consts.FileExtension_JSON);
+        } else
+        {
+            state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_BackUp + Consts.FileExtension_JSON);
+        }
         if (state == null)
         {
             Debug.LogWarning("No playmode found");
@@ -84,12 +91,18 @@ internal class UASTemplateService: RestoreAble
         Debug.Log("Load Autosave completed in: " + sw.ElapsedMilliseconds + "ms");
     }
 
-    internal void AutoSave()
+    internal void AutoSave(bool backup = false)
     {
         var sw = new System.Diagnostics.Stopwatch();
         sw.Start();
         var perstistAPI = new PersistenceAPI(new JSONPersister());
-        perstistAPI.SaveObjectPath(this, Consts.File_UASTemplateServicel_AutoSave);
+        if (!backup)
+        {
+            perstistAPI.SaveObjectPath(this, Consts.File_UASTemplateService_AutoSave);
+        } else
+        {
+            perstistAPI.SaveObjectPath(this, Consts.File_UASTemplateService_BackUp);
+        }
         Debug.Log("Autosave completed in: " + sw.ElapsedMilliseconds + "ms");
     }
 
@@ -255,14 +268,16 @@ internal class UASTemplateService: RestoreAble
 
     internal void Restore(UASTemplateServiceState state)
     {
-        try
-        {
-            RestoreInternal(state,false);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogWarning("UASTemplateService Restore failed: " + ex);
-        }
+        RestoreInternal(state, false);
+
+        //try
+        //{
+        //    RestoreInternal(state,false);
+        //}
+        //catch (Exception ex)
+        //{
+        //    Debug.LogWarning("UASTemplateService Restore failed: " + ex);
+        //}
 
         //RestoreInternal(state);
     }

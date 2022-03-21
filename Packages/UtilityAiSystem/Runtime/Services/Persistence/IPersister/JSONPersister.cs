@@ -33,7 +33,7 @@ internal class JSONPersister : IPersister
             Debug.LogWarning("Loading failed: " + ex.ToString());
             throw new Exception("Loading failed: ", ex);
 
-            return default(T);
+            //return default(T);
         }
     }
 
