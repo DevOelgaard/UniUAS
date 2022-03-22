@@ -15,7 +15,6 @@ public class LogisticFunction : ResponseFunction
     {
         return new List<Parameter>()
         {
-            new Parameter("Max Value", 1f),
             new Parameter("Growth Rate", 10f),
             new Parameter("Midpoint", 0.5f),
         };
@@ -24,6 +23,6 @@ public class LogisticFunction : ResponseFunction
     protected override float CalculateResponseInternal(float x)
     {
         // L / 1 + e^-k(x-x0)
-        return Convert.ToSingle(Parameters[0].Value) / (1.0f + (float)Mathf.Exp(-Convert.ToSingle(Parameters[1].Value) * (x - Convert.ToSingle(Parameters[2].Value))));
+        return Convert.ToSingle(Max.Value) / (1.0f + (float)Mathf.Exp(-Convert.ToSingle(Parameters[0].Value) * (x - Convert.ToSingle(Parameters[1].Value))));
     }
 }

@@ -22,4 +22,9 @@ internal class FixedValueFunction : ResponseFunction
     {
         return Convert.ToSingle(Parameters[0].Value);
     }
+
+    public override float CalculateResponse(float x, float prevResult, float maxY)
+    {
+        return Convert.ToSingle(Parameters[0].Value);
+    }
 }

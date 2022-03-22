@@ -144,6 +144,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -156,7 +168,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -168,7 +180,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -252,6 +264,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -264,7 +288,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -276,7 +300,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -352,6 +376,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "NormalDistributionFunction"
@@ -364,7 +400,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -376,7 +412,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -394,7 +430,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -545,6 +581,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -557,7 +605,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -569,7 +617,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1000.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -653,6 +701,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -665,7 +725,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.1,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -677,7 +737,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -753,6 +813,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "NormalDistributionFunction"
@@ -765,7 +837,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -777,7 +849,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -795,7 +867,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -844,7 +916,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -891,7 +963,7 @@
             {
               "Name": "Max deviation from highest",
               "Value": 0.0,
-              "ValueType": "System.Double",
+              "ValueType": "System.Single",
               "RGBA": [
                 0.0,
                 0.0,
@@ -1013,7 +1085,7 @@
                     {
                       "Name": "Return value",
                       "Value": 0.5,
-                      "ValueType": "System.Double",
+                      "ValueType": "System.Single",
                       "RGBA": [
                         0.0,
                         0.0,
@@ -1071,6 +1143,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -1083,7 +1167,7 @@
                   "Min": {
                     "Name": "Min",
                     "Value": 0.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1095,7 +1179,7 @@
                   "Max": {
                     "Name": "Max",
                     "Value": 1.0,
-                    "ValueType": "System.Double",
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -1121,7 +1205,7 @@
                 {
                   "Name": "Return value",
                   "Value": 1.0,
-                  "ValueType": "System.Double",
+                  "ValueType": "System.Single",
                   "RGBA": [
                     0.0,
                     0.0,
@@ -1179,6 +1263,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -1191,7 +1287,7 @@
               "Min": {
                 "Name": "Min",
                 "Value": 0.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1203,7 +1299,7 @@
               "Max": {
                 "Name": "Max",
                 "Value": 1.0,
-                "ValueType": "System.Double",
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -1221,7 +1317,7 @@
           "Weight": {
             "Name": "Weight",
             "Value": 1.0,
-            "ValueType": "System.Double",
+            "ValueType": "System.Single",
             "RGBA": [
               0.0,
               0.0,
@@ -1417,6 +1513,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -1528,6 +1636,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -1653,6 +1773,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -1764,6 +1896,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -1889,6 +2033,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -1977,6 +2133,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -2117,6 +2285,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -2228,6 +2408,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -2353,6 +2545,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -2464,6 +2668,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -2589,6 +2805,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -2690,6 +2918,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -2830,6 +3070,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -2941,6 +3193,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -3066,6 +3330,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -3177,6 +3453,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -3302,6 +3590,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -3403,6 +3703,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -3648,6 +3960,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -3759,6 +4083,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -3884,6 +4220,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -3995,6 +4343,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -4120,6 +4480,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -4208,6 +4580,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -4348,6 +4732,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -4459,6 +4855,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -4584,6 +4992,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -4695,6 +5115,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -4820,6 +5252,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -4921,6 +5365,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -5061,6 +5517,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -5172,6 +5640,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -5297,6 +5777,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -5408,6 +5900,18 @@
                             "Name": "Inverse",
                             "Value": false,
                             "ValueType": "System.Boolean",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
                             "RGBA": [
                               0.0,
                               0.0,
@@ -5533,6 +6037,18 @@
                               0.0
                             ],
                             "FileName": "Parameter"
+                          },
+                          {
+                            "Name": "Max",
+                            "Value": 1.0,
+                            "ValueType": "System.Single",
+                            "RGBA": [
+                              0.0,
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "FileName": "Parameter"
                           }
                         ],
                         "FileName": "LinearFunction"
@@ -5634,6 +6150,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -5936,6 +6464,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -6029,6 +6569,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -6144,6 +6696,18 @@
                       0.0
                     ],
                     "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
                   }
                 ],
                 "FileName": "LinearFunction"
@@ -6237,6 +6801,18 @@
                     "Name": "Inverse",
                     "Value": false,
                     "ValueType": "System.Boolean",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -6413,6 +6989,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -6514,6 +7102,18 @@
                     "Name": "Inverse",
                     "Value": false,
                     "ValueType": "System.Boolean",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -6654,6 +7254,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -6765,6 +7377,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -6890,6 +7514,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -7001,6 +7637,18 @@
                         "Name": "Inverse",
                         "Value": false,
                         "ValueType": "System.Boolean",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
                         "RGBA": [
                           0.0,
                           0.0,
@@ -7126,6 +7774,18 @@
                           0.0
                         ],
                         "FileName": "Parameter"
+                      },
+                      {
+                        "Name": "Max",
+                        "Value": 1.0,
+                        "ValueType": "System.Single",
+                        "RGBA": [
+                          0.0,
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "FileName": "Parameter"
                       }
                     ],
                     "FileName": "LinearFunction"
@@ -7227,6 +7887,18 @@
                     "Name": "Inverse",
                     "Value": false,
                     "ValueType": "System.Boolean",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -7425,6 +8097,18 @@
                       0.0
                     ],
                     "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
                   }
                 ],
                 "FileName": "LinearFunction"
@@ -7605,6 +8289,18 @@
                       0.0
                     ],
                     "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
                   }
                 ],
                 "FileName": "LinearFunction"
@@ -7716,6 +8412,18 @@
                     "Name": "Inverse",
                     "Value": false,
                     "ValueType": "System.Boolean",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
                     "RGBA": [
                       0.0,
                       0.0,
@@ -7841,6 +8549,18 @@
                       0.0
                     ],
                     "FileName": "Parameter"
+                  },
+                  {
+                    "Name": "Max",
+                    "Value": 1.0,
+                    "ValueType": "System.Single",
+                    "RGBA": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "FileName": "Parameter"
                   }
                 ],
                 "FileName": "LinearFunction"
@@ -7948,6 +8668,18 @@
                   0.0
                 ],
                 "FileName": "Parameter"
+              },
+              {
+                "Name": "Max",
+                "Value": 1.0,
+                "ValueType": "System.Single",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
               }
             ],
             "FileName": "NormalDistributionFunction"
@@ -8029,6 +8761,18 @@
                 "Name": "Inverse",
                 "Value": false,
                 "ValueType": "System.Boolean",
+                "RGBA": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "FileName": "Parameter"
+              },
+              {
+                "Name": "Max",
+                "Value": 1.0,
+                "ValueType": "System.Single",
                 "RGBA": [
                   0.0,
                   0.0,
@@ -8134,7 +8878,7 @@
   ],
   "ResponseCurves": [
     {
-      "Name": "Default",
+      "Name": "Baby Sleep",
       "Description": null,
       "MinY": 0.0,
       "MaxY": 1.0,
@@ -8143,7 +8887,7 @@
       "Segments": [
         {
           "Name": " ",
-          "Value": 0.4,
+          "Value": 0.75,
           "ValueType": "System.Double",
           "RGBA": [
             0.0,
@@ -8155,7 +8899,19 @@
         },
         {
           "Name": " ",
-          "Value": 0.6,
+          "Value": 0.8,
+          "ValueType": "System.Double",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.91,
           "ValueType": "System.Double",
           "RGBA": [
             0.0,
@@ -8168,12 +8924,98 @@
       ],
       "ResponseFunctions": [
         {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 2.48,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.8,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "ExponentialFunction"
+        },
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 0.8,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.8,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
+        },
+        {
           "Name": "Linear",
           "Description": null,
           "Parameters": [
             {
               "Name": "a",
-              "Value": 0.5,
+              "Value": -7.15,
               "ValueType": "System.Double",
               "RGBA": [
                 0.0,
@@ -8206,9 +9048,156 @@
                 0.0
               ],
               "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
             }
           ],
           "FileName": "LinearFunction"
+        },
+        {
+          "Name": "Logistic",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Growth Rate",
+              "Value": 7.89,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Midpoint",
+              "Value": 0.27,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LogisticFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "Name": "Ranged Attack - M. Range - Spec. Long Range",
+      "Description": "",
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.1,
+          "ValueType": "System.Double",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.95,
+          "ValueType": "System.Double",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 0.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
         },
         {
           "Name": "Normal Distribution",
@@ -8239,7 +9228,38 @@
               "FileName": "Parameter"
             },
             {
-              "Name": "Max Value",
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Double",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "NormalDistributionFunction"
+        },
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
               "Value": 1.0,
               "ValueType": "System.Double",
               "RGBA": [
@@ -8261,16 +9281,9 @@
                 0.0
               ],
               "FileName": "Parameter"
-            }
-          ],
-          "FileName": "NormalDistributionFunction"
-        },
-        {
-          "Name": "Linear",
-          "Description": null,
-          "Parameters": [
+            },
             {
-              "Name": "a",
+              "Name": "Max",
               "Value": 1.0,
               "ValueType": "System.Double",
               "RGBA": [
@@ -8280,33 +9293,9 @@
                 0.0
               ],
               "FileName": "Parameter"
-            },
-            {
-              "Name": "b",
-              "Value": 1.0,
-              "ValueType": "System.Double",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
-            },
-            {
-              "Name": "Inverse",
-              "Value": true,
-              "ValueType": "System.Boolean",
-              "RGBA": [
-                0.0,
-                0.0,
-                0.0,
-                0.0
-              ],
-              "FileName": "Parameter"
             }
           ],
-          "FileName": "LinearFunction"
+          "FileName": "FixedValueFunction"
         }
       ],
       "FileName": "ResponseCurve"

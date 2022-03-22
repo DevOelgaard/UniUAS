@@ -7,6 +7,18 @@ using UnityEngine;
 
 public abstract class ResponseFunction: AiObjectModel
 {
+    private Parameter max;
+    protected Parameter Max
+    {
+        get
+        {
+            if(max == null)
+            {
+                max = Parameters.First(p => p.Name == "Max");
+            }
+            return max;
+        }
+    }
     public List<Parameter> Parameters;
     private bool Inverse => (bool)Parameters
         .FirstOrDefault(p => p.Name == "Inverse" && p.Value.GetType() == typeof(bool))
@@ -15,6 +27,8 @@ public abstract class ResponseFunction: AiObjectModel
     public ResponseFunction()
     {
         Parameters = GetParameters();
+        Parameters.Add(new Parameter("Inverse", false));
+        Parameters.Add(new Parameter("Max", 1f));
     }
 
     protected ResponseFunction(string name)
@@ -23,6 +37,7 @@ public abstract class ResponseFunction: AiObjectModel
         Parameters = new List<Parameter>();
         Parameters = GetParameters();
         Parameters.Add(new Parameter("Inverse", false ));
+        Parameters.Add(new Parameter("Max", 1f));
     }
 
     protected virtual List<Parameter> GetParameters()
@@ -30,7 +45,7 @@ public abstract class ResponseFunction: AiObjectModel
         return new List<Parameter>();
     }
 
-    public float CalculateResponse(float x, float prevResult, float maxY)
+    public virtual float CalculateResponse(float x, float prevResult, float maxY)
     {
         var result = 0f;
         if (Inverse)
@@ -40,7 +55,9 @@ public abstract class ResponseFunction: AiObjectModel
         {
             result = CalculateResponseInternal(x);
         }
-        result = Normalize(result, prevResult,maxY);
+        result = Normalize(result, prevResult, Convert.ToSingle(Max.Value));
+        var factor = Convert.ToSingle(Max.Value) / maxY;
+        result *= factor;
         return result + prevResult;
         //return Normalize(result,minY,maxY);
     }
@@ -67,6 +84,10 @@ public abstract class ResponseFunction: AiObjectModel
         if (Parameters.FirstOrDefault(p => p.Name == "Inverse") == null)
         {
             Parameters.Add(new Parameter("Inverse", false));
+        }
+        if (Parameters.FirstOrDefault(p => p.Name == "Max") == null)
+        {
+            Parameters.Add(new Parameter("Max", 1f));
         }
     }
 

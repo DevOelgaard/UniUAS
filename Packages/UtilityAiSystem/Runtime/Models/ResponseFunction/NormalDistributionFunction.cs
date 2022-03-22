@@ -17,7 +17,6 @@ internal class NormalDistributionFunction : ResponseFunction
         {
             new Parameter("Mean", 0.5f),
             new Parameter("Std Deviation", 0.1f),
-            new Parameter("Max Value", 0.1f),
         };
     }
 
@@ -29,6 +28,6 @@ internal class NormalDistributionFunction : ResponseFunction
         var p = (float)-0.5 * Mathf.Pow(((x - mean) / stdDeviation), 2);
         var result = Mathf.Pow((float)f, p);
         
-        return result - 1 + Convert.ToSingle(Parameters[2].Value) ;
+        return result;
     }
 }
