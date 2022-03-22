@@ -33,6 +33,7 @@ internal class ResponseCurveLCComponent : VisualElement
     {
         var root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
+        root.styleSheets.Add(StylesService.GetStyleSheet("ResponseCurve"));
         header = root.Q<VisualElement>("Header");
         foldButton = root.Q<Button>("FoldButton");
         curveContainer = root.Q<VisualElement>("CurveContainer");
@@ -132,6 +133,7 @@ internal class ResponseCurveLCComponent : VisualElement
             {
                 var segmentParam = responseCurve.Segments[funcitionIndex];
                 var paramComponent = new ParameterComponent();
+                paramComponent.name = "Segment";
                 paramComponent.UpdateUi(segmentParam);
                 segmentParam
                     .OnValueChange
