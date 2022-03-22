@@ -11,7 +11,7 @@ internal class AiLoggerService
     public static AiLoggerService Instance => instance ??= new AiLoggerService();
 
     private Dictionary<IAgent, Dictionary<int,AgentLog>> agentLogByAgent = new Dictionary<IAgent, Dictionary<int, AgentLog>>();
-
+    private Dictionary<IAgent, List<int>> validTicksByAgent = new Dictionary<IAgent, List<int>>();
     public IObservable<bool> OnTicksChanged => onTicksChanged;
     private Subject<bool> onTicksChanged = new Subject<bool>();
     public int MinTick { get; private set; } = int.MaxValue;
@@ -53,11 +53,26 @@ internal class AiLoggerService
             } else
             {
                 agentLogByAgent[agent].Add(tick, agentLog);
+                validTicksByAgent[agent].Add(tick);
             }
         } else
         {
             agentLogByAgent.Add(agent, new Dictionary<int,AgentLog>());
             agentLogByAgent[agent].Add(tick, agentLog);
+            
+            validTicksByAgent.Add(agent, new List<int>() { tick });
+        }
+    }
+
+    internal List<int> GetValidTicks(IAgent agent)
+    {
+        if (agent == null) return new List<int>();
+        if (!validTicksByAgent.ContainsKey(agent))
+        {
+            return new List<int>();
+        } else
+        {
+            return validTicksByAgent[agent];
         }
     }
 

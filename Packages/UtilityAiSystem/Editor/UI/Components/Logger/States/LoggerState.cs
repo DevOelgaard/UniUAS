@@ -19,6 +19,7 @@ internal abstract class LoggerState
     protected Button ForwardStepButton;
     protected Button ForwardLeapButton;
     private Toggle colorToggle;
+    protected List<int> ValidTicks => AiLoggerService.Instance.GetValidTicks(Agent);
     protected Toggle ColorToggle
     {
         get
@@ -119,14 +120,37 @@ internal abstract class LoggerState
 
     protected virtual void SetCurrentTick(int tick)
     {
-        CurrentTick = tick;
+        if (ValidTicks.Contains(tick))
+        {
+            CurrentTick = tick;
+        }
+        else if (ValidTicks.Count > 0)
+        {
+            if (tick < CurrentTick)
+            {
+                CurrentTick = ValidTicks.LastOrDefault(t => t < tick);
+            } else if (tick > CurrentTick)
+            {
+                var lastLower = ValidTicks.LastOrDefault(t => t < tick);
+                var index = ValidTicks.IndexOf(lastLower);
+                if (index < 0) return;
+                if(index < ValidTicks.Count-1)
+                {
+                    CurrentTick = ValidTicks[index + 1];
+                }
+            } else
+            {
+                return;
+            }
+        }
         if (CurrentTick > TickSlider.highValue)
         {
             TickSlider.highValue = CurrentTick;
         }
-        TickSlider.SetValueWithoutNotify(tick);
-        TickSlider.label = tick.ToString();
-        InspectAi(tick);
+
+        TickSlider.SetValueWithoutNotify(CurrentTick);
+        TickSlider.label = CurrentTick.ToString();
+        InspectAi(CurrentTick);
     }
 
     internal virtual void UpdateUi(IAgent agent)
@@ -138,8 +162,13 @@ internal abstract class LoggerState
         else
         {
             AgentLogComponent.style.display = DisplayStyle.Flex;
-            var log = AiLoggerService.Instance.GetAiDebugLog(Agent, CurrentTick);
-            AgentLogComponent.UpdateUi(log);
+
+            TickSlider.lowValue = ValidTicks.First();
+            TickSlider.highValue = ValidTicks.Last();
+            var lastValidTick = ValidTicks.Last();
+            SetCurrentTick(lastValidTick);
+            //var log = AiLoggerService.Instance.GetAiDebugLog(Agent, lastValidTick);
+            //AgentLogComponent.UpdateUi(log);
         }
     }
 
