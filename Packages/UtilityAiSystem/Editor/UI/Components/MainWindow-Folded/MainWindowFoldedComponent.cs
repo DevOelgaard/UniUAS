@@ -58,6 +58,13 @@ internal class MainWindowFoldedComponent : VisualElement
             var scoreComponent = new ScoreComponent(scoreModel);
             scoreContainer.Add(scoreComponent);
         }
+        if (model.GetType() == typeof(Bucket) || model.GetType().IsAssignableFrom(typeof(Bucket)))
+        {
+            var b = model as Bucket;
+            var weightComponent = new ParameterComponent();
+            weightComponent.UpdateUi(b.Weight);
+            scoreContainer.Add(weightComponent);
+        }
 
         InfoComponent.DispalyInfo(model.Info);
         model.OnInfoChanged

@@ -12,7 +12,7 @@
                     <ui:Label text="Some long description about the object" display-tooltip-when-elided="true" name="Value-Label" style="flex-grow: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="ScoreContainer" style="min-width: 64px; flex-direction: row-reverse;" />
+            <ui:VisualElement name="ScoreContainer" style="min-width: 64px; flex-direction: column;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
