@@ -47,11 +47,11 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave);
-        if (state != null)
-        {
-            uASTemplateService.Restore(state);
-        }
+        //var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave);
+        //if (state != null)
+        //{
+        //    uASTemplateService.Restore(state);
+        //}
 
         root = rootVisualElement;
         
