@@ -134,10 +134,10 @@ internal class TemplateManager : EditorWindow
             var castlist = loadedCollection.Models.Cast<AiObjectModel>();
             toCollection.Add(castlist);
 
-            loadedCollection.Models.ForEach(m =>
-            {
-                toCollection.Add(m as AiObjectModel);
-            });
+            //loadedCollection.Models.ForEach(m =>
+            //{
+            //    toCollection.Add(m as AiObjectModel);
+            //});
         });
 
 
@@ -169,8 +169,10 @@ internal class TemplateManager : EditorWindow
 
         var resetButton = new Button();
         resetButton.text = "Reset timer";
-        resetButton.RegisterCallback<MouseUpEvent>(key =>
+        resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
+            var x = evt.clickCount;
+            Debug.Log("Clicks: " + x);
             TimerService.Instance.Reset();
             InstantiaterService.Instance.Reset();
 
@@ -339,7 +341,8 @@ internal class TemplateManager : EditorWindow
             {
                 selectedObjects = selectedObjects.Where(o => o.Key != model).ToList();
             }
-        } else if (e.shiftKey)
+        } 
+        else if (e.shiftKey)
         {
             var selectedIndex = buttons.IndexOf(button);
             var lowestSelectedIndex = int.MaxValue;
@@ -396,6 +399,7 @@ internal class TemplateManager : EditorWindow
             pair.Value.style.color = Color.gray;
         }
     }
+    private int selectionCounter = 0;
 
     private void ModelSelected(AiObjectModel model)
     {
@@ -403,13 +407,25 @@ internal class TemplateManager : EditorWindow
         {
             mainWindowComponent.Close();
         }
-        rightPanel.Clear();
-        mainWindowComponent = MainWindowService.GetComponent(model);
-        SelectedModel = model;
 
-        mainWindowComponent.UpdateUi(model);
+        if (model == SelectedModel)
+        {
+            selectionCounter++;
+        } else
+        {
+            selectionCounter = 1;
+            SelectedModel = model;
+        }
 
-        rightPanel.Add(mainWindowComponent);
+        if (selectionCounter > 1)
+        {
+            mainWindowComponent = MainWindowService.GetComponent(model);
+
+            mainWindowComponent.UpdateUi(model);
+
+            rightPanel.Clear();
+            rightPanel.Add(mainWindowComponent);
+        }
     }
 
     ~TemplateManager()

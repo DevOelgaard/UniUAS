@@ -1,9 +1,34 @@
 {
   "TickerMode": {
-    "Name": "Unrestricted",
-    "Description": "No restrictions to execution time",
-    "Parameters": [],
-    "FileName": "TickerModeUnrestricted"
+    "Name": "TimeBudget",
+    "Description": "Executes as many ticks as possible in a given timeframe. The Time budget may be exceeded by the execution time of one agent",
+    "Parameters": [
+      {
+        "Name": "Time Budget MS",
+        "Value": 50,
+        "ValueType": "System.Int64",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "FileName": "Parameter"
+      },
+      {
+        "Name": "Debug",
+        "Value": false,
+        "ValueType": "System.Boolean",
+        "RGBA": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "FileName": "Parameter"
+      }
+    ],
+    "FileName": "TickerModeTimeBudget"
   },
   "TickerModes": [
     {
@@ -67,7 +92,7 @@
       "Parameters": [
         {
           "Name": "Time Budget MS",
-          "Value": 100,
+          "Value": 50,
           "ValueType": "System.Int64",
           "RGBA": [
             0.0,
