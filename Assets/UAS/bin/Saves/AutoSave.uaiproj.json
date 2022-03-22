@@ -909,16 +909,16 @@
     },
     {
       "Name": "2. CycleColor",
-      "Description": null,
+      "Description": "Cycles between 5 colors and spends X ms",
       "IsPLayable": true,
       "Buckets": [
         {
-          "Name": "Default",
-          "Description": null,
+          "Name": "Cycles color spend X MS",
+          "Description": "Cycles between 5 colors and spends X ms",
           "Decisions": [
             {
-              "Name": "Default",
-              "Description": null,
+              "Name": "Cycles color spend X MS",
+              "Description": "Cycles between 5 colors and spends X ms",
               "AgentActions": [
                 {
                   "Parameters": [

@@ -87,7 +87,7 @@ internal class UCSRandomFromXHighest : UtilityContainerSelector
         }
 
         // Return if score is to far from highest score.
-        var highestValid = list.LastOrDefault();
+        var highestValid = list.FirstOrDefault();
         
         if (highestValid != null)
         {
