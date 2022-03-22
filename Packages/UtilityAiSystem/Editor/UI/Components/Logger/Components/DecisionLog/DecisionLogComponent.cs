@@ -34,7 +34,16 @@ internal class DecisionLogComponent : AiObjectLogComponent
 
     internal override string GetUiName()
     {
-        return base.GetUiName() + " S: " + decisionLog.Score.ToString("0.00");
+        var name = base.GetUiName() + " S: " + decisionLog.Score.ToString("0.00");
+        if (IsSelected)
+        {
+            name += " *S*";
+        }
+        else if (!IsEvaluated)
+        {
+            name += " *!E*";
+        }
+        return name;
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiLog)

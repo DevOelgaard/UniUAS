@@ -34,7 +34,16 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
 
     internal override string GetUiName()
     {
-        return base.GetUiName() + " S: " + considerationLog.NormalizedScore.ToString("0.00");
+        var name = base.GetUiName() + " S: " + considerationLog.NormalizedScore.ToString("0.00");
+        if (IsSelected)
+        {
+            name += " *S*";
+        }
+        else if (!IsEvaluated)
+        {
+            name += " *!E*";
+        }
+        return name;
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)

@@ -14,6 +14,8 @@ internal abstract class AiObjectLogComponent: LogComponent
     protected VisualElement Body;
     protected VisualElement Footer;
     internal AiObjectLog Model;
+    internal bool IsSelected = false;
+    internal bool IsEvaluated = false;
     public AiObjectLogComponent()
     {
         var root = AssetDatabaseService.GetTemplateContainer("AiObjectLogComponent");
@@ -30,7 +32,9 @@ internal abstract class AiObjectLogComponent: LogComponent
 
     internal override string GetUiName()
     {
-        return Model.UiName;
+        var name = Model.UiName;
+
+        return name;
     }
 
     internal override void UpdateUi(ILogModel model)
@@ -44,16 +48,23 @@ internal abstract class AiObjectLogComponent: LogComponent
         if (Model.CurrentTick == Model.LastSelectedTick)
         {
             NameLabel.text = Model.Name + "***Selected***";
-        } 
+            IsSelected = true;
+            IsEvaluated = true;
+
+        }
         else if (Model.CurrentTick != Model.LastEvaluatedTick && 
             Model.GetType() != typeof(ResponseCurveLog) &&
             Model.GetType() != typeof(AiLog))
         {
             NameLabel.text = Model.Name + "***NotEvaluated***";
+            IsEvaluated = false;
+            IsSelected = false;
         }
         else
         {
             NameLabel.text = Model.Name;
+            IsEvaluated = true;
+            IsSelected = false;
         }
         DescriptionLabel.text = Model.Description;
         UpdateUiInternal(Model);
