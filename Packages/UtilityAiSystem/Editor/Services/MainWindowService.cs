@@ -1,12 +1,89 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 internal class MainWindowService
 {
-    internal static AiObjectComponent  GetComponent(AiObjectModel model)
+    private static MainWindowService instance;
+    private Dictionary<Type, Queue<AiObjectComponent>> componentsByType = new Dictionary<Type, Queue<AiObjectComponent>>();
+    private List<Type> typeList = new List<Type>()
     {
+        typeof(Ai),
+        typeof(Bucket),
+        typeof(Decision),
+        typeof(Consideration),
+        typeof(AgentAction),
+        typeof(ResponseCurve)
+    };
+    
+    public MainWindowService()
+    {
+        foreach(var type in typeList)
+        {
+            InitComponentsTask(type, 10);
+        }
+    }
 
+    private void InitComponentsTask(Type t, int amount)
+    {
+        var task = new Task(_ => InitComponents(t, amount), "");
+        task.Start();
+    }
 
+    private void InitComponents(Type t, int amount)
+    {
+        if (!componentsByType.ContainsKey(t))
+        {
+            componentsByType.Add(t, new Queue<AiObjectComponent>());
+        }
+        for(var i = 0; i < amount; i++)
+        {
+            var component = GetComponent(t);
+            componentsByType[t].Enqueue(component);
+        }
+    }
+
+    internal AiObjectComponent RentComponent(AiObjectModel model)
+    {
         var type = model.GetType();
+        return RentComponent(type);
+    }
+
+    internal AiObjectComponent RentComponent(Type type)
+    {
+        if (!componentsByType.ContainsKey(type))
+        {
+            InitComponentsTask(type, 10);
+            return GetComponent(type);
+        }
+
+        if (componentsByType[type].Count <= 0)
+        {
+            InitComponentsTask(type, 10);
+
+            return GetComponent(type);
+        }
+        return componentsByType[type].Dequeue();
+    }
+
+    internal void ReturnComponent(AiObjectComponent component)
+    {
+        var type = component.Model.GetType();
+        if (!componentsByType.ContainsKey(type))
+        {
+            componentsByType.Add(type, new Queue<AiObjectComponent>());
+        }
+        componentsByType[type].Enqueue(component);
+    }
+
+
+    private AiObjectComponent GetComponent(AiObjectModel model)
+    {
+        var type = model.GetType();
+        return GetComponent(type);
+    }
+    private AiObjectComponent GetComponent(Type type)
+    {
         if (type == typeof(Ai) || type.IsSubclassOf(typeof(Ai)))
         {
             return new AiComponent();
@@ -26,14 +103,16 @@ internal class MainWindowService
         else if (type.IsSubclassOf(typeof(AgentAction)))
         {
             return new AgentActionComponent();
-        } else if (type == typeof(ResponseCurve) || type.IsSubclassOf(typeof(ResponseCurve)))
+        }
+        else if (type == typeof(ResponseCurve) || type.IsSubclassOf(typeof(ResponseCurve)))
         {
             return new ResponseCurveMainWindowComponent();
         }
         throw new NotImplementedException();
     }
 
-    internal static Type GetTypeFromString(string label)
+
+    internal Type GetTypeFromString(string label)
     {
         switch (label)
         {
@@ -53,5 +132,17 @@ internal class MainWindowService
                 break;
         }
         return null;
+    }
+
+    internal static MainWindowService Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new MainWindowService();
+            }
+            return instance;
+        }
     }
 }

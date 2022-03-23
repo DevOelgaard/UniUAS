@@ -37,6 +37,8 @@ internal class BucketComponent : AiObjectComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var bucket = model as Bucket;
         disposables.Clear();
 
@@ -51,10 +53,18 @@ internal class BucketComponent : AiObjectComponent
         bucket.Decisions.OnValueChanged
             .Subscribe(list => decisionTab.text = "Decisions (" + list.Count + ")")
             .AddTo(disposables);
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UIBucket Init");
+        sw.Restart();
         considerationCollections.SetElements(bucket.Considerations);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UIBucket considerationCollections");
+        sw.Restart();
         decisionCollections.SetElements(bucket.Decisions);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UIBucket decisionCollections");
+        sw.Restart();
         weightComponent.UpdateUi(bucket.Weight);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UIBucket weightComponent");
+        sw.Restart();
+
     }
 
     ~BucketComponent()

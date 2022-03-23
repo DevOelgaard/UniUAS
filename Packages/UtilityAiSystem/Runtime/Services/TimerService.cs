@@ -62,8 +62,12 @@ internal class TimerService
         var msg = "";
         foreach (var kv in ordered)
         {
-            msg += kv.Key + ": Time " + kv.Value + " Count: " + values[kv.Key][0] + " | ";
+            if (kv.Key.Contains("UpdateCollection"))
+            {
+                msg = kv.Key + ": Time " + kv.Value + " Count: " + values[kv.Key][0] + " | ";
+                Debug.Log(msg);
+            }
         }
-        Debug.Log("TimerService: " + msg);
+        //Debug.Log("TimerService: " + msg);
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using UnityEngine.UIElements;
 using System.Linq;
 using MoreLinq;
+using UnityEditor.UIElements;
 
 internal class AgentComponent: RightPanelComponent<IAgent>
 {
@@ -18,6 +19,7 @@ internal class AgentComponent: RightPanelComponent<IAgent>
     private Button applyToAllButton;
     private IAgent agent;
     private UASTemplateService uasTemplateService;
+
 
     internal AgentComponent()
     {

@@ -72,6 +72,8 @@ internal class ConsiderationComponent : AiObjectComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         ClearSubscriptions();
         considerationModel = model as Consideration;
         considerationModel.BaseScoreChanged
@@ -94,6 +96,8 @@ internal class ConsiderationComponent : AiObjectComponent
         responseCurveWindow?.UpdateUi(considerationModel.CurrentResponseCurve);
         responseCurveButton.UpdateUi(considerationModel.CurrentResponseCurve);
         //responseCurveLCComponent.UpdateUi(considerationModel.CurrentResponseCurve);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal Consideration");
+
     }
 
     private void SetParameters()

@@ -35,6 +35,8 @@ internal class TemplateManager : EditorWindow
     private AiObjectComponent  mainWindowComponent;
     private AiObjectModel selectedModel;
     private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
+
+    private ToolbarMenu tbm;
     private AiObjectModel SelectedModel
     {
         get => selectedModel;
@@ -47,16 +49,13 @@ internal class TemplateManager : EditorWindow
 
     internal void CreateGUI()
     {
-        //var state = persistenceAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave);
-        //if (state != null)
-        //{
-        //    uASTemplateService.Restore(state);
-        //}
-
         root = rootVisualElement;
         
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
+        tbm = root.Q<ToolbarMenu>();
+
+
         dropDown = root.Q<DropdownField>("TypeDropdown");
 
         leftPanel = root.Q<VisualElement>("left-panel");
@@ -115,7 +114,7 @@ internal class TemplateManager : EditorWindow
         {
             var saveObjects = new List<RestoreAble>();
             selectedObjects.ForEach(pair => saveObjects.Add(pair.Key));
-            var type = MainWindowService.GetTypeFromString(dropDown.value);
+            var type = MainWindowService.Instance.GetTypeFromString(dropDown.value);
             var restoreAble = new RestoreAbleCollection(saveObjects, type);
             persistenceAPI.SaveObjectPanel(restoreAble);
         });
@@ -171,8 +170,6 @@ internal class TemplateManager : EditorWindow
         resetButton.text = "Reset timer";
         resetButton.RegisterCallback<MouseUpEvent>(evt =>
         {
-            var x = evt.clickCount;
-            Debug.Log("Clicks: " + x);
             TimerService.Instance.Reset();
             InstantiaterService.Instance.Reset();
 
@@ -194,6 +191,12 @@ internal class TemplateManager : EditorWindow
             uASTemplateService.LoadAutoSave(true);
         });
         buttonContainer.Add(loadBackup);
+
+
+        //tbm.menu.
+
+
+
         // TEST-END
 
 
@@ -281,7 +284,7 @@ internal class TemplateManager : EditorWindow
             .Subscribe(values => LoadModels(values));
 
 
-        var type = MainWindowService.GetTypeFromString(label);
+        var type = MainWindowService.Instance.GetTypeFromString(label);
         var namesFromFiles = AssetDatabaseService.GetActivateableTypes(type);
 
         addElementPopup.choices = namesFromFiles
@@ -322,7 +325,7 @@ internal class TemplateManager : EditorWindow
                 .AddTo(modelsChangedSubsciptions);
         }
 
-        var type = MainWindowService.GetTypeFromString(dropDown.value);
+        var type = MainWindowService.Instance.GetTypeFromString(dropDown.value);
 
     }
 
@@ -403,10 +406,10 @@ internal class TemplateManager : EditorWindow
 
     private void ModelSelected(AiObjectModel model)
     {
-        if(mainWindowComponent != null)
-        {
-            mainWindowComponent.Close();
-        }
+        //if(mainWindowComponent != null)
+        //{
+        //    mainWindowComponent.Close();
+        //}
 
         if (model == SelectedModel)
         {
@@ -419,12 +422,23 @@ internal class TemplateManager : EditorWindow
 
         if (selectionCounter > 1)
         {
-            mainWindowComponent = MainWindowService.GetComponent(model);
-
-            mainWindowComponent.UpdateUi(model);
-
+            var sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            if(mainWindowComponent != null)
+            {
+                MainWindowService.Instance.ReturnComponent(mainWindowComponent);
+            }
             rightPanel.Clear();
+
+            mainWindowComponent = MainWindowService.Instance.RentComponent(model);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager GetComponent");
+            sw.Restart();
+            mainWindowComponent.UpdateUi(model);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager UpdateUi");
+            sw.Restart();
             rightPanel.Add(mainWindowComponent);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager Right Panel");
+            sw.Restart();
         }
     }
 

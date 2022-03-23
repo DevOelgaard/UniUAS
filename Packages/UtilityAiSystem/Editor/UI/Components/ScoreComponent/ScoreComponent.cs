@@ -18,14 +18,27 @@ public class ScoreComponent: VisualElement
     private VisualElement colorContainer;
     private Color defaultColor;
     private bool dynamicColor;
-
     public ScoreComponent(ScoreModel model, bool dynamicColor = false)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         this.dynamicColor = dynamicColor;
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC dynamicColor");
+        sw.Restart();
         var path = AssetDatabaseService.GetAssetPath(GetType().ToString(), "uxm");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC path");
+        sw.Restart();
         var template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC template");
+        sw.Restart();
         root = template.CloneTree();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC root");
+        sw.Restart();
         Add(root);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC Add(root)");
+        sw.Restart();
+
+
 
         scoreName = root.Q<Label>("Name");
         this.score = root.Q<Label>("Score");
@@ -33,13 +46,16 @@ public class ScoreComponent: VisualElement
 
         Setname(model.Name);
         SetScore(model.Value);
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC Set values");
+        sw.Restart();
 
         model.OnValueChanged
             .Subscribe(value => UpdateScore(value))
             .AddTo(subscriptions);
 
         defaultColor = new Color(0,0,0,0);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SC Default color");
+        sw.Restart();
     }
 
     public void UpdateScore(float score, string name = null)

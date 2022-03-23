@@ -37,6 +37,8 @@ internal class DecisionComponent : AiObjectComponent
     }
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         disposables.Clear();
         decision = model as Decision;
 
@@ -54,6 +56,7 @@ internal class DecisionComponent : AiObjectComponent
         considerationCollections.SetElements(decision.Considerations);
         agentActionCollection.SetElements(decision.AgentActions);
         SetParameters();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal Decision");
 
     }
 

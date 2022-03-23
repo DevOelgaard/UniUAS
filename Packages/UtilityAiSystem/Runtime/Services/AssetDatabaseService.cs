@@ -10,25 +10,33 @@ using UnityEngine.UIElements;
 
 public static class AssetDatabaseService
 {
+    private static Dictionary<string,string> cachedPaths = new Dictionary<string,string>();
     public static string GetAssetPath(string filter, string type)
     {
-        var GUIDS = AssetDatabase.FindAssets(filter);
-
-        var paths = new List<string>();
-        foreach (var guid in GUIDS)
+        if (cachedPaths.ContainsKey(filter + type))
         {
-            paths.Add(AssetDatabase.GUIDToAssetPath(guid));
-        }
-
-        foreach (var p in paths)
+            return cachedPaths[filter + type];
+        } else
         {
-            if (p.Contains(type))
+            var GUIDS = AssetDatabase.FindAssets(filter);
+
+            var paths = new List<string>();
+            foreach (var guid in GUIDS)
             {
-                return p;
+                paths.Add(AssetDatabase.GUIDToAssetPath(guid));
             }
-        }
 
-        return null;
+            foreach (var p in paths)
+            {
+                if (p.Contains(type))
+                {
+                    cachedPaths.Add(filter+ type, p);
+                    return p;
+                }
+            }
+
+            return null;
+        }
     }
 
     public static VisualTreeAsset GetVisualTreeAsset(string name)

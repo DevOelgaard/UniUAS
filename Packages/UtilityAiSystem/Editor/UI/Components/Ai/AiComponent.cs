@@ -84,6 +84,8 @@ internal class AiComponent : AiObjectComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         aiModel = model as Ai;
         ScoreContainer.Add(playableToggle);
         ScoreContainer.Add(playAbleHelpBox);
@@ -144,6 +146,7 @@ internal class AiComponent : AiObjectComponent
                 }
             })
             .AddTo(subscriptions);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal AI");
 
     }
 

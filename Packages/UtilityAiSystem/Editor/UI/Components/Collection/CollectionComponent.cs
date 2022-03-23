@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using MoreLinq;
 using UniRx;
 using UniRxExtension;
@@ -26,7 +27,8 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private ReactiveList<T> collection;
     private ReactiveList<AiObjectModel> templates;
     private VisualElement dropdownContainer;
-    //private string title;
+
+    private List<AiObjectComponent> expandedList = new List<AiObjectComponent>();
 
     public CollectionComponent(ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
@@ -58,9 +60,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
         InitAddCopyPopup();
 
-        //title = elementsLabel;
-        //this.titleLabel.text = elementsLabel;
-
         var t = collection.GetType();
         if (t == typeof(ReactiveList<Consideration>))
         {
@@ -71,7 +70,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
                 var sortedList = cast.Values.OrderBy(c => c.PerformanceTag).ToList();
                 cast.Clear();
                 cast.Add(sortedList);
-                //sortedList.ForEach(c => cast.Add(c));
             });
         }
         else if (t == typeof(ReactiveList<Bucket>))
@@ -90,9 +88,6 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
         {
             sortCollectionButton.style.display = DisplayStyle.None;
         }
-
-
-        //SetElements(collection.Values);
     }
 
     private void InitAddCopyPopup()
@@ -141,17 +136,46 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private void UpdateCollection()
     {
         //Debug.LogWarning("This could be more effective by using a pool");
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         elementsBody.Clear();
         listViewSubscriptions.Clear();
-        foreach (var element in this.collection.Values)
-        {
-            var folded = new MainWindowFoldedComponent();
-            var expanded = MainWindowService.GetComponent(element);
-            var listView = new ListViewComponent();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection Init");
+        sw.Restart();
 
+        if (collection.Values.Count > expandedList.Count)
+        {
+            var diff = collection.Values.Count - expandedList.Count;
+            var type = collection.Values[0].GetType();
+            for(var i = 0; i < diff; i++)
+            {
+                var expanded = MainWindowService.Instance.RentComponent(type);
+                expandedList.Add(expanded);
+            }
+        }
+        for (var i = 0; i < collection.Values.Count; i++)
+        {
+            var element = collection.Values[i];
+            var folded = new MainWindowFoldedComponent();
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection folded");
+            sw.Restart();
+            var expanded = expandedList[i];
+            expanded.style.display = DisplayStyle.Flex;
+
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection expanded");
+            sw.Restart();
+            var listView = new ListViewComponent();
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection listView");
+            sw.Restart();
             folded.UpdateUi(element);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection  folded.UpdateUi");
+            sw.Restart();
             expanded.UpdateUi(element);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection expanded.UpdateUi");
+            sw.Restart();
             listView.UpdateUi(expanded, folded);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection listView.UpdateUi");
+            sw.Restart();
 
             listView.OnRemoveClicked
                 .Subscribe(_ => collection.Remove(element))
@@ -164,11 +188,20 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             listView.OnDownClicked
                 .Subscribe(_ => collection.IncreaIndex(element))
                 .AddTo(listViewSubscriptions);
-
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection Subscribe");
+            sw.Restart();
             elementsBody.Add(listView);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection Add");
+            sw.Restart();
         }
-        //titleLabel.text = title + " (" + collection.Count + ")";
 
+        if(expandedList.Count > collection.Count)
+        {
+            for(var i = collection.Count; i < expandedList.Count; i++)
+            {
+                expandedList[i].style.display = DisplayStyle.None;
+            }
+        }
     }
 
     private void ClearSubscriptions()

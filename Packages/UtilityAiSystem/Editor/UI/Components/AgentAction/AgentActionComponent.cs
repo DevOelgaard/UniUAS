@@ -20,9 +20,12 @@ internal class AgentActionComponent : AiObjectComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var agentAction = model as AgentAction;
         this.agentAction = agentAction;
         SetParameters();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal Agent");
 
     }
 

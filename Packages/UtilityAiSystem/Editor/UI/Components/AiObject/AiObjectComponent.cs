@@ -14,7 +14,7 @@ internal abstract class AiObjectComponent : VisualElement
     private Label typeLabel;
     private TextField nameTextField;
     private TextField descriptionTextField;
-    protected AiObjectModel Model;
+    internal AiObjectModel Model;
     protected VisualElement ScoreContainer;
     protected VisualElement Header;
     protected VisualElement Body;
@@ -70,11 +70,14 @@ internal abstract class AiObjectComponent : VisualElement
 
     internal void UpdateUi(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         Model = model;
         typeLabel.text = Model.GetType().ToString();
         nameTextField.value = model.Name;
         descriptionTextField.value = model.Description;
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, model.GetType() + "Update Ui Init");
+        sw.Restart();
         if (string.IsNullOrEmpty(model.HelpText))
         {
             HelpBox.style.display = DisplayStyle.None;
@@ -83,7 +86,8 @@ internal abstract class AiObjectComponent : VisualElement
             HelpBox.style.display = DisplayStyle.Flex;
             HelpBox.text = model.HelpText;
         }
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, model.GetType() + "Update Ui HelpBox");
+        sw.Restart();
         ScoreContainer.Clear();
         ScoreComponents = new List<ScoreComponent>();
         foreach (var scoreModel in model.ScoreModels)
@@ -92,13 +96,19 @@ internal abstract class AiObjectComponent : VisualElement
             ScoreComponents.Add(scoreComponent);
             ScoreContainer.Add(scoreComponent);
         }
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, model.GetType() + "Update Ui ScoreComponents");
+        sw.Restart();
 
         modelInfoChangedDisposable.Clear();
         Model.OnInfoChanged
             .Subscribe(info => InfoComponent.DispalyInfo(info))
             .AddTo(modelInfoChangedDisposable);
         InfoComponent.DispalyInfo(Model.Info);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, model.GetType() + "Update Ui Subscribe");
+        sw.Restart();
         UpdateInternal(model);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, model.GetType() + "Update Ui Update Internal");
+        sw.Restart();
     }
 
     protected abstract void UpdateInternal(AiObjectModel model);
@@ -111,10 +121,10 @@ internal abstract class AiObjectComponent : VisualElement
 
     }
 
-    internal void Close()
-    {
-        AssetDatabase.SaveAssets();
-    }
+    //internal void Close()
+    //{
+    //    AssetDatabase.SaveAssets();
+    //}
 
     ~AiObjectComponent ()
     {

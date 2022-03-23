@@ -16,7 +16,11 @@ internal class ResponseCurveMainWindowComponent : AiObjectComponent
 
     protected override void UpdateInternal(AiObjectModel model)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         var m = model as ResponseCurve;
         responseCurveLCComponent.UpdateUi(m);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal ResponseCurve");
+
     }
 }
