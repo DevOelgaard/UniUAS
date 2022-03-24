@@ -85,6 +85,7 @@ TabViewComponent {
 #Footer {
     margin: 8px;
     height: 16px;
+    justify-content: space-between;
 }
 
 UCSComponent > TemplateContainer > #DescriptionContainer {

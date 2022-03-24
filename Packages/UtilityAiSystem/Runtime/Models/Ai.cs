@@ -11,7 +11,19 @@ using UnityEngine;
 public class Ai: AiObjectModel
 {
     private IDisposable bucketSub;
-    public bool IsPLayable = false;
+    private IDisposable playableSub;
+    private bool isPLayable;
+    public bool IsPLayable
+    {
+        get { return isPLayable; }
+        set
+        {
+            isPLayable = value;
+            onIsPlayableChanged.OnNext(value);
+        }
+    }
+    internal IObservable<bool> OnIsPlayableChanged => onIsPlayableChanged;
+    private Subject<bool> onIsPlayableChanged = new Subject<bool> ();
     private ReactiveListNameSafe<Bucket> buckets = new ReactiveListNameSafe<Bucket>();
     public ReactiveListNameSafe<Bucket> Buckets
     {
@@ -37,6 +49,10 @@ public class Ai: AiObjectModel
         UpdateInfo();
         bucketSub = buckets.OnValueChanged
             .Subscribe(_ => UpdateInfo());
+
+        playableSub?.Dispose();
+        playableSub = OnIsPlayableChanged
+            .Subscribe(_ => UpdateInfo());
     }
 
     protected override void UpdateInfo()
@@ -46,6 +62,10 @@ public class Ai: AiObjectModel
         if (Buckets == null || Buckets.Count <= 0)
         {
             Info = new InfoModel("No Buckets, Object won't be selected", InfoTypes.Warning);
+        }
+        else if (!IsPLayable)
+        {
+            Info = new InfoModel("Not marked playable, Ai won't be selected", InfoTypes.Warning);
         }
         else
         {
@@ -210,6 +230,7 @@ public class Ai: AiObjectModel
     {
         base.ClearSubscriptions();
         bucketSub?.Dispose();
+        playableSub?.Dispose();
     }
 }
 
