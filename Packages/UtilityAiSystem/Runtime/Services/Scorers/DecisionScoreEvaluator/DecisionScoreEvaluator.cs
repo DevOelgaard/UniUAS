@@ -37,11 +37,12 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             var bestDecision = ai.CurrentDecisionSelector.GetBestUtilityContainer(decisions, context);
             if (bestDecision == null || bestDecision.LastCalculatedUtility <= 0)
             {
-                Debug.LogWarning("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+                //Debug.LogWarning("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
                 return new List<AgentAction>();
                 //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }
             context.LastSelectedDecision = bestDecision;
+            context.LastSelectedDecision.LastSelectedTickMetaData = context.TickMetaData;
             bestDecision.MetaData.LastTickSelected = context.TickMetaData.TickCount;
             return bestDecision.AgentActions.Values;
         }
@@ -51,7 +52,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
     {
         if (buckets.Count == 0)
         {
-            Debug.LogWarning("No valid decision in list of buckets. Add a \"fall back\" bucket, which always scores >0");
+            //Debug.LogWarning("No valid decision in list of buckets. Add a \"fall back\" bucket, which always scores >0");
             return null;
         }
         //else if (buckets.Count == 1)
@@ -63,7 +64,7 @@ public class DecisionScoreEvaluator: IDecisionScoreEvaluator
             var bestBucket = ai.CurrentBucketSelector.GetBestUtilityContainer(buckets, context);
             if (bestBucket == null)
             {
-                Debug.LogWarning("No valid bucket. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
+                //Debug.LogWarning("No valid bucket. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
                 return new List<AgentAction>();
                 //throw new Exception("No valid decision. Add a \"fall back\" decision (Ie. Idle), which always scores >0");
             }

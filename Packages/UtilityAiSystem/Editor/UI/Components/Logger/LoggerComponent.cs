@@ -39,6 +39,7 @@ internal class LoggerComponent : RightPanelComponent<IAgent>
     private Button foldoutButton;
 
     private bool isExpanded = false;
+    
 
     public LoggerComponent()
     {

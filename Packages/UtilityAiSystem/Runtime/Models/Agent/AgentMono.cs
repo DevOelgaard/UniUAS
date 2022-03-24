@@ -61,7 +61,7 @@ public class AgentMono : MonoBehaviour, IAgent
     public void Tick(TickMetaData metaData)
     {
         Ai.Context.TickMetaData = metaData;
-        Model.TickMetaData = metaData;
+        Model.LastTickMetaData = metaData;
         Model.LastTickTime = Time.time;
         Model.LastTickFrame = Time.frameCount;
 

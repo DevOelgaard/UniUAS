@@ -7,8 +7,17 @@ using UnityEngine;
 
 internal class Demo_AgentCycleColors : AgentAction
 {
+    //private static int nextId = 0;
+    //private int id;
     private Renderer renderer;
     private int currentColorIndex = 0;
+
+    public Demo_AgentCycleColors()
+    {
+        //id = nextId;
+        //nextId++;
+    }
+
     protected override List<Parameter> GetParameters()
     {
         return new List<Parameter>()
@@ -21,19 +30,38 @@ internal class Demo_AgentCycleColors : AgentAction
         };
     }
 
+    public override void OnStart(AiContext context)
+    {
+        //Debug.Log("ID: " + id + " Start: Time: " + context.TickMetaData.TickTime);
+
+        CycleColor(context);
+    }
+
     public override void OnGoing(AiContext context)
     {
-        if (renderer == null)
-        {
-            //Debug.Log("Getting renderer for: " + context.Agent.Model.Name);
-            renderer = GameObject.Find(context.Agent.Model.Name).GetComponent<Renderer>();
-        }
+        //Debug.Log("ID: " + id + " OnGoing: Time: " + context.TickMetaData.TickTime);
 
+        CycleColor(context);
+    }
+
+
+    private void CycleColor(AiContext context)
+    {
+        renderer = GetRenderer(context);
         currentColorIndex++;
         if (currentColorIndex >= Parameters.Count)
         {
             currentColorIndex = 0;
         }
         renderer.material.SetColor("_Color", (Color)Parameters[currentColorIndex].Value);
+    }
+
+    private Renderer GetRenderer(AiContext context)
+    {
+        if(renderer == null)
+        {
+            renderer = GameObject.Find(context.Agent.Model.Name).GetComponent<Renderer>();
+        }
+        return renderer;
     }
 }

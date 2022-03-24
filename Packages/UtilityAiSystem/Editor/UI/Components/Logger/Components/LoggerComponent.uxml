@@ -18,6 +18,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="TickMetaDataContainer">
+            <ui:Label text="Tick Time: " display-tooltip-when-elided="true" name="TickTime-Label" />
+        </ui:VisualElement>
         <ui:ScrollView name="Body" mode="VerticalAndHorizontal" style="flex-grow: 1;" />
         <ui:VisualElement name="Footer" />
     </ui:VisualElement>

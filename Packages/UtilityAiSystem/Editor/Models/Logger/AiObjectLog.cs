@@ -30,13 +30,13 @@ internal abstract class AiObjectLog : ILogModel
             log.Description = "";
             log.UiName = log.Name;
             log.Type = agent.GetType().ToString();
-            if(agent.Model.TickMetaData == null)
+            if(agent.Model.LastTickMetaData == null)
             {
                 log.LastSelectedTick = -1;
             }
             else
             {
-                log.LastSelectedTick = agent.Model.TickMetaData.TickCount;
+                log.LastSelectedTick = agent.Model.LastTickMetaData.TickCount;
             }
             log.CurrentTick = tick;
             return log;
@@ -44,8 +44,8 @@ internal abstract class AiObjectLog : ILogModel
         catch (Exception ex)
         {
             var msg = "Model: " + agent.Model.Name;
-            msg += " TickMetaData: " + agent.Model.TickMetaData;
-            msg += " TickCount: " + agent.Model.TickMetaData.TickCount;
+            msg += " TickMetaData: " + agent.Model.LastTickMetaData;
+            msg += " TickCount: " + agent.Model.LastTickMetaData.TickCount;
 
             throw new Exception(msg, ex);
         }

@@ -18,6 +18,18 @@ internal abstract class LoggerState
     protected Button ToggleStateButton;
     protected Button ForwardStepButton;
     protected Button ForwardLeapButton;
+    private Label tickTimeLabel;
+    protected Label TickTimeLabel
+    {
+        get
+        {
+            if(tickTimeLabel == null)
+            {
+                tickTimeLabel = Root.Q<Label>("TickTime-Label");
+            }
+            return tickTimeLabel;
+        }
+    }
     private Toggle colorToggle;
     protected List<int> ValidTicks => AiLoggerService.Instance.GetValidTicks(Agent);
     protected Toggle ColorToggle
@@ -162,7 +174,6 @@ internal abstract class LoggerState
         else
         {
             AgentLogComponent.style.display = DisplayStyle.Flex;
-
             TickSlider.lowValue = ValidTicks.First();
             TickSlider.highValue = ValidTicks.Last();
             var lastValidTick = ValidTicks.Last();
@@ -226,6 +237,8 @@ internal abstract class LoggerState
         }
         else
         {
+            TickTimeLabel.text = "Tick Time: " + agentLog.TickTime.ToString("0.000");
+
             HelpBox.style.display = DisplayStyle.None;
             AgentLogComponent.UpdateUi(agentLog);
             if (ColorToggle.value)
