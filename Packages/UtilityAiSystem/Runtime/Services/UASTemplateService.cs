@@ -197,6 +197,11 @@ internal class UASTemplateService: RestoreAble
         {
             return AgentActions;
         }
+
+        if (t.IsAssignableFrom(typeof(ResponseCurve)))
+        {
+            return ResponseCurves;
+        }
         return null;
     }
 
