@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 public static class AssetDatabaseService
 {
     private static Dictionary<string,string> cachedPaths = new Dictionary<string,string>();
+    private static Dictionary<string,VisualTreeAsset> cachedVisualTrees = new Dictionary<string, VisualTreeAsset>();
     public static string GetAssetPath(string filter, string type)
     {
         if (cachedPaths.ContainsKey(filter + type))
@@ -45,8 +46,13 @@ public static class AssetDatabaseService
         {
             name = name.Substring(0, name.IndexOf("`"));
         }
-        var path = AssetDatabaseService.GetAssetPath(name, "uxml");
-        return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
+        if (!cachedVisualTrees.ContainsKey(name))
+        {
+            var path = AssetDatabaseService.GetAssetPath(name, "uxml");
+            var visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
+            cachedVisualTrees.Add(name, visualTreeAsset);
+        } 
+        return cachedVisualTrees[name];
     }
 
     public static TemplateContainer GetTemplateContainer(Type type) {

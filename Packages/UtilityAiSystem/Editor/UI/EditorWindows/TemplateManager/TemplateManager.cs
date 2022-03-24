@@ -32,10 +32,11 @@ internal class TemplateManager : EditorWindow
     private DropdownField dropDown;
     private UASTemplateService uASTemplateService => UASTemplateService.Instance;
 
-    private AiObjectComponent  mainWindowComponent;
+    private AiObjectComponent  currentMainWindowComponent;
     private AiObjectModel selectedModel;
     private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
 
+    private Dictionary<AiObjectModel, AiObjectComponent> componentsByModels = new Dictionary<AiObjectModel, AiObjectComponent>();
     private ToolbarMenu tbm;
     private AiObjectModel SelectedModel
     {
@@ -54,7 +55,6 @@ internal class TemplateManager : EditorWindow
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
         tbm = root.Q<ToolbarMenu>();
-
 
         dropDown = root.Q<DropdownField>("TypeDropdown");
 
@@ -192,17 +192,18 @@ internal class TemplateManager : EditorWindow
         });
         buttonContainer.Add(loadBackup);
 
-
-        //tbm.menu.
-
-
-
         // TEST-END
 
 
         InitDropdown();
         UpdateLeftPanel();
+    }
 
+    void OnEnable()
+    {
+        Debug.Log("OnGui");
+        var mws = MainWindowService.Instance;
+        mws.Start();
     }
 
     private void UpdateButtons()
@@ -283,7 +284,7 @@ internal class TemplateManager : EditorWindow
             .OnValueChanged
             .Subscribe(values => LoadModels(values));
 
-
+        MainWindowService.Instance.PreloadComponents(models);
         var type = MainWindowService.Instance.GetTypeFromString(label);
         var namesFromFiles = AssetDatabaseService.GetActivateableTypes(type);
 
@@ -422,23 +423,37 @@ internal class TemplateManager : EditorWindow
 
         if (selectionCounter > 1)
         {
-            var sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            if(mainWindowComponent != null)
-            {
-                MainWindowService.Instance.ReturnComponent(mainWindowComponent);
-            }
-            rightPanel.Clear();
+            //var sw = new System.Diagnostics.Stopwatch();
+            //sw.Start();
 
-            mainWindowComponent = MainWindowService.Instance.RentComponent(model);
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager GetComponent");
-            sw.Restart();
-            mainWindowComponent.UpdateUi(model);
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager UpdateUi");
-            sw.Restart();
-            rightPanel.Add(mainWindowComponent);
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager Right Panel");
-            sw.Restart();
+            //rightPanel.Clear();
+            if (currentMainWindowComponent != null)
+            {
+                currentMainWindowComponent.style.display = DisplayStyle.None;
+            }
+            if (componentsByModels.ContainsKey(model))
+            {
+                currentMainWindowComponent = componentsByModels[model];
+                currentMainWindowComponent.style.display = DisplayStyle.Flex;
+            } else
+            {
+                var mvc = MainWindowService.Instance.RentComponent(model);
+                componentsByModels.Add(model, mvc);
+                mvc.UpdateUi(model);
+                rightPanel.Add(mvc);
+                
+                currentMainWindowComponent = mvc;
+            }
+
+            //currentMainWindowComponent = MainWindowService.Instance.RentComponent(model);
+            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager GetComponent");
+            //sw.Restart();
+            //currentMainWindowComponent.UpdateUi(model);
+            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager UpdateUi");
+            //sw.Restart();
+            //rightPanel.Add(currentMainWindowComponent);
+            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager Right Panel");
+            //sw.Restart();
         }
     }
 

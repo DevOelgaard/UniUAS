@@ -67,7 +67,6 @@ internal class AiComponent : AiObjectComponent
 
             UpdateHelpBox(evt.newValue);
         });
-
     }
 
     private void UpdateHelpBox(bool hide)
@@ -147,7 +146,6 @@ internal class AiComponent : AiObjectComponent
             })
             .AddTo(subscriptions);
         TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateInternal AI");
-
     }
 
     ~AiComponent()

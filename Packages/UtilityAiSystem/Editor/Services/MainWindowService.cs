@@ -1,46 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
+using Unity.EditorCoroutines.Editor;
+using System.Collections;
+using UniRxExtension;
 
 internal class MainWindowService
 {
     private static MainWindowService instance;
-    private Dictionary<Type, Queue<AiObjectComponent>> componentsByType = new Dictionary<Type, Queue<AiObjectComponent>>();
-    private List<Type> typeList = new List<Type>()
+    private static Dictionary<Type, Queue<AiObjectComponent>> componentsByType = new Dictionary<Type, Queue<AiObjectComponent>>();
+    private List<KeyValuePair<Type,int>> typeAndInitAmountList = new List<KeyValuePair<Type, int>>()
     {
-        typeof(Ai),
-        typeof(Bucket),
-        typeof(Decision),
-        typeof(Consideration),
-        typeof(AgentAction),
-        typeof(ResponseCurve)
+        new KeyValuePair<Type,int>(typeof(Ai),4),
+        new KeyValuePair<Type,int>(typeof(Bucket),5),
+        new KeyValuePair<Type,int>(typeof(Decision),40),
+        //new KeyValuePair<Type,int>(typeof(Consideration),0),
+        new KeyValuePair<Type,int>(typeof(AgentAction),5),
+        new KeyValuePair<Type,int>(typeof(ResponseCurve),5),
+        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationFixedValue),15),
+        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),15),
+        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),15),
     };
-    
+
+    private static Queue<MainWindowFoldedComponent> mainFoldedComponentPool = new Queue<MainWindowFoldedComponent>();
+    private const int poolSize = 48;
+    private const int mwfcPoolSize = 100;
+    private bool updatingPool = false;
+    private EditorCoroutine updateComponentsCoroutine;
     public MainWindowService()
     {
-        foreach(var type in typeList)
-        {
-            InitComponentsTask(type, 10);
-        }
     }
 
-    private void InitComponentsTask(Type t, int amount)
+    internal void Start()
     {
-        var task = new Task(_ => InitComponents(t, amount), "");
-        task.Start();
+        Init();
+        //EditorCoroutineUtility.StartCoroutine(Init(),this);
     }
 
-    private void InitComponents(Type t, int amount)
+    private void Init()
     {
-        if (!componentsByType.ContainsKey(t))
+        EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+    }
+
+    private IEnumerator UpdatePoolsCoroutine()
+    {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+        Debug.Log("Starting coroutine");
+        updatingPool = true;
+        foreach (var kv in typeAndInitAmountList)
         {
-            componentsByType.Add(t, new Queue<AiObjectComponent>());
+            sw.Restart();
+              
+            if (!componentsByType.ContainsKey(kv.Key))
+            {
+                componentsByType.Add(kv.Key, new Queue<AiObjectComponent>());
+            }
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "MWS create Queue");
+            sw.Restart();
+            var queue = componentsByType[kv.Key];
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "MWS get Queue");
+            sw.Restart();
+            if (queue.Count < 5)
+            {
+                for (var i = 0; i < kv.Value; i++)
+                {
+                    var component = GetComponent(kv.Key);
+                    TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "MWS GetComponent " + kv.Key);
+                    sw.Restart();
+                    queue.Enqueue(component);
+                    TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "MWS Enqueue");
+                    sw.Restart();
+                    yield return null;
+                }
+            }
         }
-        for(var i = 0; i < amount; i++)
+        if (mainFoldedComponentPool.Count < 5)
         {
-            var component = GetComponent(t);
-            componentsByType[t].Enqueue(component);
+            for (var i = 0; i < poolSize; i++)
+            {
+                mainFoldedComponentPool.Enqueue(new MainWindowFoldedComponent());
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "MWS mainFoldedComponentPool");
+                sw.Restart();
+                yield return null;
+            }
         }
+        updatingPool = false;
+        Debug.Log("Ending Coroutine Time: " + sw.ElapsedMilliseconds +"ms");
+    }
+
+    internal MainWindowFoldedComponent RentMainWindowFoldedComponent()
+    {
+        if (mainFoldedComponentPool.Count == 0)
+        {
+            if (!updatingPool)
+            {
+                updatingPool = true;
+                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+            }
+
+            return new MainWindowFoldedComponent();
+        } else if (mainFoldedComponentPool.Count < 5)
+        {
+            if (!updatingPool)
+            {
+                updatingPool = true;
+                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+            }
+        }
+        return mainFoldedComponentPool.Dequeue();
     }
 
     internal AiObjectComponent RentComponent(AiObjectModel model)
@@ -51,15 +120,29 @@ internal class MainWindowService
 
     internal AiObjectComponent RentComponent(Type type)
     {
+
         if (!componentsByType.ContainsKey(type))
         {
-            InitComponentsTask(type, 10);
+            Debug.Log("No collection of " + type);
+
+            if (!updatingPool)
+            {
+                updatingPool = true;
+                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+            }
+
             return GetComponent(type);
         }
 
         if (componentsByType[type].Count <= 0)
         {
-            InitComponentsTask(type, 10);
+            Debug.Log("No elements of " + type);
+
+            if (!updatingPool)
+            {
+                updatingPool = true;
+                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+            }
 
             return GetComponent(type);
         }
@@ -76,12 +159,11 @@ internal class MainWindowService
         componentsByType[type].Enqueue(component);
     }
 
-
-    private AiObjectComponent GetComponent(AiObjectModel model)
+    internal void ReturnMWFC(MainWindowFoldedComponent component)
     {
-        var type = model.GetType();
-        return GetComponent(type);
+        mainFoldedComponentPool.Enqueue(component);
     }
+
     private AiObjectComponent GetComponent(Type type)
     {
         if (type == typeof(Ai) || type.IsSubclassOf(typeof(Ai)))
@@ -96,11 +178,11 @@ internal class MainWindowService
         {
             return new DecisionComponent();
         }
-        else if (type.IsSubclassOf(typeof(Consideration)))
+        else if (type == typeof(Consideration) || type.IsSubclassOf(typeof(Consideration)))
         {
             return new ConsiderationComponent();
         }
-        else if (type.IsSubclassOf(typeof(AgentAction)))
+        else if (type == typeof(AgentAction) || type.IsSubclassOf(typeof(AgentAction)))
         {
             return new AgentActionComponent();
         }
@@ -108,6 +190,7 @@ internal class MainWindowService
         {
             return new ResponseCurveMainWindowComponent();
         }
+        Debug.LogError(type.ToString());
         throw new NotImplementedException();
     }
 
@@ -144,5 +227,10 @@ internal class MainWindowService
             }
             return instance;
         }
+    }
+
+    internal void PreloadComponents(ReactiveList<AiObjectModel> models)
+    {
+        //throw new NotImplementedException();
     }
 }

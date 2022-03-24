@@ -29,6 +29,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
     private VisualElement dropdownContainer;
 
     private List<AiObjectComponent> expandedList = new List<AiObjectComponent>();
+    private List<MainWindowFoldedComponent> foldedList = new List<MainWindowFoldedComponent>();
 
     public CollectionComponent(ReactiveList<AiObjectModel> templates, string tempLabel, string elementsLabel, string dropDownLabel = "Templates")
     {
@@ -149,21 +150,26 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             var type = collection.Values[0].GetType();
             for(var i = 0; i < diff; i++)
             {
+                sw.Restart();
                 var expanded = MainWindowService.Instance.RentComponent(type);
                 expandedList.Add(expanded);
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection expanded");
+                sw.Restart();
+                var folded = MainWindowService.Instance.RentMainWindowFoldedComponent();
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection folded");
+                sw.Restart();
+                foldedList.Add(folded);
             }
         }
         for (var i = 0; i < collection.Values.Count; i++)
         {
             var element = collection.Values[i];
-            var folded = new MainWindowFoldedComponent();
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection folded");
-            sw.Restart();
+            var folded = foldedList[i];
+            folded.style.display = DisplayStyle.Flex;
+
             var expanded = expandedList[i];
             expanded.style.display = DisplayStyle.Flex;
 
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection expanded");
-            sw.Restart();
             var listView = new ListViewComponent();
             TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UpdateCollection listView");
             sw.Restart();
@@ -200,6 +206,7 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
             for(var i = collection.Count; i < expandedList.Count; i++)
             {
                 expandedList[i].style.display = DisplayStyle.None;
+                foldedList[i].style.display = DisplayStyle.None;
             }
         }
     }
@@ -213,6 +220,14 @@ public class CollectionComponent<T> : VisualElement where T : AiObjectModel
 
     ~CollectionComponent()
     {
+        foreach(var comp in expandedList)
+        {
+            MainWindowService.Instance.ReturnComponent(comp);
+        }
+         foreach(var comp in foldedList)
+        {
+            MainWindowService.Instance.ReturnMWFC(comp);
+        }
         ClearSubscriptions();
     }
 }
