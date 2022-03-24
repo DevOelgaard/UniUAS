@@ -126,18 +126,18 @@ public abstract class Consideration : AiObjectModel
         var state = (ConsiderationState)s;
         Name = state.Name;
         Description = state.Description;
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Cast state");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Cast state");
         sw.Restart();
 
         MinFloat = Parameter.Restore<Parameter>(state.Min);
         MaxFloat = Parameter.Restore<Parameter>(state.Max);
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Set MinMax");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Set MinMax");
         sw.Restart();
         if (state.ResponseCurveState != null)
         {
             sw.Restart();
             CurrentResponseCurve = ResponseCurve.Restore<ResponseCurve>(state.ResponseCurveState, restoreDebug);
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "ResponseCurves");
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons ResponseCurves");
 
         }
 
@@ -147,33 +147,33 @@ public abstract class Consideration : AiObjectModel
             sw.Restart();
             var parameter = Parameter.Restore<Parameter>(pState, restoreDebug);
             Parameters.Add(parameter);
-            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Parameters");
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Parameters");
 
         }
         sw.Restart();
         PerformanceTag = (PerformanceTag)state.PerformanceTag;
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "PerformanceTag");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons PerformanceTag");
 
         sw.Restart();
         paramaterDisposables.Clear();
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Clear disposables");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Clear disposables");
 
         sw.Restart();
 
         MinFloat.OnValueChange
             .Subscribe(_ => CurrentResponseCurve.MinX = Convert.ToSingle(MinFloat.Value))
             .AddTo(paramaterDisposables);
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Subscribe");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Subscribe");
         sw.Restart();
 
         MaxFloat.OnValueChange
             .Subscribe(_ => CurrentResponseCurve.MaxX = Convert.ToSingle(MaxFloat.Value))
             .AddTo(paramaterDisposables);
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Subscribe");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons Subscribe");
         sw.Restart();
 
         SetMinMaxForCurves();
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "SetMinMaxCurves");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons SetMinMaxCurves");
 
         sw.Restart();
 
@@ -182,8 +182,8 @@ public abstract class Consideration : AiObjectModel
             BaseScore = state.BaseScore;
             NormalizedScore = state.NormalizedScore;
         }
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "IfRestoreDebug");
-        TimerService.Instance.LogCall(swTotal.ElapsedMilliseconds, "Consideration Total");
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "RestoreInternal Cons IfRestoreDebug");
+        TimerService.Instance.LogCall(swTotal.ElapsedMilliseconds, "RestoreInternal Cons Consideration Total");
 
     }
 

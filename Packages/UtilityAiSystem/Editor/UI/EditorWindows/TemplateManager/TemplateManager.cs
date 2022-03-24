@@ -407,11 +407,6 @@ internal class TemplateManager : EditorWindow
 
     private void ModelSelected(AiObjectModel model)
     {
-        //if(mainWindowComponent != null)
-        //{
-        //    mainWindowComponent.Close();
-        //}
-
         if (model == SelectedModel)
         {
             selectionCounter++;
@@ -423,10 +418,6 @@ internal class TemplateManager : EditorWindow
 
         if (selectionCounter > 1)
         {
-            //var sw = new System.Diagnostics.Stopwatch();
-            //sw.Start();
-
-            //rightPanel.Clear();
             if (currentMainWindowComponent != null)
             {
                 currentMainWindowComponent.style.display = DisplayStyle.None;
@@ -437,23 +428,23 @@ internal class TemplateManager : EditorWindow
                 currentMainWindowComponent.style.display = DisplayStyle.Flex;
             } else
             {
+                var sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
                 var mvc = MainWindowService.Instance.RentComponent(model);
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Rent");
+                sw.Restart();
                 componentsByModels.Add(model, mvc);
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP componentsByModels.Add");
+                sw.Restart();
                 mvc.UpdateUi(model);
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP UpdateUi");
+                sw.Restart();
                 rightPanel.Add(mvc);
-                
+                TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP rightPanel.Add");
+                sw.Restart();
+
                 currentMainWindowComponent = mvc;
             }
-
-            //currentMainWindowComponent = MainWindowService.Instance.RentComponent(model);
-            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager GetComponent");
-            //sw.Restart();
-            //currentMainWindowComponent.UpdateUi(model);
-            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager UpdateUi");
-            //sw.Restart();
-            //rightPanel.Add(currentMainWindowComponent);
-            //TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "TMP Manager Right Panel");
-            //sw.Restart();
         }
     }
 

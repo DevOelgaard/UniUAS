@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UniRx;
 using UniRxExtension;
+using UnityEditor.UIElements;
 
 internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
 {
@@ -28,6 +29,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
     private int selectedIndex => elements.Values.IndexOf(selectedElement);
     private AgentManager agentManager => AgentManager.Instance;
     private StyleSheet buttonSelectedStyle;
+    protected Toolbar ToolbarTop;
     public void CreateGUI()
     {
         Root = rootVisualElement;
@@ -40,6 +42,7 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
 
         identifierDropdown = Root.Q<DropdownField>("AgentType-Dropdown");
         buttonSelectedStyle = StylesService.GetStyleSheet("ButtonSelected");
+        ToolbarTop = Root.Q<Toolbar>("ToolbarTop");
 
         rightPanelComponent = GetRightPanelComponent();
         rightContainer.Add(rightPanelComponent);
@@ -84,7 +87,11 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
 
             KeyPressed(key);
         });
+
+        Init();
     }
+
+    protected virtual void Init() { }
 
     private void SelectElementAtIndex(int index)
     {
@@ -98,7 +105,6 @@ internal abstract class SplitViewWindowDropDownSelection<T> : EditorWindow
         }
         SelectedElement = elements.Values[index];
     }
-
 
     protected abstract RightPanelComponent<T> GetRightPanelComponent();
 

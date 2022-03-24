@@ -99,7 +99,6 @@ internal class MainWindowService
                 updatingPool = true;
                 EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
             }
-
             return new MainWindowFoldedComponent();
         } else if (mainFoldedComponentPool.Count < 5)
         {
@@ -123,12 +122,10 @@ internal class MainWindowService
 
         if (!componentsByType.ContainsKey(type))
         {
-            Debug.Log("No collection of " + type);
-
             if (!updatingPool)
             {
                 updatingPool = true;
-                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+                //EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
             }
 
             return GetComponent(type);
@@ -136,12 +133,10 @@ internal class MainWindowService
 
         if (componentsByType[type].Count <= 0)
         {
-            Debug.Log("No elements of " + type);
-
             if (!updatingPool)
             {
                 updatingPool = true;
-                EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
+                //EditorCoroutineUtility.StartCoroutine(UpdatePoolsCoroutine(), this);
             }
 
             return GetComponent(type);

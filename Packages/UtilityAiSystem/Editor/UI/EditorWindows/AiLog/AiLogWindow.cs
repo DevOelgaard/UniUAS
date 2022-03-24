@@ -11,10 +11,10 @@ internal class AiLogWindow : SplitViewWindowDropDownSelection<IAgent>
 {
     private LoggerComponent loggerComponent;
 
-    public AiLogWindow()
+    protected override void Init()
     {
+        UASTemplateService.Instance.LoadAutoSave();
     }
-
     protected override ReactiveList<IAgent> GetLeftPanelElements(string identifier)
     {
         return AgentManager.Instance.GetAgentsByIdentifier(identifier);

@@ -20,7 +20,6 @@ internal class AgentComponent: RightPanelComponent<IAgent>
     private IAgent agent;
     private UASTemplateService uasTemplateService;
 
-
     internal AgentComponent()
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
@@ -79,17 +78,27 @@ internal class AgentComponent: RightPanelComponent<IAgent>
 
     internal override void UpateUi(IAgent element)
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         if (element == null) return;
         this.agent = element;
         agentName.text = agent.Model.Name;
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent Init");
+        sw.Restart();
         InitDropdown();
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent InitDropdown");
+        sw.Restart();
         UpdateAiComponent();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent UpdateAiComponent");
+        sw.Restart();
     }
 
     private void InitDropdown()
     {
-        uasTemplateService.LoadAutoSave();
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent LoadAutoSave");
+        sw.Restart();
         aiDropdown.choices = uasTemplateService
             .GetCollection(Consts.Label_UAIModel)
             .Values
@@ -97,11 +106,15 @@ internal class AgentComponent: RightPanelComponent<IAgent>
             .Where(ai => ai.IsPLayable)
             .Select(x => x.Name)
             .ToList();
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent aiDropdown.choices");
+        sw.Restart();
 
         if (agent.Ai != null && aiDropdown.choices.Contains(agent.Ai.Name))
         {
             aiDropdown.SetValueWithoutNotify(agent.Ai.Name);
         }
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "AgentComponent SetValueWithoutNotify");
+        sw.Restart();
     }
 
     internal void UpdateAiComponent()

@@ -22,6 +22,8 @@ internal class UASTemplateService: RestoreAble
     public IObservable<ReactiveList<AiObjectModel>> OnCollectionChanged => onCollectionChanged;
     private Subject<ReactiveList<AiObjectModel>> onCollectionChanged = new Subject<ReactiveList<AiObjectModel>>();
 
+    private bool autoSaveLoaded = false;
+
     private static UASTemplateService instance;
 
     internal UASTemplateService()
@@ -71,12 +73,15 @@ internal class UASTemplateService: RestoreAble
         UASTemplateServiceState state;
         if (!backup)
         {
+            if (autoSaveLoaded) return;
             state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_AutoSave + Consts.FileExtension_JSON);
-        } else
+            autoSaveLoaded = true;
+        }
+        else
         {
             state = perstistAPI.LoadObjectPath<UASTemplateServiceState>(Consts.File_UASTemplateService_BackUp + Consts.FileExtension_JSON);
         }
-        TimerService.Instance.LogCall(sw2.ElapsedMilliseconds, "State");
+        TimerService.Instance.LogCall(sw2.ElapsedMilliseconds, "UAS State");
         if (state == null)
         {
             Debug.LogWarning("No playmode found");
@@ -88,7 +93,7 @@ internal class UASTemplateService: RestoreAble
             {
                 sw3.Start();
                 Restore(state);
-                TimerService.Instance.LogCall(sw3.ElapsedMilliseconds, "Restore UASTemp");
+                //TimerService.Instance.LogCall(sw3.ElapsedMilliseconds, "UAS Restore UASTemp");
 
             }
             catch (Exception ex)
@@ -96,8 +101,7 @@ internal class UASTemplateService: RestoreAble
                 Debug.LogWarning("UASTemplateService Restore failed: " + ex);
             }
         }
-        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "Total Load");
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Total Load");
     }
 
     internal void AutoSave(bool backup = false)
@@ -137,24 +141,9 @@ internal class UASTemplateService: RestoreAble
 
     internal Ai GetAiByName(string name, bool isPLayMode = false)
     {
-        //var sw = new System.Diagnostics.Stopwatch();
-        //sw.Reset();
-        //sw.Start();
-        ////if (isPLayMode)
-        ////{
-        ////    LoadAutoSave();
-        ////}
-        //Debug.Log("Loaded Autosave in: " + sw.ElapsedMilliseconds + "ms");
-        //sw.Reset();
-        //sw.Start();
-
         var aiTemplate = AIs.Values
             .Cast<Ai>()
             .FirstOrDefault(ai => ai.Name == name && ai.IsPLayable);
-
-        //Debug.Log("Sound templates in: " + sw.ElapsedMilliseconds + "ms");
-        //sw.Reset();
-        //sw.Start();
 
         if (aiTemplate == null)
         {
@@ -169,17 +158,8 @@ internal class UASTemplateService: RestoreAble
                 throw new Exception("No default Ai found AiName: " + name + " is the ai playable?");
             }
         }
-        //Debug.Log("Found default Ai in: " + sw.ElapsedMilliseconds + "ms");
-        //sw.Reset();
-        //sw.Start();
-
         var clone = aiTemplate.Clone() as Ai;
 
-        //Debug.Log("Cloned Ai in: " + sw.ElapsedMilliseconds + "ms");
-        //sw.Reset();
-        //sw.Start();
-
-        //sw.Stop();
         return clone;
     }
 
@@ -219,28 +199,6 @@ internal class UASTemplateService: RestoreAble
         }
         return null;
     }
-
-    //private ReactiveList<AiObjectModel> UpdateListWithFiles<T>(ReactiveList<AiObjectModel> collection)
-    //{
-    //    var elementsFromFiles = AssetDatabaseService.GetInstancesOfType<T>();
-    //    elementsFromFiles = elementsFromFiles
-    //        .Where(e => collection.Values.FirstOrDefault(element => element.GetType().FullName == e.GetType().FullName) == null)
-    //        .Where(e => !e.GetType().ToString().Contains("Mock"))
-    //        .ToList();
-
-    //    foreach(var element in elementsFromFiles)
-    //    {
-    //        collection.Add(element as AiObjectModel);
-    //    }
-    //    return collection;
-    //}
-
-    //internal void Refresh()
-    //{
-    //    LoadCollectionsFromFile();
-    //}
-
-
 
     private void OnEnable()
     {
@@ -350,9 +308,11 @@ internal class UASTemplateService: RestoreAble
 
     protected override void RestoreInternal(RestoreState s, bool restoreDebug)
     {
-
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
         ClearCollections();
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore UAS");
+        sw.Restart();
         var state = (UASTemplateServiceState)s;
         if (state == null)
         {
@@ -361,48 +321,75 @@ internal class UASTemplateService: RestoreAble
         var ais = new List<Ai>();
         foreach (var aState in state.AIs)
         {
+            sw.Restart();
             var ai = Ai.Restore<Ai>(aState, restoreDebug);
             ais.Add(ai);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore AIS");
+            sw.Restart();
         }
         AIs.Add(ais);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore AIs.Add");
+        sw.Restart();
 
         var buckets = new List<Bucket>();
         foreach (var bState in state.Buckets)
         {
             var bucket = Bucket.Restore<Bucket>(bState, restoreDebug);
             buckets.Add(bucket);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Buckets");
+            sw.Restart();
         }
         Buckets.Add(buckets);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Buckets.Add");
+        sw.Restart();
+
         var decisions = new List<Decision>();
         foreach (var d in state.Decisions)
         {
             var decision = Decision.Restore<Decision>(d, restoreDebug);
             decisions.Add(decision);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Decisions");
+            sw.Restart();
         }
         Decisions.Add(decisions);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Decisions.Add");
+        sw.Restart();
+
         var considerations = new List<Consideration>();
         foreach (var c in state.Considerations)
         {
             var consideration = Consideration.Restore<Consideration>(c, restoreDebug);
             considerations.Add(consideration);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Considerations");
+            sw.Restart();
         }
         Considerations.Add(considerations);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore Considerations.Add");
+        sw.Restart();
 
         var agentActions = new List<AgentAction>();
         foreach (var a in state.AgentActions)
         {
             var action = AgentAction.Restore<AgentAction>(a, restoreDebug);
             agentActions.Add(action);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore AgentActions");
+            sw.Restart();
         }
         AgentActions.Add(agentActions);
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore AgentActions.Add");
+        sw.Restart();
+
         var responseCurves = new List<ResponseCurve>();
         foreach (var r in state.ResponseCurves)
         {
             var responseCurve = Restore<ResponseCurve>(r, restoreDebug);
             responseCurves.Add(responseCurve);
+            TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore ResponseCurves");
+            sw.Restart();
         }
         ResponseCurves.Add(responseCurves);
-
+        TimerService.Instance.LogCall(sw.ElapsedMilliseconds, "UAS Restore ResponseCurves.Add");
+        sw.Restart();
     }
 
 }

@@ -62,9 +62,9 @@ internal class TimerService
         var msg = "";
         foreach (var kv in ordered)
         {
-            if (kv.Key.Contains("MWS"))
+            if (kv.Key.Contains("RestoreInternal Cons "))
             {
-                msg = kv.Key + ": Time " + kv.Value + " Count: " + values[kv.Key][0] + " avg: " + (kv.Value/values[kv.Key][0]).ToString("0.000") + " | ";
+                msg = kv.Key + ": Time " + kv.Value + " Count: " + values[kv.Key][0] + " | ";
                 Debug.Log(msg);
             }
         }
