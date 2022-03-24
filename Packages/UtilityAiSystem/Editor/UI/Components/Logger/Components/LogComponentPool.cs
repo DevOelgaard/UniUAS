@@ -7,14 +7,17 @@ using UnityEngine.UIElements;
 
 internal class LogComponentPool<T> where T: LogComponent
 {
-    private VisualElement root;
+    private Foldout root;
     internal List<T> LogComponents = new List<T>();
     private List<Foldout> foldouts = new List<Foldout>();
     private bool isFoldout;
     private bool startExpanded;
-    internal LogComponentPool(VisualElement r, bool addToFoldout, int initialPoolSize = 1, bool startExpanded = true)
+    internal LogComponentPool(VisualElement r, bool addToFoldout, string title, int initialPoolSize = 1, bool startExpanded = true)
     {
-        this.root = r;
+        root = new Foldout();
+        root.text = title;
+        r.Add(root);
+
         this.isFoldout = addToFoldout;
         this.startExpanded = startExpanded;
         for(var i = 0; i < initialPoolSize; i++)

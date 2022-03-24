@@ -20,7 +20,7 @@ internal class UCSLogComponent : LogComponent
         nameLabel = new Label();
         nameLabel.name = "Name-Label";
         Add(nameLabel);
-        parameterPool = new LogComponentPool<ParameterLogComponent>(this, false, 1);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(this, false,"Parameters", 1);
     }
 
     internal override string GetUiName()

@@ -29,7 +29,7 @@ internal class ConsiderationLogComponent : AiObjectLogComponent
         responseCurve = new ResponseCurveLogComponent();
         responseCurveContainer.Add(responseCurve);
 
-        parameterPool = new LogComponentPool<ParameterLogComponent>(parametersContianer, false,1);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(parametersContianer, false,"Parameters",1);
     }
 
     internal override string GetUiName()

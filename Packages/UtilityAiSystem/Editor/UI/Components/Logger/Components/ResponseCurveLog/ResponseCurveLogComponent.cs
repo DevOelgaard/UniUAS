@@ -14,7 +14,7 @@ internal class ResponseCurveLogComponent : AiObjectLogComponent
     {
         var root = AssetDatabaseService.GetTemplateContainer(this.GetType().FullName);
         Body.Add(root);
-        responseFunctionPool = new LogComponentPool<ResponseFunctionLogComponent>(root,false,1);
+        responseFunctionPool = new LogComponentPool<ResponseFunctionLogComponent>(root,false,"Response Functions",1);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)

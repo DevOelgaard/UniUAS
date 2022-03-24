@@ -19,7 +19,7 @@ internal class ResponseFunctionLogComponent: LogComponent
 
         typeLabel = root.Q<Label>("Type-Label");
         body = root.Q<VisualElement>("Body");
-        parameterPool = new LogComponentPool<ParameterLogComponent>(body, false, 2);
+        parameterPool = new LogComponentPool<ParameterLogComponent>(body, false,"Parameters", 2);
     }
 
     internal override string GetUiName()

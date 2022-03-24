@@ -32,7 +32,7 @@ internal class AiLogComponent : AiObjectLogComponent
         decisionSelctorComponent = new UCSLogComponent("Decision Selector");
         ucsContainer.Add(bucketSelctorComponent);
         ucsContainer.Add(decisionSelctorComponent);
-        bucketPool = new LogComponentPool<BucketLogComponent>(bucketContainer, true ,1);
+        bucketPool = new LogComponentPool<BucketLogComponent>(bucketContainer, true ,"Buckets",1);
     }
 
     protected override void UpdateUiInternal(AiObjectLog aiObjectDebug)

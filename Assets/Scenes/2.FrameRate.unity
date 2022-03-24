@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -550,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -797,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879754, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: settings.AutoTick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3475645738522879766, guid: 67957864359198f49ac95b8a832407fe, type: 3}
       propertyPath: m_RootOrder
