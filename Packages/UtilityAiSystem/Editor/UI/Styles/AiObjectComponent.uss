@@ -99,3 +99,8 @@ UCSComponent > TemplateContainer > #ParametersContainer {
 ListViewComponent > TemplateContainer > VisualElement > #Center:hover {
     
 }
+
+AgentComponent > TemplateContainer > #Footer {
+    height: 24px;
+    min-height: 24px;
+}

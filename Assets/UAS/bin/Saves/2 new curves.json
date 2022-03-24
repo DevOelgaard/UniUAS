@@ -1,0 +1,431 @@
+{
+  "States": [
+    {
+      "$type": "ResponseCurveState, Devoe.UAS.Runtime",
+      "Name": "Baby Sleep",
+      "Description": null,
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.75,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.8,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.91,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Exponential",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Power",
+              "Value": 6.58,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.8,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "ExponentialFunction"
+        },
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 0.8,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.8,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
+        },
+        {
+          "Name": "Linear",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "a",
+              "Value": -7.15,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "b",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LinearFunction"
+        },
+        {
+          "Name": "Logistic",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Growth Rate",
+              "Value": 7.89,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Midpoint",
+              "Value": 0.27,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "LogisticFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    },
+    {
+      "$type": "ResponseCurveState, Devoe.UAS.Runtime",
+      "Name": "Ranged Attack - M. Range - Spec. Long Range",
+      "Description": "",
+      "MinY": 0.0,
+      "MaxY": 1.0,
+      "MinX": 0.0,
+      "MaxX": 1.0,
+      "Segments": [
+        {
+          "Name": " ",
+          "Value": 0.1,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        },
+        {
+          "Name": " ",
+          "Value": 0.95,
+          "ValueType": "System.Single",
+          "RGBA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "FileName": "Parameter"
+        }
+      ],
+      "ResponseFunctions": [
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 0.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
+        },
+        {
+          "Name": "Normal Distribution",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Mean",
+              "Value": 0.45,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Std Deviation",
+              "Value": 0.2,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "NormalDistributionFunction"
+        },
+        {
+          "Name": "Fixed Value",
+          "Description": null,
+          "Parameters": [
+            {
+              "Name": "Return",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Inverse",
+              "Value": false,
+              "ValueType": "System.Boolean",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            },
+            {
+              "Name": "Max",
+              "Value": 1.0,
+              "ValueType": "System.Single",
+              "RGBA": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "FileName": "Parameter"
+            }
+          ],
+          "FileName": "FixedValueFunction"
+        }
+      ],
+      "FileName": "ResponseCurve"
+    }
+  ],
+  "TypeString": "ResponseCurve",
+  "FileName": "RestoreAbleCollection"
+}

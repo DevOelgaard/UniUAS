@@ -24,6 +24,7 @@ internal class AgentComponent: RightPanelComponent<IAgent>
     {
         root = AssetDatabaseService.GetTemplateContainer(GetType().FullName);
         Add(root);
+        styleSheets.Add(StylesService.GetStyleSheet("AiObjectComponent"));
         body = root.Q<VisualElement>("Body");
         agentName = root.Q<Label>("AgentName");
         aiDropdown = root.Q<DropdownField>("Ai-Dropdown");
