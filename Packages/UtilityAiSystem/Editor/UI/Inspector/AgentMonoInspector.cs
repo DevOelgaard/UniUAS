@@ -37,6 +37,25 @@ internal class AgentMonoInspector: Editor
             .Subscribe(values => SetAiFieldChoices(values))
             .AddTo(disposables);
 
+        UASTemplateService.Instance.AIs.Values
+            .ForEach(ai =>
+            {
+                var aiCast = ai as Ai;
+                aiCast.OnIsPlayableChanged
+                .Subscribe(isPlayable =>
+                {
+                    if (isPlayable)
+                    {
+                        aiField.choices.Add(ai.Name);
+                    }
+                    else
+                    {
+                        aiField.choices.Remove(ai.Name);
+                    }
+                })
+                .AddTo(disposables);
+            });
+
         aiField.RegisterCallback<ChangeEvent<string>>(evt =>
         {
             foreach(var agent in agents)
