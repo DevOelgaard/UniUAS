@@ -431,6 +431,7 @@ internal class TemplateManager : EditorWindow
 
                 currentMainWindowComponent = mvc;
             }
+            selectionCounter = 0;
         }
     }
 
