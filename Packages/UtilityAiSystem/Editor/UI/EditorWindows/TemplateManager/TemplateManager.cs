@@ -10,7 +10,7 @@ using UnityEditor.UIElements;
 internal class TemplateManager : EditorWindow
 {
     private IDisposable activeCollectionChangedSub;
-
+    private CompositeDisposable disposables = new CompositeDisposable();
     private CompositeDisposable modelsChangedSubsciptions = new CompositeDisposable();
 
     private VisualElement root;
@@ -21,12 +21,6 @@ internal class TemplateManager : EditorWindow
     private Button copyButton;
     private Button deleteButton;
     private Button clearButton;
-    private Button saveProjectButton;
-    private Button loadProjectButton;
-
-    private Button exportButton;
-    private Button importButton;
-    private Button restoreButton;
     private PopupField<string> addElementPopup;
     private List<string> dropDownChoices;
     private DropdownField dropDown;
@@ -37,7 +31,7 @@ internal class TemplateManager : EditorWindow
     private PersistenceAPI persistenceAPI = new PersistenceAPI(new JSONPersister());
 
     private Dictionary<AiObjectModel, AiObjectComponent> componentsByModels = new Dictionary<AiObjectModel, AiObjectComponent>();
-    private ToolbarMenu tbm;
+    private Toolbar toolbar;
     private AiObjectModel SelectedModel
     {
         get => selectedModel;
@@ -54,7 +48,7 @@ internal class TemplateManager : EditorWindow
         
         var treeAsset = AssetDatabaseService.GetVisualTreeAsset(GetType().FullName);
         treeAsset.CloneTree(root);
-        tbm = root.Q<ToolbarMenu>();
+        toolbar = root.Q<Toolbar>();
 
         dropDown = root.Q<DropdownField>("TypeDropdown");
 
@@ -70,8 +64,10 @@ internal class TemplateManager : EditorWindow
             addElementPopup.value = null;
         });
 
-        buttonContainer.Add(addElementPopup);
-
+        var AddElementPopupContainer = root.Q<VisualElement>("AddElementPopupContainer");
+        AddElementPopupContainer.Add(addElementPopup);
+        InitToolbarFile();
+        InitToolbarDebug();
 
         rightPanel = root.Q<VisualElement>("right-panel");
 
@@ -92,25 +88,30 @@ internal class TemplateManager : EditorWindow
         {
             uASTemplateService.Reset();
             UpdateLeftPanel();
-
         });
 
-        saveProjectButton = root.Q<Button>("SaveProjectButton");
-        saveProjectButton.RegisterCallback<MouseUpEvent>(evt =>
+        InitDropdown();
+        UpdateLeftPanel();
+    }
+
+    private void InitToolbarFile()
+    {
+        var menu = new ToolbarMenu();
+        menu.text = "File";
+
+        menu.menu.AppendAction("Save Project", _ =>
         {
             persistenceAPI.SaveObjectPanel(uASTemplateService);
         });
 
-        loadProjectButton = root.Q<Button>("LoadProjectButton");
-        loadProjectButton.RegisterCallback<MouseUpEvent>(evt =>
+        menu.menu.AppendAction("Load Project", _ =>
         {
             var uasState = persistenceAPI.LoadObjectPanel<UASTemplateServiceState>();
             uASTemplateService.Restore(uasState);
             UpdateLeftPanel();
         });
 
-        exportButton = root.Q<Button>("ExportButton");
-        exportButton.RegisterCallback<MouseUpEvent>(evt =>
+        menu.menu.AppendAction("Export File(s)", _ =>
         {
             var saveObjects = new List<RestoreAble>();
             selectedObjects.ForEach(pair => saveObjects.Add(pair.Key));
@@ -119,8 +120,7 @@ internal class TemplateManager : EditorWindow
             persistenceAPI.SaveObjectPanel(restoreAble);
         });
 
-        importButton = root.Q<Button>("ImportButton");
-        importButton.RegisterCallback<MouseUpEvent>(evt =>
+        menu.menu.AppendAction("Import File(s)", _ =>
         {
             var state = persistenceAPI.LoadObjectPanel<RestoreAbleCollectionState>(Consts.FileExtensions);
             if (state == null || state == default)
@@ -132,77 +132,63 @@ internal class TemplateManager : EditorWindow
                 .GetCollection(loadedCollection.Type);
             var castlist = loadedCollection.Models.Cast<AiObjectModel>();
             toCollection.Add(castlist);
-
-            //loadedCollection.Models.ForEach(m =>
-            //{
-            //    toCollection.Add(m as AiObjectModel);
-            //});
         });
 
-
-        restoreButton = root.Q<Button>("RestoreButton");
-        restoreButton.RegisterCallback<MouseUpEvent>(evt =>
+        menu.menu.AppendAction("Load Autosave", _ =>
         {
             uASTemplateService.LoadAutoSave();
             UpdateLeftPanel();
         });
 
-        root.RegisterCallback<KeyUpEvent>(key =>
+        menu.menu.AppendAction("Save Backup", _ =>
         {
-            if (key.keyCode == KeyCode.S && key.ctrlKey)
-            {
-                uASTemplateService.AutoSave();
-            }
+            uASTemplateService.AutoSave(true);
         });
 
-        // TEST
+        menu.menu.AppendAction("Load Backup", _ =>
+        {
+            uASTemplateService.LoadAutoSave(true);
+        });
 
-        var timerButton = new Button();
-        timerButton.text = "Timer";
-        timerButton.RegisterCallback<MouseUpEvent>(key =>
+        menu.menu.AppendAction("Close", _ =>
+        {
+            //var wnd = GetWindow<TemplateManager>();
+            this.Close();
+        });
+
+        toolbar.Add(menu);
+    }
+
+    private void InitToolbarDebug()
+    {
+        var menu = new ToolbarMenu();
+        menu.text = "Debug";
+
+        menu.menu.AppendAction("Timer Print", _ =>
         {
             TimerService.Instance.DebugLogTime();
             InstantiaterService.Instance.DebugStuff();
         });
-        buttonContainer.Add(timerButton);
 
-        var resetButton = new Button();
-        resetButton.text = "Reset timer";
-        resetButton.RegisterCallback<MouseUpEvent>(evt =>
+        menu.menu.AppendAction("Timer Reset", _ =>
         {
             TimerService.Instance.Reset();
             InstantiaterService.Instance.Reset();
-
         });
-        buttonContainer.Add(resetButton);
+        toolbar.Add(menu);
 
-        var backupButton = new Button();
-        backupButton.text = "Backup";
-        backupButton.RegisterCallback<MouseUpEvent>(key =>
-        {
-            uASTemplateService.AutoSave(true);
-        });
-        buttonContainer.Add(backupButton);
-
-        var loadBackup = new Button();
-        loadBackup.text = "Load Backup";
-        loadBackup.RegisterCallback<MouseUpEvent>(key =>
-        {
-            uASTemplateService.LoadAutoSave(true);
-        });
-        buttonContainer.Add(loadBackup);
-
-        // TEST-END
-
-
-        InitDropdown();
-        UpdateLeftPanel();
     }
 
     void OnEnable()
     {
-        Debug.Log("OnGui");
         var mws = MainWindowService.Instance;
+        mws.OnUpdateStateChanged
+            .Subscribe(state =>
+            {
+                //var wnd = GetWindow<TemplateManager>();
+                this.titleContent.text = state ? Consts.Window_TemplateManager_Name + " - Loading" : Consts.Window_TemplateManager_Name;
+            })
+            .AddTo(disposables);
         mws.Start();
     }
 
@@ -465,5 +451,6 @@ internal class TemplateManager : EditorWindow
     {
         activeCollectionChangedSub?.Dispose();
         modelsChangedSubsciptions.Clear();
+        disposables.Clear();
     }
 }

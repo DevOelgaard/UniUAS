@@ -5,6 +5,7 @@ using UnityEngine;
 using Unity.EditorCoroutines.Editor;
 using System.Collections;
 using UniRxExtension;
+using UniRx;
 
 internal class MainWindowService
 {
@@ -12,15 +13,15 @@ internal class MainWindowService
     private static Dictionary<Type, Queue<AiObjectComponent>> componentsByType = new Dictionary<Type, Queue<AiObjectComponent>>();
     private List<KeyValuePair<Type,int>> typeAndInitAmountList = new List<KeyValuePair<Type, int>>()
     {
-        new KeyValuePair<Type,int>(typeof(Ai),4),
-        new KeyValuePair<Type,int>(typeof(Bucket),5),
-        new KeyValuePair<Type,int>(typeof(Decision),40),
+        //new KeyValuePair<Type,int>(typeof(Ai),4),
+        //new KeyValuePair<Type,int>(typeof(Bucket),5),
+        //new KeyValuePair<Type,int>(typeof(Decision),10),
         //new KeyValuePair<Type,int>(typeof(Consideration),0),
-        new KeyValuePair<Type,int>(typeof(AgentAction),5),
-        new KeyValuePair<Type,int>(typeof(ResponseCurve),5),
-        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationFixedValue),15),
-        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),15),
-        new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),15),
+        //new KeyValuePair<Type,int>(typeof(AgentAction),5),
+        //new KeyValuePair<Type,int>(typeof(ResponseCurve),5),
+        //new KeyValuePair<Type,int>(typeof(Demo_ConsiderationFixedValue),5),
+        //new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),5),
+        //new KeyValuePair<Type,int>(typeof(Demo_ConsiderationRandomValue),5),
     };
 
     private static Queue<MainWindowFoldedComponent> mainFoldedComponentPool = new Queue<MainWindowFoldedComponent>();
@@ -28,6 +29,8 @@ internal class MainWindowService
     private const int mwfcPoolSize = 100;
     private bool updatingPool = false;
     private EditorCoroutine updateComponentsCoroutine;
+    internal IObservable<bool> OnUpdateStateChanged => onUpdateStateChanged;
+    private Subject<bool> onUpdateStateChanged = new Subject<bool>();
     public MainWindowService()
     {
     }
@@ -45,9 +48,9 @@ internal class MainWindowService
 
     private IEnumerator UpdatePoolsCoroutine()
     {
+        onUpdateStateChanged.OnNext(true);
         var sw = new System.Diagnostics.Stopwatch();
         sw.Start();
-        Debug.Log("Starting coroutine");
         updatingPool = true;
         foreach (var kv in typeAndInitAmountList)
         {
@@ -87,7 +90,7 @@ internal class MainWindowService
             }
         }
         updatingPool = false;
-        Debug.Log("Ending Coroutine Time: " + sw.ElapsedMilliseconds +"ms");
+        onUpdateStateChanged.OnNext(false);
     }
 
     internal MainWindowFoldedComponent RentMainWindowFoldedComponent()
