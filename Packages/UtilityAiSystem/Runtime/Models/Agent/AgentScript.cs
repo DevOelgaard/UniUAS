@@ -69,4 +69,9 @@ public abstract class AgentScript : IAgent
     {
         Ai = model;
     }
+
+    public bool CanAutoTick()
+    {
+        throw new NotImplementedException();
+    }
 }

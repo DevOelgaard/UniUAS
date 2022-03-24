@@ -8,9 +8,10 @@ using UnityEngine;
 
 public class AgentMono : MonoBehaviour, IAgent
 {
-    private AgentModel model = new AgentModel();
-    public AgentModel Model => model;
-
+    [SerializeField]
+    [InspectorName("Settings")]
+    private AgentModel settings = new AgentModel();
+    public AgentModel Model => settings;
     public string TypeIdentifier => GetType().FullName;
 
     [HideInInspector]
@@ -30,7 +31,7 @@ public class AgentMono : MonoBehaviour, IAgent
 
     void Start()
     {
-        model.Name = SetAgentName();
+        Model.Name = SetAgentName();
         AgentManager.Instance.Register(this);
         var ai = UASTemplateService.Instance.GetAiByName(DefaultAiName,true);
         SetAi(ai);
@@ -61,6 +62,9 @@ public class AgentMono : MonoBehaviour, IAgent
     {
         Ai.Context.TickMetaData = metaData;
         Model.TickMetaData = metaData;
+        Model.LastTickTime = Time.time;
+        Model.LastTickFrame = Time.frameCount;
+
         var actions = decisionScoreEvaluator.NextActions(Ai.Buckets.Values, Ai.Context, Ai);
         var oldActions = Ai.Context.LastActions;
         foreach(var action in actions)
@@ -81,5 +85,13 @@ public class AgentMono : MonoBehaviour, IAgent
         }
 
         Ai.Context.LastActions = actions;
+    }
+
+    public bool CanAutoTick()
+    {
+        if (Model.AutoTick == false) return false;
+        if (Time.time - Model.LastTickTime < Model.MsBetweenTicks/1000) return false;
+        if (Time.frameCount - Model.LastTickFrame < Model.FramesBetweenTicks) return false;
+        return true;
     }
 }

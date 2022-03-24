@@ -105,7 +105,14 @@ internal class AiTicker: RestoreAble
         TickCount++;
         var metaData = new TickMetaData();
         metaData.TickCount = TickCount;
-        Settings.TickerMode.Tick(agentManager.Model.Agents.Values, metaData);
+        Settings.TickerMode
+            .Tick(agentManager
+                .Model
+                .Agents
+                .Values
+                .Where(agent => agent.CanAutoTick())
+                .ToList(), metaData);
+
         onTickComplete.OnNext(TickCount);
     }
 

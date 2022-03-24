@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UniRx;
 using MoreLinq;
+using UnityEditor.UIElements;
 
 [CustomEditor(typeof(AgentMono)), CanEditMultipleObjects]
 internal class AgentMonoInspector: Editor
@@ -16,6 +17,7 @@ internal class AgentMonoInspector: Editor
     private VisualElement root;
     //private AgentMono agent;
     private List<AgentMono> agents;
+
     public override VisualElement CreateInspectorGUI()
     {
         root = new VisualElement();
@@ -62,7 +64,6 @@ internal class AgentMonoInspector: Editor
             {
                 agent.DefaultAiName = evt.newValue;
                 EditorUtility.SetDirty(agent);
-                //serializedObject.ApplyModifiedProperties();
             }
         });
 

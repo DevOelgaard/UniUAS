@@ -11,4 +11,5 @@ public interface IAgent
     void Tick(TickMetaData metaData);
     void SetAi(Ai model);
     Ai Ai { get; set; }
+    bool CanAutoTick();
 }
